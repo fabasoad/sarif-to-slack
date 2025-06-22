@@ -1,4 +1,4 @@
-import { Log } from 'sarif'
+import type { Log } from 'sarif'
 
 /**
  * Type representing a SARIF log.

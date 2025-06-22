@@ -46,9 +46,18 @@ async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string,
  * @public
  */
 export class SarifToSlackService {
-  private slackMessages: ReadonlyMap<string, SlackMessage>;
+  private _slackMessages: ReadonlyMap<string, SlackMessage>;
 
   private constructor() {
+  }
+
+  /**
+   * Gets the Slack messages prepared for each SARIF file.
+   * @returns A read-only map where keys are SARIF file paths and values are SlackMessage instances.
+   * @public
+   */
+  public get slackMessages(): ReadonlyMap<string, SlackMessage> {
+    return this._slackMessages;
   }
 
   /**
@@ -63,7 +72,7 @@ export class SarifToSlackService {
       logLevel: processLogLevel(opts.logLevel)
     })
     const instance: SarifToSlackService = new SarifToSlackService()
-    instance.slackMessages = await initialize(opts)
+    instance._slackMessages = await initialize(opts)
     return instance
   }
 
@@ -74,7 +83,7 @@ export class SarifToSlackService {
    * @public
    */
   public async sendAll(): Promise<void> {
-    for (const sarifPath of this.slackMessages.keys()) {
+    for (const sarifPath of this._slackMessages.keys()) {
       await this.send(sarifPath);
     }
   }
@@ -87,7 +96,7 @@ export class SarifToSlackService {
    * @public
    */
   public async send(sarifPath: string): Promise<void> {
-    const message: SlackMessage | undefined = this.slackMessages.get(sarifPath)
+    const message: SlackMessage | undefined = this._slackMessages.get(sarifPath)
     if (!message) {
       throw new Error(`Slack message was not prepared for SARIF path: ${sarifPath}.`)
     }

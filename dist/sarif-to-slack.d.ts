@@ -109,6 +109,12 @@ export declare class SarifToSlackService {
     private _slackMessages;
     private constructor();
     /**
+     * Gets the Slack messages prepared for each SARIF file.
+     * @returns A read-only map where keys are SARIF file paths and values are SlackMessage instances.
+     * @public
+     */
+    get slackMessages(): ReadonlyMap<string, SlackMessage>;
+    /**
      * Creates an instance of SarifToSlackService.
      * @param opts - Options for the service, including webhook URL, SARIF path, and other configurations.
      * @returns A promise that resolves to an instance of SarifToSlackService.
@@ -116,12 +122,6 @@ export declare class SarifToSlackService {
      * @public
      */
     static create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService>;
-    /**
-     * Returns the map of prepared Slack messages.
-     * @returns A map where keys are SARIF file paths and values are SlackMessage instances.
-     * @readonly
-     */
-    get slackMessages(): Map<string, SlackMessage>;
     /**
      * Sends all prepared Slack messages.
      * @returns A promise that resolves when all messages have been sent.
