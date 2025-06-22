@@ -9,8 +9,7 @@ build:
 	@yarn run build
 
 clean:
-	@rm -f yarn.lock
-	@rm -rf node_modules
+	@yarn run clean
 
 install:
 	@yarn install
