@@ -8,7 +8,7 @@
     "declarationMap": true,
     "stripInternal": true,
     "types": ["node", "jest"],
-    "newLine": "LF",
+    "newLine": "lf",
     "lib": [
       "es2024"
     ],
