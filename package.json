@@ -1,6 +1,6 @@
 {
   "name": "sarif-to-slack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "TypeScript library to send results of SARIF file to Slack webhook URL.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
