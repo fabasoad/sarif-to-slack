@@ -26,7 +26,12 @@ jobs:
           node-version-file: ".tool-versions"
           registry-url: "https://registry.npmjs.org"
 
-      - run: npm version --no-git-tag-version "${GITHUB_REF_NAME#v}"
+      - name: Bump version
+        run: npm version --no-git-tag-version "${GITHUB_REF_NAME#v}"
+
+      - name: Push changes
+        uses: EndBug/add-and-commit@v9
+
       - run: npm ci -q
 
       - name: Publish to NPM Registry
