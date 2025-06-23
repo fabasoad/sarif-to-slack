@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := build
 
 audit:
-	@npm npm audit --all
+	@npm audit --all
 
 build:
 	@npm run build

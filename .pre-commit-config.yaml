@@ -29,7 +29,7 @@ repos:
         stages: ["pre-push"]
   # Security
       - id: audit
-        name: Yarn audit
+        name: NPM audit
         entry: make audit
         language: system
         pass_filenames: false
