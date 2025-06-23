@@ -27,17 +27,24 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Bump version
-        run: npm version --no-git-tag-version "${GITHUB_REF_NAME#v}"
+        run: yarn version "${GITHUB_REF_NAME#v}"
 
       - name: Push changes
-        uses: EndBug/add-and-commit@v9
+        run: |
+          git config user.email "fabasoad@gmail.com"
+          git config user.name "fabasoad"
+          git config url."https://${{ secrets.GH_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git add .
+          git commit -m "chore: bump sarif-to-slack version to ${GITHUB_REF_NAME#v}"
+          git push origin main
 
-      - run: npm ci -q
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache
 
       - name: Publish to NPM Registry
-        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn npm publish --access public
 
       # Publish to GitHub Packages
       - name: Setup .npmrc for GitHub Packages
@@ -46,9 +53,9 @@ jobs:
           echo "registry=https://npm.pkg.github.com" >> .npmrc
 
       - name: Publish to GitHub Packages
-        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn npm publish
   github:
     name: GitHub
     needs: [publish]
