@@ -16,7 +16,7 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   publish:
-    name: Publish
+    name: Release ${{ github.event.inputs.bump-strategy }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:

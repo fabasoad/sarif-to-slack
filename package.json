@@ -7,12 +7,16 @@
   "scripts": {
     "lint": "biome lint --write src",
     "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage",
-    "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf coverage && rm -rf lib && rm -rf temp",
+    "clean": "rm -rf coverage && rm -rf temp",
+    "clean:unsafe": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf lib",
     "build": "tsc && api-extractor run --local --verbose",
     "prepublishOnly": "npm run build",
-    "version:patch": "npm version patch -m 'chore: bump to version %s'",
-    "version:minor": "npm version minor -m 'chore: bump to version %s'",
-    "version:major": "npm version major -m 'chore: bump to version %s'"
+    "version:patch": "npm version patch --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "version:minor": "npm version minor --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "version:major": "npm version major --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags && npm run clean"
   },
   "repository": {
     "type": "git",
