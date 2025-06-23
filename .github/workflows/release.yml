@@ -22,6 +22,9 @@ jobs:
     permissions:
       contents: write
       packages: write
+    outputs:
+      ref: ${{ steps.tag.outputs.ref }}
+      ref-name: ${{ steps.tag.outputs.ref-name }}
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
@@ -30,9 +33,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
-          registry-url: "https://registry.npmjs.org"
           cache: "npm"
           cache-dependency-path: "package-lock.json"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@fabasoad"
 
       - name: Install dependencies
         run: npm ci
@@ -43,10 +47,20 @@ jobs:
           git config user.name "fabasoad"
           npm run version:${{ github.event.inputs.bump-strategy }}
 
+      - name: Install jq
+        uses: dcarbone/install-jq-action@v3
+
+      - name: Get version
+        id: tag
+        run: |
+          version=$(jq -r '.version' package.json)
+          echo "ref=refs/tags/v${version}" >> "$GITHUB_OUTPUT"
+          echo "ref-name=v${version}" >> "$GITHUB_OUTPUT"
+
       - name: Publish to NPM Registry
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: npm publish
 
       # Publish to GitHub Packages
       - name: Setup .npmrc for GitHub Packages
@@ -64,3 +78,5 @@ jobs:
     uses: fabasoad/reusable-workflows/.github/workflows/wf-github-release.yml@main
     with:
       bump-tags: false
+      ref: ${{ needs.publish.outputs.ref }}
+      ref-name: ${{ needs.publish.outputs.ref-name }}
