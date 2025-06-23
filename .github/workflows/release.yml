@@ -34,14 +34,14 @@ jobs:
           cache: "npm"
           cache-dependency-path: "package-lock.json"
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Bump version
         run: |
           git config user.email "fabasoad@gmail.com"
           git config user.name "fabasoad"
           npm run version:${{ github.event.inputs.bump-strategy }}
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Publish to NPM Registry
         env:
