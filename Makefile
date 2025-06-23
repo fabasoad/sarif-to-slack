@@ -1,27 +1,31 @@
-.PHONY: audit build clean install reinstall lint start test upgrade
+.PHONY: audit build clean install reinstall lint start test npm/update pre-commit/update update
 
 .DEFAULT_GOAL := build
 
 audit:
-	@yarn npm audit --all
+	@npm npm audit --all
 
 build:
-	@yarn run build
+	@npm run build
 
 clean:
-	@yarn run clean
+	@npm run clean
 
 install:
-	@yarn install
+	@npm install
 
 reinstall: clean install
 
 lint:
-	@yarn run lint
+	@npm run lint
 
 test:
-	@yarn run test
+	@npm run test
 
-upgrade:
+npm/update:
+	@npm update
+
+pre-commit/update:
 	@pre-commit autoupdate
-	@yarn upgrade-interactive
+
+update: npm/update pre-commit/update

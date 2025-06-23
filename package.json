@@ -7,10 +7,12 @@
   "scripts": {
     "lint": "biome lint --write src",
     "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage",
-    "clean": "rm -f yarn.lock && rm -rf node_modules && rm -rf dist && rm -rf coverage && rm -rf lib && rm -rf temp",
-    "semantic-release": "semantic-release",
+    "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf coverage && rm -rf lib && rm -rf temp",
     "build": "tsc && api-extractor run --local --verbose",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "npm run build",
+    "version:patch": "npm version patch -m 'chore: bump to version %s'",
+    "version:minor": "npm version minor -m 'chore: bump to version %s'",
+    "version:major": "npm version major -m 'chore: bump to version %s'"
   },
   "repository": {
     "type": "git",
@@ -46,6 +48,5 @@
     "jest-circus": "30.0.2",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
-  },
-  "packageManager": "yarn@4.9.1"
+  }
 }
