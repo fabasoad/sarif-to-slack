@@ -49,4 +49,4 @@ jobs:
     needs: [publish]
     uses: fabasoad/reusable-workflows/.github/workflows/wf-github-release.yml@main
     with:
-      bump-tags: "false"
+      bump-tags: false
