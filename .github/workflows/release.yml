@@ -23,8 +23,8 @@ jobs:
       contents: write
       packages: write
     outputs:
-      ref: ${{ steps.tag.outputs.ref }}
-      ref-name: ${{ steps.tag.outputs.ref-name }}
+      ref: ${{ steps.metadata.outputs.ref }}
+      ref-name: ${{ steps.metadata.outputs.ref-name }}
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
@@ -48,22 +48,26 @@ jobs:
       - name: Install jq
         uses: dcarbone/install-jq-action@v3
 
-      - name: Get version
-        id: tag
+      - name: Get metadata
+        id: metadata
         run: |
           version=$(jq -r '.version' package.json)
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
           echo "ref=refs/tags/v${version}" >> "$GITHUB_OUTPUT"
           echo "ref-name=v${version}" >> "$GITHUB_OUTPUT"
 
       - name: Publish to npm registry
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --registry=https://registry.npmjs.org/ --access public
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: "${{ secrets.NPM_TOKEN }}"
+          tag: "${{ steps.metadata.outputs.version }}"
 
       - name: Publish to GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish --registry=https://npm.pkg.github.com/
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "${{ steps.metadata.outputs.version }}"
+          registry: "https://npm.pkg.github.com"
   github:
     name: GitHub
     needs: [publish]
