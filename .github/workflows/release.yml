@@ -52,7 +52,6 @@ jobs:
         id: metadata
         run: |
           version=$(jq -r '.version' package.json)
-          echo "version=${version}" >> "$GITHUB_OUTPUT"
           echo "ref=refs/tags/v${version}" >> "$GITHUB_OUTPUT"
           echo "ref-name=v${version}" >> "$GITHUB_OUTPUT"
 
@@ -60,13 +59,13 @@ jobs:
         uses: JS-DevTools/npm-publish@v3
         with:
           token: "${{ secrets.NPM_TOKEN }}"
-          tag: "${{ steps.metadata.outputs.version }}"
+          tag: "${{ steps.metadata.outputs.ref-name }}"
 
       - name: Publish to GitHub Packages
         uses: JS-DevTools/npm-publish@v3
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "${{ steps.metadata.outputs.version }}"
+          tag: "${{ steps.metadata.outputs.ref-name }}"
           registry: "https://npm.pkg.github.com"
   github:
     name: GitHub
