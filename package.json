@@ -1,6 +1,6 @@
 {
-  "name": "sarif-to-slack",
-  "version": "0.1.1",
+  "name": "@fabasoad/sarif-to-slack",
+  "version": "0.1.0",
   "description": "TypeScript library to send results of SARIF file to Slack webhook URL.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,9 +33,7 @@
     "url": "https://github.com/fabasoad/sarif-to-slack-action/issues"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.esm.js",
-    "types": "dist/index.d.ts"
+    "access": "public"
   },
   "homepage": "https://github.com/fabasoad/sarif-to-slack-action#readme",
   "dependencies": {
@@ -45,11 +43,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@microsoft/api-documenter": "7.26.28",
+    "@microsoft/api-documenter": "7.26.29",
     "@microsoft/api-extractor": "7.52.8",
     "@types/jest": "30.0.0",
-    "jest": "30.0.2",
-    "jest-circus": "30.0.2",
+    "jest": "30.0.3",
+    "jest-circus": "30.0.3",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
   }
