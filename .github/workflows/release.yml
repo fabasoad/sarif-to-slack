@@ -16,12 +16,15 @@ on: # yamllint disable-line rule:truthy
 
 jobs:
   publish:
-    name: Publish
+    name: Release ${{ github.event.inputs.bump-strategy }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
       contents: write
       packages: write
+    outputs:
+      ref: ${{ steps.metadata.outputs.ref }}
+      ref-name: ${{ steps.metadata.outputs.ref-name }}
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v4
@@ -30,9 +33,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
-          registry-url: "https://registry.npmjs.org"
           cache: "npm"
           cache-dependency-path: "package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Bump version
         run: |
@@ -40,27 +45,31 @@ jobs:
           git config user.name "fabasoad"
           npm run version:${{ github.event.inputs.bump-strategy }}
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install jq
+        uses: dcarbone/install-jq-action@v3
 
-      - name: Publish to NPM Registry
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
-
-      # Publish to GitHub Packages
-      - name: Setup .npmrc for GitHub Packages
+      - name: Get metadata
+        id: metadata
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
-          echo "registry=https://npm.pkg.github.com" >> .npmrc
+          version=$(jq -r '.version' package.json)
+          echo "ref=refs/tags/v${version}" >> "$GITHUB_OUTPUT"
+          echo "ref-name=v${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to npm registry
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: "${{ secrets.NPM_TOKEN }}"
 
       - name: Publish to GitHub Packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm publish
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          registry: "https://npm.pkg.github.com"
   github:
     name: GitHub
     needs: [publish]
     uses: fabasoad/reusable-workflows/.github/workflows/wf-github-release.yml@main
     with:
       bump-tags: false
+      ref: ${{ needs.publish.outputs.ref }}
+      ref-name: ${{ needs.publish.outputs.ref-name }}

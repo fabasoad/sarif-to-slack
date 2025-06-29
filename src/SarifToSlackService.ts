@@ -46,9 +46,10 @@ async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string,
  * @public
  */
 export class SarifToSlackService {
-  private _slackMessages: ReadonlyMap<string, SlackMessage>;
+  private readonly _slackMessages: Map<string, SlackMessage>;
 
   private constructor() {
+    this._slackMessages = new Map<string, SlackMessage>();
   }
 
   /**
@@ -72,7 +73,8 @@ export class SarifToSlackService {
       logLevel: processLogLevel(opts.logLevel)
     })
     const instance: SarifToSlackService = new SarifToSlackService()
-    instance._slackMessages = await initialize(opts)
+    const map: Map<string, SlackMessage> = await initialize(opts)
+    map.forEach((val: SlackMessage, key: string) => instance._slackMessages.set(key, val))
     return instance
   }
 

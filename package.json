@@ -1,22 +1,29 @@
 {
-  "name": "sarif-to-slack",
-  "version": "0.0.1",
+  "name": "@fabasoad/sarif-to-slack",
+  "version": "0.1.1",
   "description": "TypeScript library to send results of SARIF file to Slack webhook URL.",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "private": false,
   "scripts": {
     "lint": "biome lint --write src",
     "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage",
-    "clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf coverage && rm -rf lib && rm -rf temp",
+    "clean": "rm -rf coverage && rm -rf temp",
+    "clean:unsafe": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf lib",
+    "tsc": "tsc",
     "build": "tsc && api-extractor run --local --verbose",
     "prepublishOnly": "npm run build",
-    "version:patch": "npm version patch -m 'chore: bump to version %s'",
-    "version:minor": "npm version minor -m 'chore: bump to version %s'",
-    "version:major": "npm version major -m 'chore: bump to version %s'"
+    "version:patch": "npm version patch --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "version:minor": "npm version minor --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "version:major": "npm version major --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags && npm run clean"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fabasoad/sarif-to-slack-action.git"
+    "url": "https://github.com/fabasoad/sarif-to-slack.git"
   },
   "keywords": [
     "npm",
@@ -29,9 +36,7 @@
     "url": "https://github.com/fabasoad/sarif-to-slack-action/issues"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.esm.js",
-    "types": "dist/index.d.ts"
+    "access": "public"
   },
   "homepage": "https://github.com/fabasoad/sarif-to-slack-action#readme",
   "dependencies": {
@@ -40,12 +45,12 @@
     "tslog": "4.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@microsoft/api-documenter": "7.26.28",
+    "@biomejs/biome": "2.0.6",
+    "@microsoft/api-documenter": "7.26.29",
     "@microsoft/api-extractor": "7.52.8",
     "@types/jest": "30.0.0",
-    "jest": "30.0.2",
-    "jest-circus": "30.0.2",
+    "jest": "30.0.3",
+    "jest-circus": "30.0.3",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
   }

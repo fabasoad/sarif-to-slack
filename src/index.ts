@@ -11,7 +11,7 @@
  * ```typescript
  * import { SarifToSlackService } from 'sarif-to-slack';
  *
- * const service = new SarifToSlackService({
+ * const service = await SarifToSlackService.create({
  *   webhookUrl: 'https://hooks.slack.com/services/your/webhook/url',
  *   sarifPath: 'path/to/your/sarif/file.sarif',
  *   logLevel: 'info',
