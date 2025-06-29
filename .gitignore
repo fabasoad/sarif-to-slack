@@ -5,3 +5,4 @@ node_modules
 lib
 .pnp.*
 temp/
+jest-report.json
