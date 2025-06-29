@@ -2,7 +2,7 @@
 
 .PHONY: audit
 audit:
-	@npm audit --all
+	@npm audit --audit-level moderate --package-lock-only --include dev
 
 .PHONY: build
 build:

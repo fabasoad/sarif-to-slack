@@ -10,7 +10,7 @@ on: # yamllint disable-line rule:truthy
 jobs:
   js-lint:
     name: JS Lint
-    uses: fabasoad/reusable-workflows/.github/workflows/wf-js-lint.yml@main
+    uses: fabasoad/reusable-workflows/.github/workflows/wf-js-lint.yml@bump/prettier
   pre-commit:
     name: Pre-commit
     uses: fabasoad/reusable-workflows/.github/workflows/wf-pre-commit.yml@main
