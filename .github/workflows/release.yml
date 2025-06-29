@@ -59,13 +59,11 @@ jobs:
         uses: JS-DevTools/npm-publish@v3
         with:
           token: "${{ secrets.NPM_TOKEN }}"
-          tag: "${{ steps.metadata.outputs.ref-name }}"
 
       - name: Publish to GitHub Packages
         uses: JS-DevTools/npm-publish@v3
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "${{ steps.metadata.outputs.ref-name }}"
           registry: "https://npm.pkg.github.com"
   github:
     name: GitHub
