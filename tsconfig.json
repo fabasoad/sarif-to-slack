@@ -1,21 +1,39 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "declarationDir": "dist",
     "target": "es2024",
-    "module": "commonjs",
+    "lib": ["es2024"],
+    "module": "es2022",
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "downlevelIteration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "@types"],
+    "skipLibCheck": true,
+    "newLine": "LF",
     "declaration": true,
+    "inlineSources": false,
+    "inlineSourceMap": false,
     "sourceMap": true,
     "declarationMap": true,
     "stripInternal": true,
-    "types": ["node", "jest"],
-    "newLine": "lf",
-    "lib": [
-      "es2024"
-    ],
-    "outDir": "lib"
+    "types": ["node", "jest"]
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": ["node_modules", "tests"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "tests"]
 }
