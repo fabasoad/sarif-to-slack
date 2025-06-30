@@ -12,8 +12,10 @@
     "clean": "rm -rf coverage && rm -rf temp",
     "clean:unsafe": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf lib",
     "tsc": "tsc",
-    "build": "tsc && api-extractor run --local --verbose",
+    "prebuild": "./scripts/save-version.sh",
+    "build": "npm run tsc && api-extractor run --local --verbose",
     "prepublishOnly": "npm run build",
+    "preinstall": "./scripts/save-version.sh",
     "version:patch": "npm version patch --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
     "version:minor": "npm version minor --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
     "version:major": "npm version major --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
@@ -33,12 +35,12 @@
   "author": "Yevhen Fabizhevskyi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fabasoad/sarif-to-slack-action/issues"
+    "url": "https://github.com/fabasoad/sarif-to-slack/issues"
   },
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/fabasoad/sarif-to-slack-action#readme",
+  "homepage": "https://github.com/fabasoad/sarif-to-slack#readme",
   "dependencies": {
     "@slack/webhook": "7.0.5",
     "@types/sarif": "2.1.7",

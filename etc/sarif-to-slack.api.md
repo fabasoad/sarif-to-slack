@@ -7,12 +7,25 @@
 import type { Log } from 'sarif';
 
 // @public
-export type IncludeAwareProps = {
+export type FooterOptions = IncludeAwareWithValueOptions & {
+    type?: FooterType;
+};
+
+// @public
+export enum FooterType {
+    // (undocumented)
+    MARKDOWN = "mrkdwn",
+    // (undocumented)
+    PLAIN_TEXT = "plain_text"
+}
+
+// @public
+export type IncludeAwareOptions = {
     include: boolean;
 };
 
 // @public
-export type IncludeAwareWithValueProps = IncludeAwareProps & {
+export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
     value?: string;
 };
 
@@ -46,10 +59,10 @@ export type SarifToSlackServiceOptions = {
     iconUrl?: string;
     color?: string;
     logLevel?: LogLevel | string;
-    header?: IncludeAwareWithValueProps;
-    footer?: IncludeAwareWithValueProps;
-    actor?: IncludeAwareWithValueProps;
-    run?: IncludeAwareProps;
+    header?: IncludeAwareWithValueOptions;
+    footer?: FooterOptions;
+    actor?: IncludeAwareWithValueOptions;
+    run?: IncludeAwareOptions;
 };
 
 // @public

@@ -62,7 +62,7 @@ export enum LogLevel {
  * in the Slack message.
  * @public
  */
-export type IncludeAwareProps = {
+export type IncludeAwareOptions = {
   include: boolean
 }
 
@@ -71,8 +71,26 @@ export type IncludeAwareProps = {
  * in the Slack message, along with an optional value.
  * @public
  */
-export type IncludeAwareWithValueProps = IncludeAwareProps & {
+export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
   value?: string
+}
+
+/**
+ * Enum representing the type of footer in a Slack message.
+ * @public
+ */
+export enum FooterType {
+  PLAIN_TEXT = 'plain_text',
+  MARKDOWN = 'mrkdwn'
+}
+
+/**
+ * Options for the footer of a Slack message. "type" is ignored if "value" is
+ * not defined.
+ * @public
+ */
+export type FooterOptions = IncludeAwareWithValueOptions & {
+  type?: FooterType
 }
 
 /**
@@ -87,8 +105,8 @@ export type SarifToSlackServiceOptions = {
   iconUrl?: string,
   color?: string,
   logLevel?: LogLevel | string,
-  header?: IncludeAwareWithValueProps,
-  footer?: IncludeAwareWithValueProps,
-  actor?: IncludeAwareWithValueProps,
-  run?: IncludeAwareProps,
+  header?: IncludeAwareWithValueOptions,
+  footer?: FooterOptions,
+  actor?: IncludeAwareWithValueOptions,
+  run?: IncludeAwareOptions,
 }
