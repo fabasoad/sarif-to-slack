@@ -28,7 +28,7 @@ async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string,
       messageBuilder.withHeader(opts.header?.value)
     }
     if (opts.footer?.include) {
-      messageBuilder.withFooter(opts.footer?.value)
+      messageBuilder.withFooter(opts.footer?.value, opts.footer?.type)
     }
     if (opts.actor?.include) {
       messageBuilder.withActor(opts.actor?.value)

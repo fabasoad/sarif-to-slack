@@ -20,6 +20,8 @@ export default class Logger {
     if (!Logger.instance) {
       Logger.instance = new TSLogger({
         minLevel: process.env.ACTIONS_STEP_DEBUG === 'true' ? 0 : logLevel,
+        type: 'pretty',
+        prettyLogTimeZone: 'UTC',
       })
     }
   }

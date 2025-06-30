@@ -33,12 +33,12 @@
   "author": "Yevhen Fabizhevskyi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fabasoad/sarif-to-slack-action/issues"
+    "url": "https://github.com/fabasoad/sarif-to-slack/issues"
   },
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/fabasoad/sarif-to-slack-action#readme",
+  "homepage": "https://github.com/fabasoad/sarif-to-slack#readme",
   "dependencies": {
     "@slack/webhook": "7.0.5",
     "@types/sarif": "2.1.7",
