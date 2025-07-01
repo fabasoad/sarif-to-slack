@@ -5,7 +5,7 @@
 ![unit-tests](https://github.com/fabasoad/sarif-to-slack/actions/workflows/unit-tests.yml/badge.svg)
 ![security](https://github.com/fabasoad/sarif-to-slack/actions/workflows/security.yml/badge.svg)
 ![linting](https://github.com/fabasoad/sarif-to-slack/actions/workflows/linting.yml/badge.svg)
-[![codecov](https://codecov.io/gh/fabasoad/sarif-to-slack/branch/main/graph/badge.svg?token=I4FV5Q328I)](https://codecov.io/gh/fabasoad/sarif-to-slack)
+[![codecov](https://codecov.io/github/fabasoad/sarif-to-slack/graph/badge.svg?token=I4FV5Q328I)](https://codecov.io/github/fabasoad/sarif-to-slack)
 
 TypeScript library to send results of SARIF file to Slack webhook URL.
 
