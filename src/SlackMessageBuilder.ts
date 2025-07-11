@@ -3,8 +3,9 @@ import { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
 import { TextObject } from '@slack/types/dist/block-kit/composition-objects'
 import { IncomingWebhook } from '@slack/webhook'
 import { FooterType, Sarif, SlackMessage } from './types'
-import type { ReportingDescriptor, Result, Run } from 'sarif'
 import { LIB_VERSION } from './version'
+import { SarifModelPerSarif } from './model/SarifModelPerSarif';
+import { SecurityLevel } from './model/types';
 
 /**
  * Options for the SlackMessageBuilder.
@@ -17,8 +18,6 @@ export type SlackMessageBuilderOptions = {
   sarif: Sarif
 }
 
-type RuleData = { id?: string, index?: number }
-
 /**
  * Class for building and sending Slack messages based on SARIF logs.
  * @internal
@@ -27,8 +26,9 @@ export class SlackMessageBuilder implements SlackMessage {
   private readonly webhook: IncomingWebhook
   private readonly gitHubServerUrl: string
   private readonly color?: string
-
+  private readonly sarifModelPerSarif: SarifModelPerSarif
   private header?: HeaderBlock
+
   private footer?: ContextBlock
   private actor?: string
   private runId?: string
@@ -40,9 +40,10 @@ export class SlackMessageBuilder implements SlackMessage {
       username: opts.username || 'SARIF results',
       icon_url: opts.iconUrl
     })
+    this.gitHubServerUrl = process.env.GITHUB_SERVER_URL || 'https://github.com'
     this.color = opts.color
     this.sarif = opts.sarif
-    this.gitHubServerUrl = process.env.GITHUB_SERVER_URL || 'https://github.com'
+    this.sarifModelPerSarif = new SarifModelPerSarif(opts.sarif)
   }
 
   withHeader(header?: string): void {
@@ -114,65 +115,20 @@ export class SlackMessageBuilder implements SlackMessage {
     return text.join('\n')
   }
 
-  private composeRunSummary(toolName: string, map: Map<string, number>): string {
-    const levelsText: string[] = []
+  private composeSummaryPerToolName(toolName: string, map: Map<SecurityLevel, number>): string {
+    const levelsText = new Array<string>()
     for (const [level, count] of map.entries()) {
-      const levelCapitalized = level.charAt(0).toUpperCase() + level.slice(1)
-      levelsText.push(`*${levelCapitalized}*: ${count}`)
+      levelsText.push(`*${level}*: ${count}`)
     }
     return `*${toolName}*\n${levelsText.join(', ')}`
   }
 
   private composeSummary(): string {
-    const data = new Map<string, Map<string, number>>()
-    for (const run of this.sarif.runs) {
-      const toolName = run.tool.driver.name
-      if (!data.has(toolName)) {
-        data.set(toolName, new Map<string, number>())
-      }
-      const results: Result[] = run.results ?? []
-      for (const result of results) {
-        const level: string = this.tryGetLevel(run, result)
-        const count: number = data.get(toolName)?.get(level) || 0
-        data.get(toolName)?.set(level, count + 1)
-      }
-    }
-    const summaries: string[] = []
+    const data: Map<string, Map<SecurityLevel, number>> = this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
+    const summaries = new Array<string>()
     for (const [toolName, map] of data.entries()) {
-      summaries.push(this.composeRunSummary(toolName, map))
+      summaries.push(this.composeSummaryPerToolName(toolName, map))
     }
     return summaries.join('\n')
-  }
-
-  private tryGetLevel(run: Run, result: Result): string {
-    if (result.level) {
-      return result.level
-    }
-
-    const ruleData: RuleData = {}
-
-    if (result.rule) {
-      if (result.rule?.index) {
-        ruleData.index = result.rule.index
-      }
-      if (result.rule?.id) {
-        ruleData.id = result.rule.id
-      }
-    }
-
-    if (!ruleData.index && result.ruleIndex) {
-      ruleData.index = result.ruleIndex
-    }
-
-    if (ruleData.index
-      && run.tool.driver?.rules
-      && ruleData.index < run.tool.driver.rules.length) {
-      const rule: ReportingDescriptor = run.tool.driver.rules[ruleData.index]
-      if (rule.properties && 'problem.severity' in rule.properties) {
-        return rule.properties['problem.severity'] as string
-      }
-    }
-
-    return 'unknown'
   }
 }

@@ -1,0 +1,313 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Container",
+          "properties": {
+            "artifactsScanned": 37
+          },
+          "rules": [
+            {
+              "id": "SNYK-ALPINE319-MUSL-8720640",
+              "shortDescription": {
+                "text": "Low severity - CVE-2025-26519 vulnerability in musl"
+              },
+              "fullDescription": {
+                "text": "(CVE-2025-26519) musl/musl-utils@1.2.4_git20230717-r4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `musl` package and not the `musl` package as distributed by `Alpine`._\n_See `How to fix?` for `Alpine:3.19` relevant fixed versions and status._\n\nmusl libc 0.9.13 through 1.2.5 before 1.2.6 has an out-of-bounds write vulnerability when an attacker can trigger iconv conversion of untrusted EUC-KR text to UTF-8.\n## Remediation\nUpgrade `Alpine:3.19` `musl` to version 1.2.4_git20230717-r5 or higher.\n## References\n- [https://git.musl-libc.org/cgit/musl/commit/?id=c47ad25ea3b484e10326f933e927c0bc8cded3da](https://git.musl-libc.org/cgit/musl/commit/?id=c47ad25ea3b484e10326f933e927c0bc8cded3da)\n- [https://git.musl-libc.org/cgit/musl/commit/?id=e5adcd97b5196e29991b524237381a0202a60659](https://git.musl-libc.org/cgit/musl/commit/?id=e5adcd97b5196e29991b524237381a0202a60659)\n- [https://www.openwall.com/lists/oss-security/2025/02/13/2](https://www.openwall.com/lists/oss-security/2025/02/13/2)\n- [http://www.openwall.com/lists/oss-security/2025/02/13/2](http://www.openwall.com/lists/oss-security/2025/02/13/2)\n- [http://www.openwall.com/lists/oss-security/2025/02/13/3](http://www.openwall.com/lists/oss-security/2025/02/13/3)\n- [http://www.openwall.com/lists/oss-security/2025/02/13/4](http://www.openwall.com/lists/oss-security/2025/02/13/4)\n- [http://www.openwall.com/lists/oss-security/2025/02/13/5](http://www.openwall.com/lists/oss-security/2025/02/13/5)\n- [http://www.openwall.com/lists/oss-security/2025/02/14/5](http://www.openwall.com/lists/oss-security/2025/02/14/5)\n- [http://www.openwall.com/lists/oss-security/2025/02/14/6](http://www.openwall.com/lists/oss-security/2025/02/14/6)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "apk"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
+              "id": "SNYK-ALPINE319-OPENSSL-8710360",
+              "shortDescription": {
+                "text": "Low severity - CVE-2024-13176 vulnerability in openssl"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-13176) openssl/libcrypto3@3.1.7-r1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `openssl` package and not the `openssl` package as distributed by `Alpine`._\n_See `How to fix?` for `Alpine:3.19` relevant fixed versions and status._\n\nIssue summary: A timing side-channel which could potentially allow recovering\nthe private key exists in the ECDSA signature computation.\n\nImpact summary: A timing side-channel in ECDSA signature computations\ncould allow recovering the private key by an attacker. However, measuring\nthe timing would require either local access to the signing application or\na very fast network connection with low latency.\n\nThere is a timing signal of around 300 nanoseconds when the top word of\nthe inverted ECDSA nonce value is zero. This can happen with significant\nprobability only for some of the supported elliptic curves. In particular\nthe NIST P-521 curve is affected. To be able to measure this leak, the attacker\nprocess must either be located in the same physical computer or must\nhave a very fast network connection with low latency. For that reason\nthe severity of this vulnerability is Low.\n\nThe FIPS modules in 3.4, 3.3, 3.2, 3.1 and 3.0 are affected by this issue.\n## Remediation\nUpgrade `Alpine:3.19` `openssl` to version 3.1.8-r0 or higher.\n## References\n- [https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844](https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844)\n- [https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467](https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467)\n- [https://github.com/openssl/openssl/commit/392dcb336405a0c94486aa6655057f59fd3a0902](https://github.com/openssl/openssl/commit/392dcb336405a0c94486aa6655057f59fd3a0902)\n- [https://github.com/openssl/openssl/commit/4b1cb94a734a7d4ec363ac0a215a25c181e11f65](https://github.com/openssl/openssl/commit/4b1cb94a734a7d4ec363ac0a215a25c181e11f65)\n- [https://github.com/openssl/openssl/commit/77c608f4c8857e63e98e66444e2e761c9627916f](https://github.com/openssl/openssl/commit/77c608f4c8857e63e98e66444e2e761c9627916f)\n- [https://github.openssl.org/openssl/extended-releases/commit/0d5fd1ab987f7571e2c955d8d8b638fc0fb54ded](https://github.openssl.org/openssl/extended-releases/commit/0d5fd1ab987f7571e2c955d8d8b638fc0fb54ded)\n- [https://github.openssl.org/openssl/extended-releases/commit/a2639000db19878d5d89586ae7b725080592ae86](https://github.openssl.org/openssl/extended-releases/commit/a2639000db19878d5d89586ae7b725080592ae86)\n- [https://openssl-library.org/news/secadv/20250120.txt](https://openssl-library.org/news/secadv/20250120.txt)\n- [http://www.openwall.com/lists/oss-security/2025/01/20/2](http://www.openwall.com/lists/oss-security/2025/01/20/2)\n- [https://security.netapp.com/advisory/ntap-20250124-0005/](https://security.netapp.com/advisory/ntap-20250124-0005/)\n- [https://security.netapp.com/advisory/ntap-20250418-0010/](https://security.netapp.com/advisory/ntap-20250418-0010/)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "apk"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            },
+            {
+              "id": "SNYK-ALPINE319-SQLITE-9712341",
+              "shortDescription": {
+                "text": "High severity - Integer Overflow or Wraparound vulnerability in sqlite"
+              },
+              "fullDescription": {
+                "text": "(CVE-2025-29087) sqlite/sqlite-libs@3.44.2-r0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `sqlite` package and not the `sqlite` package as distributed by `Alpine`._\n_See `How to fix?` for `Alpine:3.19` relevant fixed versions and status._\n\nIn SQLite 3.44.0 through 3.49.0 before 3.49.1, the concat_ws() SQL function can cause memory to be written beyond the end of a malloc-allocated buffer. If the separator argument is attacker-controlled and has a large string (e.g., 2MB or more), an integer overflow occurs in calculating the size of the result buffer, and thus malloc may not allocate enough memory.\n## Remediation\nUpgrade `Alpine:3.19` `sqlite` to version 3.44.2-r1 or higher.\n## References\n- [https://gist.github.com/ylwango613/a44a29f1ef074fa783e29f04a0afd62a](https://gist.github.com/ylwango613/a44a29f1ef074fa783e29f04a0afd62a)\n- [https://sqlite.org/releaselog/3_49_1.html](https://sqlite.org/releaselog/3_49_1.html)\n- [https://www.sqlite.org/cves.html](https://www.sqlite.org/cves.html)\n"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-190",
+                  "apk"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-ALPINE319-XZ-9669206",
+              "shortDescription": {
+                "text": "Low severity - Race Condition vulnerability in xz"
+              },
+              "fullDescription": {
+                "text": "(CVE-2025-31115) xz/xz-libs@5.4.5-r0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "## NVD Description\n**_Note:_** _Versions mentioned in the description apply only to the upstream `xz` package and not the `xz` package as distributed by `Alpine`._\n_See `How to fix?` for `Alpine:3.19` relevant fixed versions and status._\n\nXZ Utils provide a general-purpose data-compression library plus command-line tools. In XZ Utils 5.3.3alpha to 5.8.0, the multithreaded .xz decoder in liblzma has a bug where invalid input can at least result in a crash. The effects include heap use after free and writing to an address based on the null pointer plus an offset. Applications and libraries that use the lzma_stream_decoder_mt function are affected. The bug has been fixed in XZ Utils 5.8.1, and the fix has been committed to the v5.4, v5.6, v5.8, and master branches in the xz Git repository. No new release packages will be made from the old stable branches, but a standalone patch is available that applies to all affected releases.\n## Remediation\nUpgrade `Alpine:3.19` `xz` to version 5.4.5-r1 or higher.\n## References\n- [https://github.com/tukaani-project/xz/commit/d5a2ffe41bb77b918a8c96084885d4dbe4bf6480](https://github.com/tukaani-project/xz/commit/d5a2ffe41bb77b918a8c96084885d4dbe4bf6480)\n- [https://github.com/tukaani-project/xz/security/advisories/GHSA-6cc8-p5mm-29w2](https://github.com/tukaani-project/xz/security/advisories/GHSA-6cc8-p5mm-29w2)\n- [https://tukaani.org/xz/xz-cve-2025-31115.patch](https://tukaani.org/xz/xz-cve-2025-31115.patch)\n- [http://www.openwall.com/lists/oss-security/2025/04/03/1](http://www.openwall.com/lists/oss-security/2025/04/03/1)\n- [http://www.openwall.com/lists/oss-security/2025/04/03/2](http://www.openwall.com/lists/oss-security/2025/04/03/2)\n- [http://www.openwall.com/lists/oss-security/2025/04/03/3](http://www.openwall.com/lists/oss-security/2025/04/03/3)\n"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-366",
+                  "CWE-416",
+                  "CWE-476",
+                  "CWE-826",
+                  "apk"
+                ],
+                "cvssv3_baseScore": null,
+                "security-severity": "null"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-ALPINE319-MUSL-8720640",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable musl package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "musl@1.2.4_git20230717-r4"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to musl/musl-utils@1.2.4_git20230717-r5"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "musl/musl-utils@1.2.4_git20230717-r5"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-ALPINE319-OPENSSL-8710360",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable openssl package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "openssl@3.1.7-r1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to openssl/libcrypto3@3.1.8-r0"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "openssl/libcrypto3@3.1.8-r0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-ALPINE319-SQLITE-9712341",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable sqlite package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "sqlite@3.44.2-r0"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to sqlite/sqlite-libs@3.44.2-r1"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "sqlite/sqlite-libs@3.44.2-r1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-ALPINE319-XZ-9669206",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable xz package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Dockerfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "xz@5.4.5-r0"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to xz/xz-libs@5.4.5-r1"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Dockerfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "xz/xz-libs@5.4.5-r1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

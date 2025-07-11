@@ -1,0 +1,1952 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Open Source",
+          "properties": {
+            "artifactsScanned": 30
+          },
+          "rules": [
+            {
+              "id": "SNYK-PYTHON-BABEL-1278589",
+              "shortDescription": {
+                "text": "Medium severity - Directory Traversal vulnerability in babel"
+              },
+              "fullDescription": {
+                "text": "(CVE-2021-42771) babel@2.8.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: babel\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › babel@2.8.0\n# Overview\n[Babel](https://pypi.org/project/Babel) is an Internationalization utilities\n\nAffected versions of this package are vulnerable to Directory Traversal. It allows an attacker to load arbitrary locale files on a disk and execute arbitrary code.\r\n\r\n**Note:**\r\nCVE-2021-20095 is a duplicate of CVE-2021-42771.\n\n# Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`. \n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```\n\n# Remediation\nUpgrade `Babel` to version 2.9.1 or higher.\n# References\n- [CVE Revocation Email](https://lists.debian.org/debian-lts/2021/10/msg00040.html)\n- [Github Commit](https://github.com/python-babel/babel/commit/3a700b5b8b53606fd98ef8294a56f9510f7290f8)\n- [Github Commit](https://github.com/python-babel/babel/commit/5caf717ceca4bd235552362b4fbff88983c75d8c)\n- [Github PR](https://github.com/python-babel/babel/pull/782)\n- [RedHat Bugzilla Bug](https://bugzilla.redhat.com/show_bug.cgi?id=1955615)\n- [Tenable PoC](https://www.tenable.com/security/research/tra-2021-14)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-22",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 4.5,
+                "security-severity": "4.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-DNSPYTHON-6241713",
+              "shortDescription": {
+                "text": "Medium severity - Incorrect Behavior Order vulnerability in dnspython"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-29483) dnspython@2.0.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: dnspython\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › email-validator@1.0.4 › dnspython@2.0.0\n# Overview\n\nAffected versions of this package are vulnerable to Incorrect Behavior Order in the DNS pre-processing pipeline, which allows an off-path attacker who can spoof the source IP address of a malformed DNS response packet to cause denial of service. The UDP processing functions in `query.py` and `asyncquery.py` accept the first-arriving packet before closing the receiving socket, allowing the attacker to make the remote nameserver appear unavailable for the target resolver and clients.\n# Remediation\nUpgrade `dnspython` to version 2.6.1 or higher.\n# References\n- [GitHub Commit](https://github.com/rthalley/dnspython/commit/0ea5ad0a4583e1f519b9bcc67cfac381230d9cf2)\n- [GitHub Issue](https://github.com/rthalley/dnspython/issues/1045)\n- [Tudoor Paper](https://lixiang521.com/publication/oakland24/sp24spring-tudoor-li.pdf)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-696",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.9,
+                "security-severity": "5.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FASTECDSA-511943",
+              "shortDescription": {
+                "text": "Medium severity - Timing Attack vulnerability in fastecdsa"
+              },
+              "fullDescription": {
+                "text": "fastecdsa@2.1.3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: fastecdsa\n* Introduced through: SimplePackage@1.0.0 and fastecdsa@2.1.3\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › fastecdsa@2.1.3\n# Overview\n[fastecdsa](https://github.com/AntonKueltz/fastecdsa) is a python package for doing fast elliptic curve cryptography, specifically digital signatures.\n\nAffected versions of this package are vulnerable to Timing Attack. Practical recovery of the long-term private key generated by the library is possible under certain conditions. Leakage of bit-length of a scalar during scalar multiplication is possible on an elliptic curve which might allow practical recovery of the long-term private key.\n# Remediation\nUpgrade `fastecdsa` to version 2.1.4 or higher.\n# References\n- [GitHub Commit](https://github.com/indutny/elliptic/commit/ec735edde187a43693197f6fa3667ceade751a3a)\n- [GitHub Commit](https://github.com/warner/python-ecdsa/commit/b516f06d0e94eca6deeb3bdb82027ad2f2f55ac6)\n- [GitHub Issue](https://github.com/AntonKueltz/fastecdsa/issues/40)\n- [GitHub PR](https://github.com/AntonKueltz/fastecdsa/pull/60)\n- [GitHub PR](https://github.com/DavidEGrayson/ruby_ecdsa/pull/14)\n- [GitHub PR](https://github.com/indutny/elliptic/pull/203)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-362",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.9,
+                "security-severity": "5.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FASTECDSA-6262045",
+              "shortDescription": {
+                "text": "High severity - Use of Uninitialized Variable vulnerability in fastecdsa"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-21502) fastecdsa@2.1.3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: fastecdsa\n* Introduced through: SimplePackage@1.0.0 and fastecdsa@2.1.3\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › fastecdsa@2.1.3\n# Overview\n[fastecdsa](https://github.com/AntonKueltz/fastecdsa) is a python package for doing fast elliptic curve cryptography, specifically digital signatures.\n\nAffected versions of this package are vulnerable to Use of Uninitialized Variable on the stack, via the `curvemath_mul` function in `src/curveMath.c`, due to being used and interpreted as user-defined type. Depending on the variable's actual value it could be arbitrary `free()`, arbitrary `realloc()`, null pointer dereference and other. Since the stack can be controlled by the attacker, the vulnerability could be used to corrupt allocator structure, leading to possible heap exploitation. The attacker could cause denial of service by exploiting this vulnerability.\n# PoC\n```python\r\n#!/usr/bin/env python3\r\n\r\nimport sys\r\nprint(sys.version)\r\n\r\nfrom fastecdsa.curve import Curve\r\nfrom fastecdsa.point import Point\r\n\r\nimport time\r\ntime.sleep(2) # time to attach in gdb\r\n\r\nMyCurve = Curve(\r\n    p  = 0x10001,\r\n    a  = 0x3,\r\n    b  = 0x0,\r\n    q  = 0x10202,\r\n    gx = 0x427e,\r\n    gy = 0x4ccb,\r\n    name = 'MyCurve',\r\n)\r\n\r\nP = Point(x = 0, y = 0, curve = MyCurve)\r\nprint(P)\r\n\r\nQ = 123 * P # trigger is here\r\nprint(Q)\r\n```\n# Remediation\nUpgrade `fastecdsa` to version 2.3.2 or higher.\n# References\n- [Github Commit](https://github.com/AntonKueltz/fastecdsa/commit/57fc5689c95d649dab7ef60cc99ac64589f01e36)\n- [GitHub Gist](https://gist.github.com/keltecc/49da037072276f21b005a8337c15db26)\n- [Vulnerable Code](https://github.com/AntonKueltz/fastecdsa/blob/v2.3.1/src/curveMath.c#L210)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-457",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASK-5490129",
+              "shortDescription": {
+                "text": "High severity - Information Exposure vulnerability in flask"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-30861) flask@1.1.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1\n# Overview\n\nAffected versions of this package are vulnerable to Information Exposure in the form of exposing the permanent session cookie, when all of the following conditions are met:\r\n\r\n1) The application is hosted behind a caching proxy that does not strip cookies or ignore responses with cookies.\r\n\r\n2) The application sets `session.permanent = True`.\r\n\r\n3) The application does not access or modify the session at any point during a request.\r\n\r\n4) `SESSION_REFRESH_EACH_REQUEST` is enabled (the default).\r\n\r\n5) The application does not set a `Cache-Control` header to indicate that a page is private or should not be cached.\r\n\r\nA response containing data intended for one client may be cached and sent to other clients. If the proxy also caches `Set-Cookie` headers, it may send one client's `session` cookie to other clients. Under these conditions, the `Vary: Cookie` header is not set when a session is refreshed (re-sent to update the expiration) without being accessed or modified.\n# Remediation\nUpgrade `flask` to version 2.2.5, 2.3.2 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/flask/commit/70f906c51ce49c485f1d355703e9cc3386b1cc2b)\n- [GitHub Commit](https://github.com/pallets/flask/commit/afd63b16170b7c047f5758eb910c416511e9c965)\n- [GitHub PR](https://github.com/pallets/flask/pull/5109)\n- [GitHub Release](https://github.com/pallets/flask/releases/tag/2.2.5)\n- [GitHub Release](https://github.com/pallets/flask/releases/tag/2.3.2)\n- [Session Cookie Documentation](https://flask.palletsprojects.com/en/2.3.x/api/#flask.session.permanent)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-200",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASKCORS-608972",
+              "shortDescription": {
+                "text": "High severity - Directory Traversal vulnerability in flask-cors"
+              },
+              "fullDescription": {
+                "text": "(CVE-2020-25032) flask-cors@3.0.8"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask-cors\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8\n# Overview\n[Flask-Cors](https://www.pypi.org/project/Flask-Cors) is an A Flask extension adding a decorator for CORS support\n\nAffected versions of this package are vulnerable to Directory Traversal. An attacker could potentially access private resources because resource matching does not ensure that pathnames are in a canonical format.\n\n# Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`. \n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```\n\n# Remediation\nUpgrade `Flask-Cors` to version 3.0.9 or higher.\n# References\n- [GitHub PR](https://github.com/corydolphin/flask-cors/pull/272)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-22",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASKCORS-6670412",
+              "shortDescription": {
+                "text": "Low severity - Log Injection vulnerability in flask-cors"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-1681) flask-cors@3.0.8"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask-cors\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8\n# Overview\n[Flask-Cors](https://www.pypi.org/project/Flask-Cors) is an A Flask extension adding a decorator for CORS support\n\nAffected versions of this package are vulnerable to Log Injection when the log level is set to debug. A user can inject or modify messages by abusing CRLF sequences in the request path of a GET request.\n# PoC\n```\r\nhttp://127.0.0.1:5000/api/test%0D%0A%0D%0ALOGINJECTION%0D%0A%0D%0A\r\n```\n# Remediation\nUpgrade `Flask-Cors` to version 4.0.1 or higher.\n# References\n- [GitHub Commit](https://github.com/corydolphin/flask-cors/commit/6172c2000dba965fedb8e9a8a916ad56f0fb2630)\n- [PoC](https://huntr.com/bounties/25a7a0ba-9fa2-4777-acb6-03e5539bb644)\n- [Vulnerable Code](https://github.com/corydolphin/flask-cors/blob/40acc8092332dfed4bb54d7a4f89a6d479466de7/flask_cors/extension.py#L194)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-117",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 3.1,
+                "security-severity": "3.1"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASKCORS-9668952",
+              "shortDescription": {
+                "text": "Medium severity - Origin Validation Error vulnerability in flask-cors"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-6844) flask-cors@3.0.8"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask-cors\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8\n# Overview\n[Flask-Cors](https://www.pypi.org/project/Flask-Cors) is an A Flask extension adding a decorator for CORS support\n\nAffected versions of this package are vulnerable to Origin Validation Error due to the replacement of `+` characters with spaces in the `unquote_plus()` function, when handling the `request.path` parameter. An attacker can cause unauthorized cross-origin access or block valid requests by manipulating URL paths, leading to CORS policy bypasses.\n# Remediation\nThere is no fixed version for `Flask-Cors`.\n# References\n- [Vulnerability Report](https://huntr.com/bounties/731a6cd4-d05f-4fe6-8f5b-fe088d7b34e0)\n- [Vulnerable Code](https://github.com/corydolphin/flask-cors/blob/main/flask_cors/extension.py#L193)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-346",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASKCORS-9668953",
+              "shortDescription": {
+                "text": "Medium severity - Improper Verification of Source of a Communication Channel vulnerability in flask-cors"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-6839) flask-cors@3.0.8"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask-cors\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8\n# Overview\n[Flask-Cors](https://www.pypi.org/project/Flask-Cors) is an A Flask extension adding a decorator for CORS support\n\nAffected versions of this package are vulnerable to Improper Verification of Source of a Communication Channel due to improper application of regex path matching rules. An attacker can gain unauthorized cross-origin access to sensitive data or functionality by exploiting the prioritization of longer regex patterns over more specific ones, leading to less restrictive CORS policies being applied to sensitive endpoints.\n# Remediation\nThere is no fixed version for `Flask-Cors`.\n# References\n- [Vulnerability Report](https://huntr.com/bounties/403eb1fc-86f4-4820-8eba-0f3dfae9f2b4)\n- [Vulnerable Code](https://github.com/corydolphin/flask-cors/blob/5.0.1/flask_cors/core.py#L79)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-940",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-FLASKCORS-9668954",
+              "shortDescription": {
+                "text": "Medium severity - Improper Handling of Case Sensitivity vulnerability in flask-cors"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-6866) flask-cors@3.0.8"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: flask-cors\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8\n# Overview\n[Flask-Cors](https://www.pypi.org/project/Flask-Cors) is an A Flask extension adding a decorator for CORS support\n\nAffected versions of this package are vulnerable to Improper Handling of Case Sensitivity in the `try_match()` function. An attacker can access restricted paths and potentially expose sensitive data by exploiting the case insensitivity in path matching.\n# Remediation\nThere is no fixed version for `Flask-Cors`.\n# References\n- [Vulnerability Report](https://huntr.com/bounties/808c11af-faee-43a8-824b-b5ab4f62b9e6)\n- [Vulnerable Code](https://github.com/corydolphin/flask-cors/blob/5.0.1/flask_cors/extension.py#L193)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-178",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6,
+                "security-severity": "6"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-IDNA-6597975",
+              "shortDescription": {
+                "text": "Medium severity - Resource Exhaustion vulnerability in idna"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-3651) idna@2.10"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: idna\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › email-validator@1.0.4 › idna@2.10\n# Overview\n\nAffected versions of this package are vulnerable to Resource Exhaustion via the `idna.encode` function. An attacker can consume significant resources and potentially cause a denial-of-service by supplying specially crafted arguments to this function. \r\n\r\n**Note:**\r\nThis is triggered by arbitrarily large inputs that would not occur in normal usage but may be passed to the library assuming there is no preliminary input validation by the higher-level application.\n# Remediation\nUpgrade `idna` to version 3.7 or higher.\n# References\n- [GitHub Commit](https://github.com/kjd/idna/commit/5beb28b9dd77912c0dd656d8b0fdba3eb80222e7)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.2,
+                "security-severity": "6.2"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-IHATEMONEY-5880460",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in ihatemoney"
+              },
+              "fullDescription": {
+                "text": "ihatemoney@4.1.4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: ihatemoney\n* Introduced through: SimplePackage@1.0.0 and ihatemoney@4.1.4\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4\n# Overview\n[ihatemoney](https://www.pypi.org/project/ihatemoney) is a simple shared budget manager web application.\n\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS) due to improper user-input sanitization, via the `People to notify` field.\n# PoC\n```javascript\n<img src=x onerror=alert(document.domain)>\n```\n# Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser’s Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they’ve been correctly escaped in the application code and in this way the attempted attack is diverted.\n \nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware. \n\n## Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user’s browser.| \n|**DOM-based**|Client|The attacker forces the user’s browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n## Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n## How to prevent\nThis section describes the top best practices designed to specifically protect your code: \n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches. \n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents. \n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.\n\n# Remediation\nUpgrade `ihatemoney` to version 6.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/spiral-project/ihatemoney/commit/667b65b9ccb5c68c2f251be12d6aa3d06cdcb0ba)\n- [GitHub PR](https://github.com/spiral-project/ihatemoney/pull/1044)\n- [GitHub Release](https://github.com/spiral-project/ihatemoney/releases/tag/6.0.0)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 4.4,
+                "security-severity": "4.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-IHATEMONEY-5926703",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Request Forgery (CSRF) vulnerability in ihatemoney"
+              },
+              "fullDescription": {
+                "text": "ihatemoney@4.1.4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: ihatemoney\n* Introduced through: SimplePackage@1.0.0 and ihatemoney@4.1.4\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4\n# Overview\n[ihatemoney](https://www.pypi.org/project/ihatemoney) is a simple shared budget manager web application.\n\nAffected versions of this package are vulnerable to Cross-site Request Forgery (CSRF) which allows an attacker to logout any user.\n# Remediation\nUpgrade `ihatemoney` to version 6.0.0 or higher.\n# References\n- [GitHub Commit](https://github.com/spiral-project/ihatemoney/commit/31fef4f4d66489638a4805be76a995515de0c557)\n- [GitHub PR](https://github.com/spiral-project/ihatemoney/pull/1040)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-352",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 4.3,
+                "security-severity": "4.3"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-IHATEMONEY-595715",
+              "shortDescription": {
+                "text": "Medium severity - Authorization Bypass vulnerability in ihatemoney"
+              },
+              "fullDescription": {
+                "text": "(CVE-2020-15120) ihatemoney@4.1.4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: ihatemoney\n* Introduced through: SimplePackage@1.0.0 and ihatemoney@4.1.4\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4\n# Overview\n[ihatemoney](https://www.pypi.org/project/ihatemoney) is a simple shared budget manager web application.\n\nAffected versions of this package are vulnerable to Authorization Bypass. An authenticated member of one project can modify and delete members of another project, without knowledge of this other project's private code. This can be further exploited to access all bills of another project without knowledge of this other project's private code.\n# Remediation\nUpgrade `ihatemoney` to version 4.1.5 or higher.\n# References\n- [GitHub PR](https://github.com/spiral-project/ihatemoney/pull/663)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-285",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 4.9,
+                "security-severity": "4.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-1012994",
+              "shortDescription": {
+                "text": "Medium severity - Regular Expression Denial of Service (ReDoS) vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2020-28493) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n[Jinja2](https://pypi.org/project/Jinja2/) is a template engine written in pure Python. It provides a Django inspired non-XML syntax but supports inline expressions and an optional sandboxed environment.\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS). The ReDoS vulnerability is mainly due to the `_punctuation_re regex` operator and its use of multiple wildcards. The last wildcard is the most exploitable as it searches for trailing punctuation.\r\n\r\nThis issue can be mitigated by using Markdown to format user content instead of the urlize filter, or by implementing request timeouts or limiting process memory.\r\n\r\n## PoC by Yeting Li\r\n```\r\nfrom jinja2.utils import urlize\r\nfrom time import perf_counter\r\n\r\nfor i in range(3):\r\n    text = \"abc@\" + \".\" * (i+1)*5000 + \"!\"\r\n    LEN = len(text)\r\n    BEGIN = perf_counter()\r\n    urlize(text)\r\n    DURATION = perf_counter() - BEGIN\r\n    print(f\"{LEN}: took {DURATION} seconds!\")\r\n```\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n# Remediation\nUpgrade `Jinja2` to version 2.11.3 or higher.\n# References\n- [GitHub Additional Information](https://github.com/pallets/jinja/blob/ab81fd9c277900c85da0c322a2ff9d68a235b2e6/src/jinja2/utils.py#L20)\n- [GitHub PR](https://github.com/pallets/jinja/pull/1343)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-6150717",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-22195) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n[Jinja2](https://pypi.org/project/Jinja2/) is a template engine written in pure Python. It provides a Django inspired non-XML syntax but supports inline expressions and an optional sandboxed environment.\n\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS) via the `xmlattr` filter, when using keys containing spaces in an application accepts keys as user input. An attacker can inject arbitrary HTML attributes into the rendered HTML template, bypassing the auto-escaping mechanism, which may lead to the execution of untrusted scripts in the context of the user's browser session.\r\n\r\n**Note**\r\nAccepting keys as user input is not common or a particularly intended use case of the `xmlattr` filter, and an application doing so should already be verifying what keys are provided regardless of this fix.\n# Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser’s Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they’ve been correctly escaped in the application code and in this way the attempted attack is diverted.\n \nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware. \n\n## Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user’s browser.| \n|**DOM-based**|Client|The attacker forces the user’s browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n## Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n## How to prevent\nThis section describes the top best practices designed to specifically protect your code: \n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches. \n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents. \n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.\n\n# Remediation\nUpgrade `Jinja2` to version 3.1.3 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/jinja/commit/7dd3680e6eea0d77fde024763657aa4d884ddb23)\n- [GitHub Release](https://github.com/pallets/jinja/releases/tag/3.1.3)\n- [Snyk Blog](https://snyk.io/blog/jinja2-xss-vulnerability/)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.4,
+                "security-severity": "5.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-6809379",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-34064) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n[Jinja2](https://pypi.org/project/Jinja2/) is a template engine written in pure Python. It provides a Django inspired non-XML syntax but supports inline expressions and an optional sandboxed environment.\n\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS) through the `xmlattr` filter. An attacker can manipulate the output of web pages by injecting additional attributes into elements, potentially leading to unauthorized actions or information disclosure.\r\n\r\n**Note:**\r\nThis vulnerability derives from an improper fix of [CVE-2024-22195](https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-6150717), which only addressed spaces but not other characters.\n# Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser’s Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they’ve been correctly escaped in the application code and in this way the attempted attack is diverted.\n \nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware. \n\n## Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user’s browser.| \n|**DOM-based**|Client|The attacker forces the user’s browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n## Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n## How to prevent\nThis section describes the top best practices designed to specifically protect your code: \n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches. \n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents. \n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.\n\n# Remediation\nUpgrade `Jinja2` to version 3.1.4 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/jinja/commit/0668239dc6b44ef38e7a6c9f91f312fd4ca581cb)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.4,
+                "security-severity": "5.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-8548181",
+              "shortDescription": {
+                "text": "Medium severity - Template Injection vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-56326) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n\nAffected versions of this package are vulnerable to Template Injection when an attacker controls the content of a template. This is due to an oversight in the sandboxed environment's method detection when using a stored reference to a malicious string's `format` method, which can then be executed through a filter.\r\n\r\n**Note:** This is only exploitable through custom filters in an application.\n# Remediation\nUpgrade `jinja2` to version 3.1.5 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/jinja/commit/48b0687e05a5466a91cd5812d604fa37ad0943b4)\n- [GitHub Release](https://github.com/pallets/jinja/releases/tag/3.1.5)\n- [Jinja Chnanges](https://jinja.palletsprojects.com/en/stable/changes/#version-3-1-5)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-1336",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.4,
+                "security-severity": "5.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-8548987",
+              "shortDescription": {
+                "text": "Medium severity - Improper Neutralization vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-56201) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n\nAffected versions of this package are vulnerable to Improper Neutralization when importing a macro in a template whose filename is also a template. This will result in a `SyntaxError: f-string: invalid syntax` error message because the filename is not properly escaped, indicating that it is being treated as a format string.\r\n\r\n**Note:** This is only exploitable when the attacker controls both the content and filename of a template and the application executes untrusted templates.\n# Remediation\nUpgrade `jinja2` to version 3.1.5 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/jinja/commit/767b23617628419ae3709ccfb02f9602ae9fe51f)\n- [GitHub Issue](https://github.com/pallets/jinja/issues/1792)\n- [GitHub PR](https://github.com/pallets/jinja/pull/1852)\n- [GitHub Release](https://github.com/pallets/jinja/releases/tag/3.1.5)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-150",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.4,
+                "security-severity": "5.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-JINJA2-9292516",
+              "shortDescription": {
+                "text": "Medium severity - Template Injection vulnerability in jinja2"
+              },
+              "fullDescription": {
+                "text": "(CVE-2025-27516) jinja2@2.10.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: jinja2\n* Introduced through: SimplePackage@1.0.0 and jinja2@2.10.1\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › jinja2@2.10.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › jinja2@2.10.1\n# Overview\n[Jinja2](https://pypi.org/project/Jinja2/) is a template engine written in pure Python. It provides a Django inspired non-XML syntax but supports inline expressions and an optional sandboxed environment.\n\nAffected versions of this package are vulnerable to Template Injection through the `|attr` filter. An attacker that controls the content of a template can escape the sandbox and execute arbitrary Python code by using the `|attr` filter to get a reference to a string's plain format method, bypassing the environment's attribute lookup.\r\n\r\n**Note:**\r\n\r\nThis is only exploitable if the application executes untrusted templates.\n# Remediation\nUpgrade `Jinja2` to version 3.1.6 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-1336",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.4,
+                "security-severity": "5.4"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-MAKO-3017600",
+              "shortDescription": {
+                "text": "Medium severity - Regular Expression Denial of Service (ReDoS) vulnerability in mako"
+              },
+              "fullDescription": {
+                "text": "(CVE-2022-40023) mako@1.1.3"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: mako\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › alembic@1.4.3 › mako@1.1.3\n# Overview\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) in the `lexer` function, when a tag has a large number of quotes within its quoted sections.\r\n\r\n# PoC:\r\n\r\n```python\r\nfrom mako.lexer import Lexer\r\ntemplate = \"<%0\" + '\"' * 3000\r\nLexer(template).parse\r\n```\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n# Remediation\nUpgrade `Mako` to version 1.2.2 or higher.\n# References\n- [GitHub Commit](https://github.com/sqlalchemy/mako/commit/925760291d6efec64fda6e9dd1fd9cfbd5be068c)\n- [GitHub Issue](https://github.com/sqlalchemy/mako/issues/366)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-1333",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-3319935",
+              "shortDescription": {
+                "text": "Low severity - Access Restriction Bypass vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-23934) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n\nAffected versions of this package are vulnerable to Access Restriction Bypass that allows a malicious application on an adjacent subdomain to present \"nameless\" cookies that look like `=value` instead of `key=value` and have them accepted by the affected browser. For example, a cookie like `=__Host-test=bad` would be parsed as `__Host-test=bad` and the key treated as valid while the value is ignored.\n# Remediation\nUpgrade `werkzeug` to version 2.2.3 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/cf275f42acad1b5950c50ffe8ef58fe62cdce028)\n- [GitHub Release](https://github.com/pallets/werkzeug/releases/tag/2.2.3)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-284",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 2.6,
+                "security-severity": "2.6"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-3319936",
+              "shortDescription": {
+                "text": "High severity - Denial of Service (DoS) vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-25577) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) when parsing multipart form data. An attacker can trigger the opening of multipart files containing a large number of file parts, which are processed using `request.data`, `request.form`, `request.files`, or `request.get_data(parse_form_data=False)`, consuming CPU, memory, or file handles resources. The amount of CPU time required can block worker processes from handling other requests. The amount of RAM required can trigger an out-of-memory and crash the process.\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](https://security.snyk.io/vuln/SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n# Remediation\nUpgrade `werkzeug` to version 2.2.3 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/517cac5a804e8c4dc4ed038bb20dacd038e7a9f1)\n- [GitHub Release](https://github.com/pallets/werkzeug/releases/tag/2.2.3)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-770",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-6035177",
+              "shortDescription": {
+                "text": "Medium severity - Inefficient Algorithmic Complexity vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2023-46136) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n\nAffected versions of this package are vulnerable to Inefficient Algorithmic Complexity in multipart data parsing. An attacker can cause a denial of service and block worker processes from handling legitimate requests by sending crafted multipart data to an endpoint that will parse it, eventually exhausting or killing all available workers. \r\n\r\nExploiting this vulnerability is possible if the uploaded file starts with `CR` or `LF` and is followed by megabytes of data without these characters.\n# Remediation\nUpgrade `werkzeug` to version 2.3.8, 3.0.1 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/f2300208d5e2a5076cbbb4c2aad71096fd040ef9)\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/f3c803b3ade485a45f12b6d6617595350c0f03e2)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-407",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.5,
+                "security-severity": "6.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-6808933",
+              "shortDescription": {
+                "text": "High severity - Remote Code Execution (RCE) vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-34069) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n\nAffected versions of this package are vulnerable to Remote Code Execution (RCE) due to insufficient hostname checks and the use of relative paths to resolve requests. When the debugger is enabled, an attacker can convince a user to enter their own PIN to interact with a domain and subdomain they control, and thereby cause malicious code to be executed.\r\n\r\nThe demonstrated attack vector requires a number of conditions that render this attack very difficult to achieve, especially if the victim application is running in the recommended configuration of not having the debugger enabled in production.\n# Remediation\nUpgrade `werkzeug` to version 3.0.3 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/71b69dfb7df3d912e66bab87fbb1f21f83504967)\n- [GitHub Release](https://github.com/pallets/werkzeug/releases/tag/3.0.3)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-94",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-8309091",
+              "shortDescription": {
+                "text": "Medium severity - Directory Traversal vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-49766) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n[Werkzeug](https://werkzeug.palletsprojects.com/) is a WSGI web application library.\n\nAffected versions of this package are vulnerable to Directory Traversal due to a bypass for `os.path.isabs()`, which allows the improper handling of UNC paths beginning with `/`, in the `safe_join()` function. This allows an attacker to read some files on the affected server, if they are stored in an affected path.\n\n**Note:** This is only exploitable on Windows systems using Python versions prior to 3.11.\n\n# Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`. \n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```\n\n# Remediation\nUpgrade `Werkzeug` to version 3.0.6 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/2767bcb10a7dd1c297d812cc5e6d11a474c1f092)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-22",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.3,
+                "security-severity": "6.3"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WERKZEUG-8309092",
+              "shortDescription": {
+                "text": "Medium severity - Allocation of Resources Without Limits or Throttling vulnerability in werkzeug"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-49767) werkzeug@0.16.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: werkzeug\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-babel@0.12.2 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-cors@3.0.8 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-mail@0.9.1 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-restful@0.3.7 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-script@2.0.6 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › flask@1.1.1 › werkzeug@0.16.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › flask-sqlalchemy@2.4.0 › flask@1.1.1 › werkzeug@0.16.1\n# Overview\n\nAffected versions of this package are vulnerable to Allocation of Resources Without Limits or Throttling in `formparser.MultiPartParser()`. An attacker can cause the parser to consume more memory than the upload size, in excess of `max_form_memory_size`, by sending malicious data in a non-file field of a  `multipart/form-data` request.\n# Remediation\nUpgrade `werkzeug` to version 3.0.6 or higher.\n# References\n- [GitHub Commit](https://github.com/pallets/quart/commit/5e78c4169b8eb66b91ead3e62d44721b9e1644ee)\n- [GitHub Commit](https://github.com/pallets/werkzeug/commit/50cfeebcb0727e18cc52ffbeb125f4a66551179b)\n- [GitHub Release](https://github.com/pallets/werkzeug/releases/tag/3.0.6)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-770",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "SNYK-PYTHON-WTFORMS-40581",
+              "shortDescription": {
+                "text": "Medium severity - Cross-site Scripting (XSS) vulnerability in wtforms"
+              },
+              "fullDescription": {
+                "text": "wtforms@2.2.1"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Vulnerable module: wtforms\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › wtforms@2.2.1\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-wtf@0.14.3 › wtforms@2.2.1\n# Overview\r\n[`wtforms`](https://pypi.python.org/pypi/wtforms) is a flexible forms validation and rendering library for python web development.\r\n\r\nAffected versions of this package are vulnerable to Cross-site Scripting (XSS) attacks due to the label names not being escaped in `WTForms`.\r\n\r\n# Details\r\n<<XSS>>\r\n\r\n\r\n# References\r\n- [GitHub Issue](https://github.com/wtforms/wtforms/issues/315)"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-79",
+                  "poetry"
+                ],
+                "cvssv3_baseScore": 4.8,
+                "security-severity": "4.8"
+              }
+            },
+            {
+              "id": "snyk:lic:pip:python-editor:Apache-2.0",
+              "shortDescription": {
+                "text": "High severity - Apache-2.0 license vulnerability in python-editor"
+              },
+              "fullDescription": {
+                "text": "python-editor@1.0.4"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: poetry\n* Module: python-editor\n* Introduced through: SimplePackage@1.0.0, ihatemoney@4.1.4 and others\n### Detailed paths\n* _Introduced through_: SimplePackage@1.0.0 › ihatemoney@4.1.4 › flask-migrate@2.5.3 › alembic@1.4.3 › python-editor@1.0.4\nApache-2.0 license"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "poetry"
+                ],
+                "security-severity": "undefined"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-PYTHON-BABEL-1278589",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable babel package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "babel@2.8.0"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-DNSPYTHON-6241713",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable dnspython package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "dnspython@2.0.0"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FASTECDSA-511943",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable fastecdsa package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "fastecdsa@2.1.3"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to fastecdsa@2.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "fastecdsa@2.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FASTECDSA-6262045",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable fastecdsa package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "fastecdsa@2.1.3"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to fastecdsa@2.3.2"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "fastecdsa@2.3.2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASK-5490129",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable flask package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask@1.1.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASKCORS-608972",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable flask-cors package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask-cors@3.0.8"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASKCORS-6670412",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable flask-cors package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask-cors@3.0.8"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASKCORS-9668952",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable flask-cors package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask-cors@3.0.8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASKCORS-9668953",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable flask-cors package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask-cors@3.0.8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-FLASKCORS-9668954",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable flask-cors package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "flask-cors@3.0.8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-IDNA-6597975",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable idna package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "idna@2.10"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-IHATEMONEY-5880460",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable ihatemoney package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ihatemoney@4.1.4"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@6.0.0"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@6.0.0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-IHATEMONEY-5926703",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable ihatemoney package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ihatemoney@4.1.4"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@6.0.0"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@6.0.0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-IHATEMONEY-595715",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable ihatemoney package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ihatemoney@4.1.4"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.5"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.5"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-1012994",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@2.11.3"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@2.11.3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-6150717",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@3.1.3"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@3.1.3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-6809379",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@3.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@3.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-8548181",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@3.1.5"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@3.1.5"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-8548987",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@3.1.5"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@3.1.5"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-JINJA2-9292516",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable jinja2 package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "jinja2@2.10.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to jinja2@3.1.6"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "jinja2@3.1.6"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-MAKO-3017600",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable mako package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "mako@1.1.3"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-3319935",
+          "level": "note",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a low severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-3319936",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-6035177",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-6808933",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-8309091",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WERKZEUG-8309092",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable werkzeug package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "werkzeug@0.16.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-PYTHON-WTFORMS-40581",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable wtforms package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "wtforms@2.2.1"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to ihatemoney@4.1.4"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "pyproject.toml"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "ihatemoney@4.1.4"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "snyk:lic:pip:python-editor:Apache-2.0",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable python-editor package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pyproject.toml"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "python-editor@1.0.4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

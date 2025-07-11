@@ -26,6 +26,10 @@ export default class Logger {
     }
   }
 
+  public static warn(...args: string[]): void {
+    Logger.instance.warn(args)
+  }
+
   public static info(...args: string[]): void {
     Logger.instance.info(args)
   }

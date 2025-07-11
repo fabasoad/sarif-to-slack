@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Open Source",
+          "properties": {
+            "artifactsScanned": 1
+          },
+          "rules": [
+            {
+              "id": "SNYK-JS-BODYPARSER-7926860",
+              "shortDescription": {
+                "text": "High severity - Asymmetric Resource Consumption (Amplification) vulnerability in body-parser"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-45590) body-parser@1.19.0"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: npm\n* Vulnerable module: body-parser\n* Introduced through: pnpm-goof@0.0.1 and body-parser@1.19.0\n### Detailed paths\n* _Introduced through_: pnpm-goof@0.0.1 › body-parser@1.19.0\n# Overview\n\nAffected versions of this package are vulnerable to Asymmetric Resource Consumption (Amplification) via the `extendedparser` and `urlencoded` functions when the URL encoding process is enabled. An attacker can flood the server with a large number of specially crafted requests.\n# Remediation\nUpgrade `body-parser` to version 1.20.3 or higher.\n# References\n- [GitHub Commit](https://github.com/expressjs/body-parser/commit/b2695c4450f06ba3b0ccf48d872a229bb41c9bce)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-405",
+                  "npm"
+                ],
+                "cvssv3_baseScore": 8.2,
+                "security-severity": "8.2"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-JS-BODYPARSER-7926860",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable body-parser package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package.json"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "body-parser@1.19.0"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to body-parser@1.20.3"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "package.json"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "body-parser@1.20.3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

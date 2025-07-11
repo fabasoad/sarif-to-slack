@@ -1,0 +1,440 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Snyk Open Source",
+          "properties": {
+            "artifactsScanned": 1
+          },
+          "rules": [
+            {
+              "id": "SNYK-RUBY-REXML-6861566",
+              "shortDescription": {
+                "text": "Medium severity - Uncontrolled Resource Consumption vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-35176) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Uncontrolled Resource Consumption when parsing an XML that has many `<`s in an attribute value. An attacker can cause a denial of service by exploiting this behavior.\n\n# Workaround \n\nThis vulnerability can be mitigated by not parsing untrusted XMLs.\n# Remediation\nUpgrade `rexml` to version 3.2.7 or higher.\n# References\n- [Advisory](https://www.ruby-lang.org/en/news/2024/05/16/dos-rexml-cve-2024-35176)\n- [GitHub Commit](https://github.com/ruby/rexml/commit/4325835f92f3f142ebd91a3fdba4e1f1ab7f1cfb)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-RUBY-REXML-7462086",
+              "shortDescription": {
+                "text": "Medium severity - Denial of Service (DoS) vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-39908) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) through the XML parsing process. An attacker can cause a denial of service by sending specially crafted XML documents that contain many specific characters such as `<`, `0`, and `%>`.\n\nThis vulnerability is exploitable if the application is configured to parse untrusted XML documents.\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](https://security.snyk.io/vuln/SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n# Remediation\nUpgrade `rexml` to version 3.3.2 or higher.\n# References\n- [GitHub Commit](https://github.com/ruby/rexml/pull/169/commits/bb274bc1cbb9f35abb43f1d8a380e8d4dc9a3306)\n- [GitHub Release](https://github.com/ruby/rexml/releases/tag/v3.3.2)\n- [Security Advisory](https://www.ruby-lang.org/en/news/2024/07/16/dos-rexml-cve-2024-39908)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 5.3,
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "SNYK-RUBY-REXML-7577227",
+              "shortDescription": {
+                "text": "Medium severity - Uncontrolled Resource Consumption ('Resource Exhaustion') vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-41946) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Uncontrolled Resource Consumption ('Resource Exhaustion') via the SAX2 or pull parser API. An attacker can cause the application to consume excessive resources leading to a denial of service by submitting specially crafted XML documents that exploit entity expansions.\n# PoC\n```html\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE member [\r\n  <!ENTITY a \"&b;&b;&b;&b;&b;&b;&b;&b;&b;&b;\">\r\n  <!ENTITY b \"&c;&c;&c;&c;&c;&c;&c;&c;&c;&c;\">\r\n  <!ENTITY c \"&d;&d;&d;&d;&d;&d;&d;&d;&d;&d;\">\r\n  <!ENTITY d \"&e;&e;&e;&e;&e;&e;&e;&e;&e;&e;\">\r\n  <!ENTITY e \"&f;&f;&f;&f;&f;&f;&f;&f;&f;&f;\">\r\n  <!ENTITY f \"&g;&g;&g;&g;&g;&g;&g;&g;&g;&g;\">\r\n  <!ENTITY g \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\">\r\n]>\r\n<member>\r\n&a;\r\n</member>\r\n```\n# Remediation\nUpgrade `rexml` to version 3.3.3 or higher.\n# References\n- [GitHub Commit](https://github.com/ruby/rexml/commit/033d1909a8f259d5a7c53681bcaf14f13bcf0368)\n- [GitHub Release Notes](https://github.com/ruby/rexml/releases/tag/v3.3.3)\n- [Security Advisory](https://www.ruby-lang.org/en/news/2008/08/23/dos-vulnerability-in-rexml)\n- [Security Advisory](https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41946)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "SNYK-RUBY-REXML-7577228",
+              "shortDescription": {
+                "text": "Medium severity - Denial of Service (DoS) vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-41123) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Denial of Service (DoS) via the REXML gem, when parsing an `XML` document that has many specific characters such as whitespace character,`>]` and `]>`.\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](https://security.snyk.io/vuln/SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n# Remediation\nUpgrade `rexml` to version 3.3.3 or higher.\n# References\n- [ruby-lang News](https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41123)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-400",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "SNYK-RUBY-REXML-7814166",
+              "shortDescription": {
+                "text": "High severity - Improper Restriction of XML External Entity Reference ('XXE') vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-43398) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Improper Restriction of XML External Entity Reference ('XXE') via tree parser APIs like `REXML::Document.new` function. An attacker can cause the application to consume excessive resources by submitting specially crafted XML documents with many deep elements that have the same local name attributes.\n\n**Note:**\n\nThis is only exploitable if a tree parser API is used to parse untrusted XMLs.\n# Remediation\nUpgrade `rexml` to version 3.3.6 or higher.\n# References\n- [GitHub Commit](https://github.com/ruby/rexml/commit/7cb5eaeb221c322b9912f724183294d8ce96bae3)\n- [GitHub Release](https://github.com/ruby/rexml/releases/tag/v3.3.6)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-776",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 8.2,
+                "security-severity": "8.2"
+              }
+            },
+            {
+              "id": "SNYK-RUBY-REXML-8309365",
+              "shortDescription": {
+                "text": "Medium severity - Regular Expression Denial of Service (ReDoS) vulnerability in rexml"
+              },
+              "fullDescription": {
+                "text": "(CVE-2024-49761) rexml@3.2.6"
+              },
+              "help": {
+                "text": "",
+                "markdown": "* Package Manager: rubygems\n* Vulnerable module: rexml\n* Introduced through: rubygems@* and rexml@3.2.6\n### Detailed paths\n* _Introduced through_: rubygems@* › rexml@3.2.6\n# Overview\n[rexml](https://github.com/ruby/rexml) is an An XML toolkit for Ruby.\n\nAffected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS) due to the usage of insecure regular expressions in `CHARACTER_REFERENCES`. This vulnerability can be exploited when parsing XML content containing numerous digits between `&#` and `x...;` in a hex numeric character reference (`&#x...;`).\r\n\r\nBy supplying specially crafted XML documents, an attacker can cause the application to consume excessive resources. \r\n\r\n**Note:**\r\n\r\nThis vulnerability doesn't affect Ruby 3.2 or later.\n\n# Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its original and legitimate users. There are many types of DoS attacks, ranging from trying to clog the network pipes to the system by generating a large volume of traffic from many machines (a Distributed Denial of Service - DDoS - attack) to sending crafted requests that cause a system to crash or take a disproportional amount of time to process.\n\nThe Regular expression Denial of Service (ReDoS) is a type of Denial of Service attack. Regular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\nLet’s take the following regular expression as an example:\n```js\nregex = /A(B|C+)+D/\n```\n\nThis regular expression accomplishes the following:\n- `A` The string must start with the letter 'A'\n- `(B|C+)+` The string must then follow the letter A with either the letter 'B' or some number of occurrences of the letter 'C' (the `+` matches one or more times). The `+` at the end of this section states that we can look for one or more matches of this section.\n- `D` Finally, we ensure this section of the string ends with a 'D'\n\nThe expression would match inputs such as `ABBD`, `ABCCCCD`, `ABCBCCCD` and `ACCCCCD`\n\nIt most cases, it doesn't take very long for a regex engine to find a match:\n\n```bash\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCD\")'\n0.04s user 0.01s system 95% cpu 0.052 total\n\n$ time node -e '/A(B|C+)+D/.test(\"ACCCCCCCCCCCCCCCCCCCCCCCCCCCCX\")'\n1.79s user 0.02s system 99% cpu 1.812 total\n```\n\nThe entire process of testing it against a 30 characters long string takes around ~52ms. But when given an invalid string, it takes nearly two seconds to complete the test, over ten times as long as it took to test a valid string. The dramatic difference is due to the way regular expressions get evaluated.\n\nMost Regex engines will work very similarly (with minor differences). The engine will match the first possible way to accept the current character and proceed to the next one. If it then fails to match the next one, it will backtrack and see if there was another way to digest the previous character. If it goes too far down the rabbit hole only to find out the string doesn’t match in the end, and if many characters have multiple valid regex paths, the number of backtracking steps can become very large, resulting in what is known as _catastrophic backtracking_.\n\nLet's look at how our expression runs into this problem, using a shorter string: \"ACCCX\". While it seems fairly straightforward, there are still four different ways that the engine could match those three C's:\n1. CCC\n2. CC+C\n3. C+CC\n4. C+C+C.\n\nThe engine has to try each of those combinations to see if any of them potentially match against the expression. When you combine that with the other steps the engine must take, we can use [RegEx 101 debugger](https://regex101.com/debugger) to see the engine has to take a total of 38 steps before it can determine the string doesn't match.\n\nFrom there, the number of steps the engine must use to validate a string just continues to grow.\n\n| String | Number of C's | Number of steps |\n| -------|-------------:| -----:|\n| ACCCX | 3 | 38\n| ACCCCX | 4 | 71\n| ACCCCCX | 5 | 136\n| ACCCCCCCCCCCCCCX | 14 | 65,553\n\n\nBy the time the string includes 14 C's, the engine has to take over 65,000 steps just to see if the string is valid. These extreme situations can cause them to work very slowly (exponentially related to input size, as shown above), allowing an attacker to exploit this and can cause the service to excessively consume CPU, resulting in a Denial of Service.\n\n# Remediation\nUpgrade `rexml` to version 3.3.9 or higher.\n# References\n- [GitHub Commit](https://github.com/ruby/rexml/commit/ce59f2eb1aeb371fe1643414f06618dbe031979f)\n"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "CWE-1333",
+                  "rubygems"
+                ],
+                "cvssv3_baseScore": 6.9,
+                "security-severity": "6.9"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "SNYK-RUBY-REXML-6861566",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.2.7"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.2.7"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-RUBY-REXML-7462086",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.3.2"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.3.2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-RUBY-REXML-7577227",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.3.3"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.3.3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-RUBY-REXML-7577228",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.3.3"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.3.3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-RUBY-REXML-7814166",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a high severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.3.6"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.3.6"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "SNYK-RUBY-REXML-8309365",
+          "level": "warning",
+          "message": {
+            "text": "This file introduces a vulnerable rexml package with a medium severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "Gemfile"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "rexml@3.2.6"
+                }
+              ]
+            }
+          ],
+          "fixes": [
+            {
+              "description": {
+                "text": "Upgrade to rexml@3.3.9"
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "Gemfile"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 1
+                      },
+                      "insertedContent": {
+                        "text": "rexml@3.3.9"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
