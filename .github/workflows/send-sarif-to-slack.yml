@@ -157,44 +157,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
-      - name: Install package
-        run: |
-          npm install "git+${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git#${GITHUB_SHA}"
+      - name: Install dependencies
+        run: npm ci
       - name: Send message
-        uses: actions/github-script@v7
         env:
-          INPUT_ACTOR: "${{ inputs.actor }}"
-          INPUT_COLOR: "${{ inputs.color }}"
-          INPUT_HEADER: "${{ inputs.header }}"
-          INPUT_INCLUDE_RUN: "${{ inputs.include-run }}"
-          INPUT_FOOTER: "${{ inputs.footer }}"
-          INPUT_LOG_LEVEL: "${{ inputs.log-level }}"
-          INPUT_USERNAME: "${{ inputs.username }}"
-          ICON_URL: "https://cdn-icons-png.flaticon.com/512/9070/9070006.png"
-        with:
-          script: |
-            import { SarifToSlackService } from '@fabasoad/sarif-to-slack'
-            const sarifToSlackService: SarifToSlackService = await SarifToSlackService.create({
-              webhookUrl: '${{ secrets.TMP_EUGENE_SLACK_WEBHOOK }}',
-              username: process.env.INPUT_USERNAME,
-              iconUrl: process.env.ICON_URL,
-              color: process.env.INPUT_COLOR,
-              sarifPath: 'test-data/sarif/${{ steps.sarif-file.outputs.value }}',
-              logLevel: process.env.INPUT_LOG_LEVEL,
-              header: {
-                include: process.env.INPUT_HEADER !== 'skip',
-                value: process.env.INPUT_HEADER,
-              },
-              footer: {
-                include: process.env.INPUT_FOOTER !== 'skip',
-                value: process.env.INPUT_FOOTER,
-              },
-              actor: {
-                include: process.env.INPUT_ACTOR !== 'skip',
-                value: process.env.INPUT_ACTOR,
-              },
-              run: {
-                include: Boolean(process.env.INPUT_INCLUDE_RUN),
-              }
-            })
-            await sarifToSlackService.sendAll()
+          SARIF_TO_SLACK_WEBHOOK_URL: "$${{ secrets.TMP_EUGENE_SLACK_WEBHOOK }}"
+          SARIF_TO_SLACK_USERNAME: "${{ inputs.username }}"
+          SARIF_TO_SLACK_ICON_URL: "https://cdn-icons-png.flaticon.com/512/9070/9070006.png"
+          SARIF_TO_SLACK_COLOR: "${{ inputs.color }}"
+          SARIF_TO_SLACK_SARIF_FILE_NAME: "${{ steps.sarif-file.outputs.value }}"
+          SARIF_TO_SLACK_LOG_LEVEL: "${{ inputs.log-level }}"
+          SARIF_TO_SLACK_HEADER: "${{ inputs.header }}"
+          SARIF_TO_SLACK_FOOTER: "${{ inputs.footer }}"
+          SARIF_TO_SLACK_ACTOR: "${{ inputs.actor }}"
+          SARIF_TO_SLACK_INCLUDE_RUN: "${{ inputs.include-run }}"
+        run: npm run test:integration

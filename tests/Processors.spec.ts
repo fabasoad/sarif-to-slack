@@ -10,7 +10,7 @@ jest.mock('../src/Logger', () => ({
   default: { info: jest.fn(), debug: jest.fn() }
 }))
 
-describe('processColor', () => {
+describe('(unit): processColor', () => {
   test('returns correct hex for success', () => {
     expect(processColor('success')).toBe('#008000')
   })
@@ -36,7 +36,7 @@ describe('processColor', () => {
   })
 })
 
-describe('processSarifPath', () => {
+describe('(unit): processSarifPath', () => {
   const fakeDir = '/fake/dir'
   const fakeFile = '/fake/file.sarif'
 
@@ -75,7 +75,7 @@ describe('processSarifPath', () => {
   })
 })
 
-describe('processLogLevel', () => {
+describe('(unit): processLogLevel', () => {
   test('returns 0 for silly', () => {
     expect(processLogLevel('silly')).toBe(0)
   })
