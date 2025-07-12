@@ -161,7 +161,7 @@ jobs:
         run: npm ci
       - name: Send message
         env:
-          SARIF_TO_SLACK_WEBHOOK_URL: "$${{ secrets.TMP_EUGENE_SLACK_WEBHOOK }}"
+          SARIF_TO_SLACK_WEBHOOK_URL: "${{ secrets.TMP_EUGENE_SLACK_WEBHOOK }}"
           SARIF_TO_SLACK_USERNAME: "${{ inputs.username }}"
           SARIF_TO_SLACK_ICON_URL: "https://cdn-icons-png.flaticon.com/512/9070/9070006.png"
           SARIF_TO_SLACK_COLOR: "${{ inputs.color }}"
