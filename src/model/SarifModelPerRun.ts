@@ -1,19 +1,20 @@
 import type { Result, Run } from 'sarif';
 import { tryGetRulePropertyByResult } from '../utils/SarifUtils'
-import { SecurityLevel, SecuritySeverity } from './types'
+import { SecurityLevel, SecuritySeverity, SecuritySeverityOrder, SecurityLevelOrder } from './types'
 import Logger from '../Logger'
+import { Map as ImmutableMap } from 'immutable'
 
 export class SarifModelPerRun {
   public readonly toolName: string
 
-  private readonly _securitySeverityMap: Map<SecuritySeverity, number>
-  private readonly _securityLevelMap: Map<SecurityLevel, number>
+  private readonly _securitySeverityMap: ImmutableMap<SecuritySeverity, number>
+  private readonly _securityLevelMap: ImmutableMap<SecurityLevel, number>
 
   constructor(run: Run) {
     this.toolName = run.tool.driver.name
 
-    this._securitySeverityMap = new Map<SecuritySeverity, number>()
-    this._securityLevelMap = new Map<SecurityLevel, number>()
+    this._securitySeverityMap = ImmutableMap<SecuritySeverity, number>().asMutable()
+    this._securityLevelMap = ImmutableMap<SecurityLevel, number>().asMutable()
 
     this.buildSecuritySeverityMap(run)
     this.buildSecurityLevelMap(run)
@@ -44,7 +45,7 @@ export class SarifModelPerRun {
       return SecuritySeverity.NONE
     }
 
-    Logger.warn(`Unsupported ${score} security severity. Saving as "Unknown".`)
+    Logger.warn(`Unsupported "${score}" security severity. Saving as "Unknown".`)
     return SecuritySeverity.UNKNOWN
   }
 
@@ -99,11 +100,17 @@ export class SarifModelPerRun {
     }
   }
 
-  public get securitySeverityMap(): ReadonlyMap<SecuritySeverity, number> {
-    return this._securitySeverityMap
+  public get securitySeverityMap(): ImmutableMap<SecuritySeverity, number> {
+    return this._securitySeverityMap.sortBy(
+      (_: number, severity: SecuritySeverity): SecuritySeverity => severity,
+      (a: SecuritySeverity, b: SecuritySeverity): number => SecuritySeverityOrder.indexOf(a) - SecuritySeverityOrder.indexOf(b),
+    ).asImmutable()
   }
 
-  public get securityLevelMap(): ReadonlyMap<SecurityLevel, number> {
-    return this._securityLevelMap
+  public get securityLevelMap(): ImmutableMap<SecurityLevel, number> {
+    return this._securityLevelMap.sortBy(
+      (_: number, level: SecurityLevel): SecurityLevel => level,
+      (a: SecurityLevel, b: SecurityLevel): number => SecurityLevelOrder.indexOf(a) - SecurityLevelOrder.indexOf(b),
+    ).asImmutable()
   }
 }

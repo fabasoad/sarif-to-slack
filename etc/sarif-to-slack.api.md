@@ -7,6 +7,14 @@
 import type { Log } from 'sarif';
 
 // @public
+export enum CalculateResultsBy {
+    // (undocumented)
+    LEVEL = 0,
+    // (undocumented)
+    SEVERITY = 1
+}
+
+// @public
 export type FooterOptions = IncludeAwareWithValueOptions & {
     type?: FooterType;
 };
@@ -17,6 +25,14 @@ export enum FooterType {
     MARKDOWN = "mrkdwn",
     // (undocumented)
     PLAIN_TEXT = "plain_text"
+}
+
+// @public
+export enum GroupResultsBy {
+    // (undocumented)
+    TOOL_NAME = 0,
+    // (undocumented)
+    TOTAL = 1
 }
 
 // @public
@@ -44,6 +60,12 @@ export enum LogLevel {
 export type Sarif = Log;
 
 // @public
+export type SarifToSlackOutput = {
+    groupBy: GroupResultsBy;
+    calculateBy: CalculateResultsBy;
+};
+
+// @public
 export class SarifToSlackService {
     static create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService>;
     send(sarifPath: string): Promise<void>;
@@ -63,6 +85,7 @@ export type SarifToSlackServiceOptions = {
     footer?: FooterOptions;
     actor?: IncludeAwareWithValueOptions;
     run?: IncludeAwareOptions;
+    output?: SarifToSlackOutput;
 };
 
 // @public

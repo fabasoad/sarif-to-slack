@@ -30,7 +30,7 @@ export class SarifModelPerSarif {
     return result
   }
 
-  public totalWithSecurityLevel(): Map<SecurityLevel, number> {
+  public groupByTotalWithSecurityLevel(): Map<SecurityLevel, number> {
     const result = new Map<SecurityLevel, number>()
     for (const sarifModelPerRun of this.sarifModelPerRunList) {
       for (const [k, v] of sarifModelPerRun.securityLevelMap.entries()) {
@@ -55,7 +55,7 @@ export class SarifModelPerSarif {
     return result
   }
 
-  public totalWithSecuritySeverity(): Map<SecuritySeverity, number> {
+  public groupByTotalWithSecuritySeverity(): Map<SecuritySeverity, number> {
     const result = new Map<SecuritySeverity, number>()
     for (const sarifModelPerRun of this.sarifModelPerRunList) {
       for (const [k, v] of sarifModelPerRun.securitySeverityMap.entries()) {

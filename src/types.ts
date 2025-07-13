@@ -94,6 +94,33 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
 }
 
 /**
+ * Enum representing how to group results.
+ * @public
+ */
+export enum GroupResultsBy {
+  TOOL_NAME = 0,
+  TOTAL = 1,
+}
+
+/**
+ * Enum representing how to calculate results.
+ * @public
+ */
+export enum CalculateResultsBy {
+  LEVEL = 0,
+  SEVERITY = 1,
+}
+
+/**
+ * Options for how to output the results in the Slack message.
+ * @public
+ */
+export type SarifToSlackOutput = {
+  groupBy: GroupResultsBy,
+  calculateBy: CalculateResultsBy,
+}
+
+/**
  * Options for the SarifToSlackService.
  * @public
  */
@@ -109,4 +136,5 @@ export type SarifToSlackServiceOptions = {
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,
   run?: IncludeAwareOptions,
+  output?: SarifToSlackOutput,
 }

@@ -1,9 +1,7 @@
 import type { ReportingDescriptor, Result, Run } from "sarif";
 
-type RuleData = { id?: string, index?: number }
-
-export function tryGetRulePropertyByResult<T>(run: Run, result: Result, propertyName: string): T | undefined {
-  const ruleData: RuleData = {}
+export function findRuleByResult(run: Run, result: Result): ReportingDescriptor | undefined {
+  const ruleData: { id?: string, index?: number } = {}
 
   if (result.rule) {
     if (result.rule?.index) {
@@ -21,10 +19,25 @@ export function tryGetRulePropertyByResult<T>(run: Run, result: Result, property
   if (ruleData.index
     && run.tool.driver?.rules
     && ruleData.index < run.tool.driver.rules.length) {
-    const rule: ReportingDescriptor = run.tool.driver.rules[ruleData.index]
-    if (rule.properties && propertyName in rule.properties) {
-      return rule.properties[propertyName] as T
-    }
+    return run.tool.driver.rules[ruleData.index]
+  }
+
+  // If failed to find rule by index then try to find by ruleId
+  if (result.ruleId && run.tool.driver?.rules) {
+    return run.tool.driver.rules.find(
+      (r: ReportingDescriptor): boolean => r.id === result.ruleId
+    )
+  }
+
+  return undefined
+}
+
+export type RuleProperty = 'security-severity' | 'problem.severity'
+
+export function tryGetRulePropertyByResult<T>(run: Run, result: Result, propertyName: RuleProperty): T | undefined {
+  const rule: ReportingDescriptor | undefined = findRuleByResult(run, result)
+  if (rule && rule.properties && propertyName in rule.properties) {
+    return rule.properties[propertyName] as T
   }
 
   return undefined

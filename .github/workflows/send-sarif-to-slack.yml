@@ -35,6 +35,22 @@ on: # yamllint disable-line rule:truthy
           - "Wiz Container (Error: 12, Warning: 369, Note: 191)"
           - "Wiz IaC (Warning: 5, Note: 5)"
           - "All"
+      group-by:
+        description: "Group results by:"
+        required: false
+        default: "Tool name"
+        type: choice
+        options:
+          - "Tool name"
+          - "Total"
+      calculate-by:
+        description: "Calculate results by:"
+        required: false
+        default: "Level"
+        type: choice
+        options:
+          - "Level"
+          - "Severity"
       log-level:
         description: "Log level:"
         required: false
@@ -171,4 +187,6 @@ jobs:
           SARIF_TO_SLACK_FOOTER: "${{ inputs.footer }}"
           SARIF_TO_SLACK_ACTOR: "${{ inputs.actor }}"
           SARIF_TO_SLACK_INCLUDE_RUN: "${{ inputs.include-run }}"
+          SARIF_TO_SLACK_GROUP_BY: "${{ inputs.group-by}}"
+          SARIF_TO_SLACK_CALCULATE_BY: "${{ inputs.calculate-by}}"
         run: npm run test:integration

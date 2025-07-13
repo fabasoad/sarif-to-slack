@@ -1,4 +1,5 @@
 import { SarifToSlackService } from '../../src'
+import { CalculateResultsBy, GroupResultsBy } from '../../src/types'
 
 describe('(integration): SendSarifToSlack', () => {
   test('Should send Sarif to Slack', async () => {
@@ -23,6 +24,12 @@ describe('(integration): SendSarifToSlack', () => {
       },
       run: {
         include: Boolean(process.env.SARIF_TO_SLACK_INCLUDE_RUN),
+      },
+      output: {
+        groupBy: process.env.SARIF_TO_SLACK_GROUP_BY === 'Tool name'
+          ? GroupResultsBy.TOOL_NAME : GroupResultsBy.TOTAL,
+        calculateBy: process.env.SARIF_TO_SLACK_CALCULATE_BY === 'Level'
+          ? CalculateResultsBy.LEVEL : CalculateResultsBy.SEVERITY,
       }
     })
     await sarifToSlackService.sendAll()

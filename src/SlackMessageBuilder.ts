@@ -2,10 +2,17 @@ import { AnyBlock } from '@slack/types'
 import { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
 import { TextObject } from '@slack/types/dist/block-kit/composition-objects'
 import { IncomingWebhook } from '@slack/webhook'
-import { FooterType, Sarif, SlackMessage } from './types'
+import {
+  CalculateResultsBy,
+  FooterType,
+  GroupResultsBy,
+  Sarif,
+  SarifToSlackOutput,
+  SlackMessage
+} from './types'
 import { LIB_VERSION } from './version'
 import { SarifModelPerSarif } from './model/SarifModelPerSarif';
-import { SecurityLevel } from './model/types';
+import { SecurityLevel, SecuritySeverity } from './model/types';
 
 /**
  * Options for the SlackMessageBuilder.
@@ -15,7 +22,8 @@ export type SlackMessageBuilderOptions = {
   username?: string
   iconUrl?: string
   color?: string
-  sarif: Sarif
+  sarif: Sarif,
+  output?: SarifToSlackOutput,
 }
 
 /**
@@ -27,6 +35,7 @@ export class SlackMessageBuilder implements SlackMessage {
   private readonly gitHubServerUrl: string
   private readonly color?: string
   private readonly sarifModelPerSarif: SarifModelPerSarif
+  private readonly output: SarifToSlackOutput
   private header?: HeaderBlock
 
   private footer?: ContextBlock
@@ -44,6 +53,10 @@ export class SlackMessageBuilder implements SlackMessage {
     this.color = opts.color
     this.sarif = opts.sarif
     this.sarifModelPerSarif = new SarifModelPerSarif(opts.sarif)
+    this.output = opts.output || {
+      groupBy: GroupResultsBy.TOOL_NAME,
+      calculateBy: CalculateResultsBy.LEVEL
+    }
   }
 
   withHeader(header?: string): void {
@@ -115,19 +128,34 @@ export class SlackMessageBuilder implements SlackMessage {
     return text.join('\n')
   }
 
-  private composeSummaryPerToolName(toolName: string, map: Map<SecurityLevel, number>): string {
-    const levelsText = new Array<string>()
-    for (const [level, count] of map.entries()) {
-      levelsText.push(`*${level}*: ${count}`)
+  private composeSummaryWith(map: Map<SecurityLevel | SecuritySeverity, number>, toolName?: string): string {
+    const stats = new Array<string>()
+    for (const [key, count] of map.entries()) {
+      stats.push(`*${key}*: ${count}`)
     }
-    return `*${toolName}*\n${levelsText.join(', ')}`
+    let result: string = stats.join(', ')
+    if (toolName) {
+      result = `*${toolName}*\n${result}`
+    }
+    return result
   }
 
   private composeSummary(): string {
-    const data: Map<string, Map<SecurityLevel, number>> = this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
     const summaries = new Array<string>()
-    for (const [toolName, map] of data.entries()) {
-      summaries.push(this.composeSummaryPerToolName(toolName, map))
+    if (this.output.groupBy === GroupResultsBy.TOOL_NAME) {
+      const data: Map<string, Map<SecurityLevel | SecuritySeverity, number>> =
+        this.output.calculateBy === CalculateResultsBy.LEVEL
+          ? this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
+          : this.sarifModelPerSarif.groupByToolNameWithSecuritySeverity()
+      for (const [toolName, map] of data.entries()) {
+        summaries.push(this.composeSummaryWith(map, toolName))
+      }
+    } else {
+      const data: Map<SecurityLevel | SecuritySeverity, number> =
+        this.output.calculateBy === CalculateResultsBy.LEVEL
+          ? this.sarifModelPerSarif.groupByTotalWithSecurityLevel()
+          : this.sarifModelPerSarif.groupByTotalWithSecuritySeverity()
+      summaries.push(this.composeSummaryWith(data))
     }
     return summaries.join('\n')
   }

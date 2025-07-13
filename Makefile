@@ -26,9 +26,16 @@ reinstall:
 lint:
 	@npm run lint
 
-.PHONY: test
-test:
+.PHONY: test/integration
+test/integration:
+	@npm run test:integration
+
+.PHONY: test/unit
+test/unit:
 	@npm run test
+
+.PHONY: test
+test: test/unit
 
 .PHONY: npm/update
 npm/update:
