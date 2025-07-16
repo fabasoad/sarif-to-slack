@@ -27,9 +27,9 @@ describe('(integration): SendSarifToSlack', () => {
       },
       output: {
         groupBy: process.env.SARIF_TO_SLACK_GROUP_BY === 'Tool name'
-          ? GroupResultsBy.TOOL_NAME : GroupResultsBy.TOTAL,
+          ? GroupResultsBy.ToolName : GroupResultsBy.None,
         calculateBy: process.env.SARIF_TO_SLACK_CALCULATE_BY === 'Level'
-          ? CalculateResultsBy.LEVEL : CalculateResultsBy.SEVERITY,
+          ? CalculateResultsBy.Level : CalculateResultsBy.Severity,
       }
     })
     await sarifToSlackService.sendAll()

@@ -27,7 +27,7 @@ export function processColor(color?: string): string | undefined {
       Logger.info(`Converting "${color}" to #808080`)
       return '#808080'
     default:
-      Logger.debug(`"${color}" color is not a CI status identifier. Returning as is...`)
+      Logger.debug(`"${color}" color is not a CI status identifier. Returning as is.`)
       return color
   }
 }

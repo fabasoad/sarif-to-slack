@@ -8,10 +8,8 @@ import type { Log } from 'sarif';
 
 // @public
 export enum CalculateResultsBy {
-    // (undocumented)
-    LEVEL = 0,
-    // (undocumented)
-    SEVERITY = 1
+    Level = 0,
+    Severity = 1
 }
 
 // @public
@@ -21,18 +19,14 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
 
 // @public
 export enum FooterType {
-    // (undocumented)
-    MARKDOWN = "mrkdwn",
-    // (undocumented)
-    PLAIN_TEXT = "plain_text"
+    Markdown = "mrkdwn",
+    PlainText = "plain_text"
 }
 
 // @public
 export enum GroupResultsBy {
-    // (undocumented)
-    TOOL_NAME = 0,
-    // (undocumented)
-    TOTAL = 1
+    None = 1,
+    ToolName = 0
 }
 
 // @public
