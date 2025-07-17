@@ -44,12 +44,15 @@
  */
 export { SarifToSlackService } from './SarifToSlackService'
 export {
+  CalculateResultsBy,
   FooterOptions,
   FooterType,
+  GroupResultsBy,
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
   LogLevel,
   Sarif,
+  SarifToSlackOutput,
   SarifToSlackServiceOptions,
   SlackMessage,
 } from './types'

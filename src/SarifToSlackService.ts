@@ -22,7 +22,8 @@ async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string,
       username: opts.username,
       iconUrl: opts.iconUrl,
       color: processColor(opts.color),
-      sarif: JSON.parse(jsonString) as Sarif
+      sarif: JSON.parse(jsonString) as Sarif,
+      output: opts.output,
     })
     if (opts.header?.include) {
       messageBuilder.withHeader(opts.header?.value)

@@ -28,7 +28,8 @@ export interface SlackMessage {
  */
 export enum LogLevel {
   /**
-   * Represents the most verbose logging level, typically used for detailed debugging information.
+   * Represents the most verbose logging level, typically used for detailed
+   * debugging information.
    */
   Silly = 0,
   /**
@@ -36,23 +37,28 @@ export enum LogLevel {
    */
   Trace = 1,
   /**
-   * Represents a logging level for debugging information that is less verbose than silly.
+   * Represents a logging level for debugging information that is less verbose
+   * than silly.
    */
   Debug = 2,
   /**
-   * Represents a logging level for general informational messages that highlight the progress of the application.
+   * Represents a logging level for general informational messages that highlight
+   * the progress of the application.
    */
   Info = 3,
   /**
-   * Represents a logging level for potentially harmful situations that require attention.
+   * Represents a logging level for potentially harmful situations that require
+   * attention.
    */
   Warning = 4,
   /**
-   * Represents a logging level for error conditions that do not require immediate action but should be noted.
+   * Represents a logging level for error conditions that do not require immediate
+   * action but should be noted.
    */
   Error = 5,
   /**
-   * Represents a logging level for critical errors that require immediate attention and may cause the application to terminate.
+   * Represents a logging level for critical errors that require immediate attention
+   * and may cause the application to terminate.
    */
   Fatal = 6
 }
@@ -80,8 +86,15 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
  * @public
  */
 export enum FooterType {
-  PLAIN_TEXT = 'plain_text',
-  MARKDOWN = 'mrkdwn'
+  /**
+   * Represents a plain text footer. Text is not formatted and appears as-is.
+   */
+  PlainText = 'plain_text',
+  /**
+   * Represents a footer with Markdown formatting. Text can include formatting
+   * such as bold, italics, and links.
+   */
+  Markdown = 'mrkdwn'
 }
 
 /**
@@ -91,6 +104,59 @@ export enum FooterType {
  */
 export type FooterOptions = IncludeAwareWithValueOptions & {
   type?: FooterType
+}
+
+/**
+ * Enum representing how to group results.
+ * @public
+ */
+export enum GroupResultsBy {
+  /**
+   * Groups results by the tool name. Particularly, groups by the runs[].tool.driver.name
+   * property from the SARIF file(s).
+   */
+  ToolName = 0,
+  /**
+   * Groups results by the run. It provides the result from each run individually.
+   */
+  Run = 1,
+  /**
+   * Does not group results. It provides the result from all the runs from all
+   * the provided SARIF files.
+   */
+  Total = 2,
+}
+
+/**
+ * Enum representing how to calculate results.
+ * @public
+ */
+export enum CalculateResultsBy {
+  /**
+   * Calculates results by the security level of the findings: Error, Warning,
+   * Note and Unknown. At first, it tries to get the security level from runs[].results[].level
+   * property. If it is not defined, it tries to get the security level from the
+   * respective rule of each result, using the rules[].properties['problem.severity']
+   * property.
+   */
+  Level = 0,
+  /**
+   * Calculates results by the security severity of the findings: Critical, High,
+   * Medium, Low, None and Unknown. it tries to get the security severity from the
+   * respective rule of each result, using the rules[].properties['security-severity']
+   * property. This property contains CVSS score, which is then mapped to the
+   * security severity value.
+   */
+  Severity = 1,
+}
+
+/**
+ * Options for how to output the results in the Slack message.
+ * @public
+ */
+export type SarifToSlackOutput = {
+  groupBy: GroupResultsBy,
+  calculateBy: CalculateResultsBy,
 }
 
 /**
@@ -109,4 +175,5 @@ export type SarifToSlackServiceOptions = {
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,
   run?: IncludeAwareOptions,
+  output?: SarifToSlackOutput,
 }

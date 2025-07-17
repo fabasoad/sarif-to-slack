@@ -8,7 +8,8 @@
   "private": false,
   "scripts": {
     "lint": "biome lint --write src",
-    "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage",
+    "test": "jest --config=jest.config.json --json --outputFile=jest-report.json --coverage --testNamePattern=unit",
+    "test:integration": "jest --config=jest.config.json --testNamePattern=integration",
     "clean": "rm -rf coverage && rm -rf temp",
     "clean:unsafe": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf lib",
     "tsc": "tsc",
@@ -44,15 +45,16 @@
   "dependencies": {
     "@slack/webhook": "7.0.5",
     "@types/sarif": "2.1.7",
+    "immutable": "5.1.3",
     "tslog": "4.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
+    "@biomejs/biome": "2.1.2",
     "@microsoft/api-documenter": "7.26.29",
     "@microsoft/api-extractor": "7.52.8",
     "@types/jest": "30.0.0",
-    "jest": "30.0.3",
-    "jest-circus": "30.0.3",
+    "jest": "30.0.4",
+    "jest-circus": "30.0.4",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
   }

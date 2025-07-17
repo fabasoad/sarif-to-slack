@@ -27,7 +27,7 @@ export function processColor(color?: string): string | undefined {
       Logger.info(`Converting "${color}" to #808080`)
       return '#808080'
     default:
-      Logger.debug(`"${color}" color is not a CI status identifier. Returning as is...`)
+      Logger.debug(`"${color}" color is not a CI status identifier. Returning as is.`)
       return color
   }
 }
@@ -43,19 +43,19 @@ export function processLogLevel(logLevel?: LogLevel | string): LogLevel | undefi
   if (typeof logLevel === 'string') {
     switch (logLevel.toLowerCase()) {
       case 'silly':
-        return 0
+        return LogLevel.Silly
       case 'trace':
-        return 1
+        return LogLevel.Trace
       case 'debug':
-        return 2
+        return LogLevel.Debug
       case 'info':
-        return 3
+        return LogLevel.Info
       case 'warning':
-        return 4
+        return LogLevel.Warning
       case 'error':
-        return 5
+        return LogLevel.Error
       case 'fatal':
-        return 6
+        return LogLevel.Fatal
       default:
         throw new Error(`Unknown log level: ${logLevel}`)
     }
