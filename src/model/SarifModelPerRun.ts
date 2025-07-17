@@ -22,52 +22,52 @@ export class SarifModelPerRun {
 
   private identifySecuritySeverity(score?: number): SecuritySeverity {
     if (score === undefined) {
-      return SecuritySeverity.UNKNOWN
+      return SecuritySeverity.Unknown
     }
 
     if (score >= 9 && score <= 10) {
-      return SecuritySeverity.CRITICAL
+      return SecuritySeverity.Critical
     }
 
     if (score >= 7) {
-      return SecuritySeverity.HIGH
+      return SecuritySeverity.High
     }
 
     if (score >= 4) {
-      return SecuritySeverity.MEDIUM
+      return SecuritySeverity.Medium
     }
 
     if (score >= 0.1) {
-      return SecuritySeverity.LOW
+      return SecuritySeverity.Low
     }
 
     if (score == 0) {
-      return SecuritySeverity.NONE
+      return SecuritySeverity.None
     }
 
     Logger.warn(`Unsupported "${score}" security severity. Saving as "Unknown".`)
-    return SecuritySeverity.UNKNOWN
+    return SecuritySeverity.Unknown
   }
 
   private identifySecurityLevel(level?: string): SecurityLevel {
     if (level === undefined) {
-      return SecurityLevel.UNKNOWN
+      return SecurityLevel.Unknown
     }
 
     if (level.toLowerCase() === 'error') {
-      return SecurityLevel.ERROR
+      return SecurityLevel.Error
     }
 
     if (level.toLowerCase() === 'warning') {
-      return SecurityLevel.WARNING
+      return SecurityLevel.Warning
     }
 
     if (level.toLowerCase() === 'note') {
-      return SecurityLevel.NOTE
+      return SecurityLevel.Note
     }
 
     Logger.warn(`Unsupported ${level} security level. Saving as "Unknown".`)
-    return SecurityLevel.UNKNOWN
+    return SecurityLevel.Unknown
   }
 
   private buildSecuritySeverityMap(run: Run): void {

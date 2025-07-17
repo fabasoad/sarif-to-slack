@@ -49,12 +49,12 @@
     "tslog": "4.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
+    "@biomejs/biome": "2.1.2",
     "@microsoft/api-documenter": "7.26.29",
     "@microsoft/api-extractor": "7.52.8",
     "@types/jest": "30.0.0",
-    "jest": "30.0.3",
-    "jest-circus": "30.0.3",
+    "jest": "30.0.4",
+    "jest-circus": "30.0.4",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
   }

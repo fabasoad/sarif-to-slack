@@ -2,6 +2,11 @@ import type { Sarif } from '../types'
 import { SarifModelPerRun } from './SarifModelPerRun'
 import { SecurityLevel, SecuritySeverity } from './types'
 
+export type DataGroupedByRun<T> = {
+  toolName: string,
+  data: Map<T, number>
+}
+
 export class SarifModelPerSarif {
   private readonly sarifModelPerRunList: Array<SarifModelPerRun>;
 
@@ -26,6 +31,17 @@ export class SarifModelPerSarif {
         const count: number = result.get(sarifModelPerRun.toolName)?.get(k) || 0
         result.get(sarifModelPerRun.toolName)?.set(k, count + v)
       }
+    }
+    return result
+  }
+
+  public groupByRunWithSecurityLevel(): DataGroupedByRun<SecurityLevel>[] {
+    const result = new Array<DataGroupedByRun<SecurityLevel>>()
+    for (const sarifModelPerRun of this.sarifModelPerRunList) {
+      result.push({
+        toolName: sarifModelPerRun.toolName,
+        data: new Map<SecurityLevel, number>(sarifModelPerRun.securityLevelMap)
+      })
     }
     return result
   }
@@ -55,6 +71,17 @@ export class SarifModelPerSarif {
     return result
   }
 
+  public groupByRunWithSecuritySeverity(): DataGroupedByRun<SecuritySeverity>[] {
+    const result = new Array<DataGroupedByRun<SecuritySeverity>>()
+    for (const sarifModelPerRun of this.sarifModelPerRunList) {
+      result.push({
+        toolName: sarifModelPerRun.toolName,
+        data: new Map<SecuritySeverity, number>(sarifModelPerRun.securitySeverityMap)
+      })
+    }
+    return result
+  }
+
   public groupByTotalWithSecuritySeverity(): Map<SecuritySeverity, number> {
     const result = new Map<SecuritySeverity, number>()
     for (const sarifModelPerRun of this.sarifModelPerRunList) {
@@ -64,5 +91,13 @@ export class SarifModelPerSarif {
       }
     }
     return result
+  }
+
+  public listToolNames(): Set<string> {
+    const toolNames = new Set<string>()
+    for (const sarifModelPerRun of this.sarifModelPerRunList) {
+      toolNames.add(sarifModelPerRun.toolName)
+    }
+    return toolNames
   }
 }

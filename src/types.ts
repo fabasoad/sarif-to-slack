@@ -117,10 +117,14 @@ export enum GroupResultsBy {
    */
   ToolName = 0,
   /**
+   * Groups results by the run. It provides the result from each run individually.
+   */
+  Run = 1,
+  /**
    * Does not group results. It provides the result from all the runs from all
    * the provided SARIF files.
    */
-  None = 1,
+  None = 2,
 }
 
 /**

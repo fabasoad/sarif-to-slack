@@ -42,10 +42,12 @@ jobs:
         run: npm ci
 
       - name: Bump version
+        env:
+          BUMP_STRATEGY: "${{ github.event.inputs.bump-strategy }}"
         run: |
           git config user.email "fabasoad@gmail.com"
           git config user.name "fabasoad"
-          npm run version:${{ github.event.inputs.bump-strategy }}
+          npm run version:${BUMP_STRATEGY}
 
       - name: Install jq
         uses: dcarbone/install-jq-action@v3

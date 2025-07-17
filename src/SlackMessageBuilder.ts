@@ -11,7 +11,10 @@ import {
   SlackMessage
 } from './types'
 import { LIB_VERSION } from './version'
-import { SarifModelPerSarif } from './model/SarifModelPerSarif';
+import {
+  DataGroupedByRun,
+  SarifModelPerSarif
+} from './model/SarifModelPerSarif';
 import { SecurityLevel, SecuritySeverity } from './model/types';
 
 /**
@@ -128,34 +131,61 @@ export class SlackMessageBuilder implements SlackMessage {
     return text.join('\n')
   }
 
-  private composeSummaryWith(map: Map<SecurityLevel | SecuritySeverity, number>, toolName?: string): string {
+  private composeSummaryWith(
+    map: Map<SecurityLevel | SecuritySeverity, number>,
+    resultProcessor: (result: string) => string = (result: string): string => result,
+  ): string {
     const stats = new Array<string>()
     for (const [key, count] of map.entries()) {
       stats.push(`*${key}*: ${count}`)
     }
-    let result: string = stats.join(', ')
-    if (toolName) {
-      result = `*${toolName}*\n${result}`
-    }
-    return result
+    return resultProcessor(stats.join(', '))
   }
 
   private composeSummary(): string {
     const summaries = new Array<string>()
-    if (this.output.groupBy === GroupResultsBy.ToolName) {
-      const data: Map<string, Map<SecurityLevel | SecuritySeverity, number>> =
-        this.output.calculateBy === CalculateResultsBy.Level
-          ? this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
-          : this.sarifModelPerSarif.groupByToolNameWithSecuritySeverity()
-      for (const [toolName, map] of data.entries()) {
-        summaries.push(this.composeSummaryWith(map, toolName))
+    switch (this.output.groupBy) {
+      case GroupResultsBy.ToolName: {
+        const dataGroupedByToolName: Map<string, Map<SecurityLevel | SecuritySeverity, number>> =
+          this.output.calculateBy === CalculateResultsBy.Level
+            ? this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
+            : this.sarifModelPerSarif.groupByToolNameWithSecuritySeverity()
+        for (const [toolName, map] of dataGroupedByToolName.entries()) {
+          summaries.push(this.composeSummaryWith(
+            map,
+            (result: string): string => `*${toolName}*\n${result}`
+          ))
+        }
+        break
       }
-    } else {
-      const data: Map<SecurityLevel | SecuritySeverity, number> =
-        this.output.calculateBy === CalculateResultsBy.Level
-          ? this.sarifModelPerSarif.groupByTotalWithSecurityLevel()
-          : this.sarifModelPerSarif.groupByTotalWithSecuritySeverity()
-      summaries.push(this.composeSummaryWith(data))
+      case GroupResultsBy.Run: {
+        const dataGroupedByRun: Array<DataGroupedByRun<SecurityLevel | SecuritySeverity>> =
+          this.output.calculateBy === CalculateResultsBy.Level
+            ? this.sarifModelPerSarif.groupByRunWithSecurityLevel()
+            : this.sarifModelPerSarif.groupByRunWithSecuritySeverity()
+        for (let i = 0; i < dataGroupedByRun.length; i++) {
+          const { data, toolName } = dataGroupedByRun[i]
+          summaries.push(this.composeSummaryWith(
+            data,
+            (result: string): string => `Run #${i + 1}: *${toolName}*\n${result}`
+          ))
+        }
+        break
+      }
+      default: {
+        const dataTotal: Map<SecurityLevel | SecuritySeverity, number> =
+          this.output.calculateBy === CalculateResultsBy.Level
+            ? this.sarifModelPerSarif.groupByTotalWithSecurityLevel()
+            : this.sarifModelPerSarif.groupByTotalWithSecuritySeverity()
+        const toolNames: Set<string> = this.sarifModelPerSarif.listToolNames()
+        summaries.push(this.composeSummaryWith(
+          dataTotal,
+          toolNames.size == 1
+            ? (result: string): string => `*${toolNames.values().next().value}*\n${result}`
+            : undefined
+        ))
+        break
+      }
     }
     return summaries.join('\n')
   }
