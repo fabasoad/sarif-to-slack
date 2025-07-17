@@ -1,0 +1,686 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Trivy Vulnerability Scanner",
+          "informationUri": "https://github.com/aquasecurity/trivy",
+          "name": "Trivy",
+          "rules": [
+            {
+              "id": "s3-bucket-logging",
+              "name": "Misconfiguration",
+              "shortDescription": {
+                "text": "S3 Bucket Logging"
+              },
+              "fullDescription": {
+                "text": "Ensures S3 bucket logging is enabled for S3 buckets"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://avd.aquasec.com/misconfig/s3-bucket-logging",
+              "help": {
+                "text": "Misconfiguration s3-bucket-logging\nType: Terraform Security Check\nSeverity: LOW\nCheck: S3 Bucket Logging\nMessage: Bucket has logging disabled\nLink: [s3-bucket-logging](https://avd.aquasec.com/misconfig/s3-bucket-logging)\nEnsures S3 bucket logging is enabled for S3 buckets",
+                "markdown": "**Misconfiguration s3-bucket-logging**\n| Type | Severity | Check | Message | Link |\n| --- | --- | --- | --- | --- |\n|Terraform Security Check|LOW|S3 Bucket Logging|Bucket has logging disabled|[s3-bucket-logging](https://avd.aquasec.com/misconfig/s3-bucket-logging)|\n\nEnsures S3 bucket logging is enabled for S3 buckets"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "misconfiguration",
+                  "security",
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "AVD-AWS-0132",
+              "name": "Misconfiguration",
+              "shortDescription": {
+                "text": "S3 encryption should use Customer Managed Keys"
+              },
+              "fullDescription": {
+                "text": "Encryption using AWS keys provides protection for your S3 buckets. To increase control of the encryption and manage factors like rotation use customer managed keys.\n"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/misconfig/avd-aws-0132",
+              "help": {
+                "text": "Misconfiguration AVD-AWS-0132\nType: Terraform Security Check\nSeverity: HIGH\nCheck: S3 encryption should use Customer Managed Keys\nMessage: Bucket does not encrypt data with a customer managed key.\nLink: [AVD-AWS-0132](https://avd.aquasec.com/misconfig/avd-aws-0132)\nEncryption using AWS keys provides protection for your S3 buckets. To increase control of the encryption and manage factors like rotation use customer managed keys.\n",
+                "markdown": "**Misconfiguration AVD-AWS-0132**\n| Type | Severity | Check | Message | Link |\n| --- | --- | --- | --- | --- |\n|Terraform Security Check|HIGH|S3 encryption should use Customer Managed Keys|Bucket does not encrypt data with a customer managed key.|[AVD-AWS-0132](https://avd.aquasec.com/misconfig/avd-aws-0132)|\n\nEncryption using AWS keys provides protection for your S3 buckets. To increase control of the encryption and manage factors like rotation use customer managed keys.\n"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "misconfiguration",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            }
+          ],
+          "version": "0.62.1"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "s3-bucket-logging",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Artifact: terraform/s3.tf\nType: terraform\nVulnerability s3-bucket-logging\nSeverity: LOW\nMessage: Bucket has logging disabled\nLink: [s3-bucket-logging](https://avd.aquasec.com/misconfig/s3-bucket-logging)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 44,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AVD-AWS-0132",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Artifact: terraform/s3.tf\nType: terraform\nVulnerability AVD-AWS-0132\nSeverity: HIGH\nMessage: Bucket does not encrypt data with a customer managed key.\nLink: [AVD-AWS-0132](https://avd.aquasec.com/misconfig/avd-aws-0132)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 44,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///Users/john.doe/Source/personal/business-card-deployment/"
+        }
+      }
+    },
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Wiz CLI",
+          "informationUri": "https://wiz.io",
+          "name": "WizCLI",
+          "releaseDateUtc": "2025-05-07T07:47:28Z",
+          "rules": [
+            {
+              "id": "iac-misconfiguration-de273ea2-a754-55f3-b23e-cb9156444fcd",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "Elastic Beanstalk Application environment logs should be published to CloudWatch"
+              },
+              "fullDescription": {
+                "text": "Elastic Beanstalk Application environment logs should be published to CloudWatch"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "text": "Description: Elastic Beanstalk Application environment logs should be published to CloudWatch\nPath: terraform/main.tf\nLine number: 32\nFile type: Terraform\nMatch content:   setting {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' should be set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' is set to 'false' or undfined\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)",
+                "markdown": "**Elastic Beanstalk Application environment logs should be published to CloudWatch**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/main.tf`|`32`|`Terraform`|`  setting {`|`'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' should be set to 'true'`|`'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' is set to 'false' or undfined`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "low"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-53ea8bc0-2d4e-5936-8279-36127e1e33a8",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "Elastic Beanstalk Application environment logs should be uploaded to S3"
+              },
+              "fullDescription": {
+                "text": "Elastic Beanstalk Application environment logs should be uploaded to S3"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "text": "Description: Elastic Beanstalk Application environment logs should be uploaded to S3\nPath: terraform/main.tf\nLine number: 32\nFile type: Terraform\nMatch content:   setting {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' should be set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' are set to 'false' or undfined (defaults to 'false')\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)",
+                "markdown": "**Elastic Beanstalk Application environment logs should be uploaded to S3**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/main.tf`|`32`|`Terraform`|`  setting {`|`'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' should be set to 'true'`|`'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' are set to 'false' or undfined (defaults to 'false')`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "low"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-cc0c6b31-cb0e-5b40-84f6-6ac88bf1b2e3",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "Elastic Beanstalk Application environment notifications should be configured"
+              },
+              "fullDescription": {
+                "text": "Elastic Beanstalk Application environment notifications should be configured"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "text": "Description: Elastic Beanstalk Application environment notifications should be configured\nPath: terraform/main.tf\nLine number: 26\nFile type: Terraform\nMatch content: resource \"aws_elastic_beanstalk_environment\" \"default\" {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value should not be 'null'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value is 'null' or undefined\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)",
+                "markdown": "**Elastic Beanstalk Application environment notifications should be configured**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/main.tf`|`26`|`Terraform`|`resource \"aws_elastic_beanstalk_environment\" \"default\" {`|`'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value should not be 'null'`|`'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value is 'null' or undefined`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "low"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-76e64733-0707-5cf6-af42-fb3096121d13",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket logging should be enabled"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket logging should be enabled"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "text": "Description: S3 Bucket logging should be enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: aws_s3_bucket[business_card_bucket] logging should be enabled\nFound: aws_s3_bucket[business_card_bucket] logging is disabled\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging)",
+                "markdown": "**S3 Bucket logging should be enabled**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`16`|`Terraform`|`resource \"aws_s3_bucket\" \"business_card_bucket\" {`|`aws_s3_bucket[business_card_bucket] logging should be enabled`|`aws_s3_bucket[business_card_bucket] logging is disabled`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "low"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-15f1e43f-0484-54bc-b491-7c889407357b",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket object lock should be enabled"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket object lock should be enabled"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "text": "Description: S3 Bucket object lock should be enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' object lock should be enabled\nFound: 'aws_s3_bucket[business_card_bucket]' object lock is disabled\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_object_lock_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object_lock_configuration), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)",
+                "markdown": "**S3 Bucket object lock should be enabled**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`16`|`Terraform`|`resource \"aws_s3_bucket\" \"business_card_bucket\" {`|`'aws_s3_bucket[business_card_bucket]' object lock should be enabled`|`'aws_s3_bucket[business_card_bucket]' object lock is disabled`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_object_lock_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object_lock_configuration), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "2.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "low"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-7c90319d-a276-55b2-9c00-c431b3b7ab17",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "Elastic Beanstalk Application environment should capture load balancer access logs"
+              },
+              "fullDescription": {
+                "text": "Elastic Beanstalk Application environment should capture load balancer access logs"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Description: Elastic Beanstalk Application environment should capture load balancer access logs\nPath: terraform/main.tf\nLine number: 26\nFile type: Terraform\nMatch content: resource \"aws_elastic_beanstalk_environment\" \"default\" {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' should be defined and set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' is undefined or set to 'false'\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)",
+                "markdown": "**Elastic Beanstalk Application environment should capture load balancer access logs**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/main.tf`|`26`|`Terraform`|`resource \"aws_elastic_beanstalk_environment\" \"default\" {`|`'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' should be defined and set to 'true'`|`'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' is undefined or set to 'false'`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "4.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "medium"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-7c8b46ea-b136-53a6-afdd-0545413541ac",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket Object should be encrypted with a customer-managed key"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket Object should be encrypted with a customer-managed key"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Description: S3 Bucket Object should be encrypted with a customer-managed key\nPath: terraform/s3.tf\nLine number: 46\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket_object\" \"business_card_payload\" {\nExpected: 'aws_s3_bucket_object[business_card_payload].kms_key_id' should be defined\nFound: 'aws_s3_bucket_object[business_card_payload].kms_key_id' is undefined",
+                "markdown": "**S3 Bucket Object should be encrypted with a customer-managed key**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`46`|`Terraform`|`resource \"aws_s3_bucket_object\" \"business_card_payload\" {`|`'aws_s3_bucket_object[business_card_payload].kms_key_id' should be defined`|`'aws_s3_bucket_object[business_card_payload].kms_key_id' is undefined`|"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "4.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "medium"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-1fba338c-b55c-5058-b5bd-74cd6a55dec0",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket policy should deny HTTP requests"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket policy should deny HTTP requests"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Description: S3 Bucket policy should deny HTTP requests\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' should deny unseucre HTTP requesets\nFound: 'aws_s3_bucket[business_card_bucket]' does not explicitly deny HTTP requesets for all actions for all principals\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)",
+                "markdown": "**S3 Bucket policy should deny HTTP requests**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`16`|`Terraform`|`resource \"aws_s3_bucket\" \"business_card_bucket\" {`|`'aws_s3_bucket[business_card_bucket]' should deny unseucre HTTP requesets`|`'aws_s3_bucket[business_card_bucket]' does not explicitly deny HTTP requesets for all actions for all principals`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "4.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "medium"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-7a5edaa9-d012-593f-af05-59a981d0acaf",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket should be encrypted with a customer-managed key"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket should be encrypted with a customer-managed key"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Description: S3 Bucket should be encrypted with a customer-managed key\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' should be encrypted using a customer-provided key\nFound: 'aws_s3_bucket[business_card_bucket]' is not encrypted using a customer-provided key\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_server_side_encryption_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration)",
+                "markdown": "**S3 Bucket should be encrypted with a customer-managed key**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`16`|`Terraform`|`resource \"aws_s3_bucket\" \"business_card_bucket\" {`|`'aws_s3_bucket[business_card_bucket]' should be encrypted using a customer-provided key`|`'aws_s3_bucket[business_card_bucket]' is not encrypted using a customer-provided key`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_server_side_encryption_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "4.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "medium"
+                ]
+              }
+            },
+            {
+              "id": "iac-misconfiguration-318a4140-b09e-5bbe-a350-210f0effbc0c",
+              "name": "Terraform",
+              "shortDescription": {
+                "text": "S3 Bucket should have at least one replication rule enabled"
+              },
+              "fullDescription": {
+                "text": "S3 Bucket should have at least one replication rule enabled"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "text": "Description: S3 Bucket should have at least one replication rule enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: aws_s3_bucket[business_card_bucket] should have at least one replication rule enabled\nFound: aws_s3_bucket[business_card_bucket] does not have an enabled replication rule\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_replication_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_replication_configuration)",
+                "markdown": "**S3 Bucket should have at least one replication rule enabled**\n| Path | Line number | File type | Match content | Expected | Found |\n| --- | --- | --- | --- | --- | --- |\n|`terraform/s3.tf`|`16`|`Terraform`|`resource \"aws_s3_bucket\" \"business_card_bucket\" {`|`aws_s3_bucket[business_card_bucket] should have at least one replication rule enabled`|`aws_s3_bucket[business_card_bucket] does not have an enabled replication rule`|\n**Remediation instructions:**\n```\nPlease refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_replication_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_replication_configuration)\n```"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "4.0",
+                "tags": [
+                  "iac-misconfiguration",
+                  "security",
+                  "medium"
+                ]
+              }
+            }
+          ],
+          "semanticVersion": "0.83.0",
+          "version": "0.83.0-82ebf93"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "iac-misconfiguration-de273ea2-a754-55f3-b23e-cb9156444fcd",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Description: Elastic Beanstalk Application environment logs should be published to CloudWatch\nPath: terraform/main.tf\nLine number: 32\nFile type: Terraform\nMatch content:   setting {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' should be set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'StreamLogs' is set to 'false' or undfined\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/main.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 1,
+                  "endLine": 32,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/main.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-53ea8bc0-2d4e-5936-8279-36127e1e33a8",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Description: Elastic Beanstalk Application environment logs should be uploaded to S3\nPath: terraform/main.tf\nLine number: 32\nFile type: Terraform\nMatch content:   setting {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' should be set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'LogPublicationControl' or 'StreamLogs' are set to 'false' or undfined (defaults to 'false')\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/main.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 1,
+                  "endLine": 32,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/main.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-cc0c6b31-cb0e-5b40-84f6-6ac88bf1b2e3",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Description: Elastic Beanstalk Application environment notifications should be configured\nPath: terraform/main.tf\nLine number: 26\nFile type: Terraform\nMatch content: resource \"aws_elastic_beanstalk_environment\" \"default\" {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value should not be 'null'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'notification endpoint' value is 'null' or undefined\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/main.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 1,
+                  "endLine": 26,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/main.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-76e64733-0707-5cf6-af42-fb3096121d13",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Description: S3 Bucket logging should be enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: aws_s3_bucket[business_card_bucket] logging should be enabled\nFound: aws_s3_bucket[business_card_bucket] logging is disabled\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-15f1e43f-0484-54bc-b491-7c889407357b",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Description: S3 Bucket object lock should be enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' object lock should be enabled\nFound: 'aws_s3_bucket[business_card_bucket]' object lock is disabled\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_object_lock_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object_lock_configuration), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-7c90319d-a276-55b2-9c00-c431b3b7ab17",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "Description: Elastic Beanstalk Application environment should capture load balancer access logs\nPath: terraform/main.tf\nLine number: 26\nFile type: Terraform\nMatch content: resource \"aws_elastic_beanstalk_environment\" \"default\" {\nExpected: 'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' should be defined and set to 'true'\nFound: 'aws_elastic_beanstalk_environment[default].setting' - 'AccessLogsS3Enabled' is undefined or set to 'false'\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_elastic_beanstalk_environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/main.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 1,
+                  "endLine": 26,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/main.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-7c8b46ea-b136-53a6-afdd-0545413541ac",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "Description: S3 Bucket Object should be encrypted with a customer-managed key\nPath: terraform/s3.tf\nLine number: 46\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket_object\" \"business_card_payload\" {\nExpected: 'aws_s3_bucket_object[business_card_payload].kms_key_id' should be defined\nFound: 'aws_s3_bucket_object[business_card_payload].kms_key_id' is undefined"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 1,
+                  "endLine": 46,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-1fba338c-b55c-5058-b5bd-74cd6a55dec0",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Description: S3 Bucket policy should deny HTTP requests\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' should deny unseucre HTTP requesets\nFound: 'aws_s3_bucket[business_card_bucket]' does not explicitly deny HTTP requesets for all actions for all principals\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy), [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-7a5edaa9-d012-593f-af05-59a981d0acaf",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "Description: S3 Bucket should be encrypted with a customer-managed key\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: 'aws_s3_bucket[business_card_bucket]' should be encrypted using a customer-provided key\nFound: 'aws_s3_bucket[business_card_bucket]' is not encrypted using a customer-provided key\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_server_side_encryption_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "iac-misconfiguration-318a4140-b09e-5bbe-a350-210f0effbc0c",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "Description: S3 Bucket should have at least one replication rule enabled\nPath: terraform/s3.tf\nLine number: 16\nFile type: Terraform\nMatch content: resource \"aws_s3_bucket\" \"business_card_bucket\" {\nExpected: aws_s3_bucket[business_card_bucket] should have at least one replication rule enabled\nFound: aws_s3_bucket[business_card_bucket] does not have an enabled replication rule\nRemediation instructions: Please refer to the following Terraform documentation for configuration details:  [aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket), [aws_s3_bucket_replication_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_replication_configuration)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "terraform/s3.tf",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 1,
+                  "endLine": 16,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "terraform/s3.tf"
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///"
+        }
+      }
+    }
+  ]
+}

@@ -1,8 +1,12 @@
 import type { Result, Run } from 'sarif';
 import { tryGetRulePropertyByResult } from '../utils/SarifUtils'
-import { SecurityLevel, SecuritySeverity, SecuritySeverityOrder, SecurityLevelOrder } from './types'
+import { SecurityLevel, SecuritySeverity } from './types'
 import Logger from '../Logger'
 import { Map as ImmutableMap } from 'immutable'
+import {
+  sortSecurityLevelMap,
+  sortSecuritySeverityMap
+} from '../utils/SortUtils';
 
 export class SarifModelPerRun {
   public readonly toolName: string
@@ -101,16 +105,10 @@ export class SarifModelPerRun {
   }
 
   public get securitySeverityMap(): ImmutableMap<SecuritySeverity, number> {
-    return this._securitySeverityMap.sortBy(
-      (_: number, severity: SecuritySeverity): SecuritySeverity => severity,
-      (a: SecuritySeverity, b: SecuritySeverity): number => SecuritySeverityOrder.indexOf(a) - SecuritySeverityOrder.indexOf(b),
-    ).asImmutable()
+    return sortSecuritySeverityMap(this._securitySeverityMap)
   }
 
   public get securityLevelMap(): ImmutableMap<SecurityLevel, number> {
-    return this._securityLevelMap.sortBy(
-      (_: number, level: SecurityLevel): SecurityLevel => level,
-      (a: SecurityLevel, b: SecurityLevel): number => SecurityLevelOrder.indexOf(a) - SecurityLevelOrder.indexOf(b),
-    ).asImmutable()
+    return sortSecurityLevelMap(this._securityLevelMap)
   }
 }

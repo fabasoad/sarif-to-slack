@@ -1,5 +1,23 @@
-import { SarifToSlackService } from '../../src'
-import { CalculateResultsBy, GroupResultsBy } from '../../src/types'
+import {
+  CalculateResultsBy,
+  GroupResultsBy,
+  SarifToSlackService
+} from '../../src'
+
+function groupByMap(groupBy?: string): GroupResultsBy {
+  switch (groupBy) {
+    case 'Tool name': return GroupResultsBy.ToolName
+    case 'Run': return GroupResultsBy.Run
+    default: return GroupResultsBy.Total
+  }
+}
+
+function calculateByMap(calculateBy?: string): CalculateResultsBy {
+  switch (calculateBy) {
+    case 'Level': return CalculateResultsBy.Level
+    default: return CalculateResultsBy.Severity
+  }
+}
 
 describe('(integration): SendSarifToSlack', () => {
   test('Should send Sarif to Slack', async () => {
@@ -26,10 +44,8 @@ describe('(integration): SendSarifToSlack', () => {
         include: Boolean(process.env.SARIF_TO_SLACK_INCLUDE_RUN),
       },
       output: {
-        groupBy: process.env.SARIF_TO_SLACK_GROUP_BY === 'Tool name'
-          ? GroupResultsBy.ToolName : GroupResultsBy.None,
-        calculateBy: process.env.SARIF_TO_SLACK_CALCULATE_BY === 'Level'
-          ? CalculateResultsBy.Level : CalculateResultsBy.Severity,
+        groupBy: groupByMap(process.env.SARIF_TO_SLACK_GROUP_BY),
+        calculateBy: calculateByMap(process.env.SARIF_TO_SLACK_CALCULATE_BY),
       }
     })
     await sarifToSlackService.sendAll()

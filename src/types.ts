@@ -124,7 +124,7 @@ export enum GroupResultsBy {
    * Does not group results. It provides the result from all the runs from all
    * the provided SARIF files.
    */
-  None = 2,
+  Total = 2,
 }
 
 /**

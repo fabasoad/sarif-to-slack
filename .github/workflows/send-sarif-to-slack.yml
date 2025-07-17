@@ -34,6 +34,9 @@ on: # yamllint disable-line rule:truthy
           - "Trivy IaC (Error: 1, Note: 1)"
           - "Wiz Container (Error: 12, Warning: 369, Note: 191)"
           - "Wiz IaC (Warning: 5, Note: 5)"
+          - "2 runs by 1 tool"
+          - "2 runs by 2 tools"
+          - "3 runs by 2 tools"
           - "All"
       group-by:
         description: "Group results by:"
@@ -42,6 +45,7 @@ on: # yamllint disable-line rule:truthy
         type: choice
         options:
           - "Tool name"
+          - "Run"
           - "Total"
       calculate-by:
         description: "Calculate results by:"
@@ -164,6 +168,12 @@ jobs:
             value="wiz-container.sarif"
           elif [ "${INPUT_SARIF}" = "Wiz IaC (Warning: 5, Note: 5)" ]; then
             value="wiz-iac.sarif"
+          elif [ "${INPUT_SARIF}" = "2 runs by 1 tool" ]; then
+            value="runs-2-tools-1.sarif"
+          elif [ "${INPUT_SARIF}" = "2 runs by 2 tools" ]; then
+            value="runs-2-tools-2.sarif"
+          elif [ "${INPUT_SARIF}" = "3 runs by 2 tools" ]; then
+            value="runs-3-tools-2.sarif"
           else
             # All
             value=""

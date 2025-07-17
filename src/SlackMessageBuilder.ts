@@ -2,6 +2,7 @@ import { AnyBlock } from '@slack/types'
 import { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
 import { TextObject } from '@slack/types/dist/block-kit/composition-objects'
 import { IncomingWebhook } from '@slack/webhook'
+import { Map as ImmutableMap } from 'immutable'
 import {
   CalculateResultsBy,
   FooterType,
@@ -132,7 +133,7 @@ export class SlackMessageBuilder implements SlackMessage {
   }
 
   private composeSummaryWith(
-    map: Map<SecurityLevel | SecuritySeverity, number>,
+    map: ImmutableMap<SecurityLevel | SecuritySeverity, number>,
     resultProcessor: (result: string) => string = (result: string): string => result,
   ): string {
     const stats = new Array<string>()
@@ -146,7 +147,7 @@ export class SlackMessageBuilder implements SlackMessage {
     const summaries = new Array<string>()
     switch (this.output.groupBy) {
       case GroupResultsBy.ToolName: {
-        const dataGroupedByToolName: Map<string, Map<SecurityLevel | SecuritySeverity, number>> =
+        const dataGroupedByToolName: Map<string, ImmutableMap<SecurityLevel | SecuritySeverity, number>> =
           this.output.calculateBy === CalculateResultsBy.Level
             ? this.sarifModelPerSarif.groupByToolNameWithSecurityLevel()
             : this.sarifModelPerSarif.groupByToolNameWithSecuritySeverity()
@@ -167,13 +168,13 @@ export class SlackMessageBuilder implements SlackMessage {
           const { data, toolName } = dataGroupedByRun[i]
           summaries.push(this.composeSummaryWith(
             data,
-            (result: string): string => `Run #${i + 1}: *${toolName}*\n${result}`
+            (result: string): string => `_[Run ${i + 1}]_: *${toolName}*\n${result}`
           ))
         }
         break
       }
       default: {
-        const dataTotal: Map<SecurityLevel | SecuritySeverity, number> =
+        const dataTotal: ImmutableMap<SecurityLevel | SecuritySeverity, number> =
           this.output.calculateBy === CalculateResultsBy.Level
             ? this.sarifModelPerSarif.groupByTotalWithSecurityLevel()
             : this.sarifModelPerSarif.groupByTotalWithSecuritySeverity()
@@ -187,6 +188,6 @@ export class SlackMessageBuilder implements SlackMessage {
         break
       }
     }
-    return summaries.join('\n')
+    return summaries.join('\n\n')
   }
 }

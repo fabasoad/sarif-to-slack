@@ -25,9 +25,9 @@ export enum FooterType {
 
 // @public
 export enum GroupResultsBy {
-    None = 2,
     Run = 1,
-    ToolName = 0
+    ToolName = 0,
+    Total = 2
 }
 
 // @public
