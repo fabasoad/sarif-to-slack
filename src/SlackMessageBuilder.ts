@@ -129,7 +129,7 @@ export class SlackMessageBuilder implements SlackMessage {
       }
       text.push(runText)
     }
-    return text.join('\n')
+    return text.join('\n\n')
   }
 
   private composeSummaryWith(
@@ -140,7 +140,9 @@ export class SlackMessageBuilder implements SlackMessage {
     for (const [key, count] of map.entries()) {
       stats.push(`*${key}*: ${count}`)
     }
-    return resultProcessor(stats.join(', '))
+    return resultProcessor(
+      stats.length == 0 ? 'No issues found' : stats.join(', ')
+    )
   }
 
   private composeSummary(): string {
@@ -181,9 +183,7 @@ export class SlackMessageBuilder implements SlackMessage {
         const toolNames: Set<string> = this.sarifModelPerSarif.listToolNames()
         summaries.push(this.composeSummaryWith(
           dataTotal,
-          toolNames.size == 1
-            ? (result: string): string => `*${toolNames.values().next().value}*\n${result}`
-            : undefined
+          (result: string): string => `*${Array.from(toolNames).join('*, *')}*\n${result}`
         ))
         break
       }
