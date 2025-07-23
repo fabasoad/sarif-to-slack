@@ -14,7 +14,11 @@
  * const service = await SarifToSlackService.create({
  *   webhookUrl: 'https://hooks.slack.com/services/your/webhook/url',
  *   sarifPath: 'path/to/your/sarif/file.sarif',
- *   logLevel: 'info',
+ *   log: {
+ *     level: 'info',
+ *     template: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
+ *     colored: false,
+ *   },
  *   username: 'SARIF Bot',
  *   iconUrl: 'https://example.com/icon.png',
  *   color: '#36a64f',
@@ -51,7 +55,8 @@ export {
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
   LogLevel,
-  Sarif,
+  LogOptions,
+  SarifLog,
   SarifToSlackOutput,
   SarifToSlackServiceOptions,
   SlackMessage,

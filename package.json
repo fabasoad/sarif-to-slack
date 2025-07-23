@@ -50,11 +50,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
-    "@microsoft/api-documenter": "7.26.29",
-    "@microsoft/api-extractor": "7.52.8",
+    "@microsoft/api-documenter": "7.26.30",
+    "@microsoft/api-extractor": "7.52.9",
     "@types/jest": "30.0.0",
-    "jest": "30.0.4",
-    "jest-circus": "30.0.4",
+    "jest": "30.0.5",
+    "jest-circus": "30.0.5",
     "ts-jest": "29.4.0",
     "typescript": "5.8.3"
   }

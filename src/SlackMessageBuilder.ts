@@ -7,7 +7,7 @@ import {
   CalculateResultsBy,
   FooterType,
   GroupResultsBy,
-  Sarif,
+  SarifLog,
   SarifToSlackOutput,
   SlackMessage
 } from './types'
@@ -26,7 +26,7 @@ export type SlackMessageBuilderOptions = {
   username?: string
   iconUrl?: string
   color?: string
-  sarif: Sarif,
+  sarif: SarifLog,
   output?: SarifToSlackOutput,
 }
 
@@ -46,7 +46,7 @@ export class SlackMessageBuilder implements SlackMessage {
   private actor?: string
   private runId?: string
 
-  public readonly sarif: Sarif
+  public readonly sarif: SarifLog
 
   constructor(url: string, opts: SlackMessageBuilderOptions) {
     this.webhook = new IncomingWebhook(url, {

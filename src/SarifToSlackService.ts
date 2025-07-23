@@ -1,9 +1,9 @@
 import { promises as fs } from 'fs';
 import Logger from './Logger'
-import { processColor, processLogLevel, processSarifPath } from './Processors'
+import { processColor, processSarifPath } from './Processors'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
-  Sarif,
+  SarifLog,
   SarifToSlackServiceOptions,
   SlackMessage
 } from './types'
@@ -22,7 +22,7 @@ async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string,
       username: opts.username,
       iconUrl: opts.iconUrl,
       color: processColor(opts.color),
-      sarif: JSON.parse(jsonString) as Sarif,
+      sarif: JSON.parse(jsonString) as SarifLog,
       output: opts.output,
     })
     if (opts.header?.include) {
@@ -70,9 +70,7 @@ export class SarifToSlackService {
    * @public
    */
   public static async create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService> {
-    Logger.initialize({
-      logLevel: processLogLevel(opts.logLevel)
-    })
+    Logger.initialize(opts.log)
     const instance: SarifToSlackService = new SarifToSlackService()
     const map: Map<string, SlackMessage> = await initialize(opts)
     map.forEach((val: SlackMessage, key: string) => instance._slackMessages.set(key, val))

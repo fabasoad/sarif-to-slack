@@ -3,6 +3,7 @@ import {
   GroupResultsBy,
   SarifToSlackService
 } from '../../src'
+import { processLogLevel } from '../../src/Processors';
 
 function groupByMap(groupBy?: string): GroupResultsBy {
   switch (groupBy) {
@@ -27,7 +28,9 @@ describe('(integration): SendSarifToSlack', () => {
       iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
       color: process.env.SARIF_TO_SLACK_COLOR,
       sarifPath: `./test-data/sarif/${process.env.SARIF_TO_SLACK_SARIF_FILE_NAME}`,
-      logLevel: process.env.SARIF_TO_SLACK_LOG_LEVEL,
+      log: {
+        level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),
+      },
       header: {
         include: process.env.SARIF_TO_SLACK_HEADER !== 'skip',
         value: process.env.SARIF_TO_SLACK_HEADER,

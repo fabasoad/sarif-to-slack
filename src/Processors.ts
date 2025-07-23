@@ -39,28 +39,28 @@ export function processColor(color?: string): string | undefined {
  * @throws Error If the input string does not match any known log level.
  * @internal
  */
-export function processLogLevel(logLevel?: LogLevel | string): LogLevel | undefined {
-  if (typeof logLevel === 'string') {
-    switch (logLevel.toLowerCase()) {
-      case 'silly':
-        return LogLevel.Silly
-      case 'trace':
-        return LogLevel.Trace
-      case 'debug':
-        return LogLevel.Debug
-      case 'info':
-        return LogLevel.Info
-      case 'warning':
-        return LogLevel.Warning
-      case 'error':
-        return LogLevel.Error
-      case 'fatal':
-        return LogLevel.Fatal
-      default:
-        throw new Error(`Unknown log level: ${logLevel}`)
-    }
+export function processLogLevel(logLevel?: string): LogLevel | undefined {
+  if (!logLevel) {
+    return undefined
   }
-  return logLevel
+  switch (logLevel.toLowerCase()) {
+    case 'silly':
+      return LogLevel.Silly
+    case 'trace':
+      return LogLevel.Trace
+    case 'debug':
+      return LogLevel.Debug
+    case 'info':
+      return LogLevel.Info
+    case 'warning':
+      return LogLevel.Warning
+    case 'error':
+      return LogLevel.Error
+    case 'fatal':
+      return LogLevel.Fatal
+    default:
+      throw new Error(`Unknown log level: ${logLevel}`)
+  }
 }
 
 /**
