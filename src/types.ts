@@ -4,7 +4,7 @@ import type { Log } from 'sarif'
  * Type representing a SARIF log.
  * @public
  */
-export type Sarif = Log
+export type SarifLog = Log
 
 /**
  * Interface for a Slack message that can be sent.
@@ -19,7 +19,7 @@ export interface SlackMessage {
   /**
    * The SARIF log associated with this Slack message.
    */
-  sarif: Sarif
+  sarif: SarifLog
 }
 
 /**
@@ -160,6 +160,19 @@ export type SarifToSlackOutput = {
 }
 
 /**
+ * Options for logging.
+ * @public
+ */
+export type LogOptions = {
+  level?: LogLevel,
+  /**
+   * More details here: https://github.com/fullstack-build/tslog?tab=readme-ov-file#pretty-templates-and-styles-color-settings
+   */
+  template?: string,
+  colored?: boolean,
+}
+
+/**
  * Options for the SarifToSlackService.
  * @public
  */
@@ -170,7 +183,7 @@ export type SarifToSlackServiceOptions = {
   username?: string,
   iconUrl?: string,
   color?: string,
-  logLevel?: LogLevel | string,
+  log?: LogOptions,
   header?: IncludeAwareWithValueOptions,
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,

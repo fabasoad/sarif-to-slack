@@ -1,29 +1,26 @@
-import { Logger as TSLogger, ILogObj } from 'tslog'
-import { LogLevel } from './types'
-
-/**
- * Logger options for configuring the logging behavior.
- * @internal
- */
-export type LoggerOptions = {
-  logLevel?: LogLevel
-}
+import { ILogObj, Logger as TSLogger } from 'tslog'
+import { LogLevel, LogOptions } from './types'
 
 /**
  * Logger class for managing logging operations.
  * @internal
  */
 export default class Logger {
+  private static DEFAULT_LOG_LEVEL: LogLevel = LogLevel.Info
+  private static DEFAULT_LOG_TEMPLATE: string = '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} '
+  private static DEFAULT_LOG_COLORED: boolean = true
+
   private static instance: TSLogger<ILogObj>
 
-  public static initialize({ logLevel = LogLevel.Info }: LoggerOptions): void {
+  public static initialize(opts?: LogOptions): void {
     if (!Logger.instance) {
       Logger.instance = new TSLogger({
-        name: 'sarif-to-slack',
-        minLevel: process.env.ACTIONS_STEP_DEBUG === 'true' ? 0 : logLevel,
+        name: '@fabasoad/sarif-to-slack',
+        minLevel: process.env.ACTIONS_STEP_DEBUG === 'true' ? LogLevel.Silly : (opts?.level ?? Logger.DEFAULT_LOG_LEVEL),
         type: 'pretty',
         prettyLogTimeZone: 'UTC',
-        prettyLogTemplate: '[{{name}}] {{dateIsoStr}} level={{logLevelName}} '
+        prettyLogTemplate: opts?.template ?? Logger.DEFAULT_LOG_TEMPLATE,
+        stylePrettyLogs: opts?.colored ?? Logger.DEFAULT_LOG_COLORED,
       })
     }
   }

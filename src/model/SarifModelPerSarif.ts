@@ -1,4 +1,4 @@
-import type { Sarif } from '../types'
+import type { SarifLog } from '../types'
 import { Map as ImmutableMap } from 'immutable'
 import { SarifModelPerRun } from './SarifModelPerRun'
 import { SecurityLevel, SecuritySeverity } from './types'
@@ -15,12 +15,12 @@ export type DataGroupedByRun<T> = {
 export class SarifModelPerSarif {
   private readonly sarifModelPerRunList: Array<SarifModelPerRun>;
 
-  constructor(sarif: Sarif) {
+  constructor(sarif: SarifLog) {
     this.sarifModelPerRunList = new Array<SarifModelPerRun>()
     this.buildRunsList(sarif)
   }
 
-  private buildRunsList(sarif: Sarif): void {
+  private buildRunsList(sarif: SarifLog): void {
     for (const run of sarif.runs) {
       this.sarifModelPerRunList.push(new SarifModelPerRun(run))
     }

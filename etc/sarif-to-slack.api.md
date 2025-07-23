@@ -52,7 +52,14 @@ export enum LogLevel {
 }
 
 // @public
-export type Sarif = Log;
+export type LogOptions = {
+    level?: LogLevel;
+    template?: string;
+    colored?: boolean;
+};
+
+// @public
+export type SarifLog = Log;
 
 // @public
 export type SarifToSlackOutput = {
@@ -75,7 +82,7 @@ export type SarifToSlackServiceOptions = {
     username?: string;
     iconUrl?: string;
     color?: string;
-    logLevel?: LogLevel | string;
+    log?: LogOptions;
     header?: IncludeAwareWithValueOptions;
     footer?: FooterOptions;
     actor?: IncludeAwareWithValueOptions;
@@ -85,7 +92,7 @@ export type SarifToSlackServiceOptions = {
 
 // @public
 export interface SlackMessage {
-    sarif: Sarif;
+    sarif: SarifLog;
     send: () => Promise<string>;
 }
 
