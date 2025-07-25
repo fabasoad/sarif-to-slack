@@ -15,7 +15,7 @@
  *   webhookUrl: 'https://hooks.slack.com/services/your/webhook/url',
  *   sarifPath: 'path/to/your/sarif/file.sarif',
  *   log: {
- *     level: 'info',
+ *     level: LogLevel.Info,
  *     template: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
  *     colored: false,
  *   },
@@ -49,15 +49,17 @@
 export { SarifToSlackService } from './SarifToSlackService'
 export {
   CalculateResultsBy,
-  FooterOptions,
   FooterType,
   GroupResultsBy,
+  LogLevel,
+  SlackMessage
+} from './types'
+export type {
+  FooterOptions,
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
-  LogLevel,
   LogOptions,
   SarifLog,
   SarifToSlackOutput,
-  SarifToSlackServiceOptions,
-  SlackMessage,
+  SarifToSlackServiceOptions
 } from './types'

@@ -8,6 +8,14 @@ import {
   SlackMessage
 } from './types'
 
+/**
+ * The main function to initialize a list of {@link SlackMessage} objects based
+ * on the given SARIF file(s).
+ * @param opts An instance of {@link SarifToSlackServiceOptions} object.
+ * @returns A map where key is the SARIF file and value is an instance of
+ * {@link SlackMessage} object
+ * @private
+ */
 async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string, SlackMessage>> {
   const slackMessages = new Map<string, SlackMessage>();
   const sarifFiles: string[] = processSarifPath(opts.sarifPath)

@@ -1,5 +1,11 @@
 import type { ReportingDescriptor, Result, Run } from "sarif";
 
+/**
+ * This function tries to find the respective rule for the given result.
+ * @param run An instance of {@link Run} object.
+ * @param result An instance of {@link Result} object.
+ * @internal
+ */
 export function findRuleByResult(run: Run, result: Result): ReportingDescriptor | undefined {
   const ruleData: { id?: string, index?: number } = {}
 
@@ -32,8 +38,20 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
   return undefined
 }
 
+/**
+ * Allowed property names that we can search for from the rule.
+ * @internal
+ */
 export type RuleProperty = 'security-severity' | 'problem.severity'
 
+/**
+ * This function searches respective rule for the given result, and then gets
+ * the property of interest from it.
+ * @param run An instance of {@link Run} object.
+ * @param result An instance of {@link Result} object.
+ * @param propertyName The property name that you want to get the value from.
+ * @internal
+ */
 export function tryGetRulePropertyByResult<T>(run: Run, result: Result, propertyName: RuleProperty): T | undefined {
   const rule: ReportingDescriptor | undefined = findRuleByResult(run, result)
   if (rule && rule.properties && propertyName in rule.properties) {

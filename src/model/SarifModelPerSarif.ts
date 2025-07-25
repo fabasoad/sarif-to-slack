@@ -7,11 +7,21 @@ import {
   sortSecuritySeverityMap
 } from '../utils/SortUtils';
 
+/**
+ * A data type that has a hash map with the amount of <severity|level> results
+ * and tool name.
+ * @internal
+ */
 export type DataGroupedByRun<T> = {
   toolName: string,
   data: ImmutableMap<T, number>
 }
 
+/**
+ * This class is used to group results by different fields, such as grouping by
+ * tool name, runs, etc.
+ * @internal
+ */
 export class SarifModelPerSarif {
   private readonly sarifModelPerRunList: Array<SarifModelPerRun>;
 

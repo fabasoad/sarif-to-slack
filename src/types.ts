@@ -155,8 +155,8 @@ export enum CalculateResultsBy {
  * @public
  */
 export type SarifToSlackOutput = {
-  groupBy: GroupResultsBy,
-  calculateBy: CalculateResultsBy,
+  groupBy?: GroupResultsBy,
+  calculateBy?: CalculateResultsBy,
 }
 
 /**

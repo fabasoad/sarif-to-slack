@@ -211,4 +211,4 @@ jobs:
           SARIF_TO_SLACK_INCLUDE_RUN: "${{ inputs.include-run }}"
           SARIF_TO_SLACK_GROUP_BY: "${{ inputs.group-by}}"
           SARIF_TO_SLACK_CALCULATE_BY: "${{ inputs.calculate-by}}"
-        run: npm run test:integration
+        run: make test/integration

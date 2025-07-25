@@ -1,3 +1,7 @@
+/**
+ * Enum of security severity.
+ * @internal
+ */
 export enum SecuritySeverity {
   Unknown = 'Unknown',
   None = 'None',
@@ -7,6 +11,11 @@ export enum SecuritySeverity {
   Critical = 'Critical'
 }
 
+/**
+ * Ordering of security severity values. It is used for sorting purposes, so that
+ * Slack message shows issues in the correct order.
+ * @internal
+ */
 export const SecuritySeverityOrder: SecuritySeverity[] = [
   SecuritySeverity.Critical,
   SecuritySeverity.High,
@@ -16,6 +25,10 @@ export const SecuritySeverityOrder: SecuritySeverity[] = [
   SecuritySeverity.Unknown
 ]
 
+/**
+ * Enum of security level.
+ * @internal
+ */
 export enum SecurityLevel {
   Unknown = 'Unknown',
   Note = 'Note',
@@ -23,6 +36,12 @@ export enum SecurityLevel {
   Error = 'Error'
 }
 
+
+/**
+ * Ordering of security level values. It is used for sorting purposes, so that
+ * Slack message shows issues in the correct order.
+ * @internal
+ */
 export const SecurityLevelOrder: SecurityLevel[] = [
   SecurityLevel.Error,
   SecurityLevel.Warning,

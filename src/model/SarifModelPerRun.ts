@@ -8,6 +8,12 @@ import {
   sortSecuritySeverityMap
 } from '../utils/SortUtils';
 
+/**
+ * This class keeps information about results per run. It has 2 hash maps:
+ * - severity to number: the amount of results for each severity
+ * - level to number: the amount of results for each level
+ * @internal
+ */
 export class SarifModelPerRun {
   public readonly toolName: string
 
