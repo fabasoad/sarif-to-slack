@@ -63,8 +63,8 @@ export type SarifLog = Log;
 
 // @public
 export type SarifToSlackOutput = {
-    groupBy: GroupResultsBy;
-    calculateBy: CalculateResultsBy;
+    groupBy?: GroupResultsBy;
+    calculateBy?: CalculateResultsBy;
 };
 
 // @public

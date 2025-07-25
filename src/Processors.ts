@@ -1,7 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import Logger from './Logger'
-import { LogLevel } from './types'
 
 /**
  * Processes a color string and converts it to a specific hex code if it matches
@@ -29,37 +28,6 @@ export function processColor(color?: string): string | undefined {
     default:
       Logger.debug(`"${color}" color is not a CI status identifier. Returning as is.`)
       return color
-  }
-}
-
-/**
- * Processes a log level string or number and converts it to a numeric log level.
- * @param logLevel
- * @returns The numeric log level corresponding to the input string or number.
- * @throws Error If the input string does not match any known log level.
- * @internal
- */
-export function processLogLevel(logLevel?: string): LogLevel | undefined {
-  if (!logLevel) {
-    return undefined
-  }
-  switch (logLevel.toLowerCase()) {
-    case 'silly':
-      return LogLevel.Silly
-    case 'trace':
-      return LogLevel.Trace
-    case 'debug':
-      return LogLevel.Debug
-    case 'info':
-      return LogLevel.Info
-    case 'warning':
-      return LogLevel.Warning
-    case 'error':
-      return LogLevel.Error
-    case 'fatal':
-      return LogLevel.Fatal
-    default:
-      throw new Error(`Unknown log level: ${logLevel}`)
   }
 }
 

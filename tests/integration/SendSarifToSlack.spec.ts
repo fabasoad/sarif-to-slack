@@ -1,9 +1,9 @@
 import {
   CalculateResultsBy,
   GroupResultsBy,
+  LogLevel,
   SarifToSlackService
 } from '../../src'
-import { processLogLevel } from '../../src/Processors';
 
 function groupByMap(groupBy?: string): GroupResultsBy {
   switch (groupBy) {
@@ -21,6 +21,30 @@ function calculateByMap(calculateBy?: string): CalculateResultsBy {
 }
 
 describe('(integration): SendSarifToSlack', () => {
+  function processLogLevel(logLevel?: string): LogLevel | undefined {
+    if (!logLevel) {
+      return undefined
+    }
+    switch (logLevel.toLowerCase()) {
+      case 'silly':
+        return LogLevel.Silly
+      case 'trace':
+        return LogLevel.Trace
+      case 'debug':
+        return LogLevel.Debug
+      case 'info':
+        return LogLevel.Info
+      case 'warning':
+        return LogLevel.Warning
+      case 'error':
+        return LogLevel.Error
+      case 'fatal':
+        return LogLevel.Fatal
+      default:
+        throw new Error(`Unknown log level: ${logLevel}`)
+    }
+  }
+
   test('Should send Sarif to Slack', async () => {
     const sarifToSlackService: SarifToSlackService = await SarifToSlackService.create({
       webhookUrl: process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
