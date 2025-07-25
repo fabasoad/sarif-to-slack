@@ -76,7 +76,7 @@
    *
    * DEFAULT VALUE: "crlf"
    */
-  // "newlineKind": "crlf",
+  "newlineKind": "lf",
 
   /**
    * Specifies how API Extractor sorts members of an enum when generating the .api.json file. By default, the output
@@ -85,7 +85,7 @@
    *
    * DEFAULT VALUE: "by-name"
    */
-  // "enumMemberOrder": "by-name",
+  "enumMemberOrder": "preserve",
 
   /**
    * Set to true when invoking API Extractor's test harness. When `testMode` is true, the `toolVersion` field in the

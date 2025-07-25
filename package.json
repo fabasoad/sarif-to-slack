@@ -2,7 +2,7 @@
   "name": "@fabasoad/sarif-to-slack",
   "version": "0.2.2",
   "description": "TypeScript library to send results of SARIF file to Slack webhook URL.",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
   "private": false,
@@ -12,9 +12,8 @@
     "test:integration": "jest --config=jest.config.json --testNamePattern=integration",
     "clean": "rm -rf coverage && rm -rf temp",
     "clean:unsafe": "rm -f package-lock.json && rm -rf node_modules && rm -rf dist && rm -rf lib",
-    "tsc": "tsc",
     "prebuild": "./scripts/save-version.sh",
-    "build": "npm run tsc && api-extractor run --local --verbose",
+    "build": "./scripts/build.sh",
     "prepublishOnly": "npm run build",
     "preinstall": "./scripts/save-version.sh",
     "version:patch": "npm version patch --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
@@ -56,6 +55,7 @@
     "jest": "30.0.5",
     "jest-circus": "30.0.5",
     "ts-jest": "29.4.0",
+    "tsup": "8.5.0",
     "typescript": "5.8.3"
   }
 }
