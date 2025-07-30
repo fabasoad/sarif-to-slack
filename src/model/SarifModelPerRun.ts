@@ -1,8 +1,5 @@
 import type { Result, Run } from 'sarif';
-import {
-  findToolComponentByResult,
-  tryGetRulePropertyByResult
-} from '../utils/SarifUtils'
+import { tryGetRulePropertyByResult } from '../utils/SarifUtils'
 import { SecurityLevel, SecuritySeverity } from './types'
 import Logger from '../Logger'
 import { Map as ImmutableMap } from 'immutable'
@@ -24,7 +21,7 @@ export class SarifModelPerRun {
   private readonly _securityLevelMap: ImmutableMap<SecurityLevel, number>
 
   constructor(run: Run) {
-    this.toolName = findToolComponentByResult(run, run.results?.[0]).name
+    this.toolName = run.tool.driver.name
 
     this._securitySeverityMap = ImmutableMap<SecuritySeverity, number>().asMutable()
     this._securityLevelMap = ImmutableMap<SecurityLevel, number>().asMutable()

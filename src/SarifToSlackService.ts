@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs';
+import { promises as fs } from 'fs'
 import Logger from './Logger'
 import { processColor, processSarifPath } from './Processors'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
@@ -7,6 +7,7 @@ import {
   SarifToSlackServiceOptions,
   SlackMessage
 } from './types'
+import System from './System'
 
 /**
  * The main function to initialize a list of {@link SlackMessage} objects based
@@ -79,6 +80,7 @@ export class SarifToSlackService {
    */
   public static async create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService> {
     Logger.initialize(opts.log)
+    System.initialize()
     const instance: SarifToSlackService = new SarifToSlackService()
     const map: Map<string, SlackMessage> = await initialize(opts)
     map.forEach((val: SlackMessage, key: string) => instance._slackMessages.set(key, val))

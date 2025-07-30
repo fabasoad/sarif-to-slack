@@ -4,11 +4,11 @@ import type { ReportingDescriptor, Result, Run, ToolComponent } from "sarif";
  * This function finds the respective tool for the given result.
  * @param run An instance of {@link Run} object.
  * @param result An instance of {@link Result} object.
- * @internal
+ * @private
  */
-export function findToolComponentByResult(run: Run, result?: Result): ToolComponent {
+function findToolComponentByResult(run: Run, result: Result): ToolComponent {
   let tool: ToolComponent | undefined
-  if (result?.rule?.toolComponent?.index != null) {
+  if (result.rule?.toolComponent?.index != null) {
     tool = run.tool.extensions?.[result.rule.toolComponent.index]
   }
 
