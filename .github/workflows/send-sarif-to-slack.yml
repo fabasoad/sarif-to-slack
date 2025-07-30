@@ -34,6 +34,8 @@ on: # yamllint disable-line rule:truthy
           - "Trivy IaC (Error: 1, Note: 1)"
           - "Wiz Container (Error: 12, Warning: 369, Note: 191)"
           - "Wiz IaC (Warning: 5, Note: 5)"
+          - "Runs: 1, Extensions: 1, Results: 0"
+          - "Runs: 1, Extensions: 1, Results > 0"
           - "Runs: 1, Tools: 1, Results: 0"
           - "Runs: 2, Tools: 1, Results > 0"
           - "Runs: 2, Tools: 1, Results: 0"
@@ -174,6 +176,10 @@ jobs:
             value="wiz-iac.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 1, Tools: 1, Results: 0" ]; then
             value="runs-1-tools-1-results-0.sarif"
+          elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results: 0" ]; then
+            value="runs-1-extensions-1-results-0.sarif"
+          elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results > 0" ]; then
+            value="runs-1-extensions-1.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 2, Tools: 1, Results > 0" ]; then
             value="runs-2-tools-1.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 2, Tools: 1, Results: 0" ]; then

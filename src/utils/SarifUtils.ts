@@ -1,4 +1,23 @@
-import type { ReportingDescriptor, Result, Run } from "sarif";
+import type { ReportingDescriptor, Result, Run, ToolComponent } from "sarif";
+
+/**
+ * This function finds the respective tool for the given result.
+ * @param run An instance of {@link Run} object.
+ * @param result An instance of {@link Result} object.
+ * @internal
+ */
+export function findToolComponentByResult(run: Run, result?: Result): ToolComponent {
+  let tool: ToolComponent | undefined
+  if (result?.rule?.toolComponent?.index != null) {
+    tool = run.tool.extensions?.[result.rule.toolComponent.index]
+  }
+
+  if (!tool) {
+    tool = run.tool.driver
+  }
+
+  return tool
+}
 
 /**
  * This function tries to find the respective rule for the given result.
@@ -10,7 +29,7 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
   const ruleData: { id?: string, index?: number } = {}
 
   if (result.rule) {
-    if (result.rule?.index) {
+    if (result.rule?.index != null) {
       ruleData.index = result.rule.index
     }
     if (result.rule?.id) {
@@ -18,20 +37,26 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
     }
   }
 
-  if (!ruleData.index && result.ruleIndex) {
+  if (ruleData.index == null && result.ruleIndex != null) {
     ruleData.index = result.ruleIndex
   }
 
-  if (ruleData.index
-    && run.tool.driver?.rules
-    && ruleData.index < run.tool.driver.rules.length) {
-    return run.tool.driver.rules[ruleData.index]
+  if (!ruleData.id && result.ruleId) {
+    ruleData.id = result.ruleId
+  }
+
+  const tool: ToolComponent = findToolComponentByResult(run, result)
+
+  if (ruleData.index != null
+    && tool?.rules
+    && ruleData.index < tool.rules.length) {
+    return tool.rules[ruleData.index]
   }
 
   // If failed to find rule by index then try to find by ruleId
-  if (result.ruleId && run.tool.driver?.rules) {
-    return run.tool.driver.rules.find(
-      (r: ReportingDescriptor): boolean => r.id === result.ruleId
+  if (ruleData.id && tool?.rules) {
+    return tool.rules.find(
+      (r: ReportingDescriptor): boolean => r.id === ruleData.id
     )
   }
 
