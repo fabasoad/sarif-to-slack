@@ -8,7 +8,7 @@ import type { ReportingDescriptor, Result, Run, ToolComponent } from "sarif";
  */
 export function findToolComponentByResult(run: Run, result: Result): ToolComponent {
   let tool: ToolComponent | undefined
-  if (result.rule?.toolComponent?.index) {
+  if (result.rule?.toolComponent?.index != null) {
     tool = run.tool.extensions?.[result.rule.toolComponent.index]
   }
 
@@ -29,7 +29,7 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
   const ruleData: { id?: string, index?: number } = {}
 
   if (result.rule) {
-    if (result.rule?.index) {
+    if (result.rule?.index != null) {
       ruleData.index = result.rule.index
     }
     if (result.rule?.id) {
@@ -37,7 +37,7 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
     }
   }
 
-  if (!ruleData.index && result.ruleIndex) {
+  if (ruleData.index == null && result.ruleIndex != null) {
     ruleData.index = result.ruleIndex
   }
 
@@ -47,7 +47,7 @@ export function findRuleByResult(run: Run, result: Result): ReportingDescriptor 
 
   const tool: ToolComponent = findToolComponentByResult(run, result)
 
-  if (ruleData.index
+  if (ruleData.index != null
     && tool?.rules
     && ruleData.index < tool.rules.length) {
     return tool.rules[ruleData.index]
