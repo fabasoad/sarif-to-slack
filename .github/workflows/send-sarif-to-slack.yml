@@ -21,6 +21,7 @@ on: # yamllint disable-line rule:truthy
           - "Snyk Gomodules (Error: 4, Warning: 4)"
           - "Snyk Gradle (Error: 3, Warning: 1)"
           - "Snyk Hex (Error: 1)"
+          - "Extension: Snyk Hex (Error: 1)"
           - "Snyk Maven (Error: 3, Warning: 1)"
           - "Snyk NPM (Error: 6, Warning: 6, Note: 2)"
           - "Snyk Nuget (Error: 1)"
@@ -146,6 +147,8 @@ jobs:
             value="snyk-gradle.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk Hex (Error: 1)" ]; then
             value="snyk-hex.sarif"
+          elif [ "${INPUT_SARIF}" = "Extension: Snyk Hex (Error: 1)" ]; then
+            value="snyk-hex-extension.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk Maven (Error: 3, Warning: 1)" ]; then
             value="snyk-maven.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk NPM (Error: 6, Warning: 6, Note: 2)" ]; then

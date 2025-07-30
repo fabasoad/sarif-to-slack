@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "language": "en-US",
+          "name": "Snyk Open Source Modified"
+        },
+        "extensions": [
+          {
+            "name": "Snyk Open Source",
+            "properties": {
+              "artifactsScanned": 6
+            },
+            "rules": [
+              {
+                "id": "SNYK-HEX-PAGINATOR-1086684",
+                "shortDescription": {
+                  "text": "Critical severity - Remote Code Execution (RCE) vulnerability in paginator"
+                },
+                "fullDescription": {
+                  "text": "(CVE-2020-15150) paginator@0.6.0"
+                },
+                "help": {
+                  "text": "",
+                  "markdown": "* Package Manager: hex\n* Vulnerable module: paginator\n* Introduced through: carafe@0.1.0 and paginator@0.6.0\n### Detailed paths\n* _Introduced through_: carafe@0.1.0 › paginator@0.6.0\n# Overview\n[paginator](https://hex.pm/packages/paginator) is a package that enables cursor-based pagination for Elixir Ecto.\n\nAffected versions of this package are vulnerable to Remote Code Execution (RCE) via `paginate()` function when untrusted input is passed from a remote user.\r\n\r\n# PoC\r\n```\r\ndefp rce_start_xcalc() do\r\n    exploit = fn _, _ ->  System.cmd(\"xcalc\", []); {:cont, []} end\r\n    payload =\r\n    exploit\r\n    |> :erlang.term_to_binary()\r\n    |> Base.url_encode64()\r\nend\r\n```\n# Remediation\nUpgrade `paginator` to version 1.0.0 or higher.\n# References\n- [GitHub PR](https://github.com/duffelhq/paginator/commit/bf45e92602e517c75aea0465efc35cd661d9ebf8)\n- [Research Blog Post](https://www.alphabot.com/security/blog/2020/elixir/Remote-code-execution-vulnerability-in-Elixir-based-Paginator-project.html)\n"
+                },
+                "properties": {
+                  "tags": [
+                    "security",
+                    "CWE-94",
+                    "hex"
+                  ],
+                  "cvssv3_baseScore": 9.8,
+                  "security-severity": "9.8"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "results": [
+        {
+          "rule": {
+            "id": "SNYK-HEX-PAGINATOR-1086684",
+            "index": 0,
+            "toolComponent": {
+              "index": 0
+            }
+          },
+          "ruleId": "SNYK-HEX-PAGINATOR-1086684",
+          "level": "error",
+          "message": {
+            "text": "This file introduces a vulnerable paginator package with a critical severity vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "mix.exs"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "paginator@0.6.0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
