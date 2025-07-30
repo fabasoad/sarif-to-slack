@@ -8,5 +8,3 @@
  * @internal
  */
 export const LIB_VERSION = '0.2.4'
-export const LIB_SHA = 'foo (dev)' // pragma: allowlist secret
-export const LIB_BUILT_AT = '1900-01-01T00:00:00+0000 (dev)'
