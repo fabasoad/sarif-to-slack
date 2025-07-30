@@ -8,5 +8,5 @@
  * @internal
  */
 export const LIB_VERSION = '0.2.3'
-export const LIB_SHA = '69e5daf01d93fb764fdfa93e2fe1f2beeaff7193' // pragma: allowlist secret
-export const LIB_BUILT_AT = '2025-07-30T23:15:40+0900'
+export const LIB_SHA = '70fcd62191c85b119fe3c8f5eae82c5f78c63a26' // pragma: allowlist secret
+export const LIB_BUILT_AT = '2025-07-30T23:16:28+0900'

@@ -11,5 +11,7 @@ echo " *" >> src/metadata.ts
 echo " * @internal" >> src/metadata.ts
 echo " */" >> src/metadata.ts
 echo "export const LIB_VERSION = '${version}'" >> src/metadata.ts
-echo "export const LIB_SHA = '$(git rev-parse HEAD)' // pragma: allowlist secret" >> src/metadata.ts
-echo "export const LIB_BUILT_AT = '$(date +"%Y-%m-%dT%H:%M:%S%z")'" >> src/metadata.ts
+if [ "${GITHUB_ACTIONS}" = "true" ]; then
+  echo "export const LIB_SHA = '$(git rev-parse HEAD)' // pragma: allowlist secret" >> src/metadata.ts
+  echo "export const LIB_BUILT_AT = '$(date +"%Y-%m-%dT%H:%M:%S%z")'" >> src/metadata.ts
+fi
