@@ -11,7 +11,7 @@ import {
   SarifToSlackOutput,
   SlackMessage
 } from './types'
-import { LIB_VERSION } from './version'
+import { LIB_VERSION } from './metadata'
 import {
   DataGroupedByRun,
   SarifModelPerSarif
