@@ -6,11 +6,11 @@
       "tool": {
         "driver": {
           "language": "en-US",
-          "name": "Snyk Open Source Modified"
+          "name": "Snyk Open Source"
         },
         "extensions": [
           {
-            "name": "Snyk Open Source",
+            "name": "Snyk Open Source Extension",
             "properties": {
               "artifactsScanned": 6
             },

@@ -21,7 +21,6 @@ on: # yamllint disable-line rule:truthy
           - "Snyk Gomodules (Error: 4, Warning: 4)"
           - "Snyk Gradle (Error: 3, Warning: 1)"
           - "Snyk Hex (Error: 1)"
-          - "Extension: Snyk Hex (Error: 1)"
           - "Snyk Maven (Error: 3, Warning: 1)"
           - "Snyk NPM (Error: 6, Warning: 6, Note: 2)"
           - "Snyk Nuget (Error: 1)"
@@ -35,6 +34,8 @@ on: # yamllint disable-line rule:truthy
           - "Trivy IaC (Error: 1, Note: 1)"
           - "Wiz Container (Error: 12, Warning: 369, Note: 191)"
           - "Wiz IaC (Warning: 5, Note: 5)"
+          - "Runs: 1, Extensions: 1, Results: 0"
+          - "Runs: 1, Extensions: 1, Results > 0"
           - "Runs: 1, Tools: 1, Results: 0"
           - "Runs: 2, Tools: 1, Results > 0"
           - "Runs: 2, Tools: 1, Results: 0"
@@ -147,8 +148,6 @@ jobs:
             value="snyk-gradle.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk Hex (Error: 1)" ]; then
             value="snyk-hex.sarif"
-          elif [ "${INPUT_SARIF}" = "Extension: Snyk Hex (Error: 1)" ]; then
-            value="snyk-hex-extension.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk Maven (Error: 3, Warning: 1)" ]; then
             value="snyk-maven.sarif"
           elif [ "${INPUT_SARIF}" = "Snyk NPM (Error: 6, Warning: 6, Note: 2)" ]; then
@@ -177,6 +176,10 @@ jobs:
             value="wiz-iac.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 1, Tools: 1, Results: 0" ]; then
             value="runs-1-tools-1-results-0.sarif"
+          elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results: 0" ]; then
+            value="runs-1-extensions-1-results-0.sarif"
+          elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results > 0" ]; then
+            value="runs-1-extensions-1.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 2, Tools: 1, Results > 0" ]; then
             value="runs-2-tools-1.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 2, Tools: 1, Results: 0" ]; then

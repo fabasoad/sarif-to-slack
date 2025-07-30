@@ -6,9 +6,9 @@ import type { ReportingDescriptor, Result, Run, ToolComponent } from "sarif";
  * @param result An instance of {@link Result} object.
  * @internal
  */
-export function findToolComponentByResult(run: Run, result: Result): ToolComponent {
+export function findToolComponentByResult(run: Run, result?: Result): ToolComponent {
   let tool: ToolComponent | undefined
-  if (result.rule?.toolComponent?.index != null) {
+  if (result?.rule?.toolComponent?.index != null) {
     tool = run.tool.extensions?.[result.rule.toolComponent.index]
   }
 
