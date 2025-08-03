@@ -36,23 +36,23 @@ export class SarifModelPerSarif {
     }
   }
 
-  public groupByToolNameWithSecurityLevel(): Map<string, ImmutableMap<SecurityLevel, number>> {
-    const result = new Map<string, ImmutableMap<SecurityLevel, number>>()
-    for (const sarifModelPerRun of this.sarifModelPerRunList) {
-      if (!result.has(sarifModelPerRun.toolName)) {
-        result.set(sarifModelPerRun.toolName, ImmutableMap<SecurityLevel, number>().asMutable())
-      }
-      for (const [k, v] of sarifModelPerRun.securityLevelMap.entries()) {
-        const count: number = result.get(sarifModelPerRun.toolName)?.get(k) || 0
-        result.get(sarifModelPerRun.toolName)?.set(k, count + v)
-      }
-    }
-    // Sort
-    for (const [k, v] of result) {
-      result.set(k, sortSecurityLevelMap(v))
-    }
-    return result
-  }
+  // public groupByToolNameWithSecurityLevel(): Map<string, ImmutableMap<SecurityLevel, number>> {
+  //   const result = new Map<string, ImmutableMap<SecurityLevel, number>>()
+  //   for (const sarifModelPerRun of this.sarifModelPerRunList) {
+  //     if (!result.has(sarifModelPerRun.toolName)) {
+  //       result.set(sarifModelPerRun.toolName, ImmutableMap<SecurityLevel, number>().asMutable())
+  //     }
+  //     for (const [k, v] of sarifModelPerRun.securityLevelMap.entries()) {
+  //       const count: number = result.get(sarifModelPerRun.toolName)?.get(k) || 0
+  //       result.get(sarifModelPerRun.toolName)?.set(k, count + v)
+  //     }
+  //   }
+  //   // Sort
+  //   for (const [k, v] of result) {
+  //     result.set(k, sortSecurityLevelMap(v))
+  //   }
+  //   return result
+  // }
 
   public groupByRunWithSecurityLevel(): DataGroupedByRun<SecurityLevel>[] {
     const result = new Array<DataGroupedByRun<SecurityLevel>>()
@@ -76,23 +76,23 @@ export class SarifModelPerSarif {
     return sortSecurityLevelMap(result)
   }
 
-  public groupByToolNameWithSecuritySeverity(): Map<string, ImmutableMap<SecuritySeverity, number>> {
-    const result = new Map<string, ImmutableMap<SecuritySeverity, number>>()
-    for (const sarifModelPerRun of this.sarifModelPerRunList) {
-      if (!result.has(sarifModelPerRun.toolName)) {
-        result.set(sarifModelPerRun.toolName, ImmutableMap<SecuritySeverity, number>().asMutable())
-      }
-      for (const [k, v] of sarifModelPerRun.securitySeverityMap.entries()) {
-        const count: number = result.get(sarifModelPerRun.toolName)?.get(k) || 0
-        result.get(sarifModelPerRun.toolName)?.set(k, count + v)
-      }
-    }
-    // Sort
-    for (const [k, v] of result.entries()) {
-      result.set(k, sortSecuritySeverityMap(v))
-    }
-    return result
-  }
+  // public groupByToolNameWithSecuritySeverity(): Map<string, ImmutableMap<SecuritySeverity, number>> {
+  //   const result = new Map<string, ImmutableMap<SecuritySeverity, number>>()
+  //   for (const sarifModelPerRun of this.sarifModelPerRunList) {
+  //     if (!result.has(sarifModelPerRun.toolName)) {
+  //       result.set(sarifModelPerRun.toolName, ImmutableMap<SecuritySeverity, number>().asMutable())
+  //     }
+  //     for (const [k, v] of sarifModelPerRun.securitySeverityMap.entries()) {
+  //       const count: number = result.get(sarifModelPerRun.toolName)?.get(k) || 0
+  //       result.get(sarifModelPerRun.toolName)?.set(k, count + v)
+  //     }
+  //   }
+  //   // Sort
+  //   for (const [k, v] of result.entries()) {
+  //     result.set(k, sortSecuritySeverityMap(v))
+  //   }
+  //   return result
+  // }
 
   public groupByRunWithSecuritySeverity(): DataGroupedByRun<SecuritySeverity>[] {
     const result = new Array<DataGroupedByRun<SecuritySeverity>>()

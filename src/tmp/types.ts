@@ -1,3 +1,5 @@
+import { Finding } from './model/Finding';
+
 /**
  * Enum of security severity.
  * @internal
@@ -14,9 +16,9 @@ export enum SecuritySeverity {
 /**
  * Ordering of security severity values. It is used for sorting purposes, so that
  * Slack message shows issues in the correct order.
- * @internal
+ * @private
  */
-export const SecuritySeverityOrder: SecuritySeverity[] = [
+const SecuritySeverityOrder: SecuritySeverity[] = [
   SecuritySeverity.Critical,
   SecuritySeverity.High,
   SecuritySeverity.Medium,
@@ -41,11 +43,25 @@ export enum SecurityLevel {
 /**
  * Ordering of security level values. It is used for sorting purposes, so that
  * Slack message shows issues in the correct order.
- * @internal
+ * @private
  */
-export const SecurityLevelOrder: SecurityLevel[] = [
+const SecurityLevelOrder: SecurityLevel[] = [
   SecurityLevel.Error,
   SecurityLevel.Warning,
   SecurityLevel.Note,
   SecurityLevel.Unknown
 ]
+
+export type FindingComparator = (a: Finding, b: Finding) => number
+
+export function findingsComparatorByKey<K extends keyof Finding>(key: K): FindingComparator {
+  return (a: Finding, b: Finding): number => {
+    switch (key) {
+      case 'severity': return SecuritySeverityOrder.indexOf(a.severity) - SecuritySeverityOrder.indexOf(b.severity)
+      case 'level': return SecurityLevelOrder.indexOf(a.level) - SecurityLevelOrder.indexOf(b.level)
+      case 'runId': return a.runId - b.runId
+      case 'toolName': return a.toolName.toLowerCase().localeCompare(b.toolName.toLowerCase())
+      default: return 1
+    }
+  }
+}

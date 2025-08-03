@@ -4,13 +4,8 @@ import Logger from '../../Logger'
 import { CommonProcessor } from '../processors/CommonProcessor'
 import { createProcessor } from '../processors/ProcessorFactory'
 
-export type ToolName = {
-  driver: string,
-  extension?: string,
-}
-
 export type RunOptions = {
-  id: string,
+  id: number,
   run: Run,
 }
 
@@ -22,11 +17,12 @@ export type FindingOptions = {
 
 export interface Finding {
   get sarifPath(): string,
-  get runId(): string,
-  get toolName(): ToolName,
+  get runId(): number,
+  get toolName(): string,
   get cvssScore(): number | undefined,
   get level(): SecurityLevel,
   get severity(): SecuritySeverity,
+  clone(): Finding,
 }
 
 export function createFinding(opts: FindingOptions): Finding {
@@ -34,7 +30,8 @@ export function createFinding(opts: FindingOptions): Finding {
 }
 
 class SarifFinding implements Finding {
-  private readonly _runId: string
+  private readonly _runOpts: RunOptions
+  private readonly _result: Result
   private readonly _sarifPath: string
   private readonly _rule?: ReportingDescriptor
   private readonly _processor: CommonProcessor
@@ -48,23 +45,29 @@ class SarifFinding implements Finding {
   constructor(opts: FindingOptions) {
     this._processor = createProcessor(opts.runOpts.run, opts.result)
     this._sarifPath = opts.sarifPath
-    this._runId = opts.runOpts.id
+    this._runOpts = opts.runOpts
+    this._result = opts.result
     this._rule = this._processor.tryFindRule()
+  }
+
+  clone(): Finding {
+    return createFinding({
+      sarifPath: this._sarifPath,
+      runOpts: this._runOpts,
+      result: this._result
+    })
   }
 
   public get sarifPath(): string {
     return this._sarifPath
   }
 
-  public get runId(): string {
-    return this._runId
+  public get runId(): number {
+    return this._runOpts.id
   }
 
-  public get toolName(): ToolName {
-    return {
-      driver: this._processor.findToolComponentDriver().name,
-      extension: this._processor.tryFindToolComponentExtension()?.name,
-    }
+  public get toolName(): string {
+    return this._processor.findToolComponent().name
   }
 
   public get cvssScore(): number | undefined {
@@ -100,7 +103,7 @@ class SarifFinding implements Finding {
       return SecuritySeverity.Unknown
     }
 
-    if (this.cvssScore >= 9 && this.cvssScore <= 10) {
+    if (this.cvssScore >= 9) {
       return SecuritySeverity.Critical
     }
 
