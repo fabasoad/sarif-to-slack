@@ -1,22 +1,22 @@
 import Representation from './Representation'
 import { Finding } from '../model/Finding'
-import { findingsComparatorByKey } from '../types'
+import { findingsComparatorByKey } from '../utils/Comparators'
 
 export default abstract class CompactGroupByRepresentation extends Representation {
 
-  protected constructor(findings: Finding[], key: keyof Finding) {
+  protected constructor(findings: Finding[], sortKey: keyof Finding) {
     super(
       findings
         .map((f: Finding): Finding => f.clone())
-        .sort(findingsComparatorByKey(key))
+        .sort(findingsComparatorByKey(sortKey))
     )
   }
 
-  protected abstract composeGroupTitle(f: Finding): string
+  protected abstract composeGroupTitle(f: Finding, index: number): string
 
   protected composeByProperty<K extends keyof Finding>(key: K): string {
     return Object
-      .entries(Object.groupBy(this._findings, (f: Finding): string => this.composeGroupTitle(f)))
+      .entries(Object.groupBy(this._findings, this.composeGroupTitle.bind(this)))
       .map(([title, findings]: [string, Finding[] | undefined]) => {
         if (findings == null) {
           return undefined
@@ -31,10 +31,10 @@ export default abstract class CompactGroupByRepresentation extends Representatio
             return `${this.bold(key)}: ${findings2.length}`
           })
           .filter((v: string | undefined): v is string => v != null)
-          .join(',')
+          .join(', ')
         return `${title}\n${msgPerToolName}`
       })
       .filter((v: string | undefined): v is string => v != null)
-      .join('\n')
+      .join('\n\n')
   }
 }

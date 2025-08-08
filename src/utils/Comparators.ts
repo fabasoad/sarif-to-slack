@@ -1,17 +1,5 @@
-import { Finding } from './model/Finding';
-
-/**
- * Enum of security severity.
- * @internal
- */
-export enum SecuritySeverity {
-  Unknown = 'Unknown',
-  None = 'None',
-  Low = 'Low',
-  Medium = 'Medium',
-  High = 'High',
-  Critical = 'Critical'
-}
+import { Finding } from '../model/Finding'
+import { SecurityLevel, SecuritySeverity } from '../types'
 
 /**
  * Ordering of security severity values. It is used for sorting purposes, so that
@@ -26,19 +14,6 @@ const SecuritySeverityOrder: SecuritySeverity[] = [
   SecuritySeverity.None,
   SecuritySeverity.Unknown
 ]
-
-/**
- * Enum of security level.
- * @internal
- */
-export enum SecurityLevel {
-  Unknown = 'Unknown',
-  None = 'None',
-  Note = 'Note',
-  Warning = 'Warning',
-  Error = 'Error'
-}
-
 
 /**
  * Ordering of security level values. It is used for sorting purposes, so that

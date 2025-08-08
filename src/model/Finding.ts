@@ -1,6 +1,6 @@
 import type { ReportingDescriptor, Result, Run } from 'sarif'
 import { SecurityLevel, SecuritySeverity } from '../types'
-import Logger from '../../Logger'
+import Logger from '../Logger'
 import { CommonProcessor } from '../processors/CommonProcessor'
 import { createProcessor } from '../processors/ProcessorFactory'
 

@@ -1,24 +1,4 @@
-import {
-  CalculateResultsBy,
-  GroupResultsBy,
-  LogLevel,
-  SarifToSlackService
-} from '../../src'
-
-function groupByMap(groupBy?: string): GroupResultsBy {
-  switch (groupBy) {
-    case 'Tool name': return GroupResultsBy.ToolName
-    case 'Run': return GroupResultsBy.Run
-    default: return GroupResultsBy.Total
-  }
-}
-
-function calculateByMap(calculateBy?: string): CalculateResultsBy {
-  switch (calculateBy) {
-    case 'Level': return CalculateResultsBy.Level
-    default: return CalculateResultsBy.Severity
-  }
-}
+import { LogLevel, RepresentationType, SarifToSlackService } from '../../src'
 
 describe('(integration): SendSarifToSlack', () => {
   function processLogLevel(logLevel?: string): LogLevel | undefined {
@@ -42,6 +22,33 @@ describe('(integration): SendSarifToSlack', () => {
         return LogLevel.Fatal
       default:
         throw new Error(`Unknown log level: ${logLevel}`)
+    }
+  }
+
+  function processRepresentationType(representation?: string): RepresentationType | undefined {
+    if (representation == null) {
+      return undefined
+    }
+
+    switch (representation.toLowerCase()) {
+      case 'compact-group-by-run-per-level':
+        return RepresentationType.CompactGroupByRunPerLevel
+      case 'compact-group-by-run-per-severity':
+        return RepresentationType.CompactGroupByRunPerSeverity
+      case 'compact-group-by-tool-name-per-level':
+        return RepresentationType.CompactGroupByToolNamePerLevel
+      case 'compact-group-by-tool-name-per-severity':
+        return RepresentationType.CompactGroupByToolNamePerSeverity
+      case 'compact-group-by-sarif-per-level':
+        return RepresentationType.CompactGroupBySarifPerLevel
+      case 'compact-group-by-sarif-per-severity':
+        return RepresentationType.CompactGroupBySarifPerSeverity
+      case 'compact-total-per-level':
+        return RepresentationType.CompactTotalPerLevel
+      case 'compact-total-per-severity':
+        return RepresentationType.CompactTotalPerSeverity
+      default:
+        return undefined
     }
   }
 
@@ -70,11 +77,8 @@ describe('(integration): SendSarifToSlack', () => {
       run: {
         include: Boolean(process.env.SARIF_TO_SLACK_INCLUDE_RUN),
       },
-      output: {
-        groupBy: groupByMap(process.env.SARIF_TO_SLACK_GROUP_BY),
-        calculateBy: calculateByMap(process.env.SARIF_TO_SLACK_CALCULATE_BY),
-      }
+      representation: processRepresentationType(process.env.SARIF_TO_SLACK_REPRESENTATION),
     })
-    await sarifToSlackService.sendAll()
+    await sarifToSlackService.send()
   })
 })

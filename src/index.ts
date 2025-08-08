@@ -14,14 +14,14 @@
  * const service = await SarifToSlackService.create({
  *   webhookUrl: 'https://hooks.slack.com/services/your/webhook/url',
  *   sarifPath: 'path/to/your/sarif/file.sarif',
+ *   username: 'SARIF Bot',
+ *   iconUrl: 'https://example.com/icon.png',
+ *   color: '#36a64f',
  *   log: {
  *     level: LogLevel.Info,
  *     template: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
  *     colored: false,
  *   },
- *   username: 'SARIF Bot',
- *   iconUrl: 'https://example.com/icon.png',
- *   color: '#36a64f',
  *   header: {
  *     include: true,
  *     value: 'SARIF Analysis Results'
@@ -38,6 +38,7 @@
  *   run: {
  *     include: true
  *   },
+ *   representation: RepresentationType.CompactGroupByToolNamePerSeverity,
  * });
  * await service.sendAll();
  * ```
@@ -48,18 +49,15 @@
  */
 export { SarifToSlackService } from './SarifToSlackService'
 export {
-  CalculateResultsBy,
   FooterType,
-  GroupResultsBy,
   LogLevel,
-  SlackMessage
+  RepresentationType,
+  SlackMessage,
 } from './types'
 export type {
   FooterOptions,
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
   LogOptions,
-  SarifLog,
-  SarifToSlackOutput,
-  SarifToSlackServiceOptions
+  SarifToSlackServiceOptions,
 } from './types'

@@ -1,5 +1,6 @@
 import Representation from './Representation'
 import { Finding } from '../model/Finding'
+import { RepresentationType } from '../types'
 import CompactGroupByRunPerLevelRepresentation
   from './CompactGroupByRunPerLevelRepresentation'
 import CompactGroupByRunPerSeverityRepresentation
@@ -8,17 +9,22 @@ import CompactGroupByToolNamePerLevelRepresentation
   from './CompactGroupByToolNamePerLevelRepresentation'
 import CompactGroupByToolNamePerSeverityRepresentation
   from './CompactGroupByToolNamePerSeverityRepresentation'
-
-export enum RepresentationType {
-  CompactGroupByRunPerLevel = 0,
-  CompactGroupByRunPerSeverity = 1,
-  CompactGroupByToolNamePerLevel = 2,
-  CompactGroupByToolNamePerSeverity = 3,
-}
+import {
+  CompactGroupBySarifPerLevelRepresentation
+} from './CompactGroupBySarifPerLevelRepresentation'
+import {
+  CompactGroupBySarifPerSeverityRepresentation
+} from './CompactGroupBySarifPerSeverityRepresentation'
+import {
+  CompactTotalPerSeverityRepresentation
+} from './CompactTotalPerSeverityRepresentation'
+import {
+  CompactTotalPerLevelRepresentation
+} from './CompactTotalPerLevelRepresentation'
 
 export function createRepresentation(
-  type: RepresentationType,
-  findings: Finding[]
+  findings: Finding[],
+  type: RepresentationType = RepresentationType.CompactGroupByToolNamePerSeverity
 ): Representation {
   switch (type) {
     case RepresentationType.CompactGroupByRunPerLevel:
@@ -29,6 +35,14 @@ export function createRepresentation(
       return new CompactGroupByToolNamePerLevelRepresentation(findings)
     case RepresentationType.CompactGroupByToolNamePerSeverity:
       return new CompactGroupByToolNamePerSeverityRepresentation(findings)
+    case RepresentationType.CompactGroupBySarifPerLevel:
+      return new CompactGroupBySarifPerLevelRepresentation(findings)
+    case RepresentationType.CompactGroupBySarifPerSeverity:
+      return new CompactGroupBySarifPerSeverityRepresentation(findings)
+    case RepresentationType.CompactTotalPerLevel:
+      return new CompactTotalPerLevelRepresentation(findings)
+    case RepresentationType.CompactTotalPerSeverity:
+      return new CompactTotalPerSeverityRepresentation(findings)
     default:
       throw new Error(`Unknown representation type: ${type}`)
   }

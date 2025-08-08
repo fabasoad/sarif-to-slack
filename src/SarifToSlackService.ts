@@ -1,117 +1,106 @@
 import { promises as fs } from 'fs'
 import Logger from './Logger'
-import { processColor, processSarifPath } from './Processors'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
-  SarifLog,
+  LogOptions,
   SarifToSlackServiceOptions,
   SlackMessage
 } from './types'
 import System from './System'
-
-/**
- * The main function to initialize a list of {@link SlackMessage} objects based
- * on the given SARIF file(s).
- * @param opts An instance of {@link SarifToSlackServiceOptions} object.
- * @returns A map where key is the SARIF file and value is an instance of
- * {@link SlackMessage} object
- * @private
- */
-async function initialize(opts: SarifToSlackServiceOptions): Promise<Map<string, SlackMessage>> {
-  const slackMessages = new Map<string, SlackMessage>();
-  const sarifFiles: string[] = processSarifPath(opts.sarifPath)
-  if (sarifFiles.length === 0) {
-    throw new Error(`No SARIF files found at the provided path: ${opts.sarifPath}`)
-  }
-
-  for (const sarifFile of sarifFiles) {
-    const jsonString: string = await fs.readFile(sarifFile, 'utf8')
-
-    const messageBuilder = new SlackMessageBuilder(opts.webhookUrl, {
-      username: opts.username,
-      iconUrl: opts.iconUrl,
-      color: processColor(opts.color),
-      sarif: JSON.parse(jsonString) as SarifLog,
-      output: opts.output,
-    })
-    if (opts.header?.include) {
-      messageBuilder.withHeader(opts.header?.value)
-    }
-    if (opts.footer?.include) {
-      messageBuilder.withFooter(opts.footer?.value, opts.footer?.type)
-    }
-    if (opts.actor?.include) {
-      messageBuilder.withActor(opts.actor?.value)
-    }
-    if (opts.run?.include) {
-      messageBuilder.withRun()
-    }
-    slackMessages.set(sarifFile, messageBuilder)
-  }
-  return slackMessages;
-}
+import { extractListOfFiles } from './utils/FileUtils'
+import { createRepresentation } from './representations/RepresentationFactory'
+import { createFinding, Finding } from './model/Finding'
+import { Log } from 'sarif'
+import { mapColor } from './mappers/ColorMapper'
 
 /**
  * Service to convert SARIF files to Slack messages and send them.
  * @public
  */
 export class SarifToSlackService {
-  private readonly _slackMessages: Map<string, SlackMessage>;
+  private _message?: SlackMessage
 
-  private constructor() {
-    this._slackMessages = new Map<string, SlackMessage>();
-  }
-
-  /**
-   * Gets the Slack messages prepared for each SARIF file.
-   * @returns A read-only map where keys are SARIF file paths and values are SlackMessage instances.
-   * @public
-   */
-  public get slackMessages(): ReadonlyMap<string, SlackMessage> {
-    return this._slackMessages;
-  }
-
-  /**
-   * Creates an instance of SarifToSlackService.
-   * @param opts - Options for the service, including webhook URL, SARIF path, and other configurations.
-   * @returns A promise that resolves to an instance of SarifToSlackService.
-   * @throws Error if no SARIF files are found at the provided path.
-   * @public
-   */
-  public static async create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService> {
-    Logger.initialize(opts.log)
+  private constructor(log?: LogOptions) {
+    Logger.initialize(log)
     System.initialize()
-    const instance: SarifToSlackService = new SarifToSlackService()
-    const map: Map<string, SlackMessage> = await initialize(opts)
-    map.forEach((val: SlackMessage, key: string) => instance._slackMessages.set(key, val))
-    return instance
   }
 
-  /**
-   * Sends all prepared Slack messages.
-   * @returns A promise that resolves when all messages have been sent.
-   * @throws Error if a Slack message was not prepared for a SARIF path.
-   * @public
-   */
-  public async sendAll(): Promise<void> {
-    for (const sarifPath of this._slackMessages.keys()) {
-      await this.send(sarifPath);
+  public static async create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService> {
+    const instance = new SarifToSlackService(opts.log)
+    instance._message = await SarifToSlackService.initialize(opts)
+    return instance;
+  }
+
+  private static async extractFindings(sarifPath: string): Promise<Finding[]> {
+    const sarifFiles: string[] = extractListOfFiles(sarifPath)
+    if (sarifFiles.length === 0) {
+      throw new Error(`No SARIF files found at the provided path: ${sarifPath}`)
     }
+
+    const findings: Finding[] = []
+    let runId = 1
+    for (const sarifPath of sarifFiles) {
+      const sarifJson: string = await fs.readFile(sarifPath, 'utf8')
+      const sarifLog: Log = JSON.parse(sarifJson) as Log
+
+      for (const run of sarifLog.runs) {
+        for (const result of run.results ?? []) {
+          findings.push(createFinding({
+            sarifPath,
+            result,
+            runOpts: {
+              id: runId++,
+              run,
+            }
+          }))
+        }
+      }
+    }
+    return findings
   }
 
   /**
-   * Sends a Slack message for a specific SARIF path.
-   * @param sarifPath - The path of the SARIF file for which the message should be sent.
+   * The main function to initialize a list of {@link SlackMessage} objects based
+   * on the given SARIF file(s).
+   * @param opts An instance of {@link SarifToSlackServiceOptions} object.
+   * @returns A map where key is the SARIF file and value is an instance of
+   * {@link SlackMessage} object
+   * @private
+   */
+  private static async initialize(opts: SarifToSlackServiceOptions): Promise<SlackMessage> {
+    const findings: Finding[] = await SarifToSlackService.extractFindings(opts.sarifPath);
+    const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
+      username: opts.username,
+      iconUrl: opts.iconUrl,
+      color: mapColor(opts.color),
+      representation: createRepresentation(findings, opts.representation),
+    })
+    if (opts.header?.include) {
+      message.withHeader(opts.header?.value)
+    }
+    if (opts.footer?.include) {
+      message.withFooter(opts.footer?.value, opts.footer?.type)
+    }
+    if (opts.actor?.include) {
+      message.withActor(opts.actor?.value)
+    }
+    if (opts.run?.include) {
+      message.withRun()
+    }
+    return message
+  }
+
+  /**
+   * Sends a Slack message.
    * @returns A promise that resolves when the message has been sent.
    * @throws Error if a Slack message was not prepared for the given SARIF path.
    * @public
    */
-  public async send(sarifPath: string): Promise<void> {
-    const message: SlackMessage | undefined = this._slackMessages.get(sarifPath)
-    if (!message) {
-      throw new Error(`Slack message was not prepared for SARIF path: ${sarifPath}.`)
+  public async send(): Promise<void> {
+    if (!this._message) {
+      throw new Error('Slack message was not prepared.')
     }
-    const text: string = await message.send()
-    Logger.info(`Message sent for ${sarifPath} file. Status:`, text)
+    const text: string = await this._message.send()
+    Logger.info(`Message sent. Status:`, text)
   }
 }

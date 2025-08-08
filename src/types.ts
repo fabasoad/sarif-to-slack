@@ -1,10 +1,4 @@
-import type { Log } from 'sarif'
-
-/**
- * Type representing a SARIF log.
- * @public
- */
-export type SarifLog = Log
+export type Func<T, R> = (input: T) => R
 
 /**
  * Interface for a Slack message that can be sent.
@@ -16,10 +10,10 @@ export interface SlackMessage {
    * @returns A promise that resolves to the response from the Slack webhook.
    */
   send: () => Promise<string>
-  /**
-   * The SARIF log associated with this Slack message.
-   */
-  sarif: SarifLog
+  withActor(actor?: string): void
+  withFooter(text?: string, type?: FooterType): void
+  withHeader(header?: string): void
+  withRun(): void
 }
 
 /**
@@ -106,57 +100,15 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
   type?: FooterType
 }
 
-/**
- * Enum representing how to group results.
- * @public
- */
-export enum GroupResultsBy {
-  /**
-   * Groups results by the tool name. Particularly, groups by the runs[].tool.driver.name
-   * property from the SARIF file(s).
-   */
-  ToolName = 0,
-  /**
-   * Groups results by the run. It provides the result from each run individually.
-   */
-  Run = 1,
-  /**
-   * Does not group results. It provides the result from all the runs from all
-   * the provided SARIF files.
-   */
-  Total = 2,
-}
-
-/**
- * Enum representing how to calculate results.
- * @public
- */
-export enum CalculateResultsBy {
-  /**
-   * Calculates results by the security level of the findings: Error, Warning,
-   * Note and Unknown. At first, it tries to get the security level from runs[].results[].level
-   * property. If it is not defined, it tries to get the security level from the
-   * respective rule of each result, using the rules[].properties['problem.severity']
-   * property.
-   */
-  Level = 0,
-  /**
-   * Calculates results by the security severity of the findings: Critical, High,
-   * Medium, Low, None and Unknown. it tries to get the security severity from the
-   * respective rule of each result, using the rules[].properties['security-severity']
-   * property. This property contains CVSS score, which is then mapped to the
-   * security severity value.
-   */
-  Severity = 1,
-}
-
-/**
- * Options for how to output the results in the Slack message.
- * @public
- */
-export type SarifToSlackOutput = {
-  groupBy?: GroupResultsBy,
-  calculateBy?: CalculateResultsBy,
+export enum RepresentationType {
+  CompactGroupByRunPerLevel = 0,
+  CompactGroupByRunPerSeverity = 1,
+  CompactGroupByToolNamePerLevel = 2,
+  CompactGroupByToolNamePerSeverity = 3,
+  CompactGroupBySarifPerLevel = 4,
+  CompactGroupBySarifPerSeverity = 5,
+  CompactTotalPerLevel = 6,
+  CompactTotalPerSeverity = 7,
 }
 
 /**
@@ -188,5 +140,30 @@ export type SarifToSlackServiceOptions = {
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,
   run?: IncludeAwareOptions,
-  output?: SarifToSlackOutput,
+  representation?: RepresentationType,
+}
+
+/**
+ * Enum of security severity.
+ * @internal
+ */
+export enum SecuritySeverity {
+  Unknown = 'Unknown',
+  None = 'None',
+  Low = 'Low',
+  Medium = 'Medium',
+  High = 'High',
+  Critical = 'Critical'
+}
+
+/**
+ * Enum of security level.
+ * @internal
+ */
+export enum SecurityLevel {
+  Unknown = 'Unknown',
+  None = 'None',
+  Note = 'Note',
+  Warning = 'Warning',
+  Error = 'Error'
 }

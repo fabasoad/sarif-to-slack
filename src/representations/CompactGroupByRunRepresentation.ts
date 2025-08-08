@@ -8,8 +8,8 @@ export default abstract class CompactGroupByRunRepresentation extends CompactGro
   }
 
   protected override composeGroupTitle(f: Finding): string {
-    const run: string = this.italic(`[Run ${f.runId}]`)
+    const prefix: string = this.italic(`[Run ${f.runId}]`)
     const toolName: string = this.bold(f.toolName)
-    return `${run}: ${toolName}`
+    return `${prefix} ${toolName}`
   }
 }
