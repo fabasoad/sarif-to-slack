@@ -73,7 +73,7 @@ export class SarifToSlackService {
 // @public
 export type SarifToSlackServiceOptions = {
     webhookUrl: string;
-    sarifPath: string;
+    sarif: SarifOptions;
     username?: string;
     iconUrl?: string;
     color?: string;
@@ -97,5 +97,9 @@ export interface SlackMessage {
     // (undocumented)
     withRun(): void;
 }
+
+// Warnings were encountered during analysis:
+//
+// src/types.ts:145:3 - (ae-forgotten-export) The symbol "SarifOptions" needs to be exported by the entry point index.d.ts
 
 ```
