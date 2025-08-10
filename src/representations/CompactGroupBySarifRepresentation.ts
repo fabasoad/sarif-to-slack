@@ -1,27 +1,29 @@
-import { Finding } from '../model/Finding'
-import CompactGroupByRepresentation, {
-  GroupBy
-} from './CompactGroupByRepresentation'
 import path from 'node:path'
+import { Finding } from '../model/Finding'
+import CompactGroupByRepresentation from './CompactGroupByRepresentation'
 import { SarifModel } from '../types'
 
 export default abstract class CompactGroupBySarifRepresentation extends CompactGroupByRepresentation {
-  private readonly _cache: string[] = []
 
   public constructor(model: SarifModel) {
     super(model, 'sarifPath')
   }
 
-  protected override get groupBy(): GroupBy {
-    return GroupBy.Sarif
+  protected override groupFindings(): Map<string, Finding[]> {
+    const result = new Map<string, Finding[]>()
+    for (let index = 0; index < this._model.sarifFiles.length; index++) {
+      const key: string = this.composeGroupTitle(this._model.sarifFiles[index], index)
+      if (result.get(key) == null) {
+        result.set(key, [])
+      }
+      this._model.findings
+        .filter((f: Finding): boolean => f.sarifPath === this._model.sarifFiles[index])
+        .forEach((f: Finding) => result.get(key)?.push(f))
+    }
+    return result
   }
 
-  protected override composeGroupTitle(f: Finding): string {
-    if (!this._cache.includes(f.sarifPath)) {
-      this._cache.push(f.sarifPath)
-    }
-    const prefix: string = this.italic(`[File ${this._cache.indexOf(f.sarifPath) + 1}]`)
-    const sarifPath: string = this.bold(path.basename(f.sarifPath))
-    return `${prefix} ${sarifPath}`
+  private composeGroupTitle(sarifPath: string, index: number): string {
+    return `${this.italic(`[File ${index + 1}]`)} ${this.bold(path.basename(sarifPath))}`
   }
 }

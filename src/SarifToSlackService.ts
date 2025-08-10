@@ -2,7 +2,10 @@ import { promises as fs } from 'fs'
 import Logger from './Logger'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
-  LogOptions, RunMetadata, SarifModel,
+  LogOptions,
+  RunMetadata,
+  SarifModel,
+  SarifOptions,
   SarifToSlackServiceOptions,
   SlackMessage
 } from './types'
@@ -12,6 +15,7 @@ import { createRepresentation } from './representations/RepresentationFactory'
 import { createFinding } from './model/Finding'
 import { Log } from 'sarif'
 import { mapColor } from './mappers/ColorMapper'
+import { findToolComponent, findToolComponentDriver } from './utils/SarifUtils'
 
 /**
  * Service to convert SARIF files to Slack messages and send them.
@@ -31,10 +35,10 @@ export class SarifToSlackService {
     return instance;
   }
 
-  private static async buildModel(sarifPath: string): Promise<SarifModel> {
-    const sarifFiles: string[] = extractListOfFiles(sarifPath)
+  private static async buildModel(sarifOpts: SarifOptions): Promise<SarifModel> {
+    const sarifFiles: string[] = extractListOfFiles(sarifOpts)
     if (sarifFiles.length === 0) {
-      throw new Error(`No SARIF files found at the provided path: ${sarifPath}`)
+      throw new Error(`No SARIF files found at the provided path: ${sarifOpts.path}`)
     }
 
     const model: SarifModel = { sarifFiles, runs: [], findings: [] }
@@ -44,11 +48,20 @@ export class SarifToSlackService {
       const sarifLog: Log = JSON.parse(sarifJson) as Log
 
       for (const run of sarifLog.runs) {
-        const runMetadata: RunMetadata = { id: runId++, run }
-        model.runs.push(runMetadata)
+        let runMetadata: RunMetadata | undefined = undefined
         for (const result of run.results ?? []) {
+          runMetadata = {
+            id: runId,
+            run,
+            toolName: findToolComponent(run, result).name
+          }
           model.findings.push(createFinding({ sarifPath, result, runMetadata }))
         }
+        runMetadata ??= {
+          id: runId, run, toolName: findToolComponentDriver(run).name
+        }
+        model.runs.push(runMetadata)
+        runId++
       }
     }
     return model
@@ -63,11 +76,11 @@ export class SarifToSlackService {
    * @private
    */
   private static async initialize(opts: SarifToSlackServiceOptions): Promise<SlackMessage> {
-    const model: SarifModel = await SarifToSlackService.buildModel(opts.sarifPath)
+    const model: SarifModel = await SarifToSlackService.buildModel(opts.sarif)
     const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
-      color: mapColor(opts.color),
+      color: mapColor(opts.color), // TODO: color if no vulns found
       representation: createRepresentation(model, opts.representation),
     })
     if (opts.header?.include) {

@@ -1,5 +1,5 @@
-import { Run } from 'sarif';
-import { Finding } from './model/Finding';
+import { Finding } from './model/Finding'
+import { Run } from 'sarif'
 
 export type Func<T, R> = (input: T) => R
 
@@ -127,6 +127,14 @@ export type LogOptions = {
   colored?: boolean,
 }
 
+export type SarifFileExtension = 'sarif' | 'json'
+
+export type SarifOptions = {
+  path: string,
+  recursive?: boolean,
+  extension?: SarifFileExtension,
+}
+
 /**
  * Options for the SarifToSlackService.
  * @public
@@ -134,7 +142,7 @@ export type LogOptions = {
 export type SarifToSlackServiceOptions = {
   // The Slack webhook URL to send messages to.
   webhookUrl: string,
-  sarifPath: string,
+  sarif: SarifOptions,
   username?: string,
   iconUrl?: string,
   color?: string,
@@ -174,6 +182,7 @@ export enum SecurityLevel {
 export type RunMetadata = {
   id: number,
   run: Run,
+  toolName: string,
 }
 
 /**

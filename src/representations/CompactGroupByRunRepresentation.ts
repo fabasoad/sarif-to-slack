@@ -1,7 +1,5 @@
 import { Finding } from '../model/Finding'
-import CompactGroupByRepresentation, {
-  GroupBy
-} from './CompactGroupByRepresentation'
+import CompactGroupByRepresentation from './CompactGroupByRepresentation'
 import { SarifModel } from '../types'
 
 export default abstract class CompactGroupByRunRepresentation extends CompactGroupByRepresentation {
@@ -10,13 +8,21 @@ export default abstract class CompactGroupByRunRepresentation extends CompactGro
     super(model, 'runId')
   }
 
-  protected override get groupBy(): GroupBy {
-    return GroupBy.Run
+  protected override groupFindings(): Map<string, Finding[]> {
+    const result = new Map<string, Finding[]>()
+    for (const run of this._model.runs) {
+      const key: string = this.composeGroupTitle(run.id, run.toolName)
+      if (result.get(key) == null) {
+        result.set(key, [])
+      }
+      this._model.findings
+        .filter((f: Finding): boolean => f.runId === run.id)
+        .forEach((f: Finding) => result.get(key)?.push(f))
+    }
+    return result
   }
 
-  protected override composeGroupTitle(f: Finding): string {
-    const prefix: string = this.italic(`[Run ${f.runId}]`)
-    const toolName: string = this.bold(f.toolName)
-    return `${prefix} ${toolName}`
+  private composeGroupTitle(runId: number, toolName: string): string {
+    return `${this.italic(`[Run ${runId}]`)} ${this.bold(toolName)}`
   }
 }

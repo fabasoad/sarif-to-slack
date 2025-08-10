@@ -1,0 +1,65 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "grype",
+          "version": "0.97.2",
+          "informationUri": "https://github.com/anchore/grype",
+          "rules": [
+            {
+              "id": "GHSA-cxww-7g56-2vh6-actions/download-artifact",
+              "name": "StockMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "GHSA-cxww-7g56-2vh6 high vulnerability for actions/download-artifact package"
+              },
+              "fullDescription": {
+                "text": "@actions/download-artifact has an Arbitrary File Write via artifact extraction"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability GHSA-cxww-7g56-2vh6\nSeverity: high\nPackage: actions/download-artifact\nVersion: v4\nFix Version: 4.1.3\nType: github-action\nLocation: /.github/workflows/wf-security-sast.yml\nData Namespace: github:language:github-action\nLink: [GHSA-cxww-7g56-2vh6](https://github.com/advisories/GHSA-cxww-7g56-2vh6)",
+                "markdown": "**Vulnerability GHSA-cxww-7g56-2vh6**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | actions/download-artifact  | v4  | 4.1.3  | github-action  | /.github/workflows/wf-security-sast.yml  | github:language:github-action  | [GHSA-cxww-7g56-2vh6](https://github.com/advisories/GHSA-cxww-7g56-2vh6)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:github/actions/download-artifact@v4"
+                ],
+                "security-severity": "7.3"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "GHSA-cxww-7g56-2vh6-actions/download-artifact",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in github-action package: actions/download-artifact, version v4 was found at: /.github/workflows/wf-security-sast.yml"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/.github/workflows/wf-security-sast.yml"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e581772bcbbe2b26307c242a396bfaf1ff19a40b24166cd08eac1cc0718a15c4:1"
+          }
+        }
+      ]
+    }
+  ]
+}

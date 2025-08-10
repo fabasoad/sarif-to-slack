@@ -58,7 +58,10 @@ describe('(integration): SendSarifToSlack', () => {
       username: process.env.SARIF_TO_SLACK_USERNAME,
       iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
       color: process.env.SARIF_TO_SLACK_COLOR,
-      sarifPath: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
+      sarif: {
+        path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
+        recursive: true,
+      },
       log: {
         level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),
       },

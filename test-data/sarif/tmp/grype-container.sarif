@@ -1,0 +1,1774 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "grype",
+          "version": "0.91.2",
+          "informationUri": "https://github.com/anchore/grype",
+          "rules": [
+            {
+              "id": "CVE-2024-9410-ada-libs",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-9410 medium vulnerability for ada-libs package"
+              },
+              "fullDescription": {
+                "text": "Ada.cx's Sentry configuration allowed for blind server-side request forgeries (SSRF) through the use of a data scraping endpoint."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-9410\nSeverity: medium\nPackage: ada-libs\nVersion: 2.9.2-r1\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2024-9410](https://nvd.nist.gov/vuln/detail/CVE-2024-9410)",
+                "markdown": "**Vulnerability CVE-2024-9410**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | ada-libs  | 2.9.2-r1  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2024-9410](https://nvd.nist.gov/vuln/detail/CVE-2024-9410)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/ada-libs@2.9.2-r1?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=ada"
+                ],
+                "security-severity": "5.3"
+              }
+            },
+            {
+              "id": "CVE-2024-58251-busybox",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-58251 low vulnerability for busybox package"
+              },
+              "fullDescription": {
+                "text": "In netstat in BusyBox through 1.37.0, local users can launch of network application with an argv[0] containing an ANSI terminal escape sequence, leading to a denial of service (terminal locked up) when netstat is used by a victim."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-58251\nSeverity: low\nPackage: busybox\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)",
+                "markdown": "**Vulnerability CVE-2024-58251**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | busybox  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/busybox@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3"
+                ],
+                "security-severity": "2.5"
+              }
+            },
+            {
+              "id": "CVE-2025-46394-busybox",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-46394 low vulnerability for busybox package"
+              },
+              "fullDescription": {
+                "text": "In tar in BusyBox through 1.37.0, a TAR archive can have filenames hidden from a listing through the use of terminal escape sequences."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-46394\nSeverity: low\nPackage: busybox\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)",
+                "markdown": "**Vulnerability CVE-2025-46394**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | busybox  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/busybox@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3"
+                ],
+                "security-severity": "3.2"
+              }
+            },
+            {
+              "id": "CVE-2024-58251-busybox-binsh",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-58251 low vulnerability for busybox-binsh package"
+              },
+              "fullDescription": {
+                "text": "In netstat in BusyBox through 1.37.0, local users can launch of network application with an argv[0] containing an ANSI terminal escape sequence, leading to a denial of service (terminal locked up) when netstat is used by a victim."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-58251\nSeverity: low\nPackage: busybox-binsh\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)",
+                "markdown": "**Vulnerability CVE-2024-58251**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | busybox-binsh  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/busybox-binsh@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=busybox"
+                ],
+                "security-severity": "2.5"
+              }
+            },
+            {
+              "id": "CVE-2025-46394-busybox-binsh",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-46394 low vulnerability for busybox-binsh package"
+              },
+              "fullDescription": {
+                "text": "In tar in BusyBox through 1.37.0, a TAR archive can have filenames hidden from a listing through the use of terminal escape sequences."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-46394\nSeverity: low\nPackage: busybox-binsh\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)",
+                "markdown": "**Vulnerability CVE-2025-46394**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | busybox-binsh  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/busybox-binsh@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=busybox"
+                ],
+                "security-severity": "3.2"
+              }
+            },
+            {
+              "id": "CVE-2025-30204-github.com/golang-jwt/jwt/v4",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2025-30204 high vulnerability for github.com/golang-jwt/jwt/v4 package"
+              },
+              "fullDescription": {
+                "text": "jwt-go allows excessive memory allocation during header parsing"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-30204\nSeverity: high\nPackage: github.com/golang-jwt/jwt/v4\nVersion: v4.5.1\nFix Version: 4.5.2\nType: go-module\nLocation: /usr/local/bin/terraform\nData Namespace: github:language:go\nLink: [CVE-2025-30204](https://github.com/advisories/GHSA-mh63-6h87-95cp)",
+                "markdown": "**Vulnerability CVE-2025-30204**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | github.com/golang-jwt/jwt/v4  | v4.5.1  | 4.5.2  | go-module  | /usr/local/bin/terraform  | github:language:go  | [CVE-2025-30204](https://github.com/advisories/GHSA-mh63-6h87-95cp)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/github.com/golang-jwt/jwt@v4.5.1#v4"
+                ],
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "CVE-2024-6257-github.com/hashicorp/go-getter",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2024-6257 high vulnerability for github.com/hashicorp/go-getter package"
+              },
+              "fullDescription": {
+                "text": "HashiCorp go-getter Vulnerable to Code Execution On Git Update Via Git Config Manipulation"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-6257\nSeverity: high\nPackage: github.com/hashicorp/go-getter\nVersion: v1.7.4\nFix Version: 1.7.5\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: github:language:go\nLink: [CVE-2024-6257](https://github.com/advisories/GHSA-xfhp-jf8p-mh5w)",
+                "markdown": "**Vulnerability CVE-2024-6257**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | github.com/hashicorp/go-getter  | v1.7.4  | 1.7.5  | go-module  | /usr/bin/tflint  | github:language:go  | [CVE-2024-6257](https://github.com/advisories/GHSA-xfhp-jf8p-mh5w)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/github.com/hashicorp/go-getter@v1.7.4"
+                ],
+                "security-severity": "8.4"
+              }
+            },
+            {
+              "id": "CVE-2024-45337-golang.org/x/crypto",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2024-45337 critical vulnerability for golang.org/x/crypto package"
+              },
+              "fullDescription": {
+                "text": "Misuse of ServerConfig.PublicKeyCallback may cause authorization bypass in golang.org/x/crypto"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-45337\nSeverity: critical\nPackage: golang.org/x/crypto\nVersion: v0.23.0\nFix Version: 0.31.0\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: github:language:go\nLink: [CVE-2024-45337](https://github.com/advisories/GHSA-v778-237x-gjrc)",
+                "markdown": "**Vulnerability CVE-2024-45337**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| critical  | golang.org/x/crypto  | v0.23.0  | 0.31.0  | go-module  | /usr/bin/tflint  | github:language:go  | [CVE-2024-45337](https://github.com/advisories/GHSA-v778-237x-gjrc)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/golang.org/x/crypto@v0.23.0"
+                ],
+                "security-severity": "9.1"
+              }
+            },
+            {
+              "id": "CVE-2025-22869-golang.org/x/crypto",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2025-22869 high vulnerability for golang.org/x/crypto package"
+              },
+              "fullDescription": {
+                "text": "golang.org/x/crypto Vulnerable to Denial of Service (DoS) via Slow or Incomplete Key Exchange"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-22869\nSeverity: high\nPackage: golang.org/x/crypto\nVersion: v0.23.0\nFix Version: 0.35.0\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: github:language:go\nLink: [CVE-2025-22869](https://github.com/advisories/GHSA-hcg3-q754-cr77)",
+                "markdown": "**Vulnerability CVE-2025-22869**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | golang.org/x/crypto  | v0.23.0  | 0.35.0  | go-module  | /usr/bin/tflint  | github:language:go  | [CVE-2025-22869](https://github.com/advisories/GHSA-hcg3-q754-cr77)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/golang.org/x/crypto@v0.23.0"
+                ],
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "CVE-2025-22870-golang.org/x/net",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2025-22870 medium vulnerability for golang.org/x/net package"
+              },
+              "fullDescription": {
+                "text": "HTTP Proxy bypass using IPv6 Zone IDs in golang.org/x/net"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-22870\nSeverity: medium\nPackage: golang.org/x/net\nVersion: v0.25.0\nFix Version: 0.36.0\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: github:language:go\nLink: [CVE-2025-22870](https://github.com/advisories/GHSA-qxp5-gwg8-xv66)",
+                "markdown": "**Vulnerability CVE-2025-22870**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | golang.org/x/net  | v0.25.0  | 0.36.0  | go-module  | /usr/bin/tflint  | github:language:go  | [CVE-2025-22870](https://github.com/advisories/GHSA-qxp5-gwg8-xv66)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/golang.org/x/net@v0.25.0"
+                ],
+                "security-severity": "4.4"
+              }
+            },
+            {
+              "id": "CVE-2025-22872-golang.org/x/net",
+              "name": "GoModuleMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2025-22872 medium vulnerability for golang.org/x/net package"
+              },
+              "fullDescription": {
+                "text": "golang.org/x/net vulnerable to Cross-site Scripting"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-22872\nSeverity: medium\nPackage: golang.org/x/net\nVersion: v0.25.0\nFix Version: 0.38.0\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: github:language:go\nLink: [CVE-2025-22872](https://github.com/advisories/GHSA-vvgc-356p-c3xw)",
+                "markdown": "**Vulnerability CVE-2025-22872**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | golang.org/x/net  | v0.25.0  | 0.38.0  | go-module  | /usr/bin/tflint  | github:language:go  | [CVE-2025-22872](https://github.com/advisories/GHSA-vvgc-356p-c3xw)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/golang.org/x/net@v0.25.0"
+                ],
+                "security-severity": "4.0"
+              }
+            },
+            {
+              "id": "CVE-2023-2976-guava",
+              "name": "JavaMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2023-2976 medium vulnerability for guava package"
+              },
+              "fullDescription": {
+                "text": "Guava vulnerable to insecure use of temporary directory"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2023-2976\nSeverity: medium\nPackage: guava\nVersion: 30.1-jre\nFix Version: 32.0.0-android\nType: java-archive\nLocation: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar\nData Namespace: github:language:java\nLink: [CVE-2023-2976](https://github.com/advisories/GHSA-7g45-4rm6-3mm3)",
+                "markdown": "**Vulnerability CVE-2023-2976**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | guava  | 30.1-jre  | 32.0.0-android  | java-archive  | /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar  | github:language:java  | [CVE-2023-2976](https://github.com/advisories/GHSA-7g45-4rm6-3mm3)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:maven/com.google.guava/guava@30.1-jre"
+                ],
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "CVE-2020-8908-guava",
+              "name": "JavaMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2020-8908 low vulnerability for guava package"
+              },
+              "fullDescription": {
+                "text": "Information Disclosure in Guava"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2020-8908\nSeverity: low\nPackage: guava\nVersion: 30.1-jre\nFix Version: 32.0.0-android\nType: java-archive\nLocation: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar\nData Namespace: github:language:java\nLink: [CVE-2020-8908](https://github.com/advisories/GHSA-5mg8-w23w-74h3)",
+                "markdown": "**Vulnerability CVE-2020-8908**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | guava  | 30.1-jre  | 32.0.0-android  | java-archive  | /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar  | github:language:java  | [CVE-2020-8908](https://github.com/advisories/GHSA-5mg8-w23w-74h3)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:maven/com.google.guava/guava@30.1-jre"
+                ],
+                "security-severity": "3.3"
+              }
+            },
+            {
+              "id": "CVE-2024-7254-protobuf-java",
+              "name": "JavaMatcherExactDirectMatch",
+              "shortDescription": {
+                "text": "CVE-2024-7254 high vulnerability for protobuf-java package"
+              },
+              "fullDescription": {
+                "text": "protobuf-java has potential Denial of Service issue"
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-7254\nSeverity: high\nPackage: protobuf-java\nVersion: 3.19.6\nFix Version: 3.25.5\nType: java-archive\nLocation: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar\nData Namespace: github:language:java\nLink: [CVE-2024-7254](https://github.com/advisories/GHSA-735f-pc8j-v9w8)",
+                "markdown": "**Vulnerability CVE-2024-7254**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | protobuf-java  | 3.19.6  | 3.25.5  | java-archive  | /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar  | github:language:java  | [CVE-2024-7254](https://github.com/advisories/GHSA-735f-pc8j-v9w8)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:maven/com.google.protobuf/protobuf-java@3.19.6"
+                ],
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "CVE-2025-4516-python3",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-4516 medium vulnerability for python3 package"
+              },
+              "fullDescription": {
+                "text": "There is an issue in CPython when using `bytes.decode(\"unicode_escape\", error=\"ignore|replace\")`. If you are not using the \"unicode_escape\" encoding or an error handler your usage is not affected. To work-around this issue you may stop using the error= handler and instead wrap the bytes.decode() call in a try-except catching the DecodeError."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-4516\nSeverity: medium\nPackage: python3\nVersion: 3.12.10-r0\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2025-4516](https://nvd.nist.gov/vuln/detail/CVE-2025-4516)",
+                "markdown": "**Vulnerability CVE-2025-4516**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | python3  | 3.12.10-r0  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2025-4516](https://nvd.nist.gov/vuln/detail/CVE-2025-4516)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/python3@3.12.10-r0?arch=aarch64\u0026distro=alpine-3.21.3"
+                ],
+                "security-severity": "5.9"
+              }
+            },
+            {
+              "id": "CVE-2024-3220-python3",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-3220 low vulnerability for python3 package"
+              },
+              "fullDescription": {
+                "text": "There is a defect in the CPython standard library module “mimetypes” where on Windows the default list of known file locations are writable meaning other users can create invalid files to cause MemoryError to be raised on Python runtime startup or have file extensions be interpreted as the incorrect file type.\n\nThis defect is caused by the default locations of Linux and macOS platforms (such as “/etc/mime.types”) also being used on Windows, where they are user-writable locations (“C:\\etc\\mime.types”).\n\nTo work-around this issue a user can call mimetypes.init() with an empty list (“[]”) on Windows platforms to avoid using the default list of known file locations."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-3220\nSeverity: low\nPackage: python3\nVersion: 3.12.10-r0\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2024-3220](https://nvd.nist.gov/vuln/detail/CVE-2024-3220)",
+                "markdown": "**Vulnerability CVE-2024-3220**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | python3  | 3.12.10-r0  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2024-3220](https://nvd.nist.gov/vuln/detail/CVE-2024-3220)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/python3@3.12.10-r0?arch=aarch64\u0026distro=alpine-3.21.3"
+                ],
+                "security-severity": "2.3"
+              }
+            },
+            {
+              "id": "CVE-2025-3277-sqlite-libs",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-3277 medium vulnerability for sqlite-libs package"
+              },
+              "fullDescription": {
+                "text": "An integer overflow can be triggered in SQLite’s `concat_ws()` function. The resulting, truncated integer is then used to allocate a buffer. When SQLite then writes the resulting string to the buffer, it uses the original, untruncated size and thus a wild Heap Buffer overflow of size ~4GB can be triggered. This can result in arbitrary code execution."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-3277\nSeverity: medium\nPackage: sqlite-libs\nVersion: 3.48.0-r2\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2025-3277](https://nvd.nist.gov/vuln/detail/CVE-2025-3277)",
+                "markdown": "**Vulnerability CVE-2025-3277**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | sqlite-libs  | 3.48.0-r2  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2025-3277](https://nvd.nist.gov/vuln/detail/CVE-2025-3277)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/sqlite-libs@3.48.0-r2?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=sqlite"
+                ],
+                "security-severity": "6.9"
+              }
+            },
+            {
+              "id": "CVE-2024-58251-ssl_client",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-58251 low vulnerability for ssl_client package"
+              },
+              "fullDescription": {
+                "text": "In netstat in BusyBox through 1.37.0, local users can launch of network application with an argv[0] containing an ANSI terminal escape sequence, leading to a denial of service (terminal locked up) when netstat is used by a victim."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-58251\nSeverity: low\nPackage: ssl_client\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)",
+                "markdown": "**Vulnerability CVE-2024-58251**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | ssl_client  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2024-58251](https://nvd.nist.gov/vuln/detail/CVE-2024-58251)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/ssl_client@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=busybox"
+                ],
+                "security-severity": "2.5"
+              }
+            },
+            {
+              "id": "CVE-2025-46394-ssl_client",
+              "name": "ApkMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-46394 low vulnerability for ssl_client package"
+              },
+              "fullDescription": {
+                "text": "In tar in BusyBox through 1.37.0, a TAR archive can have filenames hidden from a listing through the use of terminal escape sequences."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-46394\nSeverity: low\nPackage: ssl_client\nVersion: 1.37.0-r12\nFix Version: \nType: apk\nLocation: /lib/apk/db/installed\nData Namespace: nvd:cpe\nLink: [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)",
+                "markdown": "**Vulnerability CVE-2025-46394**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| low  | ssl_client  | 1.37.0-r12  |   | apk  | /lib/apk/db/installed  | nvd:cpe  | [CVE-2025-46394](https://nvd.nist.gov/vuln/detail/CVE-2025-46394)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:apk/alpine/ssl_client@1.37.0-r12?arch=aarch64\u0026distro=alpine-3.21.3\u0026upstream=busybox"
+                ],
+                "security-severity": "3.2"
+              }
+            },
+            {
+              "id": "CVE-2025-22871-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-22871 critical vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "The net/http package improperly accepts a bare LF as a line terminator in chunked data chunk-size lines. This can permit request smuggling if a net/http server is used in conjunction with a server that incorrectly accepts a bare LF as part of a chunk-ext."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-22871\nSeverity: critical\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.23.8,1.24.2\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2025-22871](https://nvd.nist.gov/vuln/detail/CVE-2025-22871)",
+                "markdown": "**Vulnerability CVE-2025-22871**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| critical  | stdlib  | go1.22.5  | 1.23.8,1.24.2  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2025-22871](https://nvd.nist.gov/vuln/detail/CVE-2025-22871)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "9.1"
+              }
+            },
+            {
+              "id": "CVE-2024-34156-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-34156 high vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "Calling Decoder.Decode on a message which contains deeply nested structures can cause a panic due to stack exhaustion. This is a follow-up to CVE-2022-30635."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-34156\nSeverity: high\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.7,1.23.1\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2024-34156](https://nvd.nist.gov/vuln/detail/CVE-2024-34156)",
+                "markdown": "**Vulnerability CVE-2024-34156**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | stdlib  | go1.22.5  | 1.22.7,1.23.1  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2024-34156](https://nvd.nist.gov/vuln/detail/CVE-2024-34156)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "CVE-2024-34158-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-34158 high vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "Calling Parse on a \"// +build\" build tag line with deeply nested expressions can cause a panic due to stack exhaustion."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-34158\nSeverity: high\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.7,1.23.1\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2024-34158](https://nvd.nist.gov/vuln/detail/CVE-2024-34158)",
+                "markdown": "**Vulnerability CVE-2024-34158**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| high  | stdlib  | go1.22.5  | 1.22.7,1.23.1  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2024-34158](https://nvd.nist.gov/vuln/detail/CVE-2024-34158)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "7.5"
+              }
+            },
+            {
+              "id": "CVE-2024-34155-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-34155 medium vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "Calling any of the Parse functions on Go source code which contains deeply nested literals can cause a panic due to stack exhaustion."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-34155\nSeverity: medium\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.7,1.23.1\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2024-34155](https://nvd.nist.gov/vuln/detail/CVE-2024-34155)",
+                "markdown": "**Vulnerability CVE-2024-34155**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | stdlib  | go1.22.5  | 1.22.7,1.23.1  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2024-34155](https://nvd.nist.gov/vuln/detail/CVE-2024-34155)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "4.3"
+              }
+            },
+            {
+              "id": "CVE-2024-45336-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-45336 medium vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "The HTTP client drops sensitive headers after following a cross-domain redirect. For example, a request to a.com/ containing an Authorization header which is redirected to b.com/ will not send that header to b.com. In the event that the client received a subsequent same-domain redirect, however, the sensitive headers would be restored. For example, a chain of redirects from a.com/, to b.com/1, and finally to b.com/2 would incorrectly send the Authorization header to b.com/2."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-45336\nSeverity: medium\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.11,1.23.5,1.24.0-rc.2\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2024-45336](https://nvd.nist.gov/vuln/detail/CVE-2024-45336)",
+                "markdown": "**Vulnerability CVE-2024-45336**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | stdlib  | go1.22.5  | 1.22.11,1.23.5,1.24.0-rc.2  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2024-45336](https://nvd.nist.gov/vuln/detail/CVE-2024-45336)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "6.1"
+              }
+            },
+            {
+              "id": "CVE-2024-45341-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2024-45341 medium vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "A certificate with a URI which has a IPv6 address with a zone ID may incorrectly satisfy a URI name constraint that applies to the certificate chain. Certificates containing URIs are not permitted in the web PKI, so this only affects users of private PKIs which make use of URIs."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2024-45341\nSeverity: medium\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.11,1.23.5,1.24.0-rc.2\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2024-45341](https://nvd.nist.gov/vuln/detail/CVE-2024-45341)",
+                "markdown": "**Vulnerability CVE-2024-45341**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | stdlib  | go1.22.5  | 1.22.11,1.23.5,1.24.0-rc.2  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2024-45341](https://nvd.nist.gov/vuln/detail/CVE-2024-45341)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "6.1"
+              }
+            },
+            {
+              "id": "CVE-2025-22866-stdlib",
+              "name": "GoModuleMatcherCpeMatch",
+              "shortDescription": {
+                "text": "CVE-2025-22866 medium vulnerability for stdlib package"
+              },
+              "fullDescription": {
+                "text": "Due to the usage of a variable time instruction in the assembly implementation of an internal function, a small number of bits of secret scalars are leaked on the ppc64le architecture. Due to the way this function is used, we do not believe this leakage is enough to allow recovery of the private key when P-256 is used in any well known protocols."
+              },
+              "helpUri": "https://github.com/anchore/grype",
+              "help": {
+                "text": "Vulnerability CVE-2025-22866\nSeverity: medium\nPackage: stdlib\nVersion: go1.22.5\nFix Version: 1.22.12,1.23.6,1.24.0-rc.3\nType: go-module\nLocation: /usr/bin/tflint\nData Namespace: nvd:cpe\nLink: [CVE-2025-22866](https://nvd.nist.gov/vuln/detail/CVE-2025-22866)",
+                "markdown": "**Vulnerability CVE-2025-22866**\n| Severity | Package | Version | Fix Version | Type | Location | Data Namespace | Link |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| medium  | stdlib  | go1.22.5  | 1.22.12,1.23.6,1.24.0-rc.3  | go-module  | /usr/bin/tflint  | nvd:cpe  | [CVE-2025-22866](https://nvd.nist.gov/vuln/detail/CVE-2025-22866)  |\n"
+              },
+              "properties": {
+                "purls": [
+                  "pkg:golang/stdlib@1.22.5"
+                ],
+                "security-severity": "4.0"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2024-9410-ada-libs",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in apk package: ada-libs, version 2.9.2-r1 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "dacd19d5f90c2001209a8ea8cd1bf33ec916efdeb844460fb243a344a77b24f5:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-58251-busybox",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: busybox, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6bd4cba81f5ce02baec755eeb33f364ae5361316964e3bc078eee22155c6755f:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-46394-busybox",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: busybox, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6bd4cba81f5ce02baec755eeb33f364ae5361316964e3bc078eee22155c6755f:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-58251-busybox-binsh",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: busybox-binsh, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "43fb898e4d18f31afb60ab8be546425afa5b5221aa45608402980b92c64c43fe:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-46394-busybox-binsh",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: busybox-binsh, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "43fb898e4d18f31afb60ab8be546425afa5b5221aa45608402980b92c64c43fe:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-30204-github.com/golang-jwt/jwt/v4",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in go-module package: github.com/golang-jwt/jwt/v4, version v4.5.1 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "ae44edd9e52af97334967c1a8dec6b9de008df538dc185a6136a0643cd50aec5:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-6257-github.com/hashicorp/go-getter",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in go-module package: github.com/hashicorp/go-getter, version v1.7.4 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e49d6048254f345008d6c3d2fa94a769c25db46f916509df0cd3f2c7575dfba7:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45337-golang.org/x/crypto",
+          "level": "error",
+          "message": {
+            "text": "A critical vulnerability in go-module package: golang.org/x/crypto, version v0.23.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6956a49b025d2f92fc802e958e216ba5c5730e61fbeb6837bcacf8193dc8218b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22869-golang.org/x/crypto",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in go-module package: golang.org/x/crypto, version v0.23.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6956a49b025d2f92fc802e958e216ba5c5730e61fbeb6837bcacf8193dc8218b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22870-golang.org/x/net",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: golang.org/x/net, version v0.25.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f06d422ba1cad448bfe519698c2c3b1f6a80804683e6faa0cab82bc1e02fc6dd:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22872-golang.org/x/net",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: golang.org/x/net, version v0.25.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f06d422ba1cad448bfe519698c2c3b1f6a80804683e6faa0cab82bc1e02fc6dd:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22870-golang.org/x/net",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: golang.org/x/net, version v0.31.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/yq"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/yq"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/yq",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e39cdc67e1ad7c5fdedcff81cb670fe00f474b79e098bb239db8f00bca127cce:/usr/bin/yq"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6fed058812c4d8ed8b28fb11565af97162dddd177ac668b2d8478977d9e48b76:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22872-golang.org/x/net",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: golang.org/x/net, version v0.31.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/yq"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/yq"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/yq",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e39cdc67e1ad7c5fdedcff81cb670fe00f474b79e098bb239db8f00bca127cce:/usr/bin/yq"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "6fed058812c4d8ed8b28fb11565af97162dddd177ac668b2d8478977d9e48b76:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22872-golang.org/x/net",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: golang.org/x/net, version v0.36.0 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9b044ae0c9bdc448e5f20f4c753ba5cb6d12d12f02ce2566edc0b0d747552c46:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2023-2976-guava",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in java-archive package: guava, version 30.1-jre was found in image localhost/pre-commit-container:1747457987 at: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e01fafb63716149fe7030a2f53c5d3f27f7681debf41b58fe6860bdb8438d42a:/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "cdfab17ebac116a4245cb7eb15c8873231e9d093770f65b1aef5ba3fe6aa72b8:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2023-2976-guava",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in java-archive package: guava, version 30.1-jre was found in image localhost/pre-commit-container:1747457987 at: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e01fafb63716149fe7030a2f53c5d3f27f7681debf41b58fe6860bdb8438d42a:/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "137ed462eae9acd5434c1737e9de25e0f8b368bc78ed934120f90f935e4acd08:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2020-8908-guava",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in java-archive package: guava, version 30.1-jre was found in image localhost/pre-commit-container:1747457987 at: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e01fafb63716149fe7030a2f53c5d3f27f7681debf41b58fe6860bdb8438d42a:/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "cdfab17ebac116a4245cb7eb15c8873231e9d093770f65b1aef5ba3fe6aa72b8:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2020-8908-guava",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in java-archive package: guava, version 30.1-jre was found in image localhost/pre-commit-container:1747457987 at: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e01fafb63716149fe7030a2f53c5d3f27f7681debf41b58fe6860bdb8438d42a:/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/30.1-jre/guava-30.1-jre-sources.jar"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "137ed462eae9acd5434c1737e9de25e0f8b368bc78ed934120f90f935e4acd08:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-7254-protobuf-java",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in java-archive package: protobuf-java, version 3.19.6 was found in image localhost/pre-commit-container:1747457987 at: /root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:e01fafb63716149fe7030a2f53c5d3f27f7681debf41b58fe6860bdb8438d42a:/root/.cache/coursier/v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.19.6/protobuf-java-3.19.6.jar"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "9d117e187d4fbfd6c5af341bb455b14ebcf84aa869546035b4d8aa473d7000dc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-4516-python3",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in apk package: python3, version 3.12.10-r0 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f84b58449707ad1c76c2761728d912b71c799096a1a487d29f46d1d8e3549002:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-3220-python3",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: python3, version 3.12.10-r0 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "f84b58449707ad1c76c2761728d912b71c799096a1a487d29f46d1d8e3549002:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-3277-sqlite-libs",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in apk package: sqlite-libs, version 3.48.0-r2 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "be478221453c03f1259ad584f054b67d866e2d1ca55d88c10666405512175e59:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-58251-ssl_client",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: ssl_client, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "5d5c72e3f45f965448ac39a420f18c46a510457d71f7f5782246b8808bdd1f90:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-46394-ssl_client",
+          "level": "note",
+          "message": {
+            "text": "A low vulnerability in apk package: ssl_client, version 1.37.0-r12 was found in image localhost/pre-commit-container:1747457987 at: /lib/apk/db/installed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//lib/apk/db/installed"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/lib/apk/db/installed",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/lib/apk/db/installed"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "5d5c72e3f45f965448ac39a420f18c46a510457d71f7f5782246b8808bdd1f90:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22871-stdlib",
+          "level": "error",
+          "message": {
+            "text": "A critical vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-34156-stdlib",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-34158-stdlib",
+          "level": "error",
+          "message": {
+            "text": "A high vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-34155-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45336-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45341-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22866-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.22.5 was found in image localhost/pre-commit-container:1747457987 at: /usr/bin/tflint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/bin/tflint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/bin/tflint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:bf5d50c56774c36c6eae9c6cf2cf3e53cfb91d38940e9413fb7f98fdbad5a0e7:/usr/bin/tflint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "e5887e9a688eca6be6182d048a76b0102c19b814d79464985ebe5b333c07bfdc:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22871-stdlib",
+          "level": "error",
+          "message": {
+            "text": "A critical vulnerability in go-module package: stdlib, version go1.23.3 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c54423f489f89b4439229ece0252d9c80a57d06d4e4333ca62acca266dc7216b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45336-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.3 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c54423f489f89b4439229ece0252d9c80a57d06d4e4333ca62acca266dc7216b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45341-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.3 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c54423f489f89b4439229ece0252d9c80a57d06d4e4333ca62acca266dc7216b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22866-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.3 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/terraform"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/terraform"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/terraform",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:f45e221f59a5bdf46afdc75747eb596b884d3dbf285b11cd7855cbc491013996:/usr/local/bin/terraform"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "c54423f489f89b4439229ece0252d9c80a57d06d4e4333ca62acca266dc7216b:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22871-stdlib",
+          "level": "error",
+          "message": {
+            "text": "A critical vulnerability in go-module package: stdlib, version go1.23.4 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/actionlint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/actionlint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/actionlint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:1c2c2491c6634a369aaeafbb6a62bbae44594ad021f9aff6d43efea6c07393a3:/usr/local/bin/actionlint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1d8434cd56ae6baa9b1e80989259954d5a28336d46e1d441d21a7e6f4f24d7e4:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45336-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.4 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/actionlint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/actionlint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/actionlint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:1c2c2491c6634a369aaeafbb6a62bbae44594ad021f9aff6d43efea6c07393a3:/usr/local/bin/actionlint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1d8434cd56ae6baa9b1e80989259954d5a28336d46e1d441d21a7e6f4f24d7e4:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2024-45341-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.4 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/actionlint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/actionlint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/actionlint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:1c2c2491c6634a369aaeafbb6a62bbae44594ad021f9aff6d43efea6c07393a3:/usr/local/bin/actionlint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1d8434cd56ae6baa9b1e80989259954d5a28336d46e1d441d21a7e6f4f24d7e4:1"
+          }
+        },
+        {
+          "ruleId": "CVE-2025-22866-stdlib",
+          "level": "warning",
+          "message": {
+            "text": "A medium vulnerability in go-module package: stdlib, version go1.23.4 was found in image localhost/pre-commit-container:1747457987 at: /usr/local/bin/actionlint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "pre-commit-container//usr/local/bin/actionlint"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "/usr/local/bin/actionlint",
+                  "fullyQualifiedName": "localhost/pre-commit-container:1747457987@sha256:1c2c2491c6634a369aaeafbb6a62bbae44594ad021f9aff6d43efea6c07393a3:/usr/local/bin/actionlint"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "primaryLocationLineHash": "1d8434cd56ae6baa9b1e80989259954d5a28336d46e1d441d21a7e6f4f24d7e4:1"
+          }
+        }
+      ]
+    }
+  ]
+}
