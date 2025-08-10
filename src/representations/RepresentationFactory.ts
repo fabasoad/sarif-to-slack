@@ -1,6 +1,5 @@
 import Representation from './Representation'
-import { Finding } from '../model/Finding'
-import { RepresentationType } from '../types'
+import { RepresentationType, SarifModel } from '../types'
 import CompactGroupByRunPerLevelRepresentation
   from './CompactGroupByRunPerLevelRepresentation'
 import CompactGroupByRunPerSeverityRepresentation
@@ -23,26 +22,26 @@ import {
 } from './CompactTotalPerLevelRepresentation'
 
 export function createRepresentation(
-  findings: Finding[],
+  model: SarifModel,
   type: RepresentationType = RepresentationType.CompactGroupByToolNamePerSeverity
 ): Representation {
   switch (type) {
     case RepresentationType.CompactGroupByRunPerLevel:
-      return new CompactGroupByRunPerLevelRepresentation(findings)
+      return new CompactGroupByRunPerLevelRepresentation(model)
     case RepresentationType.CompactGroupByRunPerSeverity:
-      return new CompactGroupByRunPerSeverityRepresentation(findings)
+      return new CompactGroupByRunPerSeverityRepresentation(model)
     case RepresentationType.CompactGroupByToolNamePerLevel:
-      return new CompactGroupByToolNamePerLevelRepresentation(findings)
+      return new CompactGroupByToolNamePerLevelRepresentation(model)
     case RepresentationType.CompactGroupByToolNamePerSeverity:
-      return new CompactGroupByToolNamePerSeverityRepresentation(findings)
+      return new CompactGroupByToolNamePerSeverityRepresentation(model)
     case RepresentationType.CompactGroupBySarifPerLevel:
-      return new CompactGroupBySarifPerLevelRepresentation(findings)
+      return new CompactGroupBySarifPerLevelRepresentation(model)
     case RepresentationType.CompactGroupBySarifPerSeverity:
-      return new CompactGroupBySarifPerSeverityRepresentation(findings)
+      return new CompactGroupBySarifPerSeverityRepresentation(model)
     case RepresentationType.CompactTotalPerLevel:
-      return new CompactTotalPerLevelRepresentation(findings)
+      return new CompactTotalPerLevelRepresentation(model)
     case RepresentationType.CompactTotalPerSeverity:
-      return new CompactTotalPerSeverityRepresentation(findings)
+      return new CompactTotalPerSeverityRepresentation(model)
     default:
       throw new Error(`Unknown representation type: ${type}`)
   }

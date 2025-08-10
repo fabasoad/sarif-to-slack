@@ -1,10 +1,11 @@
-import { Finding } from '../model/Finding'
-import CompactGroupByRepresentation from './CompactGroupByRepresentation'
+import CompactGroupByRepresentation, {
+  GroupBy
+} from './CompactGroupByRepresentation'
 
 export default abstract class CompactTotalRepresentation extends CompactGroupByRepresentation {
 
-  public constructor(findings: Finding[]) {
-    super(findings, 'level')
+  protected override get groupBy(): GroupBy {
+    return GroupBy.Total
   }
 
   protected override composeGroupTitle(): string {

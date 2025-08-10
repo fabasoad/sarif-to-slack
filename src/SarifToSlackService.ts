@@ -2,14 +2,14 @@ import { promises as fs } from 'fs'
 import Logger from './Logger'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
-  LogOptions,
+  LogOptions, RunMetadata, SarifModel,
   SarifToSlackServiceOptions,
   SlackMessage
 } from './types'
 import System from './System'
 import { extractListOfFiles } from './utils/FileUtils'
 import { createRepresentation } from './representations/RepresentationFactory'
-import { createFinding, Finding } from './model/Finding'
+import { createFinding } from './model/Finding'
 import { Log } from 'sarif'
 import { mapColor } from './mappers/ColorMapper'
 
@@ -31,32 +31,27 @@ export class SarifToSlackService {
     return instance;
   }
 
-  private static async extractFindings(sarifPath: string): Promise<Finding[]> {
+  private static async buildModel(sarifPath: string): Promise<SarifModel> {
     const sarifFiles: string[] = extractListOfFiles(sarifPath)
     if (sarifFiles.length === 0) {
       throw new Error(`No SARIF files found at the provided path: ${sarifPath}`)
     }
 
-    const findings: Finding[] = []
+    const model: SarifModel = { sarifFiles, runs: [], findings: [] }
     let runId = 1
     for (const sarifPath of sarifFiles) {
       const sarifJson: string = await fs.readFile(sarifPath, 'utf8')
       const sarifLog: Log = JSON.parse(sarifJson) as Log
 
       for (const run of sarifLog.runs) {
+        const runMetadata: RunMetadata = { id: runId++, run }
+        model.runs.push(runMetadata)
         for (const result of run.results ?? []) {
-          findings.push(createFinding({
-            sarifPath,
-            result,
-            runOpts: {
-              id: runId++,
-              run,
-            }
-          }))
+          model.findings.push(createFinding({ sarifPath, result, runMetadata }))
         }
       }
     }
-    return findings
+    return model
   }
 
   /**
@@ -68,12 +63,12 @@ export class SarifToSlackService {
    * @private
    */
   private static async initialize(opts: SarifToSlackServiceOptions): Promise<SlackMessage> {
-    const findings: Finding[] = await SarifToSlackService.extractFindings(opts.sarifPath);
+    const model: SarifModel = await SarifToSlackService.buildModel(opts.sarifPath)
     const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
       color: mapColor(opts.color),
-      representation: createRepresentation(findings, opts.representation),
+      representation: createRepresentation(model, opts.representation),
     })
     if (opts.header?.include) {
       message.withHeader(opts.header?.value)

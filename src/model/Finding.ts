@@ -1,17 +1,12 @@
-import type { ReportingDescriptor, Result, Run } from 'sarif'
-import { SecurityLevel, SecuritySeverity } from '../types'
+import type { ReportingDescriptor, Result } from 'sarif'
+import { RunMetadata, SecurityLevel, SecuritySeverity } from '../types'
 import Logger from '../Logger'
 import { CommonProcessor } from '../processors/CommonProcessor'
 import { createProcessor } from '../processors/ProcessorFactory'
 
-export type RunOptions = {
-  id: number,
-  run: Run,
-}
-
 export type FindingOptions = {
   sarifPath: string,
-  runOpts: RunOptions,
+  runMetadata: RunMetadata,
   result: Result,
 }
 
@@ -30,7 +25,7 @@ export function createFinding(opts: FindingOptions): Finding {
 }
 
 class SarifFinding implements Finding {
-  private readonly _runOpts: RunOptions
+  private readonly _runMetadata: RunMetadata
   private readonly _result: Result
   private readonly _sarifPath: string
   private readonly _rule?: ReportingDescriptor
@@ -43,9 +38,9 @@ class SarifFinding implements Finding {
   private _levelCache: Result.level | undefined = undefined
 
   constructor(opts: FindingOptions) {
-    this._processor = createProcessor(opts.runOpts.run, opts.result)
+    this._processor = createProcessor(opts.runMetadata.run, opts.result)
     this._sarifPath = opts.sarifPath
-    this._runOpts = opts.runOpts
+    this._runMetadata = opts.runMetadata
     this._result = opts.result
     this._rule = this._processor.tryFindRule()
   }
@@ -53,7 +48,7 @@ class SarifFinding implements Finding {
   clone(): Finding {
     return createFinding({
       sarifPath: this._sarifPath,
-      runOpts: this._runOpts,
+      runMetadata: this._runMetadata,
       result: this._result
     })
   }
@@ -63,7 +58,7 @@ class SarifFinding implements Finding {
   }
 
   public get runId(): number {
-    return this._runOpts.id
+    return this._runMetadata.id
   }
 
   public get toolName(): string {

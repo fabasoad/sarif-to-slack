@@ -6,6 +6,6 @@ export default class System {
   public static initialize(): void {
     Logger.info(`@fabasoad/sarif-to-slack version: ${version}`)
     Logger.info(`@fabasoad/sarif-to-slack sha: ${sha}`)
-    Logger.info(`@fabasoad/sarif-to-slack build at: ${buildAt}`)
+    Logger.info(`@fabasoad/sarif-to-slack built at: ${buildAt}`)
   }
 }

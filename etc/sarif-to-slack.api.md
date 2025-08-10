@@ -4,14 +4,6 @@
 
 ```ts
 
-import type { Log } from 'sarif';
-
-// @public
-export enum CalculateResultsBy {
-    Level = 0,
-    Severity = 1
-}
-
 // @public
 export type FooterOptions = IncludeAwareWithValueOptions & {
     type?: FooterType;
@@ -21,13 +13,6 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
 export enum FooterType {
     Markdown = "mrkdwn",
     PlainText = "plain_text"
-}
-
-// @public
-export enum GroupResultsBy {
-    Run = 1,
-    ToolName = 0,
-    Total = 2
 }
 
 // @public
@@ -58,21 +43,31 @@ export type LogOptions = {
     colored?: boolean;
 };
 
-// @public
-export type SarifLog = Log;
-
-// @public
-export type SarifToSlackOutput = {
-    groupBy?: GroupResultsBy;
-    calculateBy?: CalculateResultsBy;
-};
+// @public (undocumented)
+export enum RepresentationType {
+    // (undocumented)
+    CompactGroupByRunPerLevel = 0,
+    // (undocumented)
+    CompactGroupByRunPerSeverity = 1,
+    // (undocumented)
+    CompactGroupBySarifPerLevel = 4,
+    // (undocumented)
+    CompactGroupBySarifPerSeverity = 5,
+    // (undocumented)
+    CompactGroupByToolNamePerLevel = 2,
+    // (undocumented)
+    CompactGroupByToolNamePerSeverity = 3,
+    // (undocumented)
+    CompactTotalPerLevel = 6,
+    // (undocumented)
+    CompactTotalPerSeverity = 7
+}
 
 // @public
 export class SarifToSlackService {
+    // (undocumented)
     static create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService>;
-    send(sarifPath: string): Promise<void>;
-    sendAll(): Promise<void>;
-    get slackMessages(): ReadonlyMap<string, SlackMessage>;
+    send(): Promise<void>;
 }
 
 // @public
@@ -87,13 +82,20 @@ export type SarifToSlackServiceOptions = {
     footer?: FooterOptions;
     actor?: IncludeAwareWithValueOptions;
     run?: IncludeAwareOptions;
-    output?: SarifToSlackOutput;
+    representation?: RepresentationType;
 };
 
 // @public
 export interface SlackMessage {
-    sarif: SarifLog;
     send: () => Promise<string>;
+    // (undocumented)
+    withActor(actor?: string): void;
+    // (undocumented)
+    withFooter(text?: string, type?: FooterType): void;
+    // (undocumented)
+    withHeader(header?: string): void;
+    // (undocumented)
+    withRun(): void;
 }
 
 ```

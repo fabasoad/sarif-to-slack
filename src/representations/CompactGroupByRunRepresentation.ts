@@ -1,10 +1,17 @@
 import { Finding } from '../model/Finding'
-import CompactGroupByRepresentation from './CompactGroupByRepresentation'
+import CompactGroupByRepresentation, {
+  GroupBy
+} from './CompactGroupByRepresentation'
+import { SarifModel } from '../types'
 
 export default abstract class CompactGroupByRunRepresentation extends CompactGroupByRepresentation {
 
-  public constructor(findings: Finding[]) {
-    super(findings, 'runId')
+  public constructor(model: SarifModel) {
+    super(model, 'runId')
+  }
+
+  protected override get groupBy(): GroupBy {
+    return GroupBy.Run
   }
 
   protected override composeGroupTitle(f: Finding): string {

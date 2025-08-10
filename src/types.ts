@@ -1,3 +1,6 @@
+import { Run } from 'sarif';
+import { Finding } from './model/Finding';
+
 export type Func<T, R> = (input: T) => R
 
 /**
@@ -166,4 +169,19 @@ export enum SecurityLevel {
   Note = 'Note',
   Warning = 'Warning',
   Error = 'Error'
+}
+
+export type RunMetadata = {
+  id: number,
+  run: Run,
+}
+
+/**
+ * Model that is used by {@link Representation}
+ * @internal
+ */
+export type SarifModel = {
+  sarifFiles: string[],
+  runs: RunMetadata[],
+  findings: Finding[],
 }
