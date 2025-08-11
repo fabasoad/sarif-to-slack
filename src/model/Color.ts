@@ -71,10 +71,6 @@ function isColorOptions(color?: Color | ColorOptions): color is ColorOptions {
   return color != null
 }
 
-function includesByProperty<K extends keyof Finding>(findings: Finding[], prop: K, value: Finding[K]): boolean {
-  return findings.some((f: Finding): boolean => f[prop] === value)
-}
-
 function identifyColorCommon<K extends keyof Finding>(
   sarifModel: SarifModel,
   prop: K,
@@ -82,11 +78,11 @@ function identifyColorCommon<K extends keyof Finding>(
   unknown: Finding[K],
   color: ColorGroupCommon
 ): string | undefined {
-  if (color.none != null && includesByProperty(sarifModel.findings, prop, none)) {
+  if (color.none != null && sarifModel.findings.findByProperty(prop, none) != null) {
     return color.none.value
   }
 
-  if (color.unknown != null && includesByProperty(sarifModel.findings, prop, unknown)) {
+  if (color.unknown != null && sarifModel.findings.findByProperty(prop, unknown) != null) {
     return color.unknown.value
   }
 
@@ -98,19 +94,19 @@ function identifyColorCommon<K extends keyof Finding>(
 }
 
 function identifyColorBySeverity(sarifModel: SarifModel, color: ColorGroupBySeverity): string | undefined {
-  if (color.critical != null && includesByProperty(sarifModel.findings, 'severity', SecuritySeverity.Critical)) {
+  if (color.critical != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
     return color.critical.value
   }
 
-  if (color.high != null && includesByProperty(sarifModel.findings, 'severity', SecuritySeverity.High)) {
+  if (color.high != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.High) != null) {
     return color.high.value
   }
 
-  if (color.medium != null && includesByProperty(sarifModel.findings, 'severity', SecuritySeverity.Medium)) {
+  if (color.medium != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Medium) != null) {
     return color.medium.value
   }
 
-  if (color.low != null && includesByProperty(sarifModel.findings, 'severity', SecuritySeverity.Low)) {
+  if (color.low != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Low) != null) {
     return color.low.value
   }
 
@@ -118,15 +114,15 @@ function identifyColorBySeverity(sarifModel: SarifModel, color: ColorGroupBySeve
 }
 
 function identifyColorByLevel(sarifModel: SarifModel, color: ColorGroupByLevel): string | undefined {
-  if (color.error != null && includesByProperty(sarifModel.findings, 'level', SecurityLevel.Error)) {
+  if (color.error != null && sarifModel.findings.findByProperty('level', SecurityLevel.Error) != null) {
     return color.error.value
   }
 
-  if (color.warning != null && includesByProperty(sarifModel.findings, 'level', SecurityLevel.Warning)) {
+  if (color.warning != null && sarifModel.findings.findByProperty('level', SecurityLevel.Warning) != null) {
     return color.warning.value
   }
 
-  if (color.note != null && includesByProperty(sarifModel.findings, 'level', SecurityLevel.Note)) {
+  if (color.note != null && sarifModel.findings.findByProperty('level', SecurityLevel.Note) != null) {
     return color.note.value
   }
 

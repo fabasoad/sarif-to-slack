@@ -1,6 +1,6 @@
 import { Run } from 'sarif'
 import { Color, ColorOptions } from './model/Color'
-import { Finding } from './model/Finding'
+import FindingsArray from './model/FindingsArray'
 
 /**
  * Interface for a Slack message that can be sent.
@@ -134,6 +134,33 @@ export type SarifOptions = {
   extension?: SarifFileExtension,
 }
 
+export enum SendIf {
+  SeverityCritical,
+  SeverityHigh,
+  SeverityHighOrHigher,
+  SeverityMedium,
+  SeverityMediumOrHigher,
+  SeverityLow,
+  SeverityLowOrHigher,
+  SeverityNone,
+  SeverityNoneOrHigher,
+  SeverityUnknown,
+  SeverityUnknownOrHigher,
+  LevelError,
+  LevelWarning,
+  LevelWarningOrHigher,
+  LevelNote,
+  LevelNoteOrHigher,
+  LevelNone,
+  LevelNoneOrHigher,
+  LevelUnknown,
+  LevelUnknownOrHigher,
+  Always,
+  Some,
+  Empty,
+  Never,
+}
+
 /**
  * Options for the SarifToSlackService.
  * @public
@@ -150,6 +177,7 @@ export type SarifToSlackServiceOptions = {
   actor?: IncludeAwareWithValueOptions,
   run?: IncludeAwareOptions,
   representation?: RepresentationType,
+  sendIf?: SendIf,
 }
 
 /**
@@ -157,12 +185,12 @@ export type SarifToSlackServiceOptions = {
  * @internal
  */
 export enum SecuritySeverity {
-  Unknown = 'Unknown',
-  None = 'None',
-  Low = 'Low',
-  Medium = 'Medium',
-  High = 'High',
-  Critical = 'Critical'
+  Unknown = 0,
+  None = 1,
+  Low = 2,
+  Medium = 3,
+  High = 4,
+  Critical = 5,
 }
 
 /**
@@ -170,11 +198,11 @@ export enum SecuritySeverity {
  * @internal
  */
 export enum SecurityLevel {
-  Unknown = 'Unknown',
-  None = 'None',
-  Note = 'Note',
-  Warning = 'Warning',
-  Error = 'Error'
+  Unknown = 0,
+  None = 1,
+  Note = 2,
+  Warning = 3,
+  Error = 4,
 }
 
 export type RunMetadata = {
@@ -190,5 +218,5 @@ export type RunMetadata = {
 export type SarifModel = {
   sarifFiles: string[],
   runs: RunMetadata[],
-  findings: Finding[],
+  findings: FindingsArray,
 }
