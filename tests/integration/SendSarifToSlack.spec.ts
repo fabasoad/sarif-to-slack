@@ -1,4 +1,5 @@
 import { LogLevel, RepresentationType, SarifToSlackService } from '../../src'
+import { Color } from '../../src/model/Color';
 
 describe('(integration): SendSarifToSlack', () => {
   function processLogLevel(logLevel?: string): LogLevel | undefined {
@@ -57,7 +58,25 @@ describe('(integration): SendSarifToSlack', () => {
       webhookUrl: process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
       username: process.env.SARIF_TO_SLACK_USERNAME,
       iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
-      color: process.env.SARIF_TO_SLACK_COLOR,
+      color: {
+        // byLevel: {
+        //   error: new Color(process.env.SARIF_TO_SLACK_COLOR_ERROR),
+        //   warning: new Color(process.env.SARIF_TO_SLACK_COLOR_WARNING),
+        //   note: new Color(process.env.SARIF_TO_SLACK_COLOR_NOTE),
+        //   none: new Color(process.env.SARIF_TO_SLACK_COLOR_NONE),
+        //   unknown: new Color(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+        //   empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
+        // },
+        bySeverity: {
+          critical: new Color(process.env.SARIF_TO_SLACK_COLOR_CRITICAL),
+          high: new Color(process.env.SARIF_TO_SLACK_COLOR_HIGH),
+          medium: new Color(process.env.SARIF_TO_SLACK_COLOR_MEDIUM),
+          low: new Color(process.env.SARIF_TO_SLACK_COLOR_LOW),
+          none: new Color(process.env.SARIF_TO_SLACK_COLOR_NONE),
+          unknown: new Color(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+          empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
+        },
+      },
       sarif: {
         path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
         recursive: true,

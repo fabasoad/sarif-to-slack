@@ -1,7 +1,6 @@
-import { Finding } from './model/Finding'
 import { Run } from 'sarif'
-
-export type Func<T, R> = (input: T) => R
+import { Color, ColorOptions } from './model/Color'
+import { Finding } from './model/Finding'
 
 /**
  * Interface for a Slack message that can be sent.
@@ -140,12 +139,11 @@ export type SarifOptions = {
  * @public
  */
 export type SarifToSlackServiceOptions = {
-  // The Slack webhook URL to send messages to.
   webhookUrl: string,
   sarif: SarifOptions,
   username?: string,
   iconUrl?: string,
-  color?: string,
+  color?: Color | ColorOptions,
   log?: LogOptions,
   header?: IncludeAwareWithValueOptions,
   footer?: FooterOptions,

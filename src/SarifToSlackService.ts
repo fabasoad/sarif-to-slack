@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs'
+import { Log } from 'sarif'
 import Logger from './Logger'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
@@ -13,9 +14,8 @@ import System from './System'
 import { extractListOfFiles } from './utils/FileUtils'
 import { createRepresentation } from './representations/RepresentationFactory'
 import { createFinding } from './model/Finding'
-import { Log } from 'sarif'
-import { mapColor } from './mappers/ColorMapper'
 import { findToolComponent, findToolComponentDriver } from './utils/SarifUtils'
+import { identifyColor } from './model/Color';
 
 /**
  * Service to convert SARIF files to Slack messages and send them.
@@ -80,7 +80,7 @@ export class SarifToSlackService {
     const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
-      color: mapColor(opts.color), // TODO: color if no vulns found
+      color: identifyColor(model, opts.color),
       representation: createRepresentation(model, opts.representation),
     })
     if (opts.header?.include) {
