@@ -76,7 +76,7 @@ export type SarifToSlackServiceOptions = {
     sarif: SarifOptions;
     username?: string;
     iconUrl?: string;
-    color?: string;
+    color?: Color | ColorOptions;
     log?: LogOptions;
     header?: IncludeAwareWithValueOptions;
     footer?: FooterOptions;
@@ -100,6 +100,8 @@ export interface SlackMessage {
 
 // Warnings were encountered during analysis:
 //
-// src/types.ts:145:3 - (ae-forgotten-export) The symbol "SarifOptions" needs to be exported by the entry point index.d.ts
+// src/types.ts:143:3 - (ae-forgotten-export) The symbol "SarifOptions" needs to be exported by the entry point index.d.ts
+// src/types.ts:146:3 - (ae-forgotten-export) The symbol "Color" needs to be exported by the entry point index.d.ts
+// src/types.ts:146:3 - (ae-forgotten-export) The symbol "ColorOptions" needs to be exported by the entry point index.d.ts
 
 ```
