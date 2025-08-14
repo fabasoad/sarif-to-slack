@@ -4,19 +4,40 @@
  * Sarif to Slack message converter library.
  *
  * @remarks
- * This library provides a service to send a Slack messages based on the provided
+ * This library provides a client to send a Slack messages based on the provided
  * SARIF (Static Analysis Results Interchange Format) files.
  *
  * @example
  * ```typescript
- * import { SarifToSlackService, FooterType } from '@fabasoad/sarif-to-slack';
+ * import {
+ *   Color,
+ *   FooterType,
+ *   LogLevel,
+ *   RepresentationType,
+ *   SarifToSlackClient,
+ *   SendIf
+ * } from '@fabasoad/sarif-to-slack';
  *
- * const service = await SarifToSlackService.create({
+ * const client: SarifToSlackClient = await SarifToSlackClient.create({
  *   webhookUrl: 'https://hooks.slack.com/services/your/webhook/url',
- *   sarifPath: 'path/to/your/sarif/file.sarif',
- *   username: 'SARIF Bot',
+ *   username: 'SARIF to Slack Bot',
  *   iconUrl: 'https://example.com/icon.png',
- *   color: '#36a64f',
+ *   color: {
+ *     bySeverity: {
+ *       critical: new Color('#ff0000'),
+ *       high: new Color('#ff4500'),
+ *       medium: new Color('#ffa500'),
+ *       low: new Color('#ffff00'),
+ *       none: new Color('#808080'),
+ *       unknown: new Color('#800080'),
+ *       empty: new Color('#d3d3d3'),
+ *     },
+ *   },
+ *   sarif: {
+ *     path: 'path/to/your/sarif-files',
+ *     recursive: true,
+ *     extension: 'sarif',
+ *   },
  *   log: {
  *     level: LogLevel.Info,
  *     template: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
@@ -39,8 +60,9 @@
  *     include: true
  *   },
  *   representation: RepresentationType.CompactGroupByToolNamePerSeverity,
+ *   sendIf: SendIf.MediumOrHigher,
  * });
- * await service.sendAll();
+ * await client.send();
  * ```
  *
  * @see {@link SarifToSlackClient}
@@ -62,6 +84,7 @@ export {
   LogLevel,
   LogOptions,
   RepresentationType,
+  SarifFileExtension,
   SarifOptions,
   SarifToSlackClientOptions,
   SendIf,

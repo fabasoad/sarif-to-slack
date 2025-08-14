@@ -85,6 +85,9 @@ export enum RepresentationType {
 }
 
 // @public
+export type SarifFileExtension = 'sarif' | 'json';
+
+// @public
 export type SarifOptions = {
     path: string;
     recursive?: boolean;
@@ -154,9 +157,5 @@ export interface SlackMessage {
     // (undocumented)
     withRun(): void;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/types.ts:221:3 - (ae-forgotten-export) The symbol "SarifFileExtension" needs to be exported by the entry point index.d.ts
 
 ```

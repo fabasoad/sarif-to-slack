@@ -46,7 +46,7 @@ export class CommonProcessor {
 
   /**
    * This function tries to find the respective rule for the given result.
-   * @public
+   * @internal
    */
   public tryFindRule(): ReportingDescriptor | undefined {
     const ruleData: { id?: string, index?: number } = {}
