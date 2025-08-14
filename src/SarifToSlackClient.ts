@@ -4,10 +4,10 @@ import Logger from './Logger'
 import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
   LogOptions,
-  RunMetadata,
+  RunData,
   SarifModel,
   SarifOptions,
-  SarifToSlackServiceOptions,
+  SarifToSlackClientOptions,
   SecurityLevel,
   SecuritySeverity,
   SendIf,
@@ -25,21 +25,29 @@ import FindingsArray from './model/FindingsArray'
  * Service to convert SARIF files to Slack messages and send them.
  * @public
  */
-export class SarifToSlackService {
+export class SarifToSlackClient {
   private _message?: SlackMessage
   private _sarifModel?: SarifModel
-  private _sendIf?: SendIf
+
+  private _sendIf: SendIf = SendIf.Always
 
   private constructor(log?: LogOptions) {
     Logger.initialize(log)
     System.initialize()
   }
 
-  public static async create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService> {
-    const instance = new SarifToSlackService(opts.log)
-    instance._sendIf = opts.sendIf
-    instance._sarifModel = await SarifToSlackService.buildModel(opts.sarif)
-    instance._message = await SarifToSlackService.initialize(instance._sarifModel, opts)
+  private static *createRunIdGenerator(): Generator<number> {
+    let runId: number = 1
+    while (true) {
+      yield runId++
+    }
+  }
+
+  public static async create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
+    const instance = new SarifToSlackClient(opts.log)
+    instance._sendIf = opts.sendIf ?? instance._sendIf
+    instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif)
+    instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts)
     return instance;
   }
 
@@ -50,26 +58,26 @@ export class SarifToSlackService {
     }
 
     const model: SarifModel = { sarifFiles, runs: [], findings: new FindingsArray() }
-    let runId = 1
+    const runIdGenerator: Generator<number> = SarifToSlackClient.createRunIdGenerator()
     for (const sarifPath of sarifFiles) {
       const sarifJson: string = await fs.readFile(sarifPath, 'utf8')
       const sarifLog: Log = JSON.parse(sarifJson) as Log
 
       for (const run of sarifLog.runs) {
-        let runMetadata: RunMetadata | undefined = undefined
+        const runId: IteratorResult<number> = runIdGenerator.next()
+        let runMetadata: RunData | undefined = undefined
         for (const result of run.results ?? []) {
           runMetadata = {
-            id: runId,
+            id: runId.value,
             run,
             toolName: findToolComponent(run, result).name
           }
           model.findings.push(createFinding({ sarifPath, result, runMetadata }))
         }
         runMetadata ??= {
-          id: runId, run, toolName: findToolComponentDriver(run).name
+          id: runId.value, run, toolName: findToolComponentDriver(run).name
         }
         model.runs.push(runMetadata)
-        runId++
       }
     }
     return model
@@ -79,19 +87,19 @@ export class SarifToSlackService {
    * The main function to initialize a list of {@link SlackMessage} objects based
    * on the given SARIF file(s).
    * @param sarifModel An instance of {@link SarifModel} object.
-   * @param opts An instance of {@link SarifToSlackServiceOptions} object.
+   * @param opts An instance of {@link SarifToSlackClientOptions} object.
    * @returns A map where key is the SARIF file and value is an instance of
    * {@link SlackMessage} object
    * @private
    */
   private static async initialize(
     sarifModel: SarifModel,
-    opts: Omit<SarifToSlackServiceOptions, 'sarif' | 'log' | 'sendIf'>
+    opts: Omit<SarifToSlackClientOptions, 'sarif' | 'log' | 'sendIf'>
   ): Promise<SlackMessage> {
     const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
-      color: identifyColor(sarifModel, opts.color),
+      color: identifyColor(sarifModel.findings, opts.color),
       representation: createRepresentation(sarifModel, opts.representation),
     })
     if (opts.header?.include) {
@@ -126,7 +134,7 @@ export class SarifToSlackService {
       const text: string = await this._message.send()
       Logger.info('Message sent. Status:', text)
     } else {
-      Logger.info('Message was not sent based on the sendIf parameter:', this._sendIf)
+      Logger.info('Message was not sent based on the sendIf parameter:', SendIf[this._sendIf])
     }
   }
 

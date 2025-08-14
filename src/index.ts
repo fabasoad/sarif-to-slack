@@ -43,21 +43,27 @@
  * await service.sendAll();
  * ```
  *
- * @see {@link SarifToSlackService}
+ * @see {@link SarifToSlackClient}
  *
  * @packageDocumentation
  */
-export { SarifToSlackService } from './SarifToSlackService'
 export {
-  FooterType,
-  LogLevel,
-  RepresentationType,
-  SlackMessage,
-} from './types'
-export type {
+  Color,
+  ColorOptions,
+  ColorGroupByLevel,
+  ColorGroupBySeverity
+} from './model/Color'
+export { SarifToSlackClient } from './SarifToSlackClient'
+export {
   FooterOptions,
+  FooterType,
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
+  LogLevel,
   LogOptions,
-  SarifToSlackServiceOptions,
+  RepresentationType,
+  SarifOptions,
+  SarifToSlackClientOptions,
+  SendIf,
+  SlackMessage,
 } from './types'

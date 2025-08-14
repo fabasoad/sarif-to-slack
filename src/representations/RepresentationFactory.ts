@@ -8,19 +8,20 @@ import CompactGroupByToolNamePerLevelRepresentation
   from './CompactGroupByToolNamePerLevelRepresentation'
 import CompactGroupByToolNamePerSeverityRepresentation
   from './CompactGroupByToolNamePerSeverityRepresentation'
-import {
-  CompactGroupBySarifPerLevelRepresentation
-} from './CompactGroupBySarifPerLevelRepresentation'
-import {
-  CompactGroupBySarifPerSeverityRepresentation
-} from './CompactGroupBySarifPerSeverityRepresentation'
-import {
-  CompactTotalPerSeverityRepresentation
-} from './CompactTotalPerSeverityRepresentation'
-import {
-  CompactTotalPerLevelRepresentation
-} from './CompactTotalPerLevelRepresentation'
+import CompactGroupBySarifPerLevelRepresentation
+  from './CompactGroupBySarifPerLevelRepresentation'
+import CompactGroupBySarifPerSeverityRepresentation
+  from './CompactGroupBySarifPerSeverityRepresentation'
+import CompactTotalPerSeverityRepresentation
+  from './CompactTotalPerSeverityRepresentation'
+import CompactTotalPerLevelRepresentation
+  from './CompactTotalPerLevelRepresentation'
 
+/**
+ * Factory class that creates a {@link Representation} class based on the provided
+ * {@link RepresentationType}.
+ * @internal
+ */
 export function createRepresentation(
   model: SarifModel,
   type: RepresentationType = RepresentationType.CompactGroupByToolNamePerSeverity

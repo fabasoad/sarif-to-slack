@@ -86,6 +86,36 @@ on: # yamllint disable-line rule:truthy
           - "warning"
           - "error"
           - "fatal"
+      send-if:
+        description: "Send if:"
+        required: false
+        default: "always"
+        type: choice
+        options:
+          - "severity-critical"
+          - "severity-high"
+          - "severity-high-or-higher"
+          - "severity-medium"
+          - "severity-medium-or-higher"
+          - "severity-low"
+          - "severity-low-or-higher"
+          - "severity-none"
+          - "severity-none-or-higher"
+          - "severity-unknown"
+          - "severity-unknown-or-higher"
+          - "level-error"
+          - "level-warning"
+          - "level-warning-or-higher"
+          - "level-note"
+          - "level-note-or-higher"
+          - "level-none"
+          - "level-none-or-higher"
+          - "level-unknown"
+          - "level-unknown-or-higher"
+          - "always"
+          - "some"
+          - "empty"
+          - "never"
       color:
         description: "Slack message color (hex):"
         required: false
@@ -132,7 +162,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Determine SARIF file
         id: sarif-file
         env:
@@ -258,4 +288,5 @@ jobs:
           SARIF_TO_SLACK_ACTOR: "${{ inputs.actor }}"
           SARIF_TO_SLACK_INCLUDE_RUN: "${{ inputs.include-run }}"
           SARIF_TO_SLACK_REPRESENTATION: "${{ inputs.representation }}"
+          SARIF_TO_SLACK_SEND_IF: "${{ inputs.send-if }}"
         run: make test/integration

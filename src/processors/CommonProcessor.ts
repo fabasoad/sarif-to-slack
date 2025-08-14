@@ -1,6 +1,15 @@
 import type { ReportingDescriptor, Result, Run, ToolComponent } from 'sarif'
 import * as sarifUtils from '../utils/SarifUtils'
 
+/**
+ * This class has logic of the SARIF file processing, such as finding rule,
+ * finding tool component, etc. It is used by default for all SARIF files.
+ * Derived classes from this class can implement extra logic for the specific
+ * use cases, such as SARIF files produced by specific tools. For example,
+ * {@link CodeQLProcessor} handles additional logic for processing SARIF files
+ * produced by CodeQL.
+ * @internal
+ */
 export class CommonProcessor {
   protected readonly _run: Run
   protected readonly _result: Result

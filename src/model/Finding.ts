@@ -1,15 +1,23 @@
 import type { ReportingDescriptor, Result } from 'sarif'
-import { RunMetadata, SecurityLevel, SecuritySeverity } from '../types'
+import { RunData, SecurityLevel, SecuritySeverity } from '../types'
 import Logger from '../Logger'
 import { CommonProcessor } from '../processors/CommonProcessor'
 import { createProcessor } from '../processors/ProcessorFactory'
 
+/**
+ * Parameters that are needed for the new {@link Finding} instance creation.
+ * @internal
+ */
 export type FindingOptions = {
   sarifPath: string,
-  runMetadata: RunMetadata,
+  runMetadata: RunData,
   result: Result,
 }
 
+/**
+ * This interface represents a finding from SARIF file.
+ * @internal
+ */
 export interface Finding {
   get sarifPath(): string,
   get runId(): number,
@@ -20,12 +28,22 @@ export interface Finding {
   clone(): Finding,
 }
 
+/**
+ * Creates a new instance of {@link Finding} class.
+ * @internal
+ */
 export function createFinding(opts: FindingOptions): Finding {
   return new SarifFinding(opts)
 }
 
+/**
+ * The only implementation of {@link Finding} interface. This class is private
+ * and is not supposed to be exposed. {@link createFinding} should be used to
+ * create a new {@link Finding}.
+ * @private
+ */
 class SarifFinding implements Finding {
-  private readonly _runMetadata: RunMetadata
+  private readonly _runMetadata: RunData
   private readonly _result: Result
   private readonly _sarifPath: string
   private readonly _rule?: ReportingDescriptor

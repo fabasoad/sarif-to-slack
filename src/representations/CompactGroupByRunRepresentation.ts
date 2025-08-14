@@ -2,6 +2,22 @@ import { Finding } from '../model/Finding'
 import CompactGroupByRepresentation from './CompactGroupByRepresentation'
 import { SarifModel } from '../types'
 
+/**
+ * Since {@link CompactGroupByRepresentation} already prepares compact representation
+ * of findings, this class defines a grouping rule. In this case it groups
+ * findings by run. Every run will be grouped separately, such as:
+ * @example
+ * ```text
+ * [Run 1] Grype
+ * Error: 1, Warning: 4
+ * [Run 2] Grype
+ * Warning: 1, Note: 20
+ * ```
+ * @internal
+ * It is an abstract class, so the only question that derived classes should
+ * "answer" is what property should be used in the compact representation, such
+ * as "level" and "severity".
+ */
 export default abstract class CompactGroupByRunRepresentation extends CompactGroupByRepresentation {
 
   public constructor(model: SarifModel) {
@@ -17,7 +33,7 @@ export default abstract class CompactGroupByRunRepresentation extends CompactGro
       }
       this._model.findings
         .filter((f: Finding): boolean => f.runId === run.id)
-        .forEach((f: Finding) => result.get(key)?.push(f))
+        .forEach((f: Finding): number | undefined => result.get(key)?.push(f))
     }
     return result
   }

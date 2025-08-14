@@ -3,6 +3,22 @@ import { Finding } from '../model/Finding'
 import CompactGroupByRepresentation from './CompactGroupByRepresentation'
 import { SarifModel } from '../types'
 
+/**
+ * Since {@link CompactGroupByRepresentation} already prepares compact representation
+ * of findings, this class defines a grouping rule. In this case it groups
+ * findings by SARIF file. Every SARIF file will be grouped separately, such as:
+ * @example
+ * ```text
+ * grype-results-01.sarif
+ * Error: 1, Warning: 4
+ * grype-results-02.sarif
+ * Warning: 1, Note: 20
+ * ```
+ * @internal
+ * It is an abstract class, so the only question that derived classes should
+ * "answer" is what property should be used in the compact representation, such
+ * as "level" and "severity".
+ */
 export default abstract class CompactGroupBySarifRepresentation extends CompactGroupByRepresentation {
 
   public constructor(model: SarifModel) {

@@ -3,19 +3,37 @@ import Logger from '../Logger'
 import { SarifFileExtension, SarifOptions } from '../types'
 import * as path from 'path'
 
-function listFilesRecursively(dir: string, extension: SarifFileExtension, fileList: string[] = []): string[] {
-  const entries = fs.readdirSync(dir);
-  entries.forEach(entry => {
-    const fullPath = path.join(dir, entry);
+/**
+ * Traverse directory recursively and returns list of files with the requested
+ * extension.
+ * @param dir A root directory. Starting point.
+ * @param extension An instance of {@link SarifFileExtension} type.
+ * @param fileList Collected list of files.
+ * @private
+ */
+function listFilesRecursively(
+  dir: string,
+  extension: SarifFileExtension,
+  fileList: string[] = []
+): string[] {
+  const entries: string[] = fs.readdirSync(dir)
+  entries.forEach((entry: string): void => {
+    const fullPath: string = path.join(dir, entry)
     if (fs.statSync(fullPath).isDirectory()) {
-      listFilesRecursively(fullPath, extension, fileList);
+      listFilesRecursively(fullPath, extension, fileList)
     } else if (path.extname(fullPath).toLowerCase() === `.${extension}`) {
-      fileList.push(fullPath);
+      fileList.push(fullPath)
     }
-  });
-  return fileList;
+  })
+  return fileList
 }
 
+/**
+ * Extract list of files based on the parameters from the given {@link SarifOptions}
+ * object.
+ * @param opts An instance of {@link SarifOptions} type.
+ * @internal
+ */
 export function extractListOfFiles(opts: SarifOptions): string[] {
   if (!fs.existsSync(opts.path)) {
     throw new Error(`Provided path does not exist: ${opts.path}`)
@@ -28,12 +46,9 @@ export function extractListOfFiles(opts: SarifOptions): string[] {
     const files: string[] = opts.recursive
       && listFilesRecursively(opts.path, opts.extension ?? 'sarif')
       || fs.readdirSync(opts.path)
-    const filteredFiles: string[] = files.filter((file: string): boolean =>
-      path.extname(file).toLowerCase() === `.${opts.extension}`
-    )
-    Logger.info(`Found ${filteredFiles.length} files in ${opts.path} directory with ${opts.extension} extension`)
-    Logger.debug(`Found files: ${filteredFiles.join(', ')}`)
-    return filteredFiles.map((file: string): string => path.join(opts.path, file))
+    Logger.info(`Found ${files.length} files in ${opts.path} directory with ${opts.extension} extension`)
+    Logger.debug(`Found files: ${files.join(', ')}`)
+    return files
   }
 
   if (stats.isFile()) {

@@ -5,6 +5,35 @@
 ```ts
 
 // @public
+export class Color {
+    constructor(color?: string);
+    get value(): string | undefined;
+}
+
+// Warning: (ae-forgotten-export) The symbol "ColorGroupCommon" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ColorGroupByLevel = ColorGroupCommon & {
+    error?: Color;
+    warning?: Color;
+    note?: Color;
+};
+
+// @public
+export type ColorGroupBySeverity = ColorGroupCommon & {
+    critical?: Color;
+    high?: Color;
+    medium?: Color;
+    low?: Color;
+};
+
+// @public
+export type ColorOptions = {
+    byLevel?: ColorGroupByLevel;
+    bySeverity?: ColorGroupBySeverity;
+};
+
+// @public
 export type FooterOptions = IncludeAwareWithValueOptions & {
     type?: FooterType;
 };
@@ -43,35 +72,34 @@ export type LogOptions = {
     colored?: boolean;
 };
 
-// @public (undocumented)
+// @public
 export enum RepresentationType {
-    // (undocumented)
     CompactGroupByRunPerLevel = 0,
-    // (undocumented)
     CompactGroupByRunPerSeverity = 1,
-    // (undocumented)
     CompactGroupBySarifPerLevel = 4,
-    // (undocumented)
     CompactGroupBySarifPerSeverity = 5,
-    // (undocumented)
     CompactGroupByToolNamePerLevel = 2,
-    // (undocumented)
     CompactGroupByToolNamePerSeverity = 3,
-    // (undocumented)
     CompactTotalPerLevel = 6,
-    // (undocumented)
     CompactTotalPerSeverity = 7
 }
 
 // @public
-export class SarifToSlackService {
+export type SarifOptions = {
+    path: string;
+    recursive?: boolean;
+    extension?: SarifFileExtension;
+};
+
+// @public
+export class SarifToSlackClient {
     // (undocumented)
-    static create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService>;
+    static create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient>;
     send(): Promise<void>;
 }
 
 // @public
-export type SarifToSlackServiceOptions = {
+export type SarifToSlackClientOptions = {
     webhookUrl: string;
     sarif: SarifOptions;
     username?: string;
@@ -85,6 +113,34 @@ export type SarifToSlackServiceOptions = {
     representation?: RepresentationType;
     sendIf?: SendIf;
 };
+
+// @public
+export enum SendIf {
+    Always = 20,
+    Empty = 22,
+    LevelError = 11,
+    LevelNone = 16,
+    LevelNoneOrHigher = 17,
+    LevelNote = 14,
+    LevelNoteOrHigher = 15,
+    LevelUnknown = 18,
+    LevelUnknownOrHigher = 19,
+    LevelWarning = 12,
+    LevelWarningOrHigher = 13,
+    Never = 23,
+    SeverityCritical = 0,
+    SeverityHigh = 1,
+    SeverityHighOrHigher = 2,
+    SeverityLow = 5,
+    SeverityLowOrHigher = 6,
+    SeverityMedium = 3,
+    SeverityMediumOrHigher = 4,
+    SeverityNone = 7,
+    SeverityNoneOrHigher = 8,
+    SeverityUnknown = 9,
+    SeverityUnknownOrHigher = 10,
+    Some = 21
+}
 
 // @public
 export interface SlackMessage {
@@ -101,9 +157,6 @@ export interface SlackMessage {
 
 // Warnings were encountered during analysis:
 //
-// src/types.ts:170:3 - (ae-forgotten-export) The symbol "SarifOptions" needs to be exported by the entry point index.d.ts
-// src/types.ts:173:3 - (ae-forgotten-export) The symbol "Color" needs to be exported by the entry point index.d.ts
-// src/types.ts:173:3 - (ae-forgotten-export) The symbol "ColorOptions" needs to be exported by the entry point index.d.ts
-// src/types.ts:180:3 - (ae-forgotten-export) The symbol "SendIf" needs to be exported by the entry point index.d.ts
+// src/types.ts:221:3 - (ae-forgotten-export) The symbol "SarifFileExtension" needs to be exported by the entry point index.d.ts
 
 ```

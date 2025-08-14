@@ -1,39 +1,16 @@
 import { Finding } from '../model/Finding'
-import { SecurityLevel, SecuritySeverity } from '../types'
 
 /**
- * Ordering of security severity values. It is used for sorting purposes, so that
- * Slack message shows issues in the correct order.
- * @private
+ * This function returns a comparator function based on the property of the
+ * {@link Finding} object.
+ * @param key Property name of the {@link Finding} object.
+ * @internal
  */
-const SecuritySeverityOrder: SecuritySeverity[] = [
-  SecuritySeverity.Critical,
-  SecuritySeverity.High,
-  SecuritySeverity.Medium,
-  SecuritySeverity.Low,
-  SecuritySeverity.None,
-  SecuritySeverity.Unknown
-]
-
-/**
- * Ordering of security level values. It is used for sorting purposes, so that
- * Slack message shows issues in the correct order.
- * @private
- */
-const SecurityLevelOrder: SecurityLevel[] = [
-  SecurityLevel.Error,
-  SecurityLevel.Warning,
-  SecurityLevel.Note,
-  SecurityLevel.Unknown
-]
-
-export type FindingComparator = (a: Finding, b: Finding) => number
-
-export function findingsComparatorByKey<K extends keyof Finding>(key: K): FindingComparator {
+export function findingsComparatorByKey<K extends keyof Finding>(key: K): (a: Finding, b: Finding) => number {
   return (a: Finding, b: Finding): number => {
     switch (key) {
-      case 'severity': return SecuritySeverityOrder.indexOf(a.severity) - SecuritySeverityOrder.indexOf(b.severity)
-      case 'level': return SecurityLevelOrder.indexOf(a.level) - SecurityLevelOrder.indexOf(b.level)
+      case 'severity': return b.severity - a.severity
+      case 'level': return b.level - a.level
       case 'runId': return a.runId - b.runId
       case 'toolName': return a.toolName.toLowerCase().localeCompare(b.toolName.toLowerCase())
       default: return 1

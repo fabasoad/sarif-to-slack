@@ -27,7 +27,7 @@ jobs:
       ref-name: ${{ steps.metadata.outputs.ref-name }}
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: "${{ secrets.GH_TOKEN }}"
 

@@ -1,6 +1,11 @@
 import { version, sha, buildAt } from './metadata.json'
 import Logger from './Logger'
 
+/**
+ * This class prints metadata information into the logs, such as library version,
+ * SHA and build time.
+ * @internal
+ */
 export default class System {
 
   public static initialize(): void {

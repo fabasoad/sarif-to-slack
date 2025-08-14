@@ -1,14 +1,31 @@
-import { SarifModel, SecurityLevel, SecuritySeverity } from '../types'
+import { SecurityLevel, SecuritySeverity } from '../types'
 import { Finding } from './Finding'
+import FindingsArray from './FindingsArray'
 
+/**
+ * This class represents a color in hex format.
+ * @public
+ */
 export class Color {
   private readonly _color?: string
 
+  /**
+   * Creates an instance of {@link Color} class. Before creating an instance of
+   * {@link Color} class, it (if applicable) maps CI status into the hex color,
+   * and also validates {@param color} to be a valid string that represents a
+   * color in hex format.
+   * @param color Can be either undefined, valid color in hex format or GitHub
+   * CI status (one of: success, failure, cancelled, skipped)
+   * @public
+   */
   public constructor(color?: string) {
     this._color = this.mapColor(color)
     this.validateHexColor()
   }
 
+  /**
+   * Returns a valid string that represents a color in hex format, or undefined.
+   */
   public get value(): string | undefined {
     return this._color
   }
@@ -39,18 +56,37 @@ export class Color {
   }
 }
 
+/**
+ * Base type that has common fields for both {@link ColorGroupByLevel} and
+ * {@link ColorGroupBySeverity}.
+ * @private
+ */
 type ColorGroupCommon = {
   none?: Color,
   unknown?: Color,
   empty?: Color,
 }
 
+/**
+ * Color schema for the findings with the certain level. Color is used by the
+ * level importance, i.e. if at least 1 error finding exists then
+ * {@link ColorGroupByLevel.error} color is used, then if at least 1 warning
+ * finding exists then {@link ColorGroupByLevel.warning} color is used, etc.
+ * @public
+ */
 export type ColorGroupByLevel = ColorGroupCommon & {
   error?: Color,
   warning?: Color,
   note?: Color,
 }
 
+/**
+ * Color schema for the findings with the certain severity. Color is used by the
+ * severity importance, i.e. if at least 1 critical finding exists then
+ * {@link ColorGroupBySeverity.critical} color is used, then if at least 1 high
+ * finding exists then {@link ColorGroupBySeverity.high} color is used, etc.
+ * @public
+ */
 export type ColorGroupBySeverity = ColorGroupCommon & {
   critical?: Color,
   high?: Color,
@@ -58,6 +94,12 @@ export type ColorGroupBySeverity = ColorGroupCommon & {
   low?: Color,
 }
 
+/**
+ * Represents configuration of the color scheme. {@link ColorOptions.byLevel} has
+ * color scheme for the findings where certain level presented. {@link ColorOptions.bySeverity}
+ * has color scheme for the findings where certain severity presented.
+ * @public
+ */
 export type ColorOptions = {
   byLevel?: ColorGroupByLevel,
   bySeverity?: ColorGroupBySeverity,
@@ -72,64 +114,71 @@ function isColorOptions(color?: Color | ColorOptions): color is ColorOptions {
 }
 
 function identifyColorCommon<K extends keyof Finding>(
-  sarifModel: SarifModel,
+  findings: FindingsArray,
   prop: K,
   none: Finding[K],
   unknown: Finding[K],
   color: ColorGroupCommon
 ): string | undefined {
-  if (color.none != null && sarifModel.findings.findByProperty(prop, none) != null) {
+  if (color.none != null && findings.findByProperty(prop, none) != null) {
     return color.none.value
   }
 
-  if (color.unknown != null && sarifModel.findings.findByProperty(prop, unknown) != null) {
+  if (color.unknown != null && findings.findByProperty(prop, unknown) != null) {
     return color.unknown.value
   }
 
-  if (color.empty != null && sarifModel.findings.length === 0) {
+  if (color.empty != null && findings.length === 0) {
     return color.empty.value
   }
 
   return undefined
 }
 
-function identifyColorBySeverity(sarifModel: SarifModel, color: ColorGroupBySeverity): string | undefined {
-  if (color.critical != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
+function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySeverity): string | undefined {
+  if (color.critical != null && findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
     return color.critical.value
   }
 
-  if (color.high != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.High) != null) {
+  if (color.high != null && findings.findByProperty('severity', SecuritySeverity.High) != null) {
     return color.high.value
   }
 
-  if (color.medium != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Medium) != null) {
+  if (color.medium != null && findings.findByProperty('severity', SecuritySeverity.Medium) != null) {
     return color.medium.value
   }
 
-  if (color.low != null && sarifModel.findings.findByProperty('severity', SecuritySeverity.Low) != null) {
+  if (color.low != null && findings.findByProperty('severity', SecuritySeverity.Low) != null) {
     return color.low.value
   }
 
-  return identifyColorCommon(sarifModel, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color)
+  return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color)
 }
 
-function identifyColorByLevel(sarifModel: SarifModel, color: ColorGroupByLevel): string | undefined {
-  if (color.error != null && sarifModel.findings.findByProperty('level', SecurityLevel.Error) != null) {
+function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel): string | undefined {
+  if (color.error != null && findings.findByProperty('level', SecurityLevel.Error) != null) {
     return color.error.value
   }
 
-  if (color.warning != null && sarifModel.findings.findByProperty('level', SecurityLevel.Warning) != null) {
+  if (color.warning != null && findings.findByProperty('level', SecurityLevel.Warning) != null) {
     return color.warning.value
   }
 
-  if (color.note != null && sarifModel.findings.findByProperty('level', SecurityLevel.Note) != null) {
+  if (color.note != null && findings.findByProperty('level', SecurityLevel.Note) != null) {
     return color.note.value
   }
 
-  return identifyColorCommon(sarifModel, 'level', SecurityLevel.None, SecurityLevel.Unknown, color)
+  return identifyColorCommon(findings, 'level', SecurityLevel.None, SecurityLevel.Unknown, color)
 }
 
-export function identifyColor(sarifModel: SarifModel, color?: Color | ColorOptions): string | undefined {
+/**
+ * Makes an ultimate decision on what color should be Slack message. The decision
+ * is based on the provided {@param color} parameter and {@param findings} list.
+ * @param findings An instance of {@link FindingsArray} object.
+ * @param color Either an instance of {@link Color} or {@link ColorOptions} type.
+ * @internal
+ */
+export function identifyColor(findings: FindingsArray, color?: Color | ColorOptions): string | undefined {
   if (color == null) {
     return undefined
   }
@@ -140,11 +189,11 @@ export function identifyColor(sarifModel: SarifModel, color?: Color | ColorOptio
 
   if (isColorOptions(color)) {
     if (color.bySeverity != null) {
-      return identifyColorBySeverity(sarifModel, color.bySeverity)
+      return identifyColorBySeverity(findings, color.bySeverity)
     }
 
     if (color.byLevel != null) {
-      return identifyColorByLevel(sarifModel, color.byLevel)
+      return identifyColorByLevel(findings, color.byLevel)
     }
   }
 

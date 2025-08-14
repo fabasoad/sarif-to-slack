@@ -1,8 +1,13 @@
 import { SarifModel } from '../types'
 import { Finding } from '../model/Finding'
 import { findingsComparatorByKey } from '../utils/Comparators'
-import FindingsArray from '../model/FindingsArray';
+import FindingsArray from '../model/FindingsArray'
 
+/**
+ * The most base abstract class for the representation. Every representation class
+ * must be derived from this class implicitly or explicitly.
+ * @internal
+ */
 export default abstract class Representation {
   protected readonly _model: SarifModel
 
