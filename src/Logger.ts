@@ -36,4 +36,8 @@ export default class Logger {
   public static debug(...args: unknown[]): void {
     Logger.instance.debug(...args)
   }
+
+  public static trace(...args: unknown[]): void {
+    Logger.instance.trace(...args)
+  }
 }

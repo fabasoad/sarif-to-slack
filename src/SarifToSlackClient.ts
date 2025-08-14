@@ -45,10 +45,12 @@ export class SarifToSlackClient {
 
   public static async create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
     const instance = new SarifToSlackClient(opts.log)
-    Logger.debug(opts)
+    Logger.trace('opts', opts)
     instance._sendIf = opts.sendIf ?? instance._sendIf
     instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif)
+    Logger.trace('instance._sarifModel', instance._sarifModel)
     instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts)
+    Logger.trace('instance._message', instance._message)
     return instance;
   }
 
