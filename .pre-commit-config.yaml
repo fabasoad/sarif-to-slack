@@ -60,7 +60,7 @@ repos:
           - --hook-args=--log-level debug
         stages: ["pre-push"]
   - repo: https://github.com/google/osv-scanner
-    rev: v2.1.0
+    rev: v2.2.1
     hooks:
       - id: osv-scanner
         args:
@@ -88,7 +88,7 @@ repos:
         stages: ["pre-commit"]
   # Other
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-merge-conflict
       - id: check-json
