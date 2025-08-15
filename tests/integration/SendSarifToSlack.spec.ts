@@ -121,6 +121,7 @@ describe('(integration): SendSarifToSlack', (): void => {
       sarif: {
         path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
         recursive: true,
+        extension: 'sarif',
       },
       log: {
         level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),

@@ -95,22 +95,24 @@ export type ColorGroupBySeverity = ColorGroupCommon & {
 }
 
 /**
- * Represents configuration of the color scheme. {@link ColorOptions.byLevel} has
- * color scheme for the findings where certain level presented. {@link ColorOptions.bySeverity}
- * has color scheme for the findings where certain severity presented.
+ * Represents configuration of the color scheme. If both {@link ColorOptions.byLevel}
+ * and {@link ColorOptions.bySeverity} are defined, then {@link ColorOptions.bySeverity}
+ * takes precedence.
  * @public
  */
 export type ColorOptions = {
+  /**
+   * Default color if specific color was not found. It is a fallback option.
+   */
+  default?: Color,
+  /**
+   * Color scheme for the findings where certain level is presented.
+   */
   byLevel?: ColorGroupByLevel,
+  /**
+   * Color scheme for the findings where certain severity is presented.
+   */
   bySeverity?: ColorGroupBySeverity,
-}
-
-function isColor(color?: Color | ColorOptions): color is Color {
-  return color != null && color instanceof Color
-}
-
-function isColorOptions(color?: Color | ColorOptions): color is ColorOptions {
-  return color != null
 }
 
 function identifyColorCommon<K extends keyof Finding>(
@@ -118,7 +120,8 @@ function identifyColorCommon<K extends keyof Finding>(
   prop: K,
   none: Finding[K],
   unknown: Finding[K],
-  color: ColorGroupCommon
+  color: ColorGroupCommon,
+  defaultColor?: Color
 ): string | undefined {
   if (color.none != null && findings.findByProperty(prop, none) != null) {
     return color.none.value
@@ -132,10 +135,10 @@ function identifyColorCommon<K extends keyof Finding>(
     return color.empty.value
   }
 
-  return undefined
+  return defaultColor?.value
 }
 
-function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySeverity): string | undefined {
+function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySeverity, defaultColor?: Color): string | undefined {
   if (color.critical != null && findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
     return color.critical.value
   }
@@ -152,10 +155,10 @@ function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySev
     return color.low.value
   }
 
-  return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color)
+  return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color, defaultColor)
 }
 
-function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel): string | undefined {
+function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel, defaultColor?: Color): string | undefined {
   if (color.error != null && findings.findByProperty('level', SecurityLevel.Error) != null) {
     return color.error.value
   }
@@ -168,34 +171,25 @@ function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel)
     return color.note.value
   }
 
-  return identifyColorCommon(findings, 'level', SecurityLevel.None, SecurityLevel.Unknown, color)
+  return identifyColorCommon(findings, 'level', SecurityLevel.None, SecurityLevel.Unknown, color, defaultColor)
 }
 
 /**
  * Makes an ultimate decision on what color should be Slack message. The decision
- * is based on the provided {@param color} parameter and {@param findings} list.
+ * is based on the provided {@param colorOpts} parameter and {@param findings}
+ * list.
  * @param findings An instance of {@link FindingsArray} object.
- * @param color Either an instance of {@link Color} or {@link ColorOptions} type.
+ * @param colorOpts An instance of {@link ColorOptions} type.
  * @internal
  */
-export function identifyColor(findings: FindingsArray, color?: Color | ColorOptions): string | undefined {
-  if (color == null) {
-    return undefined
+export function identifyColor(findings: FindingsArray, colorOpts?: ColorOptions): string | undefined {
+  if (colorOpts?.bySeverity != null) {
+    return identifyColorBySeverity(findings, colorOpts.bySeverity, colorOpts.default)
   }
 
-  if (isColor(color)) {
-    return color.value
+  if (colorOpts?.byLevel != null) {
+    return identifyColorByLevel(findings, colorOpts.byLevel, colorOpts.default)
   }
 
-  if (isColorOptions(color)) {
-    if (color.bySeverity != null) {
-      return identifyColorBySeverity(findings, color.bySeverity)
-    }
-
-    if (color.byLevel != null) {
-      return identifyColorByLevel(findings, color.byLevel)
-    }
-  }
-
-  return undefined
+  return colorOpts?.default?.value
 }
