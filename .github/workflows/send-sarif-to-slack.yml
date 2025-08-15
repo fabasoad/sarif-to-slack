@@ -7,33 +7,48 @@ on: # yamllint disable-line rule:truthy
       sarif:
         description: SARIF to send
         required: true
-        default: "Snyk Yarn (Error: 30, Warning: 16, Note: 3)"
+        default: "OSV Scanner Yarn (Critical: 17, High: 39, Medium: 31, Low: 4, Unknown: 6)"
         type: choice
         options:
-          - "CodeQL C# (Unknown: 1)"
-          - "CodeQL Go (Unknown: 1)"
-          - "CodeQL Python (Unknown: 1)"
-          - "CodeQL Ruby (Unknown: 4)"
-          - "CodeQL TypeScript (Unknown: 1)"
-          - "Grype Container (Error: 10, Warning: 20, Note: 9)"
-          - "Snyk Composer (Error: 15, Warning: 5)"
-          - "Snyk Container (Error: 1, Note: 3)"
-          - "Snyk Gomodules (Error: 4, Warning: 4)"
-          - "Snyk Gradle (Error: 3, Warning: 1)"
-          - "Snyk Hex (Error: 1)"
-          - "Snyk Maven (Error: 3, Warning: 1)"
-          - "Snyk NPM (Error: 6, Warning: 6, Note: 2)"
-          - "Snyk Nuget (Error: 1)"
-          - "Snyk Pip (Warning: 1)"
-          - "Snyk PNPM (Error: 1)"
-          - "Snyk Poetry (Error: 6, Warning: 21, Note: 2)"
-          - "Snyk Rubygems (Error: 1, Warning: 5)"
-          - "Snyk Sbt (Error: 2, Warning: 1)"
-          - "Snyk Swift (Warning: 2)"
-          - "Snyk Yarn (Error: 30, Warning: 16, Note: 3)"
-          - "Trivy IaC (Error: 1, Note: 1)"
-          - "Wiz Container (Error: 12, Warning: 369, Note: 191)"
-          - "Wiz IaC (Warning: 5, Note: 5)"
+          - "CodeQL C# (High: 1)"
+          - "CodeQL Go (Critical: 1)"
+          - "CodeQL Python (Medium: 1)"
+          - "CodeQL Ruby (Critical: 3, High: 1)"
+          - "CodeQL TypeScript (Critical: 1)"
+          - "Grype Container (Critical: 4, High: 6, Medium: 20, Low: 9)"
+          - "Grype GitHub Actions (High: 1)"
+          - "OSV Scanner Composer (Critical: 5, High: 4, Medium: 7)"
+          - "OSV Scanner Container (Critical: 2, High: 7, Medium: 7, Low: 6, Unknown: 26)"
+          - "OSV Scanner Gomodules (Critical: 1, High: 6, Medium: 9)"
+          - "OSV Scanner Hex (Unknown: 2)"
+          - "OSV Scanner Maven (Critical: 1, Unknown: 1)"
+          - "OSV Scanner NPM (High: 4, Medium: 5, Unknown: 1)"
+          - "OSV Scanner Pip (High: 2, Unknown: 1)"
+          - "OSV Scanner Pipenv (High: 4)"
+          - "OSV Scanner PNPM (High: 2)"
+          - "OSV Scanner Poetry (High: 21, Medium: 13, Low: 2, Unknown: 1)"
+          - "OSV Scanner Rubygems (High: 4, Medium: 2)"
+          - "OSV Scanner UV (High: 2, Unknown: 1)"
+          - "OSV Scanner Yarn (Critical: 17, High: 39, Medium: 31, Low: 4, Unknown: 6)"
+          - "Snyk Composer (Critical: 4, High: 7, Medium: 5, Low: 1, None: 3)"
+          - "Snyk Container (High: 1, None: 3)"
+          - "Snyk Gomodules (High: 4, Medium: 4)"
+          - "Snyk Gradle (Critical: 2, Medium: 1, None: 1)"
+          - "Snyk Hex (Critical: 1)"
+          - "Snyk Maven (Critical: 2, Medium: 1, None: 1)"
+          - "Snyk NPM (High: 2, Medium: 6, Low: 2, None: 4)"
+          - "Snyk Nuget (High: 1)"
+          - "Snyk Pip (Medium: 1)"
+          - "Snyk PNPM (High: 1)"
+          - "Snyk Poetry (High: 5, Medium: 21, Low: 2, None: 1)"
+          - "Snyk Rubygems (High: 1, Medium: 5)"
+          - "Snyk Sbt (Medium: 1, None: 2)"
+          - "Snyk Swift (Medium: 2)"
+          - "Snyk Yarn (High: 19, Medium: 16, Low: 3, None: 11)"
+          - "Trivy IaC (High: 1, Low: 1)"
+          - "Wiz Container (Critical: 48, High: 209, Medium: 245, Low: 70)"
+          - "Wiz IaC (Medium: 5, Low: 5)"
+          - "Runs: 0"
           - "Runs: 1, Extensions: 1, Results: 0"
           - "Runs: 1, Extensions: 1, Results > 0"
           - "Runs: 1, Tools: 1, Results: 0"
@@ -44,36 +59,63 @@ on: # yamllint disable-line rule:truthy
           - "Runs: 3, Tools: 2, Results > 0"
           - "Runs: 3, Tools: 2, Results: 0"
           - "All"
-      group-by:
-        description: "Group results by:"
+      representation:
+        description: "Representation:"
         required: false
-        default: "Tool name"
+        default: "compact-group-by-tool-name-per-severity"
         type: choice
         options:
-          - "Tool name"
-          - "Run"
-          - "Total"
-      calculate-by:
-        description: "Calculate results by:"
-        required: false
-        default: "Level"
-        type: choice
-        options:
-          - "Level"
-          - "Severity"
+          - "compact-group-by-run-per-level"
+          - "compact-group-by-run-per-severity"
+          - "compact-group-by-tool-name-per-level"
+          - "compact-group-by-tool-name-per-severity"
+          - "compact-group-by-sarif-per-level"
+          - "compact-group-by-sarif-per-severity"
+          - "compact-total-per-level"
+          - "compact-total-per-severity"
       log-level:
         description: "Log level:"
         required: false
-        default: info
+        default: "info"
         type: choice
         options:
-          - silly
-          - trace
-          - debug
-          - info
-          - warning
-          - error
-          - fatal
+          - "silly"
+          - "trace"
+          - "debug"
+          - "info"
+          - "warning"
+          - "error"
+          - "fatal"
+      send-if:
+        description: "Send if:"
+        required: false
+        default: "always"
+        type: choice
+        options:
+          - "severity-critical"
+          - "severity-high"
+          - "severity-high-or-higher"
+          - "severity-medium"
+          - "severity-medium-or-higher"
+          - "severity-low"
+          - "severity-low-or-higher"
+          - "severity-none"
+          - "severity-none-or-higher"
+          - "severity-unknown"
+          - "severity-unknown-or-higher"
+          - "level-error"
+          - "level-warning"
+          - "level-warning-or-higher"
+          - "level-note"
+          - "level-note-or-higher"
+          - "level-none"
+          - "level-none-or-higher"
+          - "level-unknown"
+          - "level-unknown-or-higher"
+          - "always"
+          - "some"
+          - "empty"
+          - "never"
       color:
         description: "Slack message color (hex):"
         required: false
@@ -120,60 +162,90 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Determine SARIF file
         id: sarif-file
         env:
           INPUT_SARIF: "${{ inputs.sarif }}"
         run: |
-          if [ "${INPUT_SARIF}" = "CodeQL C# (Unknown: 1)" ]; then
+          if [ "${INPUT_SARIF}" = "CodeQL C# (High: 1)1)" ]; then
             value="codeql-csharp.sarif"
-          elif [ "${INPUT_SARIF}" = "CodeQL Go (Unknown: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "CodeQL Go (Critical: 1)" ]; then
             value="codeql-go.sarif"
-          elif [ "${INPUT_SARIF}" = "CodeQL Python (Unknown: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "CodeQL Python (Medium: 1)" ]; then
             value="codeql-python.sarif"
-          elif [ "${INPUT_SARIF}" = "CodeQL Ruby (Unknown: 4)" ]; then
+          elif [ "${INPUT_SARIF}" = "CodeQL Ruby (Critical: 3, High: 1)" ]; then
             value="codeql-ruby.sarif"
-          elif [ "${INPUT_SARIF}" = "CodeQL TypeScript (Unknown: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "CodeQL TypeScript (Critical: 1)" ]; then
             value="codeql-typescript.sarif"
-          elif [ "${INPUT_SARIF}" = "Grype Container (Error: 10, Warning: 20, Note: 9)" ]; then
+          elif [ "${INPUT_SARIF}" = "Grype Container (Critical: 4, High: 6, Medium: 20, Low: 9)" ]; then
             value="grype-container.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Composer (Error: 15, Warning: 5)" ]; then
+          elif [ "${INPUT_SARIF}" = "Grype GitHub Actions (High: 1)" ]; then
+            value="grype-github-actions.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Composer (Critical: 5, High: 4, Medium: 7)" ]; then
+            value="osv-scanner-composer.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Container (Critical: 2, High: 7, Medium: 7, Low: 6, Unknown: 26)" ]; then
+            value="osv-scanner-container.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Gomodules (Critical: 1, High: 6, Medium: 9)" ]; then
+            value="osv-scanner-gomodules.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Hex (Unknown: 2)" ]; then
+            value="osv-scanner-hex.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Maven (Critical: 1, Unknown: 1)" ]; then
+            value="osv-scanner-maven.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner NPM (High: 4, Medium: 5, Unknown: 1)" ]; then
+            value="osv-scanner-npm.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Pip (High: 2, Unknown: 1)" ]; then
+            value="osv-scanner-pip.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Pipenv (High: 4)" ]; then
+            value="osv-scanner-pipenv.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner PNPM (High: 2)" ]; then
+            value="osv-scanner-pnpm.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Poetry (High: 21, Medium: 13, Low: 2, Unknown: 1)" ]; then
+            value="osv-scanner-poetry.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Rubygems (High: 4, Medium: 2)" ]; then
+            value="osv-scanner-rubygems.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner UV (High: 2, Unknown: 1)" ]; then
+            value="osv-scanner-uv.sarif"
+          elif [ "${INPUT_SARIF}" = "OSV Scanner Yarn (Critical: 17, High: 39, Medium: 31, Low: 4, Unknown: 6)" ]; then
+            value="osv-scanner-yarn.sarif"
+          elif [ "${INPUT_SARIF}" = "Snyk Composer (Critical: 4, High: 7, Medium: 5, Low: 1, None: 3)" ]; then
             value="snyk-composer.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Container (Error: 1, Note: 3)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Container (High: 1, None: 3)" ]; then
             value="snyk-container.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Gomodules (Error: 4, Warning: 4)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Gomodules (High: 4, Medium: 4)" ]; then
             value="snyk-gomodules.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Gradle (Error: 3, Warning: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Gradle (Critical: 2, Medium: 1, None: 1)" ]; then
             value="snyk-gradle.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Hex (Error: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Hex (Critical: 1)" ]; then
             value="snyk-hex.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Maven (Error: 3, Warning: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Maven (Critical: 2, Medium: 1, None: 1)" ]; then
             value="snyk-maven.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk NPM (Error: 6, Warning: 6, Note: 2)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk NPM (High: 2, Medium: 6, Low: 2, None: 4)" ]; then
             value="snyk-npm.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Nuget (Error: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Nuget (High: 1)" ]; then
             value="snyk-nuget.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Pip (Warning: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Pip (Medium: 1)" ]; then
             value="snyk-pip.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk PNPM (Error: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk PNPM (High: 1)" ]; then
             value="snyk-pnpm.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Poetry (Error: 6, Warning: 21, Note: 2)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Poetry (High: 5, Medium: 21, Low: 2, None: 1)" ]; then
             value="snyk-poetry.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Rubygems (Error: 1, Warning: 5)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Rubygems (High: 1, Medium: 5)" ]; then
             value="snyk-rubygems.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Sbt (Error: 2, Warning: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Sbt (Medium: 1, None: 2)" ]; then
             value="snyk-sbt.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Swift (Warning: 2)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Swift (Medium: 2)" ]; then
             value="snyk-swift.sarif"
-          elif [ "${INPUT_SARIF}" = "Snyk Yarn (Error: 30, Warning: 16, Note: 3)" ]; then
+          elif [ "${INPUT_SARIF}" = "Snyk Yarn (High: 19, Medium: 16, Low: 3, None: 11)" ]; then
             value="snyk-yarn.sarif"
-          elif [ "${INPUT_SARIF}" = "Trivy IaC (Error: 1, Note: 1)" ]; then
+          elif [ "${INPUT_SARIF}" = "Trivy IaC (High: 1, Low: 1)" ]; then
             value="trivy-iac.sarif"
-          elif [ "${INPUT_SARIF}" = "Wiz Container (Error: 12, Warning: 369, Note: 191)" ]; then
+          elif [ "${INPUT_SARIF}" = "Wiz Container (Critical: 48, High: 209, Medium: 245, Low: 70)" ]; then
             value="wiz-container.sarif"
-          elif [ "${INPUT_SARIF}" = "Wiz IaC (Warning: 5, Note: 5)" ]; then
+          elif [ "${INPUT_SARIF}" = "Wiz IaC (Medium: 5, Low: 5)" ]; then
             value="wiz-iac.sarif"
+          elif [ "${INPUT_SARIF}" = "Runs: 0" ]; then
+            value="runs-0.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results: 0" ]; then
             value="runs-1-extensions-1-results-0.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 1, Extensions: 1, Results > 0" ]; then
@@ -215,6 +287,6 @@ jobs:
           SARIF_TO_SLACK_FOOTER: "${{ inputs.footer }}"
           SARIF_TO_SLACK_ACTOR: "${{ inputs.actor }}"
           SARIF_TO_SLACK_INCLUDE_RUN: "${{ inputs.include-run }}"
-          SARIF_TO_SLACK_GROUP_BY: "${{ inputs.group-by}}"
-          SARIF_TO_SLACK_CALCULATE_BY: "${{ inputs.calculate-by}}"
+          SARIF_TO_SLACK_REPRESENTATION: "${{ inputs.representation }}"
+          SARIF_TO_SLACK_SEND_IF: "${{ inputs.send-if }}"
         run: make test/integration

@@ -1,0 +1,35 @@
+import { SarifModel } from '../types'
+import { Finding } from '../model/Finding'
+import { findingsComparatorByKey } from '../utils/Comparators'
+import FindingsArray from '../model/FindingsArray'
+
+/**
+ * The most base abstract class for the representation. Every representation class
+ * must be derived from this class implicitly or explicitly.
+ * @internal
+ */
+export default abstract class Representation {
+  protected readonly _model: SarifModel
+
+  public constructor(model: SarifModel, findingSortKey: keyof Finding = 'level') {
+    this._model = model
+    this._model.findings = model
+      .findings
+      .map((f: Finding): Finding => f.clone())
+      .sort(findingsComparatorByKey(findingSortKey))
+      .reduce((arr: FindingsArray, f: Finding): FindingsArray => {
+        arr.push(f)
+        return arr
+      }, new FindingsArray())
+  }
+
+  protected bold(text: string): string {
+    return `*${text}*`
+  }
+
+  protected italic(text: string): string {
+    return `_${text}_`
+  }
+
+  abstract compose(): string
+}

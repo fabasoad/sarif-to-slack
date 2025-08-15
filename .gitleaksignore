@@ -1,0 +1,8 @@
+test-data/sarif/osv-scanner-poetry.sarif:curl-auth-user:1347
+test-data/sarif/osv-scanner-poetry.sarif:curl-auth-user:1348
+test-data/sarif/osv-scanner-poetry.sarif:curl-auth-user:1351
+test-data/sarif/osv-scanner-poetry.sarif:curl-auth-user:1352
+test-data/sarif/osv-scanner-yarn.sarif:aws-access-token:4181
+test-data/sarif/osv-scanner-yarn.sarif:aws-access-token:4182
+test-data/sarif/osv-scanner-yarn.sarif:aws-access-token:4185
+test-data/sarif/osv-scanner-yarn.sarif:aws-access-token:4186

@@ -1,0 +1,627 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "addresses": [],
+      "artifacts": [
+        {
+          "length": -1,
+          "location": {
+            "index": -1,
+            "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+          },
+          "parentIndex": -1,
+          "roles": []
+        }
+      ],
+      "graphs": [],
+      "invocations": [],
+      "language": "en-US",
+      "logicalLocations": [],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "policies": [],
+      "redactionTokens": [],
+      "results": [
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'path-to-regexp@0.1.7' is vulnerable to 'CVE-2024-45296' (also known as 'GHSA-9wv6-86v2-598j')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-45296",
+          "ruleIndex": 0,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'serve-static@1.14.1' is vulnerable to 'CVE-2024-43800' (also known as 'GHSA-cm22-4g7w-348p')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-43800",
+          "ruleIndex": 1,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'qs@6.7.0' is vulnerable to 'CVE-2022-24999' (also known as 'GHSA-hrpp-h998-j3pp')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2022-24999",
+          "ruleIndex": 2,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'send@0.17.1' is vulnerable to 'CVE-2024-43799' (also known as 'GHSA-m6fv-jmcg-4jfg')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-43799",
+          "ruleIndex": 3,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'cookie@0.4.0' is vulnerable to 'CVE-2024-47764' (also known as 'GHSA-pxg6-pf52-xh8x')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-47764",
+          "ruleIndex": 4,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'express@4.17.1' is vulnerable to 'CVE-2024-43796' (also known as 'GHSA-qw6h-vgh9-j6wx')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-43796",
+          "ruleIndex": 5,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'body-parser@1.19.0' is vulnerable to 'CVE-2024-45590' (also known as 'GHSA-qwcr-r2fm-qrc7')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-45590",
+          "ruleIndex": 6,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'path-to-regexp@0.1.7' is vulnerable to 'CVE-2024-52798' (also known as 'GHSA-rhx6-c78j-4q9w')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-52798",
+          "ruleIndex": 7,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'express@4.17.1' is vulnerable to 'CVE-2024-29041' (also known as 'GHSA-rv95-896h-c2vc')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-29041",
+          "ruleIndex": 8,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/javascript/npm/package-lock.json"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'mongodb@4.0.0' is vulnerable to 'CVE-2021-32050' (also known as 'GHSA-vxvm-qww3-2fh7')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-32050",
+          "ruleIndex": 9,
+          "stacks": [],
+          "taxa": []
+        }
+      ],
+      "runAggregates": [],
+      "taxonomies": [],
+      "threadFlowLocations": [],
+      "tool": {
+        "driver": {
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "informationUri": "https://github.com/google/osv-scanner",
+          "isComprehensive": false,
+          "language": "en-US",
+          "locations": [],
+          "name": "osv-scanner",
+          "notifications": [],
+          "rules": [
+            {
+              "deprecatedIds": [
+                "CVE-2024-45296",
+                "GHSA-9wv6-86v2-598j"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https://github.com/pillarjs/path-to-regexp/releases/tag/v0.1.10)\n- [1.9.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v1.9.0)\n- [3.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v3.3.0)\n- [6.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `/:a-:b` to `/:a-:b([^-/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `/:a-:b` will produce the regular expression `/^\\/([^\\/]+?)-([^\\/]+?)\\/?$/`. This can be exploited by a path such as `/a${'-a'.repeat(8_000)}/a`. [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https://blakeembrey.com/posts/2024-09-web-redos/)",
+                "text": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https://github.com/pillarjs/path-to-regexp/releases/tag/v0.1.10)\n- [1.9.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v1.9.0)\n- [3.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v3.3.0)\n- [6.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `/:a-:b` to `/:a-:b([^-/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `/:a-:b` will produce the regular expression `/^\\/([^\\/]+?)-([^\\/]+?)\\/?$/`. This can be exploited by a path such as `/a${'-a'.repeat(8_000)}/a`. [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https://blakeembrey.com/posts/2024-09-web-redos/)"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-45296](https://osv.dev/CVE-2024-45296)**.\n\n## [GHSA-9wv6-86v2-598j](https://osv.dev/GHSA-9wv6-86v2-598j)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e A bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `/:a-:b`.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e For users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\u003e \n\u003e These versions add backtrack protection when a custom regex pattern is not provided:\n\u003e \n\u003e - [0.1.10](https://github.com/pillarjs/path-to-regexp/releases/tag/v0.1.10)\n\u003e - [1.9.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v1.9.0)\n\u003e - [3.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v3.3.0)\n\u003e - [6.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0)\n\u003e \n\u003e They do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\u003e \n\u003e Version [7.1.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\u003e \n\u003e Version [8.0.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v8.0.0) removes the features that can cause a ReDoS.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e All versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `/:a-:b` to `/:a-:b([^-/]+)`.\n\u003e \n\u003e If paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\u003e \n\u003e ### Details\n\u003e \n\u003e Using `/:a-:b` will produce the regular expression `/^\\/([^\\/]+?)-([^\\/]+?)\\/?$/`. This can be exploited by a path such as `/a${'-a'.repeat(8_000)}/a`. [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\u003e \n\u003e Because JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\u003e \n\u003e ### References\n\u003e \n\u003e * [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n\u003e * [Detailed blog post](https://blakeembrey.com/posts/2024-09-web-redos/)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | path-to-regexp | 0.1.7 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-9wv6-86v2-598j | path-to-regexp | 0.1.10, 1.9.0, 3.3.0, 6.3.0, 8.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-45296\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-45296](https://osv.dev/CVE-2024-45296)**.\n\n## [GHSA-9wv6-86v2-598j](https://osv.dev/GHSA-9wv6-86v2-598j)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e A bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `/:a-:b`.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e For users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\u003e \n\u003e These versions add backtrack protection when a custom regex pattern is not provided:\n\u003e \n\u003e - [0.1.10](https://github.com/pillarjs/path-to-regexp/releases/tag/v0.1.10)\n\u003e - [1.9.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v1.9.0)\n\u003e - [3.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v3.3.0)\n\u003e - [6.3.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v6.3.0)\n\u003e \n\u003e They do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\u003e \n\u003e Version [7.1.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\u003e \n\u003e Version [8.0.0](https://github.com/pillarjs/path-to-regexp/releases/tag/v8.0.0) removes the features that can cause a ReDoS.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e All versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `/:a-:b` to `/:a-:b([^-/]+)`.\n\u003e \n\u003e If paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\u003e \n\u003e ### Details\n\u003e \n\u003e Using `/:a-:b` will produce the regular expression `/^\\/([^\\/]+?)-([^\\/]+?)\\/?$/`. This can be exploited by a path such as `/a${'-a'.repeat(8_000)}/a`. [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\u003e \n\u003e Because JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\u003e \n\u003e ### References\n\u003e \n\u003e * [OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)\n\u003e * [Detailed blog post](https://blakeembrey.com/posts/2024-09-web-redos/)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | path-to-regexp | 0.1.7 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-9wv6-86v2-598j | path-to-regexp | 0.1.10, 1.9.0, 3.3.0, 6.3.0, 8.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-45296\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-45296",
+              "name": "CVE-2024-45296",
+              "properties": {
+                "security-severity": "7.7"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-45296: path-to-regexp outputs backtracking regular expressions",
+                "text": "CVE-2024-45296: path-to-regexp outputs backtracking regular expressions"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-43800",
+                "GHSA-cm22-4g7w-348p"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+                "text": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-43800](https://osv.dev/CVE-2024-43800)**.\n\n## [GHSA-cm22-4g7w-348p](https://osv.dev/GHSA-cm22-4g7w-348p)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e passing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in serve-static 1.16.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | serve-static | 1.14.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-cm22-4g7w-348p | serve-static | 1.16.0, 2.1.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43800\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-43800](https://osv.dev/CVE-2024-43800)**.\n\n## [GHSA-cm22-4g7w-348p](https://osv.dev/GHSA-cm22-4g7w-348p)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e passing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in serve-static 1.16.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | serve-static | 1.14.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-cm22-4g7w-348p | serve-static | 1.16.0, 2.1.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43800\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-43800",
+              "name": "CVE-2024-43800",
+              "properties": {
+                "security-severity": "5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-43800: serve-static vulnerable to template injection that can lead to XSS",
+                "text": "CVE-2024-43800: serve-static vulnerable to template injection that can lead to XSS"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2022-24999",
+                "GHSA-hrpp-h998-j3pp"
+              ],
+              "fullDescription": {
+                "markdown": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b\u0026a[__proto__]\u0026a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.",
+                "text": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b\u0026a[__proto__]\u0026a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2022-24999](https://osv.dev/CVE-2022-24999)**.\n\n## [GHSA-hrpp-h998-j3pp](https://osv.dev/GHSA-hrpp-h998-j3pp)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b\u0026a[__proto__]\u0026a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | qs | 6.7.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-hrpp-h998-j3pp | qs | 6.10.3, 6.2.4, 6.3.3, 6.4.1, 6.5.3, 6.6.1, 6.7.3, 6.8.3, 6.9.7 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-24999\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2022-24999](https://osv.dev/CVE-2022-24999)**.\n\n## [GHSA-hrpp-h998-j3pp](https://osv.dev/GHSA-hrpp-h998-j3pp)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b\u0026a[__proto__]\u0026a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | qs | 6.7.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-hrpp-h998-j3pp | qs | 6.10.3, 6.2.4, 6.3.3, 6.4.1, 6.5.3, 6.6.1, 6.7.3, 6.8.3, 6.9.7 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-24999\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2022-24999",
+              "name": "CVE-2022-24999",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2022-24999: qs vulnerable to Prototype Pollution",
+                "text": "CVE-2022-24999: qs vulnerable to Prototype Pollution"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-43799",
+                "GHSA-m6fv-jmcg-4jfg"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+                "text": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-43799](https://osv.dev/CVE-2024-43799)**.\n\n## [GHSA-m6fv-jmcg-4jfg](https://osv.dev/GHSA-m6fv-jmcg-4jfg)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e passing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in send 0.19.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | send | 0.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-m6fv-jmcg-4jfg | send | 0.19.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43799\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-43799](https://osv.dev/CVE-2024-43799)**.\n\n## [GHSA-m6fv-jmcg-4jfg](https://osv.dev/GHSA-m6fv-jmcg-4jfg)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e passing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in send 0.19.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | send | 0.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-m6fv-jmcg-4jfg | send | 0.19.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43799\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-43799",
+              "name": "CVE-2024-43799",
+              "properties": {
+                "security-severity": "5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-43799: send vulnerable to template injection that can lead to XSS",
+                "text": "CVE-2024-43799: send vulnerable to template injection that can lead to XSS"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-47764",
+                "GHSA-pxg6-pf52-xh8x"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a\", value)` would result in `\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a=test\"`, setting `userName` cookie to `\u003cscript\u003e` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https://github.com/jshttp/cookie/pull/167",
+                "text": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a\", value)` would result in `\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a=test\"`, setting `userName` cookie to `\u003cscript\u003e` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https://github.com/jshttp/cookie/pull/167"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-47764](https://osv.dev/CVE-2024-47764)**.\n\n## [GHSA-pxg6-pf52-xh8x](https://osv.dev/GHSA-pxg6-pf52-xh8x)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a\", value)` would result in `\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a=test\"`, setting `userName` cookie to `\u003cscript\u003e` and ignoring `value`.\n\u003e \n\u003e A similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Upgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Avoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/jshttp/cookie/pull/167\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | cookie | 0.4.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-pxg6-pf52-xh8x | cookie | 0.7.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-47764\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-47764](https://osv.dev/CVE-2024-47764)**.\n\n## [GHSA-pxg6-pf52-xh8x](https://osv.dev/GHSA-pxg6-pf52-xh8x)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a\", value)` would result in `\"userName=\u003cscript\u003ealert('XSS3')\u003c/script\u003e; Max-Age=2592000; a=test\"`, setting `userName` cookie to `\u003cscript\u003e` and ignoring `value`.\n\u003e \n\u003e A similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Upgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Avoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/jshttp/cookie/pull/167\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | cookie | 0.4.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-pxg6-pf52-xh8x | cookie | 0.7.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-47764\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-47764",
+              "name": "CVE-2024-47764",
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-47764: cookie accepts cookie name, path, and domain with out of bounds characters",
+                "text": "CVE-2024-47764: cookie accepts cookie name, path, and domain with out of bounds characters"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-43796",
+                "GHSA-qw6h-vgh9-j6wx"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nIn express \u003c4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+                "text": "### Impact\n\nIn express \u003c4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-43796](https://osv.dev/CVE-2024-43796)**.\n\n## [GHSA-qw6h-vgh9-j6wx](https://osv.dev/GHSA-qw6h-vgh9-j6wx)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e In express \u003c4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in express 4.20.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | express | 4.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-qw6h-vgh9-j6wx | express | 4.20.0, 5.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43796\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-43796](https://osv.dev/CVE-2024-43796)**.\n\n## [GHSA-qw6h-vgh9-j6wx](https://osv.dev/GHSA-qw6h-vgh9-j6wx)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e In express \u003c4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in express 4.20.0\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e users are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\u003e \n\u003e ### Details\n\u003e \n\u003e successful exploitation of this vector requires the following:\n\u003e \n\u003e 1. The attacker MUST control the input to response.redirect()\n\u003e 1. express MUST NOT redirect before the template appears\n\u003e 1. the browser MUST NOT complete redirection before:\n\u003e 1. the user MUST click on the link in the template\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | express | 4.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-qw6h-vgh9-j6wx | express | 4.20.0, 5.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43796\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-43796",
+              "name": "CVE-2024-43796",
+              "properties": {
+                "security-severity": "5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-43796: express vulnerable to XSS via response.redirect()",
+                "text": "CVE-2024-43796: express vulnerable to XSS via response.redirect()"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-45590",
+                "GHSA-qwcr-r2fm-qrc7"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nbody-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n",
+                "text": "### Impact\n\nbody-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-45590](https://osv.dev/CVE-2024-45590)**.\n\n## [GHSA-qwcr-r2fm-qrc7](https://osv.dev/GHSA-qwcr-r2fm-qrc7)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e body-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in 1.20.3\n\u003e \n\u003e ### References\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | body-parser | 1.19.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-qwcr-r2fm-qrc7 | body-parser | 1.20.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-45590\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-45590](https://osv.dev/CVE-2024-45590)**.\n\n## [GHSA-qwcr-r2fm-qrc7](https://osv.dev/GHSA-qwcr-r2fm-qrc7)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e body-parser \u003c1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e this issue is patched in 1.20.3\n\u003e \n\u003e ### References\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | body-parser | 1.19.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-qwcr-r2fm-qrc7 | body-parser | 1.20.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-45590\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-45590",
+              "name": "CVE-2024-45590",
+              "properties": {
+                "security-severity": "8.7"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-45590: body-parser vulnerable to denial of service when url encoding is enabled",
+                "text": "CVE-2024-45590: body-parser vulnerable to denial of service when url encoding is enabled"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-52798",
+                "GHSA-rhx6-c78j-4q9w"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https://github.com/advisories/GHSA-9wv6-86v2-598j\n- https://blakeembrey.com/posts/2024-09-web-redos/",
+                "text": "### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https://github.com/advisories/GHSA-9wv6-86v2-598j\n- https://blakeembrey.com/posts/2024-09-web-redos/"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-52798](https://osv.dev/CVE-2024-52798)**.\n\n## [GHSA-rhx6-c78j-4q9w](https://osv.dev/GHSA-rhx6-c78j-4q9w)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Upgrade to 0.1.12.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Avoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\u003e \n\u003e ### References\n\u003e \n\u003e - https://github.com/advisories/GHSA-9wv6-86v2-598j\n\u003e - https://blakeembrey.com/posts/2024-09-web-redos/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | path-to-regexp | 0.1.7 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-rhx6-c78j-4q9w | path-to-regexp | 0.1.12 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-52798\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-52798](https://osv.dev/CVE-2024-52798)**.\n\n## [GHSA-rhx6-c78j-4q9w](https://osv.dev/GHSA-rhx6-c78j-4q9w)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Upgrade to 0.1.12.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Avoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\u003e \n\u003e ### References\n\u003e \n\u003e - https://github.com/advisories/GHSA-9wv6-86v2-598j\n\u003e - https://blakeembrey.com/posts/2024-09-web-redos/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | path-to-regexp | 0.1.7 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-rhx6-c78j-4q9w | path-to-regexp | 0.1.12 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-52798\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-52798",
+              "name": "CVE-2024-52798",
+              "properties": {
+                "security-severity": "7.7"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-52798: path-to-regexp contains a ReDoS",
+                "text": "CVE-2024-52798: path-to-regexp contains a ReDoS"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-29041",
+                "GHSA-rv95-896h-c2vc"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\nThe main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\n### Patches\n\nhttps://github.com/expressjs/express/commit/0867302ddbde0e9463d0564fea5861feb708c2dd\nhttps://github.com/expressjs/express/commit/0b746953c4bd8e377123527db11f9cd866e39f94\n\nAn initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\n### Workarounds\n\nThe fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\n### References\n\nhttps://github.com/expressjs/express/pull/5539\nhttps://github.com/koajs/koa/issues/1800\nhttps://expressjs.com/en/4x/api.html#res.location",
+                "text": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\nThe main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\n### Patches\n\nhttps://github.com/expressjs/express/commit/0867302ddbde0e9463d0564fea5861feb708c2dd\nhttps://github.com/expressjs/express/commit/0b746953c4bd8e377123527db11f9cd866e39f94\n\nAn initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\n### Workarounds\n\nThe fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\n### References\n\nhttps://github.com/expressjs/express/pull/5539\nhttps://github.com/koajs/koa/issues/1800\nhttps://expressjs.com/en/4x/api.html#res.location"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-29041](https://osv.dev/CVE-2024-29041)**.\n\n## [GHSA-rv95-896h-c2vc](https://osv.dev/GHSA-rv95-896h-c2vc)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e Versions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\u003e \n\u003e When a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\u003e \n\u003e The main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e https://github.com/expressjs/express/commit/0867302ddbde0e9463d0564fea5861feb708c2dd\n\u003e https://github.com/expressjs/express/commit/0b746953c4bd8e377123527db11f9cd866e39f94\n\u003e \n\u003e An initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e The fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\u003e \n\u003e ### References\n\u003e \n\u003e https://github.com/expressjs/express/pull/5539\n\u003e https://github.com/koajs/koa/issues/1800\n\u003e https://expressjs.com/en/4x/api.html#res.location\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | express | 4.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-rv95-896h-c2vc | express | 4.19.2, 5.0.0-beta.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-29041\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-29041](https://osv.dev/CVE-2024-29041)**.\n\n## [GHSA-rv95-896h-c2vc](https://osv.dev/GHSA-rv95-896h-c2vc)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e Versions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\u003e \n\u003e When a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https://github.com/pillarjs/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\u003e \n\u003e The main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e https://github.com/expressjs/express/commit/0867302ddbde0e9463d0564fea5861feb708c2dd\n\u003e https://github.com/expressjs/express/commit/0b746953c4bd8e377123527db11f9cd866e39f94\n\u003e \n\u003e An initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e The fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\u003e \n\u003e ### References\n\u003e \n\u003e https://github.com/expressjs/express/pull/5539\n\u003e https://github.com/koajs/koa/issues/1800\n\u003e https://expressjs.com/en/4x/api.html#res.location\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | express | 4.17.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-rv95-896h-c2vc | express | 4.19.2, 5.0.0-beta.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-29041\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-29041",
+              "name": "CVE-2024-29041",
+              "properties": {
+                "security-severity": "6.1"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-29041: Express.js Open Redirect in malformed URLs",
+                "text": "CVE-2024-29041: Express.js Open Redirect in malformed URLs"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-32050",
+                "GHSA-vxvm-qww3-2fh7"
+              ],
+              "fullDescription": {
+                "markdown": "Some MongoDB Drivers may erroneously publish events containing authentication-related data to a command listener configured by an application. The published events may contain security-sensitive data when specific authentication-related commands are executed.\n\nWithout due care, an application may inadvertently expose this sensitive information, e.g., by writing it to a log file. This issue only arises if an application enables the command listener feature (this is not enabled by default).\n\nThis issue affects the MongoDB C Driver 1.0.0 prior to 1.17.7, MongoDB PHP Driver 1.0.0 prior to 1.9.2, MongoDB Swift Driver 1.0.0 prior to 1.1.1, MongoDB Node.js Driver 3.6 prior to 3.6.10, MongoDB Node.js Driver 4.0 prior to 4.17.0 and MongoDB Node.js Driver 5.0 prior to 5.8.0. This issue also affects users of the MongoDB C++ Driver dependent on the C driver 1.0.0 prior to 1.17.7 (C++ driver prior to 3.7.0).",
+                "text": "Some MongoDB Drivers may erroneously publish events containing authentication-related data to a command listener configured by an application. The published events may contain security-sensitive data when specific authentication-related commands are executed.\n\nWithout due care, an application may inadvertently expose this sensitive information, e.g., by writing it to a log file. This issue only arises if an application enables the command listener feature (this is not enabled by default).\n\nThis issue affects the MongoDB C Driver 1.0.0 prior to 1.17.7, MongoDB PHP Driver 1.0.0 prior to 1.9.2, MongoDB Swift Driver 1.0.0 prior to 1.1.1, MongoDB Node.js Driver 3.6 prior to 3.6.10, MongoDB Node.js Driver 4.0 prior to 4.17.0 and MongoDB Node.js Driver 5.0 prior to 5.8.0. This issue also affects users of the MongoDB C++ Driver dependent on the C driver 1.0.0 prior to 1.17.7 (C++ driver prior to 3.7.0)."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-32050](https://osv.dev/CVE-2021-32050)**.\n\n## [GHSA-vxvm-qww3-2fh7](https://osv.dev/GHSA-vxvm-qww3-2fh7)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Some MongoDB Drivers may erroneously publish events containing authentication-related data to a command listener configured by an application. The published events may contain security-sensitive data when specific authentication-related commands are executed.\n\u003e \n\u003e Without due care, an application may inadvertently expose this sensitive information, e.g., by writing it to a log file. This issue only arises if an application enables the command listener feature (this is not enabled by default).\n\u003e \n\u003e This issue affects the MongoDB C Driver 1.0.0 prior to 1.17.7, MongoDB PHP Driver 1.0.0 prior to 1.9.2, MongoDB Swift Driver 1.0.0 prior to 1.1.1, MongoDB Node.js Driver 3.6 prior to 3.6.10, MongoDB Node.js Driver 4.0 prior to 4.17.0 and MongoDB Node.js Driver 5.0 prior to 5.8.0. This issue also affects users of the MongoDB C++ Driver dependent on the C driver 1.0.0 prior to 1.17.7 (C++ driver prior to 3.7.0).\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | mongodb | 4.0.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vxvm-qww3-2fh7 | mongodb/mongodb | 1.9.2 |\n| GHSA-vxvm-qww3-2fh7 | mongodb | 3.6.10, 4.17.0, 5.8.0 |\n| GHSA-vxvm-qww3-2fh7 | github.com/mongodb/mongo-swift-driver | 1.1.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-32050\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-32050](https://osv.dev/CVE-2021-32050)**.\n\n## [GHSA-vxvm-qww3-2fh7](https://osv.dev/GHSA-vxvm-qww3-2fh7)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Some MongoDB Drivers may erroneously publish events containing authentication-related data to a command listener configured by an application. The published events may contain security-sensitive data when specific authentication-related commands are executed.\n\u003e \n\u003e Without due care, an application may inadvertently expose this sensitive information, e.g., by writing it to a log file. This issue only arises if an application enables the command listener feature (this is not enabled by default).\n\u003e \n\u003e This issue affects the MongoDB C Driver 1.0.0 prior to 1.17.7, MongoDB PHP Driver 1.0.0 prior to 1.9.2, MongoDB Swift Driver 1.0.0 prior to 1.1.1, MongoDB Node.js Driver 3.6 prior to 3.6.10, MongoDB Node.js Driver 4.0 prior to 4.17.0 and MongoDB Node.js Driver 5.0 prior to 5.8.0. This issue also affects users of the MongoDB C++ Driver dependent on the C driver 1.0.0 prior to 1.17.7 (C++ driver prior to 3.7.0).\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/javascript/npm/package-lock.json | mongodb | 4.0.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vxvm-qww3-2fh7 | mongodb/mongodb | 1.9.2 |\n| GHSA-vxvm-qww3-2fh7 | mongodb | 3.6.10, 4.17.0, 5.8.0 |\n| GHSA-vxvm-qww3-2fh7 | github.com/mongodb/mongo-swift-driver | 1.1.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/javascript/npm/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-32050\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-32050",
+              "name": "CVE-2021-32050",
+              "properties": {
+                "security-severity": "4.2"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-32050: MongoDB Driver may publish events containing authentication-related data",
+                "text": "CVE-2021-32050: MongoDB Driver may publish events containing authentication-related data"
+              }
+            }
+          ],
+          "supportedTaxonomies": [],
+          "taxa": [],
+          "version": "2.2.0"
+        },
+        "extensions": []
+      },
+      "translations": [],
+      "versionControlProvenance": [],
+      "webRequests": [],
+      "webResponses": []
+    }
+  ],
+  "properties": {}
+}

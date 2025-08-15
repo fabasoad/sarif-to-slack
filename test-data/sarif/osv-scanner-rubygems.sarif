@@ -1,0 +1,402 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "addresses": [],
+      "artifacts": [
+        {
+          "length": -1,
+          "location": {
+            "index": -1,
+            "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+          },
+          "parentIndex": -1,
+          "roles": []
+        }
+      ],
+      "graphs": [],
+      "invocations": [],
+      "language": "en-US",
+      "logicalLocations": [],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "policies": [],
+      "redactionTokens": [],
+      "results": [
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-49761' (also known as 'GHSA-2rxp-v6pw-ch6m')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-49761",
+          "ruleIndex": 0,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-39908' (also known as 'GHSA-4xqq-m2hx-25v8')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-39908",
+          "ruleIndex": 1,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-41946' (also known as 'GHSA-5866-49gr-22v4')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-41946",
+          "ruleIndex": 2,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-41123' (also known as 'GHSA-r55c-59qm-vjw6')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-41123",
+          "ruleIndex": 3,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-35176' (also known as 'GHSA-vg3r-rm7w-2xgh')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-35176",
+          "ruleIndex": 4,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/ruby/rubygems/Gemfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'rexml@3.2.6' is vulnerable to 'CVE-2024-43398' (also known as 'GHSA-vmwr-mc7x-5vc3')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-43398",
+          "ruleIndex": 5,
+          "stacks": [],
+          "taxa": []
+        }
+      ],
+      "runAggregates": [],
+      "taxonomies": [],
+      "threadFlowLocations": [],
+      "tool": {
+        "driver": {
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "informationUri": "https://github.com/google/osv-scanner",
+          "isComprehensive": false,
+          "language": "en-US",
+          "locations": [],
+          "name": "osv-scanner",
+          "notifications": [],
+          "rules": [
+            {
+              "deprecatedIds": [
+                "CVE-2024-49761",
+                "GHSA-2rxp-v6pw-ch6m"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.3.9 has a ReDoS vulnerability when it parses an XML that has many digits between `\u0026#` and `x...;` in a hex numeric character reference (`\u0026#x...;`).\n\nThis does not happen with Ruby 3.2 or later. Ruby 3.1 is the only affected maintained Ruby. Note that Ruby 3.1 will reach EOL on 2025-03.\n\n### Patches\n\nThe REXML gem 3.3.9 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nUse Ruby 3.2 or later instead of Ruby 3.1.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/10/28/redos-rexml-cve-2024-49761/: An announce on www.ruby-lang.org\n",
+                "text": "### Impact\n\nThe REXML gem before 3.3.9 has a ReDoS vulnerability when it parses an XML that has many digits between `\u0026#` and `x...;` in a hex numeric character reference (`\u0026#x...;`).\n\nThis does not happen with Ruby 3.2 or later. Ruby 3.1 is the only affected maintained Ruby. Note that Ruby 3.1 will reach EOL on 2025-03.\n\n### Patches\n\nThe REXML gem 3.3.9 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nUse Ruby 3.2 or later instead of Ruby 3.1.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/10/28/redos-rexml-cve-2024-49761/: An announce on www.ruby-lang.org\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-49761](https://osv.dev/CVE-2024-49761)**.\n\n## [GHSA-2rxp-v6pw-ch6m](https://osv.dev/GHSA-2rxp-v6pw-ch6m)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.9 has a ReDoS vulnerability when it parses an XML that has many digits between `\u0026#` and `x...;` in a hex numeric character reference (`\u0026#x...;`).\n\u003e \n\u003e This does not happen with Ruby 3.2 or later. Ruby 3.1 is the only affected maintained Ruby. Note that Ruby 3.1 will reach EOL on 2025-03.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.9 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Use Ruby 3.2 or later instead of Ruby 3.1.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/10/28/redos-rexml-cve-2024-49761/: An announce on www.ruby-lang.org\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-2rxp-v6pw-ch6m | rexml | 3.3.9 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-49761\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-49761](https://osv.dev/CVE-2024-49761)**.\n\n## [GHSA-2rxp-v6pw-ch6m](https://osv.dev/GHSA-2rxp-v6pw-ch6m)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.9 has a ReDoS vulnerability when it parses an XML that has many digits between `\u0026#` and `x...;` in a hex numeric character reference (`\u0026#x...;`).\n\u003e \n\u003e This does not happen with Ruby 3.2 or later. Ruby 3.1 is the only affected maintained Ruby. Note that Ruby 3.1 will reach EOL on 2025-03.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.9 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Use Ruby 3.2 or later instead of Ruby 3.1.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/10/28/redos-rexml-cve-2024-49761/: An announce on www.ruby-lang.org\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-2rxp-v6pw-ch6m | rexml | 3.3.9 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-49761\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-49761",
+              "name": "CVE-2024-49761",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-49761: REXML ReDoS vulnerability",
+                "text": "CVE-2024-49761: REXML ReDoS vulnerability"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-39908",
+                "GHSA-4xqq-m2hx-25v8"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.3.1 has some DoS vulnerabilities when it parses an XML that has many specific characters such as `\u003c`, `0` and `%\u003e`.\n\nIf you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\n### Patches\n\nThe REXML gem 3.3.2 or later include the patches to fix these vulnerabilities.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/07/16/dos-rexml-cve-2024-39908/",
+                "text": "### Impact\n\nThe REXML gem before 3.3.1 has some DoS vulnerabilities when it parses an XML that has many specific characters such as `\u003c`, `0` and `%\u003e`.\n\nIf you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\n### Patches\n\nThe REXML gem 3.3.2 or later include the patches to fix these vulnerabilities.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/07/16/dos-rexml-cve-2024-39908/"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-39908](https://osv.dev/CVE-2024-39908)**.\n\n## [GHSA-4xqq-m2hx-25v8](https://osv.dev/GHSA-4xqq-m2hx-25v8)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.1 has some DoS vulnerabilities when it parses an XML that has many specific characters such as `\u003c`, `0` and `%\u003e`.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.2 or later include the patches to fix these vulnerabilities.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/07/16/dos-rexml-cve-2024-39908/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-4xqq-m2hx-25v8 | rexml | 3.3.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-39908\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-39908](https://osv.dev/CVE-2024-39908)**.\n\n## [GHSA-4xqq-m2hx-25v8](https://osv.dev/GHSA-4xqq-m2hx-25v8)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.1 has some DoS vulnerabilities when it parses an XML that has many specific characters such as `\u003c`, `0` and `%\u003e`.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.2 or later include the patches to fix these vulnerabilities.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/07/16/dos-rexml-cve-2024-39908/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-4xqq-m2hx-25v8 | rexml | 3.3.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-39908\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-39908",
+              "name": "CVE-2024-39908",
+              "properties": {
+                "security-severity": "6.9"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-39908: REXML denial of service vulnerability",
+                "text": "CVE-2024-39908: REXML denial of service vulnerability"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-41946",
+                "GHSA-5866-49gr-22v4"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.3.2 has a DoS vulnerability when it parses an XML that has many entity expansions with SAX2 or pull parser API.\n\nIf you need to parse untrusted XMLs with SAX2 or pull parser API, you may be impacted to this vulnerability.\n\n### Patches\n\nThe REXML gem 3.3.3 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs with SAX2 or pull parser API.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2008/08/23/dos-vulnerability-in-rexml/ : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41946/: An announce on www.ruby-lang.org",
+                "text": "### Impact\n\nThe REXML gem before 3.3.2 has a DoS vulnerability when it parses an XML that has many entity expansions with SAX2 or pull parser API.\n\nIf you need to parse untrusted XMLs with SAX2 or pull parser API, you may be impacted to this vulnerability.\n\n### Patches\n\nThe REXML gem 3.3.3 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs with SAX2 or pull parser API.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2008/08/23/dos-vulnerability-in-rexml/ : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41946/: An announce on www.ruby-lang.org"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-41946](https://osv.dev/CVE-2024-41946)**.\n\n## [GHSA-5866-49gr-22v4](https://osv.dev/GHSA-5866-49gr-22v4)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.2 has a DoS vulnerability when it parses an XML that has many entity expansions with SAX2 or pull parser API.\n\u003e \n\u003e If you need to parse untrusted XMLs with SAX2 or pull parser API, you may be impacted to this vulnerability.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.3 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs with SAX2 or pull parser API.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2008/08/23/dos-vulnerability-in-rexml/ : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41946/: An announce on www.ruby-lang.org\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5866-49gr-22v4 | rexml | 3.3.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-41946\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-41946](https://osv.dev/CVE-2024-41946)**.\n\n## [GHSA-5866-49gr-22v4](https://osv.dev/GHSA-5866-49gr-22v4)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.2 has a DoS vulnerability when it parses an XML that has many entity expansions with SAX2 or pull parser API.\n\u003e \n\u003e If you need to parse untrusted XMLs with SAX2 or pull parser API, you may be impacted to this vulnerability.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.3 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs with SAX2 or pull parser API.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2008/08/23/dos-vulnerability-in-rexml/ : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41946/: An announce on www.ruby-lang.org\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5866-49gr-22v4 | rexml | 3.3.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-41946\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-41946",
+              "name": "CVE-2024-41946",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-41946: REXML DoS vulnerability",
+                "text": "CVE-2024-41946: REXML DoS vulnerability"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-41123",
+                "GHSA-r55c-59qm-vjw6"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.3.2 has some DoS vulnerabilities when it parses an XML that has many specific characters such as whitespace character, `\u003e]` and `]\u003e`.\n\nIf you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\n### Patches\n\nThe REXML gem 3.3.3 or later include the patches to fix these vulnerabilities.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n* https://github.com/ruby/rexml/security/advisories/GHSA-4xqq-m2hx-25v8 : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41123/: An announce on www.ruby-lang.org",
+                "text": "### Impact\n\nThe REXML gem before 3.3.2 has some DoS vulnerabilities when it parses an XML that has many specific characters such as whitespace character, `\u003e]` and `]\u003e`.\n\nIf you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\n### Patches\n\nThe REXML gem 3.3.3 or later include the patches to fix these vulnerabilities.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n* https://github.com/ruby/rexml/security/advisories/GHSA-4xqq-m2hx-25v8 : This is a similar vulnerability\n* https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41123/: An announce on www.ruby-lang.org"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-41123](https://osv.dev/CVE-2024-41123)**.\n\n## [GHSA-r55c-59qm-vjw6](https://osv.dev/GHSA-r55c-59qm-vjw6)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.2 has some DoS vulnerabilities when it parses an XML that has many specific characters such as whitespace character, `\u003e]` and `]\u003e`.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.3 or later include the patches to fix these vulnerabilities.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-4xqq-m2hx-25v8 : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41123/: An announce on www.ruby-lang.org\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-r55c-59qm-vjw6 | rexml | 3.3.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-41123\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-41123](https://osv.dev/CVE-2024-41123)**.\n\n## [GHSA-r55c-59qm-vjw6](https://osv.dev/GHSA-r55c-59qm-vjw6)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.2 has some DoS vulnerabilities when it parses an XML that has many specific characters such as whitespace character, `\u003e]` and `]\u003e`.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to these vulnerabilities.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.3 or later include the patches to fix these vulnerabilities.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-vg3r-rm7w-2xgh : This is a similar vulnerability\n\u003e * https://github.com/ruby/rexml/security/advisories/GHSA-4xqq-m2hx-25v8 : This is a similar vulnerability\n\u003e * https://www.ruby-lang.org/en/news/2024/08/01/dos-rexml-cve-2024-41123/: An announce on www.ruby-lang.org\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-r55c-59qm-vjw6 | rexml | 3.3.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-41123\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-41123",
+              "name": "CVE-2024-41123",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-41123: REXML DoS vulnerability",
+                "text": "CVE-2024-41123: REXML DoS vulnerability"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-35176",
+                "GHSA-vg3r-rm7w-2xgh"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.2.6 has a DoS vulnerability when it parses an XML that has many `\u003c`s in an attribute value.\n\nIf you need to parse untrusted XMLs, you may be impacted to this vulnerability.\n\n### Patches\n\nThe REXML gem 3.2.7 or later include the patch to fix this vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/05/16/dos-rexml-cve-2024-35176/",
+                "text": "### Impact\n\nThe REXML gem before 3.2.6 has a DoS vulnerability when it parses an XML that has many `\u003c`s in an attribute value.\n\nIf you need to parse untrusted XMLs, you may be impacted to this vulnerability.\n\n### Patches\n\nThe REXML gem 3.2.7 or later include the patch to fix this vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/05/16/dos-rexml-cve-2024-35176/"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-35176](https://osv.dev/CVE-2024-35176)**.\n\n## [GHSA-vg3r-rm7w-2xgh](https://osv.dev/GHSA-vg3r-rm7w-2xgh)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.2.6 has a DoS vulnerability when it parses an XML that has many `\u003c`s in an attribute value.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to this vulnerability.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.2.7 or later include the patch to fix this vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/05/16/dos-rexml-cve-2024-35176/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vg3r-rm7w-2xgh | rexml | 3.2.7 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-35176\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-35176](https://osv.dev/CVE-2024-35176)**.\n\n## [GHSA-vg3r-rm7w-2xgh](https://osv.dev/GHSA-vg3r-rm7w-2xgh)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.2.6 has a DoS vulnerability when it parses an XML that has many `\u003c`s in an attribute value.\n\u003e \n\u003e If you need to parse untrusted XMLs, you may be impacted to this vulnerability.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.2.7 or later include the patch to fix this vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/05/16/dos-rexml-cve-2024-35176/\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vg3r-rm7w-2xgh | rexml | 3.2.7 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-35176\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-35176",
+              "name": "CVE-2024-35176",
+              "properties": {
+                "security-severity": "5.3"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-35176: REXML contains a denial of service vulnerability",
+                "text": "CVE-2024-35176: REXML contains a denial of service vulnerability"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-43398",
+                "GHSA-vmwr-mc7x-5vc3"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nThe REXML gem before 3.3.6 has a DoS vulnerability when it parses an XML that has many deep elements that have same local name attributes.\n\nIf you need to parse untrusted XMLs with tree parser API like `REXML::Document.new`, you may be impacted to this vulnerability. If you use other parser APIs such as stream parser API and SAX2 parser API, this vulnerability is not affected.\n\n### Patches\n\nThe REXML gem 3.3.6 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs with tree parser API.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/08/22/dos-rexml-cve-2024-43398/ : An announce on www.ruby-lang.org\n",
+                "text": "### Impact\n\nThe REXML gem before 3.3.6 has a DoS vulnerability when it parses an XML that has many deep elements that have same local name attributes.\n\nIf you need to parse untrusted XMLs with tree parser API like `REXML::Document.new`, you may be impacted to this vulnerability. If you use other parser APIs such as stream parser API and SAX2 parser API, this vulnerability is not affected.\n\n### Patches\n\nThe REXML gem 3.3.6 or later include the patch to fix the vulnerability.\n\n### Workarounds\n\nDon't parse untrusted XMLs with tree parser API.\n\n### References\n\n* https://www.ruby-lang.org/en/news/2024/08/22/dos-rexml-cve-2024-43398/ : An announce on www.ruby-lang.org\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-43398](https://osv.dev/CVE-2024-43398)**.\n\n## [GHSA-vmwr-mc7x-5vc3](https://osv.dev/GHSA-vmwr-mc7x-5vc3)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.6 has a DoS vulnerability when it parses an XML that has many deep elements that have same local name attributes.\n\u003e \n\u003e If you need to parse untrusted XMLs with tree parser API like `REXML::Document.new`, you may be impacted to this vulnerability. If you use other parser APIs such as stream parser API and SAX2 parser API, this vulnerability is not affected.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.6 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs with tree parser API.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/08/22/dos-rexml-cve-2024-43398/ : An announce on www.ruby-lang.org\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vmwr-mc7x-5vc3 | rexml | 3.3.6 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43398\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-43398](https://osv.dev/CVE-2024-43398)**.\n\n## [GHSA-vmwr-mc7x-5vc3](https://osv.dev/GHSA-vmwr-mc7x-5vc3)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e The REXML gem before 3.3.6 has a DoS vulnerability when it parses an XML that has many deep elements that have same local name attributes.\n\u003e \n\u003e If you need to parse untrusted XMLs with tree parser API like `REXML::Document.new`, you may be impacted to this vulnerability. If you use other parser APIs such as stream parser API and SAX2 parser API, this vulnerability is not affected.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e The REXML gem 3.3.6 or later include the patch to fix the vulnerability.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e Don't parse untrusted XMLs with tree parser API.\n\u003e \n\u003e ### References\n\u003e \n\u003e * https://www.ruby-lang.org/en/news/2024/08/22/dos-rexml-cve-2024-43398/ : An announce on www.ruby-lang.org\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/ruby/rubygems/Gemfile.lock | rexml | 3.2.6 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-vmwr-mc7x-5vc3 | rexml | 3.3.6 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/ruby/rubygems/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-43398\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-43398",
+              "name": "CVE-2024-43398",
+              "properties": {
+                "security-severity": "8.2"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-43398: REXML denial of service vulnerability",
+                "text": "CVE-2024-43398: REXML denial of service vulnerability"
+              }
+            }
+          ],
+          "supportedTaxonomies": [],
+          "taxa": [],
+          "version": "2.2.0"
+        },
+        "extensions": []
+      },
+      "translations": [],
+      "versionControlProvenance": [],
+      "webRequests": [],
+      "webResponses": []
+    }
+  ],
+  "properties": {}
+}

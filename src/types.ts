@@ -1,10 +1,6 @@
-import type { Log } from 'sarif'
-
-/**
- * Type representing a SARIF log.
- * @public
- */
-export type SarifLog = Log
+import { Run } from 'sarif'
+import { Color, ColorOptions } from './model/Color'
+import FindingsArray from './model/FindingsArray'
 
 /**
  * Interface for a Slack message that can be sent.
@@ -16,10 +12,10 @@ export interface SlackMessage {
    * @returns A promise that resolves to the response from the Slack webhook.
    */
   send: () => Promise<string>
-  /**
-   * The SARIF log associated with this Slack message.
-   */
-  sarif: SarifLog
+  withActor(actor?: string): void
+  withFooter(text?: string, type?: FooterType): void
+  withHeader(header?: string): void
+  withRun(): void
 }
 
 /**
@@ -107,56 +103,92 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
 }
 
 /**
- * Enum representing how to group results.
+ * This represents what type of message should be sent. There are various options
+ * to show information from SARIF in Slack message.
  * @public
  */
-export enum GroupResultsBy {
+export enum RepresentationType {
   /**
-   * Groups results by the tool name. Particularly, groups by the runs[].tool.driver.name
-   * property from the SARIF file(s).
+   * Compact information about findings grouped by Run with the level representation.
+   * @example
+   * ```text
+   * [Run 1] Grype
+   * Error: 1, Warning: 4
+   * [Run 2] Grype
+   * Warning: 1, Note: 20
+   * ```
    */
-  ToolName = 0,
+  CompactGroupByRunPerLevel = 0,
   /**
-   * Groups results by the run. It provides the result from each run individually.
+   * Compact information about findings grouped by Run with the severity representation.
+   * @example
+   * ```text
+   * [Run 1] Grype
+   * Critical: 1, High: 3, Medium: 1
+   * [Run 2] Grype
+   * Medium: 1, Low: 20
+   * ```
    */
-  Run = 1,
+  CompactGroupByRunPerSeverity = 1,
   /**
-   * Does not group results. It provides the result from all the runs from all
-   * the provided SARIF files.
+   * Compact information about findings grouped by tool name with the level representation.
+   * @example
+   * ```text
+   * Grype
+   * Error: 1, Warning: 5, Note: 20
+   * ```
    */
-  Total = 2,
-}
-
-/**
- * Enum representing how to calculate results.
- * @public
- */
-export enum CalculateResultsBy {
+  CompactGroupByToolNamePerLevel = 2,
   /**
-   * Calculates results by the security level of the findings: Error, Warning,
-   * Note and Unknown. At first, it tries to get the security level from runs[].results[].level
-   * property. If it is not defined, it tries to get the security level from the
-   * respective rule of each result, using the rules[].properties['problem.severity']
-   * property.
+   * Compact information about findings grouped by tool name with the severity representation.
+   * @example
+   * ```text
+   * Grype
+   * Critical: 1, High: 3, Medium: 2, Low: 20
+   * ```
    */
-  Level = 0,
+  CompactGroupByToolNamePerSeverity = 3,
   /**
-   * Calculates results by the security severity of the findings: Critical, High,
-   * Medium, Low, None and Unknown. it tries to get the security severity from the
-   * respective rule of each result, using the rules[].properties['security-severity']
-   * property. This property contains CVSS score, which is then mapped to the
-   * security severity value.
+   * Compact information about findings grouped by SARIF file with the level representation.
+   * @example
+   * ```text
+   * grype-results-01.sarif
+   * Error: 1, Warning: 2, Note: 1
+   * grype-results-02.sarif
+   * Warning: 3, Note: 19
+   * ```
    */
-  Severity = 1,
-}
-
-/**
- * Options for how to output the results in the Slack message.
- * @public
- */
-export type SarifToSlackOutput = {
-  groupBy?: GroupResultsBy,
-  calculateBy?: CalculateResultsBy,
+  CompactGroupBySarifPerLevel = 4,
+  /**
+   * Compact information about findings grouped by SARIF file with the severity
+   * representation.
+   * @example
+   * ```text
+   * grype-results-01.sarif
+   * High: 3, Medium: 1, Low: 11
+   * grype-results-02.sarif
+   * Critical: 1, Medium: 1, Low: 9
+   * ```
+   */
+  CompactGroupBySarifPerSeverity = 5,
+  /**
+   * Compact information about findings with the level representation.
+   * @example
+   * ```text
+   * Total
+   * Error: 1, Warning: 5, Note: 20
+   * ```
+   */
+  CompactTotalPerLevel = 6,
+  /**
+   * Compact information about findings with the severity representation.
+   * @example
+   * ```text
+   * Total
+   * Critical: 1, High: 3, Medium: 2, Low: 20
+   * ```
+   */
+  CompactTotalPerSeverity = 7,
 }
 
 /**
@@ -173,20 +205,205 @@ export type LogOptions = {
 }
 
 /**
- * Options for the SarifToSlackService.
+ * SARIF file extension.
  * @public
  */
-export type SarifToSlackServiceOptions = {
-  // The Slack webhook URL to send messages to.
+export type SarifFileExtension = 'sarif' | 'json'
+
+/**
+ * Represents options for the provided SARIF file(s), such as path, should files
+ * from this path be retrieved recursively or not, and file extension.
+ * @public
+ */
+export type SarifOptions = {
+  path: string,
+  recursive?: boolean,
+  extension?: SarifFileExtension,
+}
+
+/**
+ * This enum represents the condition on when message should be sent. If this
+ * condition is satisfied then message is sent, otherwise - message is not sent.
+ * @public
+ */
+export enum SendIf {
+  /**
+   * Send message only if there is at least one finding with "Critical" severity.
+   * Since it is the higher possible severity, it is the same as "Critical" or
+   * higher.
+   */
+  SeverityCritical,
+  /**
+   * Send message only if there is at least one finding with "High" severity.
+   */
+  SeverityHigh,
+  /**
+   * Send message only if there is at least one finding with "High" severity or
+   * higher, that includes "High" and "Critical".
+   */
+  SeverityHighOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Medium" severity.
+   */
+  SeverityMedium,
+  /**
+   * Send message only if there is at least one finding with "Medium" severity
+   * or higher, that includes "Medium", "High" and "Critical".
+   */
+  SeverityMediumOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Low" severity.
+   */
+  SeverityLow,
+  /**
+   * Send message only if there is at least one finding with "Low" severity or
+   * higher, that includes "Low", "Medium", "High" and "Critical".
+   */
+  SeverityLowOrHigher,
+  /**
+   * Send message only if there is at least one finding with "None" severity.
+   */
+  SeverityNone,
+  /**
+   * Send message only if there is at least one finding with "None" severity or
+   * higher, that includes "None", "Low", "Medium", "High" and "Critical".
+   */
+  SeverityNoneOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Unknown" severity.
+   */
+  SeverityUnknown,
+  /**
+   * Send message only if there is at least one finding with "Unknown" severity
+   * or higher, that includes "Unknown", "None", "Low", "Medium", "High" and "Critical".
+   */
+  SeverityUnknownOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Error" level.
+   * Since it is the higher possible level, it is the same as "Error" or higher.
+   */
+  LevelError,
+  /**
+   * Send message only if there is at least one finding with "Warning" level.
+   */
+  LevelWarning,
+  /**
+   * Send message only if there is at least one finding with "Warning" level or
+   * higher, that includes "Warning" and "Error".
+   */
+  LevelWarningOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Note" level.
+   */
+  LevelNote,
+  /**
+   * Send message only if there is at least one finding with "Note" level or
+   * higher, that includes "Note", "Warning" and "Error.
+   */
+  LevelNoteOrHigher,
+  /**
+   * Send message only if there is at least one finding with "None" level.
+   */
+  LevelNone,
+  /**
+   * Send message only if there is at least one finding with "None" level or
+   * higher, that includes "None", "Note", "Warning" and "Error.
+   */
+  LevelNoneOrHigher,
+  /**
+   * Send message only if there is at least one finding with "Unknown" level.
+   */
+  LevelUnknown,
+  /**
+   * Send message only if there is at least one finding with "Unknown" level or
+   * higher, that includes "Unknown", "None", "Note", "Warning" and "Error.
+   */
+  LevelUnknownOrHigher,
+  /**
+   * Always send a message.
+   */
+  Always,
+  /**
+   * Send a message if at least 1 vulnerability is found.
+   */
+  Some,
+  /**
+   * Send a message only if no vulnerabilities are found.
+   */
+  Empty,
+  /**
+   * Never send a message.
+   */
+  Never,
+}
+
+/**
+ * Options for the SarifToSlackClient.
+ * @public
+ */
+export type SarifToSlackClientOptions = {
   webhookUrl: string,
-  sarifPath: string,
+  sarif: SarifOptions,
   username?: string,
   iconUrl?: string,
-  color?: string,
+  color?: Color | ColorOptions,
   log?: LogOptions,
   header?: IncludeAwareWithValueOptions,
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,
   run?: IncludeAwareOptions,
-  output?: SarifToSlackOutput,
+  representation?: RepresentationType,
+  sendIf?: SendIf,
+}
+
+/**
+ * Enum of security severity.
+ * @privateRemarks Order should remain unchanged. It is used in multiple places,
+ * such as sorting in Slack message (more important come first) and to identify
+ * provided severity if it is requested severity or higher.
+ * @internal
+ */
+export enum SecuritySeverity {
+  Unknown = 0,
+  None = 1,
+  Low = 2,
+  Medium = 3,
+  High = 4,
+  Critical = 5,
+}
+
+/**
+ * Enum of security level.
+ * @privateRemarks Order should remain unchanged. It is used in multiple places,
+ * such as sorting in Slack message (more important come first) and to identify
+ * provided level if it is requested level or higher.
+ * @internal
+ */
+export enum SecurityLevel {
+  Unknown = 0,
+  None = 1,
+  Note = 2,
+  Warning = 3,
+  Error = 4,
+}
+
+/**
+ * The data about run, such as {@link Run} itself, tool name of the run and ID
+ * which is manually generated and unique within a single execution.
+ * @internal
+ */
+export type RunData = {
+  id: number,
+  run: Run,
+  toolName: string,
+}
+
+/**
+ * Model that is used by {@link Representation}
+ * @internal
+ */
+export type SarifModel = {
+  sarifFiles: string[],
+  runs: RunData[],
+  findings: FindingsArray,
 }

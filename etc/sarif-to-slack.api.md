@@ -4,13 +4,34 @@
 
 ```ts
 
-import type { Log } from 'sarif';
+// @public
+export class Color {
+    constructor(color?: string);
+    get value(): string | undefined;
+}
+
+// Warning: (ae-forgotten-export) The symbol "ColorGroupCommon" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type ColorGroupByLevel = ColorGroupCommon & {
+    error?: Color;
+    warning?: Color;
+    note?: Color;
+};
 
 // @public
-export enum CalculateResultsBy {
-    Level = 0,
-    Severity = 1
-}
+export type ColorGroupBySeverity = ColorGroupCommon & {
+    critical?: Color;
+    high?: Color;
+    medium?: Color;
+    low?: Color;
+};
+
+// @public
+export type ColorOptions = {
+    byLevel?: ColorGroupByLevel;
+    bySeverity?: ColorGroupBySeverity;
+};
 
 // @public
 export type FooterOptions = IncludeAwareWithValueOptions & {
@@ -21,13 +42,6 @@ export type FooterOptions = IncludeAwareWithValueOptions & {
 export enum FooterType {
     Markdown = "mrkdwn",
     PlainText = "plain_text"
-}
-
-// @public
-export enum GroupResultsBy {
-    Run = 1,
-    ToolName = 0,
-    Total = 2
 }
 
 // @public
@@ -59,41 +73,89 @@ export type LogOptions = {
 };
 
 // @public
-export type SarifLog = Log;
-
-// @public
-export type SarifToSlackOutput = {
-    groupBy?: GroupResultsBy;
-    calculateBy?: CalculateResultsBy;
-};
-
-// @public
-export class SarifToSlackService {
-    static create(opts: SarifToSlackServiceOptions): Promise<SarifToSlackService>;
-    send(sarifPath: string): Promise<void>;
-    sendAll(): Promise<void>;
-    get slackMessages(): ReadonlyMap<string, SlackMessage>;
+export enum RepresentationType {
+    CompactGroupByRunPerLevel = 0,
+    CompactGroupByRunPerSeverity = 1,
+    CompactGroupBySarifPerLevel = 4,
+    CompactGroupBySarifPerSeverity = 5,
+    CompactGroupByToolNamePerLevel = 2,
+    CompactGroupByToolNamePerSeverity = 3,
+    CompactTotalPerLevel = 6,
+    CompactTotalPerSeverity = 7
 }
 
 // @public
-export type SarifToSlackServiceOptions = {
+export type SarifFileExtension = 'sarif' | 'json';
+
+// @public
+export type SarifOptions = {
+    path: string;
+    recursive?: boolean;
+    extension?: SarifFileExtension;
+};
+
+// @public
+export class SarifToSlackClient {
+    // (undocumented)
+    static create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient>;
+    send(): Promise<void>;
+}
+
+// @public
+export type SarifToSlackClientOptions = {
     webhookUrl: string;
-    sarifPath: string;
+    sarif: SarifOptions;
     username?: string;
     iconUrl?: string;
-    color?: string;
+    color?: Color | ColorOptions;
     log?: LogOptions;
     header?: IncludeAwareWithValueOptions;
     footer?: FooterOptions;
     actor?: IncludeAwareWithValueOptions;
     run?: IncludeAwareOptions;
-    output?: SarifToSlackOutput;
+    representation?: RepresentationType;
+    sendIf?: SendIf;
 };
 
 // @public
+export enum SendIf {
+    Always = 20,
+    Empty = 22,
+    LevelError = 11,
+    LevelNone = 16,
+    LevelNoneOrHigher = 17,
+    LevelNote = 14,
+    LevelNoteOrHigher = 15,
+    LevelUnknown = 18,
+    LevelUnknownOrHigher = 19,
+    LevelWarning = 12,
+    LevelWarningOrHigher = 13,
+    Never = 23,
+    SeverityCritical = 0,
+    SeverityHigh = 1,
+    SeverityHighOrHigher = 2,
+    SeverityLow = 5,
+    SeverityLowOrHigher = 6,
+    SeverityMedium = 3,
+    SeverityMediumOrHigher = 4,
+    SeverityNone = 7,
+    SeverityNoneOrHigher = 8,
+    SeverityUnknown = 9,
+    SeverityUnknownOrHigher = 10,
+    Some = 21
+}
+
+// @public
 export interface SlackMessage {
-    sarif: SarifLog;
     send: () => Promise<string>;
+    // (undocumented)
+    withActor(actor?: string): void;
+    // (undocumented)
+    withFooter(text?: string, type?: FooterType): void;
+    // (undocumented)
+    withHeader(header?: string): void;
+    // (undocumented)
+    withRun(): void;
 }
 
 ```

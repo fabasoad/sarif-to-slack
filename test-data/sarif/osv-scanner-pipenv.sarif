@@ -1,0 +1,243 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "addresses": [],
+      "artifacts": [
+        {
+          "length": -1,
+          "location": {
+            "index": -1,
+            "uri": "file:///Users/john.doe/projects/python/pipenv/Pipfile.lock"
+          },
+          "parentIndex": -1,
+          "roles": []
+        }
+      ],
+      "graphs": [],
+      "invocations": [],
+      "language": "en-US",
+      "logicalLocations": [],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "policies": [],
+      "redactionTokens": [],
+      "results": [
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/python/pipenv/Pipfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'setuptools@70.0.0' is vulnerable to 'CVE-2025-47273' (also known as 'BIT-setuptools-2025-47273', 'PYSEC-2025-49', 'GHSA-5rjg-fvgr-3xxf')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2025-47273",
+          "ruleIndex": 0,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/python/pipenv/Pipfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'httplib2@0.18.1' is vulnerable to 'CVE-2021-21240' (also known as 'PYSEC-2021-16', 'GHSA-93xj-8mrv-444m')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-21240",
+          "ruleIndex": 1,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/python/pipenv/Pipfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'httplib2@0.18.1' is vulnerable to 'CVE-2021-21240' (also known as 'PYSEC-2021-16', 'GHSA-93xj-8mrv-444m')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-21240",
+          "ruleIndex": 1,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/python/pipenv/Pipfile.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'setuptools@70.0.0' is vulnerable to 'CVE-2025-47273' (also known as 'BIT-setuptools-2025-47273', 'PYSEC-2025-49', 'GHSA-5rjg-fvgr-3xxf')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2025-47273",
+          "ruleIndex": 0,
+          "stacks": [],
+          "taxa": []
+        }
+      ],
+      "runAggregates": [],
+      "taxonomies": [],
+      "threadFlowLocations": [],
+      "tool": {
+        "driver": {
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "informationUri": "https://github.com/google/osv-scanner",
+          "isComprehensive": false,
+          "language": "en-US",
+          "locations": [],
+          "name": "osv-scanner",
+          "notifications": [],
+          "rules": [
+            {
+              "deprecatedIds": [
+                "CVE-2025-47273",
+                "BIT-setuptools-2025-47273",
+                "PYSEC-2025-49",
+                "GHSA-5rjg-fvgr-3xxf"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary \nA path traversal vulnerability in `PackageIndex` was fixed in setuptools version 78.1.1\n\n### Details\n```\n    def _download_url(self, url, tmpdir):\n        # Determine download filename\n        #\n        name, _fragment = egg_info_for_url(url)\n        if name:\n            while '..' in name:\n                name = name.replace('..', '.').replace('\\\\', '_')\n        else:\n            name = \"__downloaded__\"  # default if URL has no path contents\n\n        if name.endswith('.[egg.zip](http://egg.zip/)'):\n            name = name[:-4]  # strip the extra .zip before download\n\n --\u003e       filename = os.path.join(tmpdir, name)\n```\n\nHere: https://github.com/pypa/setuptools/blob/6ead555c5fb29bc57fe6105b1bffc163f56fd558/setuptools/package_index.py#L810C1-L825C88\n\n`os.path.join()` discards the first argument `tmpdir` if the second begins with a slash or drive letter.\n`name` is derived from a URL without sufficient sanitization. While there is some attempt to sanitize by replacing instances of '..' with '.', it is insufficient.\n\n### Risk Assessment\nAs easy_install and package_index are deprecated, the exploitation surface is reduced.\nHowever, it seems this could be exploited in a similar fashion like https://github.com/advisories/GHSA-r9hx-vwmv-q579, and as described by POC 4 in https://github.com/advisories/GHSA-cx63-2mw6-8hw5 report: via malicious URLs present on the pages of a package index.\n\n### Impact\nAn attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to RCE depending on the context.\n\n### References\nhttps://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5\nhttps://github.com/pypa/setuptools/issues/4946",
+                "text": "### Summary \nA path traversal vulnerability in `PackageIndex` was fixed in setuptools version 78.1.1\n\n### Details\n```\n    def _download_url(self, url, tmpdir):\n        # Determine download filename\n        #\n        name, _fragment = egg_info_for_url(url)\n        if name:\n            while '..' in name:\n                name = name.replace('..', '.').replace('\\\\', '_')\n        else:\n            name = \"__downloaded__\"  # default if URL has no path contents\n\n        if name.endswith('.[egg.zip](http://egg.zip/)'):\n            name = name[:-4]  # strip the extra .zip before download\n\n --\u003e       filename = os.path.join(tmpdir, name)\n```\n\nHere: https://github.com/pypa/setuptools/blob/6ead555c5fb29bc57fe6105b1bffc163f56fd558/setuptools/package_index.py#L810C1-L825C88\n\n`os.path.join()` discards the first argument `tmpdir` if the second begins with a slash or drive letter.\n`name` is derived from a URL without sufficient sanitization. While there is some attempt to sanitize by replacing instances of '..' with '.', it is insufficient.\n\n### Risk Assessment\nAs easy_install and package_index are deprecated, the exploitation surface is reduced.\nHowever, it seems this could be exploited in a similar fashion like https://github.com/advisories/GHSA-r9hx-vwmv-q579, and as described by POC 4 in https://github.com/advisories/GHSA-cx63-2mw6-8hw5 report: via malicious URLs present on the pages of a package index.\n\n### Impact\nAn attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to RCE depending on the context.\n\n### References\nhttps://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5\nhttps://github.com/pypa/setuptools/issues/4946"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2025-47273](https://osv.dev/CVE-2025-47273)**\n(Also published as: [PYSEC-2025-49](https://osv.dev/PYSEC-2025-49), [GHSA-5rjg-fvgr-3xxf](https://osv.dev/GHSA-5rjg-fvgr-3xxf), ).\n\n## [PYSEC-2025-49](https://osv.dev/PYSEC-2025-49)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue.\n\n\u003c/details\u003e\n\n## [GHSA-5rjg-fvgr-3xxf](https://osv.dev/GHSA-5rjg-fvgr-3xxf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary \n\u003e A path traversal vulnerability in `PackageIndex` was fixed in setuptools version 78.1.1\n\u003e \n\u003e ### Details\n\u003e ```\n\u003e     def _download_url(self, url, tmpdir):\n\u003e         # Determine download filename\n\u003e         #\n\u003e         name, _fragment = egg_info_for_url(url)\n\u003e         if name:\n\u003e             while '..' in name:\n\u003e                 name = name.replace('..', '.').replace('\\\\', '_')\n\u003e         else:\n\u003e             name = \"__downloaded__\"  # default if URL has no path contents\n\u003e \n\u003e         if name.endswith('.[egg.zip](http://egg.zip/)'):\n\u003e             name = name[:-4]  # strip the extra .zip before download\n\u003e \n\u003e  --\u003e       filename = os.path.join(tmpdir, name)\n\u003e ```\n\u003e \n\u003e Here: https://github.com/pypa/setuptools/blob/6ead555c5fb29bc57fe6105b1bffc163f56fd558/setuptools/package_index.py#L810C1-L825C88\n\u003e \n\u003e `os.path.join()` discards the first argument `tmpdir` if the second begins with a slash or drive letter.\n\u003e `name` is derived from a URL without sufficient sanitization. While there is some attempt to sanitize by replacing instances of '..' with '.', it is insufficient.\n\u003e \n\u003e ### Risk Assessment\n\u003e As easy_install and package_index are deprecated, the exploitation surface is reduced.\n\u003e However, it seems this could be exploited in a similar fashion like https://github.com/advisories/GHSA-r9hx-vwmv-q579, and as described by POC 4 in https://github.com/advisories/GHSA-cx63-2mw6-8hw5 report: via malicious URLs present on the pages of a package index.\n\u003e \n\u003e ### Impact\n\u003e An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to RCE depending on the context.\n\u003e \n\u003e ### References\n\u003e https://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5\n\u003e https://github.com/pypa/setuptools/issues/4946\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/python/pipenv/Pipfile.lock | setuptools | 70.0.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5rjg-fvgr-3xxf | setuptools | 78.1.1 |\n| PYSEC-2025-49 | setuptools | 250a6d17978f9f6ac3ac887091f2d32886fbbb0b, 78.1.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/python/pipenv/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2025-47273\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2025-47273](https://osv.dev/CVE-2025-47273)**\n(Also published as: [PYSEC-2025-49](https://osv.dev/PYSEC-2025-49), [GHSA-5rjg-fvgr-3xxf](https://osv.dev/GHSA-5rjg-fvgr-3xxf), ).\n\n## [PYSEC-2025-49](https://osv.dev/PYSEC-2025-49)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue.\n\n\u003c/details\u003e\n\n## [GHSA-5rjg-fvgr-3xxf](https://osv.dev/GHSA-5rjg-fvgr-3xxf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary \n\u003e A path traversal vulnerability in `PackageIndex` was fixed in setuptools version 78.1.1\n\u003e \n\u003e ### Details\n\u003e ```\n\u003e     def _download_url(self, url, tmpdir):\n\u003e         # Determine download filename\n\u003e         #\n\u003e         name, _fragment = egg_info_for_url(url)\n\u003e         if name:\n\u003e             while '..' in name:\n\u003e                 name = name.replace('..', '.').replace('\\\\', '_')\n\u003e         else:\n\u003e             name = \"__downloaded__\"  # default if URL has no path contents\n\u003e \n\u003e         if name.endswith('.[egg.zip](http://egg.zip/)'):\n\u003e             name = name[:-4]  # strip the extra .zip before download\n\u003e \n\u003e  --\u003e       filename = os.path.join(tmpdir, name)\n\u003e ```\n\u003e \n\u003e Here: https://github.com/pypa/setuptools/blob/6ead555c5fb29bc57fe6105b1bffc163f56fd558/setuptools/package_index.py#L810C1-L825C88\n\u003e \n\u003e `os.path.join()` discards the first argument `tmpdir` if the second begins with a slash or drive letter.\n\u003e `name` is derived from a URL without sufficient sanitization. While there is some attempt to sanitize by replacing instances of '..' with '.', it is insufficient.\n\u003e \n\u003e ### Risk Assessment\n\u003e As easy_install and package_index are deprecated, the exploitation surface is reduced.\n\u003e However, it seems this could be exploited in a similar fashion like https://github.com/advisories/GHSA-r9hx-vwmv-q579, and as described by POC 4 in https://github.com/advisories/GHSA-cx63-2mw6-8hw5 report: via malicious URLs present on the pages of a package index.\n\u003e \n\u003e ### Impact\n\u003e An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to RCE depending on the context.\n\u003e \n\u003e ### References\n\u003e https://huntr.com/bounties/d6362117-ad57-4e83-951f-b8141c6e7ca5\n\u003e https://github.com/pypa/setuptools/issues/4946\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/python/pipenv/Pipfile.lock | setuptools | 70.0.0 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5rjg-fvgr-3xxf | setuptools | 78.1.1 |\n| PYSEC-2025-49 | setuptools | 250a6d17978f9f6ac3ac887091f2d32886fbbb0b, 78.1.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/python/pipenv/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2025-47273\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2025-47273",
+              "name": "CVE-2025-47273",
+              "properties": {
+                "security-severity": "8.8"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2025-47273: setuptools has a path traversal vulnerability in PackageIndex.download that leads to Arbitrary File Write",
+                "text": "CVE-2025-47273: setuptools has a path traversal vulnerability in PackageIndex.download that leads to Arbitrary File Write"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-21240",
+                "PYSEC-2021-16",
+                "GHSA-93xj-8mrv-444m"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\nA malicious server which responds with long series of `\\xa0` characters in the `www-authenticate` header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server.\n\n### Patches\nVersion 0.19.0 contains new implementation of auth headers parsing, using pyparsing library.\nhttps://github.com/httplib2/httplib2/pull/182\n\n### Workarounds\n```py\nimport httplib2\nhttplib2.USE_WWW_AUTH_STRICT_PARSING = True\n```\n\n### Technical Details\n\nThe vulnerable regular expression is https://github.com/httplib2/httplib2/blob/595e248d0958c00e83cb28f136a2a54772772b50/python3/httplib2/__init__.py#L336-L338\n\nThe section before the equals sign contains multiple overlapping groups. Ignoring the optional part containing a comma, we have:\n\n    \\s*[^ \\t\\r\\n=]+\\s*=\n\nSince all three infinitely repeating groups accept the non-breaking space character `\\xa0`, a long string of `\\xa0` causes catastrophic backtracking.\n\nThe complexity is cubic, so doubling the length of the malicious string of `\\xa0` makes processing take 8 times as long.\n\n### Reproduction Steps\n\nRun a malicious server which responds with\n\n    www-authenticate: x \\xa0\\xa0\\xa0\\xa0x\n\nbut with many more `\\xa0` characters.\n\nAn example malicious python server is below:\n\n```py\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\n\ndef make_header_value(n_spaces):\n    repeat = \"\\xa0\" * n_spaces\n    return f\"x {repeat}x\"\n\nclass Handler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.log_request(401)\n        self.send_response_only(401)  # Don't bother sending Server and Date\n        n_spaces = (\n            int(self.path[1:])  # Can GET e.g. /100 to test shorter sequences\n            if len(self.path) \u003e 1 else\n            65512  # Max header line length 65536\n        )\n        value = make_header_value(n_spaces)\n        self.send_header(\"www-authenticate\", value)  # This header can actually be sent multiple times\n        self.end_headers()\n\nif __name__ == \"__main__\":\n    HTTPServer((\"\", 1337), Handler).serve_forever()\n```\n\nConnect to the server with httplib2:\n\n```py\nimport httplib2\nhttplib2.Http(\".cache\").request(\"http://localhost:1337\", \"GET\")\n```\n\nTo benchmark performance with shorter strings, you can set the path to a number e.g. http://localhost:1337/1000\n\n\n### References\nThanks to [Ben Caller](https://github.com/b-c-ds) ([Doyensec](https://doyensec.com)) for finding vulnerability and discrete notification.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [httplib2](https://github.com/httplib2/httplib2/issues/new)\n* Email [current maintainer at 2021-01](mailto:temotor@gmail.com)",
+                "text": "### Impact\nA malicious server which responds with long series of `\\xa0` characters in the `www-authenticate` header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server.\n\n### Patches\nVersion 0.19.0 contains new implementation of auth headers parsing, using pyparsing library.\nhttps://github.com/httplib2/httplib2/pull/182\n\n### Workarounds\n```py\nimport httplib2\nhttplib2.USE_WWW_AUTH_STRICT_PARSING = True\n```\n\n### Technical Details\n\nThe vulnerable regular expression is https://github.com/httplib2/httplib2/blob/595e248d0958c00e83cb28f136a2a54772772b50/python3/httplib2/__init__.py#L336-L338\n\nThe section before the equals sign contains multiple overlapping groups. Ignoring the optional part containing a comma, we have:\n\n    \\s*[^ \\t\\r\\n=]+\\s*=\n\nSince all three infinitely repeating groups accept the non-breaking space character `\\xa0`, a long string of `\\xa0` causes catastrophic backtracking.\n\nThe complexity is cubic, so doubling the length of the malicious string of `\\xa0` makes processing take 8 times as long.\n\n### Reproduction Steps\n\nRun a malicious server which responds with\n\n    www-authenticate: x \\xa0\\xa0\\xa0\\xa0x\n\nbut with many more `\\xa0` characters.\n\nAn example malicious python server is below:\n\n```py\nfrom http.server import BaseHTTPRequestHandler, HTTPServer\n\ndef make_header_value(n_spaces):\n    repeat = \"\\xa0\" * n_spaces\n    return f\"x {repeat}x\"\n\nclass Handler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        self.log_request(401)\n        self.send_response_only(401)  # Don't bother sending Server and Date\n        n_spaces = (\n            int(self.path[1:])  # Can GET e.g. /100 to test shorter sequences\n            if len(self.path) \u003e 1 else\n            65512  # Max header line length 65536\n        )\n        value = make_header_value(n_spaces)\n        self.send_header(\"www-authenticate\", value)  # This header can actually be sent multiple times\n        self.end_headers()\n\nif __name__ == \"__main__\":\n    HTTPServer((\"\", 1337), Handler).serve_forever()\n```\n\nConnect to the server with httplib2:\n\n```py\nimport httplib2\nhttplib2.Http(\".cache\").request(\"http://localhost:1337\", \"GET\")\n```\n\nTo benchmark performance with shorter strings, you can set the path to a number e.g. http://localhost:1337/1000\n\n\n### References\nThanks to [Ben Caller](https://github.com/b-c-ds) ([Doyensec](https://doyensec.com)) for finding vulnerability and discrete notification.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [httplib2](https://github.com/httplib2/httplib2/issues/new)\n* Email [current maintainer at 2021-01](mailto:temotor@gmail.com)"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-21240](https://osv.dev/CVE-2021-21240)**\n(Also published as: [PYSEC-2021-16](https://osv.dev/PYSEC-2021-16), [GHSA-93xj-8mrv-444m](https://osv.dev/GHSA-93xj-8mrv-444m), ).\n\n## [PYSEC-2021-16](https://osv.dev/PYSEC-2021-16)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e httplib2 is a comprehensive HTTP client library for Python. In httplib2 before version 0.19.0, a malicious server which responds with long series of \"\\xa0\" characters in the \"www-authenticate\" header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server. This is fixed in version 0.19.0 which contains a new implementation of auth headers parsing using the pyparsing library.\n\n\u003c/details\u003e\n\n## [GHSA-93xj-8mrv-444m](https://osv.dev/GHSA-93xj-8mrv-444m)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e A malicious server which responds with long series of `\\xa0` characters in the `www-authenticate` header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server.\n\u003e \n\u003e ### Patches\n\u003e Version 0.19.0 contains new implementation of auth headers parsing, using pyparsing library.\n\u003e https://github.com/httplib2/httplib2/pull/182\n\u003e \n\u003e ### Workarounds\n\u003e ```py\n\u003e import httplib2\n\u003e httplib2.USE_WWW_AUTH_STRICT_PARSING = True\n\u003e ```\n\u003e \n\u003e ### Technical Details\n\u003e \n\u003e The vulnerable regular expression is https://github.com/httplib2/httplib2/blob/595e248d0958c00e83cb28f136a2a54772772b50/python3/httplib2/__init__.py#L336-L338\n\u003e \n\u003e The section before the equals sign contains multiple overlapping groups. Ignoring the optional part containing a comma, we have:\n\u003e \n\u003e     \\s*[^ \\t\\r\\n=]+\\s*=\n\u003e \n\u003e Since all three infinitely repeating groups accept the non-breaking space character `\\xa0`, a long string of `\\xa0` causes catastrophic backtracking.\n\u003e \n\u003e The complexity is cubic, so doubling the length of the malicious string of `\\xa0` makes processing take 8 times as long.\n\u003e \n\u003e ### Reproduction Steps\n\u003e \n\u003e Run a malicious server which responds with\n\u003e \n\u003e     www-authenticate: x \\xa0\\xa0\\xa0\\xa0x\n\u003e \n\u003e but with many more `\\xa0` characters.\n\u003e \n\u003e An example malicious python server is below:\n\u003e \n\u003e ```py\n\u003e from http.server import BaseHTTPRequestHandler, HTTPServer\n\u003e \n\u003e def make_header_value(n_spaces):\n\u003e     repeat = \"\\xa0\" * n_spaces\n\u003e     return f\"x {repeat}x\"\n\u003e \n\u003e class Handler(BaseHTTPRequestHandler):\n\u003e     def do_GET(self):\n\u003e         self.log_request(401)\n\u003e         self.send_response_only(401)  # Don't bother sending Server and Date\n\u003e         n_spaces = (\n\u003e             int(self.path[1:])  # Can GET e.g. /100 to test shorter sequences\n\u003e             if len(self.path) \u003e 1 else\n\u003e             65512  # Max header line length 65536\n\u003e         )\n\u003e         value = make_header_value(n_spaces)\n\u003e         self.send_header(\"www-authenticate\", value)  # This header can actually be sent multiple times\n\u003e         self.end_headers()\n\u003e \n\u003e if __name__ == \"__main__\":\n\u003e     HTTPServer((\"\", 1337), Handler).serve_forever()\n\u003e ```\n\u003e \n\u003e Connect to the server with httplib2:\n\u003e \n\u003e ```py\n\u003e import httplib2\n\u003e httplib2.Http(\".cache\").request(\"http://localhost:1337\", \"GET\")\n\u003e ```\n\u003e \n\u003e To benchmark performance with shorter strings, you can set the path to a number e.g. http://localhost:1337/1000\n\u003e \n\u003e \n\u003e ### References\n\u003e Thanks to [Ben Caller](https://github.com/b-c-ds) ([Doyensec](https://doyensec.com)) for finding vulnerability and discrete notification.\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [httplib2](https://github.com/httplib2/httplib2/issues/new)\n\u003e * Email [current maintainer at 2021-01](mailto:temotor@gmail.com)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/python/pipenv/Pipfile.lock | httplib2 | 0.18.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-93xj-8mrv-444m | httplib2 | 0.19.0 |\n| PYSEC-2021-16 | httplib2 | 0.19.0, bd9ee252c8f099608019709e22c0d705e98d26bc |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/python/pipenv/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-21240\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-21240](https://osv.dev/CVE-2021-21240)**\n(Also published as: [PYSEC-2021-16](https://osv.dev/PYSEC-2021-16), [GHSA-93xj-8mrv-444m](https://osv.dev/GHSA-93xj-8mrv-444m), ).\n\n## [PYSEC-2021-16](https://osv.dev/PYSEC-2021-16)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e httplib2 is a comprehensive HTTP client library for Python. In httplib2 before version 0.19.0, a malicious server which responds with long series of \"\\xa0\" characters in the \"www-authenticate\" header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server. This is fixed in version 0.19.0 which contains a new implementation of auth headers parsing using the pyparsing library.\n\n\u003c/details\u003e\n\n## [GHSA-93xj-8mrv-444m](https://osv.dev/GHSA-93xj-8mrv-444m)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e A malicious server which responds with long series of `\\xa0` characters in the `www-authenticate` header may cause Denial of Service (CPU burn while parsing header) of the httplib2 client accessing said server.\n\u003e \n\u003e ### Patches\n\u003e Version 0.19.0 contains new implementation of auth headers parsing, using pyparsing library.\n\u003e https://github.com/httplib2/httplib2/pull/182\n\u003e \n\u003e ### Workarounds\n\u003e ```py\n\u003e import httplib2\n\u003e httplib2.USE_WWW_AUTH_STRICT_PARSING = True\n\u003e ```\n\u003e \n\u003e ### Technical Details\n\u003e \n\u003e The vulnerable regular expression is https://github.com/httplib2/httplib2/blob/595e248d0958c00e83cb28f136a2a54772772b50/python3/httplib2/__init__.py#L336-L338\n\u003e \n\u003e The section before the equals sign contains multiple overlapping groups. Ignoring the optional part containing a comma, we have:\n\u003e \n\u003e     \\s*[^ \\t\\r\\n=]+\\s*=\n\u003e \n\u003e Since all three infinitely repeating groups accept the non-breaking space character `\\xa0`, a long string of `\\xa0` causes catastrophic backtracking.\n\u003e \n\u003e The complexity is cubic, so doubling the length of the malicious string of `\\xa0` makes processing take 8 times as long.\n\u003e \n\u003e ### Reproduction Steps\n\u003e \n\u003e Run a malicious server which responds with\n\u003e \n\u003e     www-authenticate: x \\xa0\\xa0\\xa0\\xa0x\n\u003e \n\u003e but with many more `\\xa0` characters.\n\u003e \n\u003e An example malicious python server is below:\n\u003e \n\u003e ```py\n\u003e from http.server import BaseHTTPRequestHandler, HTTPServer\n\u003e \n\u003e def make_header_value(n_spaces):\n\u003e     repeat = \"\\xa0\" * n_spaces\n\u003e     return f\"x {repeat}x\"\n\u003e \n\u003e class Handler(BaseHTTPRequestHandler):\n\u003e     def do_GET(self):\n\u003e         self.log_request(401)\n\u003e         self.send_response_only(401)  # Don't bother sending Server and Date\n\u003e         n_spaces = (\n\u003e             int(self.path[1:])  # Can GET e.g. /100 to test shorter sequences\n\u003e             if len(self.path) \u003e 1 else\n\u003e             65512  # Max header line length 65536\n\u003e         )\n\u003e         value = make_header_value(n_spaces)\n\u003e         self.send_header(\"www-authenticate\", value)  # This header can actually be sent multiple times\n\u003e         self.end_headers()\n\u003e \n\u003e if __name__ == \"__main__\":\n\u003e     HTTPServer((\"\", 1337), Handler).serve_forever()\n\u003e ```\n\u003e \n\u003e Connect to the server with httplib2:\n\u003e \n\u003e ```py\n\u003e import httplib2\n\u003e httplib2.Http(\".cache\").request(\"http://localhost:1337\", \"GET\")\n\u003e ```\n\u003e \n\u003e To benchmark performance with shorter strings, you can set the path to a number e.g. http://localhost:1337/1000\n\u003e \n\u003e \n\u003e ### References\n\u003e Thanks to [Ben Caller](https://github.com/b-c-ds) ([Doyensec](https://doyensec.com)) for finding vulnerability and discrete notification.\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [httplib2](https://github.com/httplib2/httplib2/issues/new)\n\u003e * Email [current maintainer at 2021-01](mailto:temotor@gmail.com)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/python/pipenv/Pipfile.lock | httplib2 | 0.18.1 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-93xj-8mrv-444m | httplib2 | 0.19.0 |\n| PYSEC-2021-16 | httplib2 | 0.19.0, bd9ee252c8f099608019709e22c0d705e98d26bc |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/python/pipenv/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-21240\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-21240",
+              "name": "CVE-2021-21240",
+              "properties": {
+                "security-severity": "7.7"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-21240: Regular Expression Denial of Service (REDoS) in httplib2",
+                "text": "CVE-2021-21240: Regular Expression Denial of Service (REDoS) in httplib2"
+              }
+            }
+          ],
+          "supportedTaxonomies": [],
+          "taxa": [],
+          "version": "2.2.0"
+        },
+        "extensions": []
+      },
+      "translations": [],
+      "versionControlProvenance": [],
+      "webRequests": [],
+      "webResponses": []
+    }
+  ],
+  "properties": {}
+}

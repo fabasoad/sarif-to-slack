@@ -1,0 +1,972 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "addresses": [],
+      "artifacts": [
+        {
+          "length": -1,
+          "location": {
+            "index": -1,
+            "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+          },
+          "parentIndex": -1,
+          "roles": []
+        }
+      ],
+      "graphs": [],
+      "invocations": [],
+      "language": "en-US",
+      "logicalLocations": [],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "policies": [],
+      "redactionTokens": [],
+      "results": [
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'league/commonmark@ad51c7ca' is vulnerable to 'CVE-2025-46734' (also known as 'GHSA-3527-qv2q-pfvx')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2025-46734",
+          "ruleIndex": 0,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2023-23924' (also known as 'GHSA-3cw5-7cxw-v5qg')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2023-23924",
+          "ruleIndex": 1,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2023-50262' (also known as 'GHSA-3qx2-6f78-w2j2')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2023-50262",
+          "ruleIndex": 2,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'league/commonmark@ad51c7ca' is vulnerable to 'CVE-2019-10010' (also known as 'GHSA-3v43-877x-qgmq')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2019-10010",
+          "ruleIndex": 3,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2021-3902' (also known as 'GHSA-3vjh-xrhf-v9xh')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-3902",
+          "ruleIndex": 4,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2021-3838' (also known as 'GHSA-577p-7j7h-2jgf')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-3838",
+          "ruleIndex": 5,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2022-2400' (also known as 'GHSA-5qj8-6xxj-hp9h')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2022-2400",
+          "ruleIndex": 6,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2022-41343' (also known as 'GHSA-6x28-7h8c-chx4')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2022-41343",
+          "ruleIndex": 7,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'phpmailer/phpmailer@9256f12d' is vulnerable to 'CVE-2021-3603' (also known as 'BIT-phpmailer-2021-3603', 'GHSA-77mr-wc79-m8j3')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-3603",
+          "ruleIndex": 8,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'phpmailer/phpmailer@9256f12d' is vulnerable to 'CVE-2021-34551' (also known as 'BIT-phpmailer-2021-34551', 'GHSA-7q44-r25x-wm4q')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2021-34551",
+          "ruleIndex": 9,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'phenx/php-svg-lib@4498b5df' is vulnerable to 'GHSA-97m3-52wr-xvv2'."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "GHSA-97m3-52wr-xvv2",
+          "ruleIndex": 10,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'league/commonmark@ad51c7ca' is vulnerable to 'GHSA-c2pc-g5qf-rfrf'."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "GHSA-c2pc-g5qf-rfrf",
+          "ruleIndex": 11,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'phenx/php-svg-lib@4498b5df' is vulnerable to 'CVE-2024-25117' (also known as 'GHSA-f3qr-qr4x-j273')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2024-25117",
+          "ruleIndex": 12,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'phenx/php-svg-lib@4498b5df' is vulnerable to 'CVE-2023-50251' (also known as 'GHSA-ff5x-7qg5-vwf2')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2023-50251",
+          "ruleIndex": 13,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2022-0085' (also known as 'GHSA-pf6p-25r2-fx45')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2022-0085",
+          "ruleIndex": 14,
+          "stacks": [],
+          "taxa": []
+        },
+        {
+          "attachments": [],
+          "codeFlows": [],
+          "fixes": [],
+          "graphTraversals": [],
+          "graphs": [],
+          "kind": "fail",
+          "level": "warning",
+          "locations": [
+            {
+              "annotations": [],
+              "id": -1,
+              "logicalLocations": [],
+              "physicalLocation": {
+                "artifactLocation": {
+                  "index": -1,
+                  "uri": "file:///Users/john.doe/projects/php/composer/composer.lock"
+                }
+              },
+              "relationships": []
+            }
+          ],
+          "message": {
+            "arguments": [],
+            "text": "Package 'dompdf/dompdf@60b70433' is vulnerable to 'CVE-2022-28368' (also known as 'GHSA-x752-qjv4-c4hc')."
+          },
+          "rank": -1,
+          "relatedLocations": [],
+          "ruleId": "CVE-2022-28368",
+          "ruleIndex": 15,
+          "stacks": [],
+          "taxa": []
+        }
+      ],
+      "runAggregates": [],
+      "taxonomies": [],
+      "threadFlowLocations": [],
+      "tool": {
+        "driver": {
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "informationUri": "https://github.com/google/osv-scanner",
+          "isComprehensive": false,
+          "language": "en-US",
+          "locations": [],
+          "name": "osv-scanner",
+          "notifications": [],
+          "rules": [
+            {
+              "deprecatedIds": [
+                "CVE-2025-46734",
+                "GHSA-3527-qv2q-pfvx"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nCross-site scripting (XSS) vulnerability in the [Attributes extension](https://commonmark.thephpleague.com/extensions/attributes/) of the league/commonmark library (versions 1.5.0 through 2.6.x) allows remote attackers to insert malicious JavaScript calls into HTML.\n\n### Details\n\nThe league/commonmark library provides configuration options such as `html_input: 'strip'` and `allow_unsafe_links: false` to mitigate cross-site scripting (XSS) attacks by stripping raw HTML and disallowing unsafe links. However, when the Attributes Extension is enabled, it introduces a way for users to inject arbitrary HTML attributes into elements via Markdown syntax using curly braces.\n\nAs a result, even with the secure configuration shown above, an attacker can inject dangerous attributes into applications using this extension via a payload such as:\n\n```md\n![](){onerror=alert(1)}\n```\n\nWhich results in the following HTML:\n\n```html\n\u003cp\u003e\u003cimg onerror=\"alert(1)\" src=\"\" alt=\"\" /\u003e\u003c/p\u003e\n```\n\nWhich causes the JS to execute immediately on page load.\n\n### Patches\n\nVersion 2.7.0 contains three changes to prevent this XSS attack vector:\n\n- All attributes starting with `on` are considered unsafe and blocked by default\n- [Support for an explicit allowlist of allowed HTML attributes](https://commonmark.thephpleague.com/2.7/extensions/attributes/#configuration)\n- Manually-added `href` and `src` attributes now respect the existing `allow_unsafe_links` configuration option\n\n### Workarounds\n\nIf upgrading is not feasible, please consider:\n\n- Disabling the `AttributesExtension` for untrusted users\n- [Filtering the rendered HTML through a library like HTMLPurifier](https://commonmark.thephpleague.com/security/#additional-filtering)",
+                "text": "### Summary\nCross-site scripting (XSS) vulnerability in the [Attributes extension](https://commonmark.thephpleague.com/extensions/attributes/) of the league/commonmark library (versions 1.5.0 through 2.6.x) allows remote attackers to insert malicious JavaScript calls into HTML.\n\n### Details\n\nThe league/commonmark library provides configuration options such as `html_input: 'strip'` and `allow_unsafe_links: false` to mitigate cross-site scripting (XSS) attacks by stripping raw HTML and disallowing unsafe links. However, when the Attributes Extension is enabled, it introduces a way for users to inject arbitrary HTML attributes into elements via Markdown syntax using curly braces.\n\nAs a result, even with the secure configuration shown above, an attacker can inject dangerous attributes into applications using this extension via a payload such as:\n\n```md\n![](){onerror=alert(1)}\n```\n\nWhich results in the following HTML:\n\n```html\n\u003cp\u003e\u003cimg onerror=\"alert(1)\" src=\"\" alt=\"\" /\u003e\u003c/p\u003e\n```\n\nWhich causes the JS to execute immediately on page load.\n\n### Patches\n\nVersion 2.7.0 contains three changes to prevent this XSS attack vector:\n\n- All attributes starting with `on` are considered unsafe and blocked by default\n- [Support for an explicit allowlist of allowed HTML attributes](https://commonmark.thephpleague.com/2.7/extensions/attributes/#configuration)\n- Manually-added `href` and `src` attributes now respect the existing `allow_unsafe_links` configuration option\n\n### Workarounds\n\nIf upgrading is not feasible, please consider:\n\n- Disabling the `AttributesExtension` for untrusted users\n- [Filtering the rendered HTML through a library like HTMLPurifier](https://commonmark.thephpleague.com/security/#additional-filtering)"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2025-46734](https://osv.dev/CVE-2025-46734)**.\n\n## [GHSA-3527-qv2q-pfvx](https://osv.dev/GHSA-3527-qv2q-pfvx)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e Cross-site scripting (XSS) vulnerability in the [Attributes extension](https://commonmark.thephpleague.com/extensions/attributes/) of the league/commonmark library (versions 1.5.0 through 2.6.x) allows remote attackers to insert malicious JavaScript calls into HTML.\n\u003e \n\u003e ### Details\n\u003e \n\u003e The league/commonmark library provides configuration options such as `html_input: 'strip'` and `allow_unsafe_links: false` to mitigate cross-site scripting (XSS) attacks by stripping raw HTML and disallowing unsafe links. However, when the Attributes Extension is enabled, it introduces a way for users to inject arbitrary HTML attributes into elements via Markdown syntax using curly braces.\n\u003e \n\u003e As a result, even with the secure configuration shown above, an attacker can inject dangerous attributes into applications using this extension via a payload such as:\n\u003e \n\u003e ```md\n\u003e ![](){onerror=alert(1)}\n\u003e ```\n\u003e \n\u003e Which results in the following HTML:\n\u003e \n\u003e ```html\n\u003e \u003cp\u003e\u003cimg onerror=\"alert(1)\" src=\"\" alt=\"\" /\u003e\u003c/p\u003e\n\u003e ```\n\u003e \n\u003e Which causes the JS to execute immediately on page load.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Version 2.7.0 contains three changes to prevent this XSS attack vector:\n\u003e \n\u003e - All attributes starting with `on` are considered unsafe and blocked by default\n\u003e - [Support for an explicit allowlist of allowed HTML attributes](https://commonmark.thephpleague.com/2.7/extensions/attributes/#configuration)\n\u003e - Manually-added `href` and `src` attributes now respect the existing `allow_unsafe_links` configuration option\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e If upgrading is not feasible, please consider:\n\u003e \n\u003e - Disabling the `AttributesExtension` for untrusted users\n\u003e - [Filtering the rendered HTML through a library like HTMLPurifier](https://commonmark.thephpleague.com/security/#additional-filtering)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3527-qv2q-pfvx | league/commonmark | 2.7.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2025-46734\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2025-46734](https://osv.dev/CVE-2025-46734)**.\n\n## [GHSA-3527-qv2q-pfvx](https://osv.dev/GHSA-3527-qv2q-pfvx)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e Cross-site scripting (XSS) vulnerability in the [Attributes extension](https://commonmark.thephpleague.com/extensions/attributes/) of the league/commonmark library (versions 1.5.0 through 2.6.x) allows remote attackers to insert malicious JavaScript calls into HTML.\n\u003e \n\u003e ### Details\n\u003e \n\u003e The league/commonmark library provides configuration options such as `html_input: 'strip'` and `allow_unsafe_links: false` to mitigate cross-site scripting (XSS) attacks by stripping raw HTML and disallowing unsafe links. However, when the Attributes Extension is enabled, it introduces a way for users to inject arbitrary HTML attributes into elements via Markdown syntax using curly braces.\n\u003e \n\u003e As a result, even with the secure configuration shown above, an attacker can inject dangerous attributes into applications using this extension via a payload such as:\n\u003e \n\u003e ```md\n\u003e ![](){onerror=alert(1)}\n\u003e ```\n\u003e \n\u003e Which results in the following HTML:\n\u003e \n\u003e ```html\n\u003e \u003cp\u003e\u003cimg onerror=\"alert(1)\" src=\"\" alt=\"\" /\u003e\u003c/p\u003e\n\u003e ```\n\u003e \n\u003e Which causes the JS to execute immediately on page load.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e Version 2.7.0 contains three changes to prevent this XSS attack vector:\n\u003e \n\u003e - All attributes starting with `on` are considered unsafe and blocked by default\n\u003e - [Support for an explicit allowlist of allowed HTML attributes](https://commonmark.thephpleague.com/2.7/extensions/attributes/#configuration)\n\u003e - Manually-added `href` and `src` attributes now respect the existing `allow_unsafe_links` configuration option\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e If upgrading is not feasible, please consider:\n\u003e \n\u003e - Disabling the `AttributesExtension` for untrusted users\n\u003e - [Filtering the rendered HTML through a library like HTMLPurifier](https://commonmark.thephpleague.com/security/#additional-filtering)\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3527-qv2q-pfvx | league/commonmark | 2.7.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2025-46734\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2025-46734",
+              "name": "CVE-2025-46734",
+              "properties": {
+                "security-severity": "6.4"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2025-46734: league/commonmark contains a XSS vulnerability in Attributes extension",
+                "text": "CVE-2025-46734: league/commonmark contains a XSS vulnerability in Attributes extension"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2023-23924",
+                "GHSA-3cw5-7cxw-v5qg"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nThe URI validation on dompdf 2.0.1 can be bypassed on SVG parsing by passing `\u003cimage\u003e` tags with uppercase letters. This might leads to arbitrary object unserialize on PHP \u003c 8, through the `phar` URL wrapper.\n\n### Details\nThe bug occurs during SVG parsing of `\u003cimage\u003e` tags, in src/Image/Cache.php : \n\n```\nif ($type === \"svg\") {\n    $parser = xml_parser_create(\"utf-8\");\n    xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\n    xml_set_element_handler(\n        $parser,\n        function ($parser, $name, $attributes) use ($options, $parsed_url, $full_url) {\n            if ($name === \"image\") {\n                $attributes = array_change_key_case($attributes, CASE_LOWER);\n```\nThis part will try to detect `\u003cimage\u003e` tags in SVG, and will take the href to validate it against the protocolAllowed whitelist. However, the `$name comparison with \"image\" is case sensitive, which means that such a tag in the SVG will pass : \n\n```\n\u003csvg\u003e\n    \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003c/svg\u003e\n```\n\nAs the tag is named \"Image\" and not \"image\", it will not pass the condition to trigger the check.\n\nA correct solution would be to strtolower the `$name` before the check : \n\n```\nif (strtolower($name) === \"image\") {\n```\n\n### PoC\nParsing the following SVG file is sufficient to reproduce the vulnerability :\n\n```\n\u003csvg\u003e\n    \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003c/svg\u003e\n```\n\n### Impact\nAn attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can provide a SVG file to dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n",
+                "text": "### Summary\nThe URI validation on dompdf 2.0.1 can be bypassed on SVG parsing by passing `\u003cimage\u003e` tags with uppercase letters. This might leads to arbitrary object unserialize on PHP \u003c 8, through the `phar` URL wrapper.\n\n### Details\nThe bug occurs during SVG parsing of `\u003cimage\u003e` tags, in src/Image/Cache.php : \n\n```\nif ($type === \"svg\") {\n    $parser = xml_parser_create(\"utf-8\");\n    xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\n    xml_set_element_handler(\n        $parser,\n        function ($parser, $name, $attributes) use ($options, $parsed_url, $full_url) {\n            if ($name === \"image\") {\n                $attributes = array_change_key_case($attributes, CASE_LOWER);\n```\nThis part will try to detect `\u003cimage\u003e` tags in SVG, and will take the href to validate it against the protocolAllowed whitelist. However, the `$name comparison with \"image\" is case sensitive, which means that such a tag in the SVG will pass : \n\n```\n\u003csvg\u003e\n    \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003c/svg\u003e\n```\n\nAs the tag is named \"Image\" and not \"image\", it will not pass the condition to trigger the check.\n\nA correct solution would be to strtolower the `$name` before the check : \n\n```\nif (strtolower($name) === \"image\") {\n```\n\n### PoC\nParsing the following SVG file is sufficient to reproduce the vulnerability :\n\n```\n\u003csvg\u003e\n    \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003c/svg\u003e\n```\n\n### Impact\nAn attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can provide a SVG file to dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2023-23924](https://osv.dev/CVE-2023-23924)**.\n\n## [GHSA-3cw5-7cxw-v5qg](https://osv.dev/GHSA-3cw5-7cxw-v5qg)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e The URI validation on dompdf 2.0.1 can be bypassed on SVG parsing by passing `\u003cimage\u003e` tags with uppercase letters. This might leads to arbitrary object unserialize on PHP \u003c 8, through the `phar` URL wrapper.\n\u003e \n\u003e ### Details\n\u003e The bug occurs during SVG parsing of `\u003cimage\u003e` tags, in src/Image/Cache.php : \n\u003e \n\u003e ```\n\u003e if ($type === \"svg\") {\n\u003e     $parser = xml_parser_create(\"utf-8\");\n\u003e     xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\n\u003e     xml_set_element_handler(\n\u003e         $parser,\n\u003e         function ($parser, $name, $attributes) use ($options, $parsed_url, $full_url) {\n\u003e             if ($name === \"image\") {\n\u003e                 $attributes = array_change_key_case($attributes, CASE_LOWER);\n\u003e ```\n\u003e This part will try to detect `\u003cimage\u003e` tags in SVG, and will take the href to validate it against the protocolAllowed whitelist. However, the `$name comparison with \"image\" is case sensitive, which means that such a tag in the SVG will pass : \n\u003e \n\u003e ```\n\u003e \u003csvg\u003e\n\u003e     \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e As the tag is named \"Image\" and not \"image\", it will not pass the condition to trigger the check.\n\u003e \n\u003e A correct solution would be to strtolower the `$name` before the check : \n\u003e \n\u003e ```\n\u003e if (strtolower($name) === \"image\") {\n\u003e ```\n\u003e \n\u003e ### PoC\n\u003e Parsing the following SVG file is sufficient to reproduce the vulnerability :\n\u003e \n\u003e ```\n\u003e \u003csvg\u003e\n\u003e     \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e An attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can provide a SVG file to dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3cw5-7cxw-v5qg | dompdf/dompdf | 2.0.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-23924\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2023-23924](https://osv.dev/CVE-2023-23924)**.\n\n## [GHSA-3cw5-7cxw-v5qg](https://osv.dev/GHSA-3cw5-7cxw-v5qg)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e The URI validation on dompdf 2.0.1 can be bypassed on SVG parsing by passing `\u003cimage\u003e` tags with uppercase letters. This might leads to arbitrary object unserialize on PHP \u003c 8, through the `phar` URL wrapper.\n\u003e \n\u003e ### Details\n\u003e The bug occurs during SVG parsing of `\u003cimage\u003e` tags, in src/Image/Cache.php : \n\u003e \n\u003e ```\n\u003e if ($type === \"svg\") {\n\u003e     $parser = xml_parser_create(\"utf-8\");\n\u003e     xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);\n\u003e     xml_set_element_handler(\n\u003e         $parser,\n\u003e         function ($parser, $name, $attributes) use ($options, $parsed_url, $full_url) {\n\u003e             if ($name === \"image\") {\n\u003e                 $attributes = array_change_key_case($attributes, CASE_LOWER);\n\u003e ```\n\u003e This part will try to detect `\u003cimage\u003e` tags in SVG, and will take the href to validate it against the protocolAllowed whitelist. However, the `$name comparison with \"image\" is case sensitive, which means that such a tag in the SVG will pass : \n\u003e \n\u003e ```\n\u003e \u003csvg\u003e\n\u003e     \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e As the tag is named \"Image\" and not \"image\", it will not pass the condition to trigger the check.\n\u003e \n\u003e A correct solution would be to strtolower the `$name` before the check : \n\u003e \n\u003e ```\n\u003e if (strtolower($name) === \"image\") {\n\u003e ```\n\u003e \n\u003e ### PoC\n\u003e Parsing the following SVG file is sufficient to reproduce the vulnerability :\n\u003e \n\u003e ```\n\u003e \u003csvg\u003e\n\u003e     \u003cImage xlink:href=\"phar:///foo\"\u003e\u003c/Image\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e An attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can provide a SVG file to dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3cw5-7cxw-v5qg | dompdf/dompdf | 2.0.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-23924\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2023-23924",
+              "name": "CVE-2023-23924",
+              "properties": {
+                "security-severity": "10"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2023-23924: Dompdf vulnerable to URI validation failure on SVG parsing",
+                "text": "CVE-2023-23924: Dompdf vulnerable to URI validation failure on SVG parsing"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2023-50262",
+                "GHSA-3qx2-6f78-w2j2"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nWhen parsing SVG images Dompdf performs an initial validation to ensure that paths within the SVG are allowed. One of the validations is that the [SVG document does not reference itself](https://github.com/dompdf/dompdf/blob/v2.0.3/src/Image/Cache.php#L136-L153). However, a recursive chained using two or more SVG documents is not correctly validated. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\n### Details\nphp-svg-lib, when run in isolation, does not support SVG references for `image` elements. An SVG document can, however, be referenced and Dompdf will run that reference through the same validation. Dompdf currently includes validation to prevent self-referential `image` references, but a chained reference is not checked. A malicious actor may thus trigger infinite recursion in the validation process by chaining references between two or more SVG images.\n\n### PoC\n\nThis following sources can be used to bypass validation provided by Dompdf:\n\nrecurse.html\n```\n\u003cimg src=\"one.svg\"\u003e\n```\n\none.svg\n```\n\u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n  \u003cimage href=\"two.svg\" /\u003e\n\u003c/svg\u003e\n```\n\ntwo.svg\n```\n\u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n  \u003cimage href=\"one.svg\" /\u003e\n\u003c/svg\u003e\n```\n\n### Impact\n\nWhen Dompdf parses the above payload, it will crash due after exceeding the allowed execution time or memory usage. An attacker sending multiple request to a system can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.",
+                "text": "### Summary\nWhen parsing SVG images Dompdf performs an initial validation to ensure that paths within the SVG are allowed. One of the validations is that the [SVG document does not reference itself](https://github.com/dompdf/dompdf/blob/v2.0.3/src/Image/Cache.php#L136-L153). However, a recursive chained using two or more SVG documents is not correctly validated. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\n### Details\nphp-svg-lib, when run in isolation, does not support SVG references for `image` elements. An SVG document can, however, be referenced and Dompdf will run that reference through the same validation. Dompdf currently includes validation to prevent self-referential `image` references, but a chained reference is not checked. A malicious actor may thus trigger infinite recursion in the validation process by chaining references between two or more SVG images.\n\n### PoC\n\nThis following sources can be used to bypass validation provided by Dompdf:\n\nrecurse.html\n```\n\u003cimg src=\"one.svg\"\u003e\n```\n\none.svg\n```\n\u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n  \u003cimage href=\"two.svg\" /\u003e\n\u003c/svg\u003e\n```\n\ntwo.svg\n```\n\u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n  \u003cimage href=\"one.svg\" /\u003e\n\u003c/svg\u003e\n```\n\n### Impact\n\nWhen Dompdf parses the above payload, it will crash due after exceeding the allowed execution time or memory usage. An attacker sending multiple request to a system can potentially cause resource exhaustion to the point that the system is unable to handle incoming request."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2023-50262](https://osv.dev/CVE-2023-50262)**.\n\n## [GHSA-3qx2-6f78-w2j2](https://osv.dev/GHSA-3qx2-6f78-w2j2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e When parsing SVG images Dompdf performs an initial validation to ensure that paths within the SVG are allowed. One of the validations is that the [SVG document does not reference itself](https://github.com/dompdf/dompdf/blob/v2.0.3/src/Image/Cache.php#L136-L153). However, a recursive chained using two or more SVG documents is not correctly validated. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\u003e \n\u003e ### Details\n\u003e php-svg-lib, when run in isolation, does not support SVG references for `image` elements. An SVG document can, however, be referenced and Dompdf will run that reference through the same validation. Dompdf currently includes validation to prevent self-referential `image` references, but a chained reference is not checked. A malicious actor may thus trigger infinite recursion in the validation process by chaining references between two or more SVG images.\n\u003e \n\u003e ### PoC\n\u003e \n\u003e This following sources can be used to bypass validation provided by Dompdf:\n\u003e \n\u003e recurse.html\n\u003e ```\n\u003e \u003cimg src=\"one.svg\"\u003e\n\u003e ```\n\u003e \n\u003e one.svg\n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n\u003e   \u003cimage href=\"two.svg\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e two.svg\n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n\u003e   \u003cimage href=\"one.svg\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e \n\u003e When Dompdf parses the above payload, it will crash due after exceeding the allowed execution time or memory usage. An attacker sending multiple request to a system can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3qx2-6f78-w2j2 | dompdf/dompdf | 2.0.4 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-50262\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2023-50262](https://osv.dev/CVE-2023-50262)**.\n\n## [GHSA-3qx2-6f78-w2j2](https://osv.dev/GHSA-3qx2-6f78-w2j2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e When parsing SVG images Dompdf performs an initial validation to ensure that paths within the SVG are allowed. One of the validations is that the [SVG document does not reference itself](https://github.com/dompdf/dompdf/blob/v2.0.3/src/Image/Cache.php#L136-L153). However, a recursive chained using two or more SVG documents is not correctly validated. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\u003e \n\u003e ### Details\n\u003e php-svg-lib, when run in isolation, does not support SVG references for `image` elements. An SVG document can, however, be referenced and Dompdf will run that reference through the same validation. Dompdf currently includes validation to prevent self-referential `image` references, but a chained reference is not checked. A malicious actor may thus trigger infinite recursion in the validation process by chaining references between two or more SVG images.\n\u003e \n\u003e ### PoC\n\u003e \n\u003e This following sources can be used to bypass validation provided by Dompdf:\n\u003e \n\u003e recurse.html\n\u003e ```\n\u003e \u003cimg src=\"one.svg\"\u003e\n\u003e ```\n\u003e \n\u003e one.svg\n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n\u003e   \u003cimage href=\"two.svg\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e two.svg\n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n\u003e   \u003cimage href=\"one.svg\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e \n\u003e When Dompdf parses the above payload, it will crash due after exceeding the allowed execution time or memory usage. An attacker sending multiple request to a system can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3qx2-6f78-w2j2 | dompdf/dompdf | 2.0.4 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-50262\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2023-50262",
+              "name": "CVE-2023-50262",
+              "properties": {
+                "security-severity": "5.3"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2023-50262: Denial of service caused by infinite recursion when parsing SVG images",
+                "text": "CVE-2023-50262: Denial of service caused by infinite recursion when parsing SVG images"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2019-10010",
+                "GHSA-3v43-877x-qgmq"
+              ],
+              "fullDescription": {
+                "markdown": "## CVE-2019-10010\n\n### Impact\n\nIn `league/commonmark` 0.18.2 and below, malicious users can insert double-encoded HTML entities into their Markdown like this:\n\n```md\n[XSS](javascript\u0026amp;colon;alert%28\u0026#039;XSS\u0026#039;%29)\n```\n\nThis library would (correctly) unescape the `\u0026amp;` entity to `\u0026` during the parsing step.  However, **the renderer step would fail to properly re-escape the resulting `\u0026colon;` string**, thus producing the following malicious HTML output:\n\n```html\n\u003cp\u003e\u003ca href=\"javascript\u0026colon;alert('XSS')\"\u003eXSS\u003c/a\u003e\u003c/p\u003e\n```\n\nBrowsers would interpret `\u0026colon;` as a `:` character and allow the JS to be executed when the link is clicked.\n\nThis vulnerability was present in the upstream library this project was forked from and therefore exists in all prior versions of `league/commonmark`.\n\n### Solution\n\nThe new [0.18.3](https://github.com/thephpleague/commonmark/releases/tag/0.18.3) release mirrors [the fix made upstream](https://github.com/commonmark/commonmark.js/commit/c89b35c5fc99bdf1d2181f7f0c9fcb8a1abc27c8) - we no longer attempt to preserve entities when rendering HTML attributes like `href`, `src`, `title`, etc.\n\nThe `$preserveEntities` parameter of `Xml::escape()` is therefore no longer used internally, so it has been deprecated and marked for removal in the next major release (0.19.0).\n\n### Credits\n\n - Mohit Fawaz for identifying the issue\n - Sebastiaan Knijnenburg and Ross Tuck for responsibly disclosing/relaying the issue\n - John MacFarlane for investigating it and implementing the upstream fix we mirrored here\n\n### References\n\n - https://nvd.nist.gov/vuln/detail/CVE-2019-10010\n - https://github.com/thephpleague/commonmark/releases/tag/0.18.3\n - https://github.com/thephpleague/commonmark/issues/353\n- https://github.com/FriendsOfPHP/security-advisories/blob/master/league/commonmark/CVE-2019-10010.yaml",
+                "text": "## CVE-2019-10010\n\n### Impact\n\nIn `league/commonmark` 0.18.2 and below, malicious users can insert double-encoded HTML entities into their Markdown like this:\n\n```md\n[XSS](javascript\u0026amp;colon;alert%28\u0026#039;XSS\u0026#039;%29)\n```\n\nThis library would (correctly) unescape the `\u0026amp;` entity to `\u0026` during the parsing step.  However, **the renderer step would fail to properly re-escape the resulting `\u0026colon;` string**, thus producing the following malicious HTML output:\n\n```html\n\u003cp\u003e\u003ca href=\"javascript\u0026colon;alert('XSS')\"\u003eXSS\u003c/a\u003e\u003c/p\u003e\n```\n\nBrowsers would interpret `\u0026colon;` as a `:` character and allow the JS to be executed when the link is clicked.\n\nThis vulnerability was present in the upstream library this project was forked from and therefore exists in all prior versions of `league/commonmark`.\n\n### Solution\n\nThe new [0.18.3](https://github.com/thephpleague/commonmark/releases/tag/0.18.3) release mirrors [the fix made upstream](https://github.com/commonmark/commonmark.js/commit/c89b35c5fc99bdf1d2181f7f0c9fcb8a1abc27c8) - we no longer attempt to preserve entities when rendering HTML attributes like `href`, `src`, `title`, etc.\n\nThe `$preserveEntities` parameter of `Xml::escape()` is therefore no longer used internally, so it has been deprecated and marked for removal in the next major release (0.19.0).\n\n### Credits\n\n - Mohit Fawaz for identifying the issue\n - Sebastiaan Knijnenburg and Ross Tuck for responsibly disclosing/relaying the issue\n - John MacFarlane for investigating it and implementing the upstream fix we mirrored here\n\n### References\n\n - https://nvd.nist.gov/vuln/detail/CVE-2019-10010\n - https://github.com/thephpleague/commonmark/releases/tag/0.18.3\n - https://github.com/thephpleague/commonmark/issues/353\n- https://github.com/FriendsOfPHP/security-advisories/blob/master/league/commonmark/CVE-2019-10010.yaml"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2019-10010](https://osv.dev/CVE-2019-10010)**.\n\n## [GHSA-3v43-877x-qgmq](https://osv.dev/GHSA-3v43-877x-qgmq)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ## CVE-2019-10010\n\u003e \n\u003e ### Impact\n\u003e \n\u003e In `league/commonmark` 0.18.2 and below, malicious users can insert double-encoded HTML entities into their Markdown like this:\n\u003e \n\u003e ```md\n\u003e [XSS](javascript\u0026amp;colon;alert%28\u0026#039;XSS\u0026#039;%29)\n\u003e ```\n\u003e \n\u003e This library would (correctly) unescape the `\u0026amp;` entity to `\u0026` during the parsing step.  However, **the renderer step would fail to properly re-escape the resulting `\u0026colon;` string**, thus producing the following malicious HTML output:\n\u003e \n\u003e ```html\n\u003e \u003cp\u003e\u003ca href=\"javascript\u0026colon;alert('XSS')\"\u003eXSS\u003c/a\u003e\u003c/p\u003e\n\u003e ```\n\u003e \n\u003e Browsers would interpret `\u0026colon;` as a `:` character and allow the JS to be executed when the link is clicked.\n\u003e \n\u003e This vulnerability was present in the upstream library this project was forked from and therefore exists in all prior versions of `league/commonmark`.\n\u003e \n\u003e ### Solution\n\u003e \n\u003e The new [0.18.3](https://github.com/thephpleague/commonmark/releases/tag/0.18.3) release mirrors [the fix made upstream](https://github.com/commonmark/commonmark.js/commit/c89b35c5fc99bdf1d2181f7f0c9fcb8a1abc27c8) - we no longer attempt to preserve entities when rendering HTML attributes like `href`, `src`, `title`, etc.\n\u003e \n\u003e The `$preserveEntities` parameter of `Xml::escape()` is therefore no longer used internally, so it has been deprecated and marked for removal in the next major release (0.19.0).\n\u003e \n\u003e ### Credits\n\u003e \n\u003e  - Mohit Fawaz for identifying the issue\n\u003e  - Sebastiaan Knijnenburg and Ross Tuck for responsibly disclosing/relaying the issue\n\u003e  - John MacFarlane for investigating it and implementing the upstream fix we mirrored here\n\u003e \n\u003e ### References\n\u003e \n\u003e  - https://nvd.nist.gov/vuln/detail/CVE-2019-10010\n\u003e  - https://github.com/thephpleague/commonmark/releases/tag/0.18.3\n\u003e  - https://github.com/thephpleague/commonmark/issues/353\n\u003e - https://github.com/FriendsOfPHP/security-advisories/blob/master/league/commonmark/CVE-2019-10010.yaml\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3v43-877x-qgmq | league/commonmark | 0.18.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2019-10010\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2019-10010](https://osv.dev/CVE-2019-10010)**.\n\n## [GHSA-3v43-877x-qgmq](https://osv.dev/GHSA-3v43-877x-qgmq)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ## CVE-2019-10010\n\u003e \n\u003e ### Impact\n\u003e \n\u003e In `league/commonmark` 0.18.2 and below, malicious users can insert double-encoded HTML entities into their Markdown like this:\n\u003e \n\u003e ```md\n\u003e [XSS](javascript\u0026amp;colon;alert%28\u0026#039;XSS\u0026#039;%29)\n\u003e ```\n\u003e \n\u003e This library would (correctly) unescape the `\u0026amp;` entity to `\u0026` during the parsing step.  However, **the renderer step would fail to properly re-escape the resulting `\u0026colon;` string**, thus producing the following malicious HTML output:\n\u003e \n\u003e ```html\n\u003e \u003cp\u003e\u003ca href=\"javascript\u0026colon;alert('XSS')\"\u003eXSS\u003c/a\u003e\u003c/p\u003e\n\u003e ```\n\u003e \n\u003e Browsers would interpret `\u0026colon;` as a `:` character and allow the JS to be executed when the link is clicked.\n\u003e \n\u003e This vulnerability was present in the upstream library this project was forked from and therefore exists in all prior versions of `league/commonmark`.\n\u003e \n\u003e ### Solution\n\u003e \n\u003e The new [0.18.3](https://github.com/thephpleague/commonmark/releases/tag/0.18.3) release mirrors [the fix made upstream](https://github.com/commonmark/commonmark.js/commit/c89b35c5fc99bdf1d2181f7f0c9fcb8a1abc27c8) - we no longer attempt to preserve entities when rendering HTML attributes like `href`, `src`, `title`, etc.\n\u003e \n\u003e The `$preserveEntities` parameter of `Xml::escape()` is therefore no longer used internally, so it has been deprecated and marked for removal in the next major release (0.19.0).\n\u003e \n\u003e ### Credits\n\u003e \n\u003e  - Mohit Fawaz for identifying the issue\n\u003e  - Sebastiaan Knijnenburg and Ross Tuck for responsibly disclosing/relaying the issue\n\u003e  - John MacFarlane for investigating it and implementing the upstream fix we mirrored here\n\u003e \n\u003e ### References\n\u003e \n\u003e  - https://nvd.nist.gov/vuln/detail/CVE-2019-10010\n\u003e  - https://github.com/thephpleague/commonmark/releases/tag/0.18.3\n\u003e  - https://github.com/thephpleague/commonmark/issues/353\n\u003e - https://github.com/FriendsOfPHP/security-advisories/blob/master/league/commonmark/CVE-2019-10010.yaml\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3v43-877x-qgmq | league/commonmark | 0.18.3 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2019-10010\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2019-10010",
+              "name": "CVE-2019-10010",
+              "properties": {
+                "security-severity": "6.1"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2019-10010: Moderate severity vulnerability that affects league/commonmark",
+                "text": "CVE-2019-10010: Moderate severity vulnerability that affects league/commonmark"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-3902",
+                "GHSA-3vjh-xrhf-v9xh"
+              ],
+              "fullDescription": {
+                "markdown": "An improper restriction of external entities (XXE) vulnerability in dompdf/dompdf's SVG parser allows for Server-Side Request Forgery (SSRF) and deserialization attacks. This issue affects all versions prior to 2.0.0. The vulnerability can be exploited even if the isRemoteEnabled option is set to false. It allows attackers to perform SSRF, disclose internal image files, and cause PHAR deserialization attacks.",
+                "text": "An improper restriction of external entities (XXE) vulnerability in dompdf/dompdf's SVG parser allows for Server-Side Request Forgery (SSRF) and deserialization attacks. This issue affects all versions prior to 2.0.0. The vulnerability can be exploited even if the isRemoteEnabled option is set to false. It allows attackers to perform SSRF, disclose internal image files, and cause PHAR deserialization attacks."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-3902](https://osv.dev/CVE-2021-3902)**.\n\n## [GHSA-3vjh-xrhf-v9xh](https://osv.dev/GHSA-3vjh-xrhf-v9xh)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e An improper restriction of external entities (XXE) vulnerability in dompdf/dompdf's SVG parser allows for Server-Side Request Forgery (SSRF) and deserialization attacks. This issue affects all versions prior to 2.0.0. The vulnerability can be exploited even if the isRemoteEnabled option is set to false. It allows attackers to perform SSRF, disclose internal image files, and cause PHAR deserialization attacks.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3vjh-xrhf-v9xh | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3902\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-3902](https://osv.dev/CVE-2021-3902)**.\n\n## [GHSA-3vjh-xrhf-v9xh](https://osv.dev/GHSA-3vjh-xrhf-v9xh)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e An improper restriction of external entities (XXE) vulnerability in dompdf/dompdf's SVG parser allows for Server-Side Request Forgery (SSRF) and deserialization attacks. This issue affects all versions prior to 2.0.0. The vulnerability can be exploited even if the isRemoteEnabled option is set to false. It allows attackers to perform SSRF, disclose internal image files, and cause PHAR deserialization attacks.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-3vjh-xrhf-v9xh | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3902\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-3902",
+              "name": "CVE-2021-3902",
+              "properties": {
+                "security-severity": "9.8"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-3902: Improper Restriction of XML External Entity Reference in dompdf/dompdf",
+                "text": "CVE-2021-3902: Improper Restriction of XML External Entity Reference in dompdf/dompdf"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-3838",
+                "GHSA-577p-7j7h-2jgf"
+              ],
+              "fullDescription": {
+                "markdown": "DomPDF before version 2.0.0 is vulnerable to PHAR (PHP Archive) deserialization due to a lack of checking on the protocol before passing it into the file_get_contents() function. An attacker who can upload files of any type to the server can pass in the phar:// protocol to unserialize the uploaded file and instantiate arbitrary PHP objects. This can lead to remote code execution, especially when DOMPdf is used with frameworks with documented POP chains like Laravel or vulnerable developer code.",
+                "text": "DomPDF before version 2.0.0 is vulnerable to PHAR (PHP Archive) deserialization due to a lack of checking on the protocol before passing it into the file_get_contents() function. An attacker who can upload files of any type to the server can pass in the phar:// protocol to unserialize the uploaded file and instantiate arbitrary PHP objects. This can lead to remote code execution, especially when DOMPdf is used with frameworks with documented POP chains like Laravel or vulnerable developer code."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-3838](https://osv.dev/CVE-2021-3838)**.\n\n## [GHSA-577p-7j7h-2jgf](https://osv.dev/GHSA-577p-7j7h-2jgf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e DomPDF before version 2.0.0 is vulnerable to PHAR (PHP Archive) deserialization due to a lack of checking on the protocol before passing it into the file_get_contents() function. An attacker who can upload files of any type to the server can pass in the phar:// protocol to unserialize the uploaded file and instantiate arbitrary PHP objects. This can lead to remote code execution, especially when DOMPdf is used with frameworks with documented POP chains like Laravel or vulnerable developer code.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-577p-7j7h-2jgf | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3838\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-3838](https://osv.dev/CVE-2021-3838)**.\n\n## [GHSA-577p-7j7h-2jgf](https://osv.dev/GHSA-577p-7j7h-2jgf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e DomPDF before version 2.0.0 is vulnerable to PHAR (PHP Archive) deserialization due to a lack of checking on the protocol before passing it into the file_get_contents() function. An attacker who can upload files of any type to the server can pass in the phar:// protocol to unserialize the uploaded file and instantiate arbitrary PHP objects. This can lead to remote code execution, especially when DOMPdf is used with frameworks with documented POP chains like Laravel or vulnerable developer code.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-577p-7j7h-2jgf | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3838\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-3838",
+              "name": "CVE-2021-3838",
+              "properties": {
+                "security-severity": "9.8"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-3838: Deserialization of Untrusted Data in dompdf/dompdf",
+                "text": "CVE-2021-3838: Deserialization of Untrusted Data in dompdf/dompdf"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2022-2400",
+                "GHSA-5qj8-6xxj-hp9h"
+              ],
+              "fullDescription": {
+                "markdown": "Dompdf prior to version 2.0.0 is vulnerable to a chroot check bypass, which could cause disclosure of png and jpeg files.",
+                "text": "Dompdf prior to version 2.0.0 is vulnerable to a chroot check bypass, which could cause disclosure of png and jpeg files."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2022-2400](https://osv.dev/CVE-2022-2400)**.\n\n## [GHSA-5qj8-6xxj-hp9h](https://osv.dev/GHSA-5qj8-6xxj-hp9h)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Dompdf prior to version 2.0.0 is vulnerable to a chroot check bypass, which could cause disclosure of png and jpeg files.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5qj8-6xxj-hp9h | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-2400\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2022-2400](https://osv.dev/CVE-2022-2400)**.\n\n## [GHSA-5qj8-6xxj-hp9h](https://osv.dev/GHSA-5qj8-6xxj-hp9h)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Dompdf prior to version 2.0.0 is vulnerable to a chroot check bypass, which could cause disclosure of png and jpeg files.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-5qj8-6xxj-hp9h | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-2400\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2022-2400",
+              "name": "CVE-2022-2400",
+              "properties": {
+                "security-severity": "5.3"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2022-2400: Dompdf before v2.0.0 vulnerable to chroot check bypass",
+                "text": "CVE-2022-2400: Dompdf before v2.0.0 vulnerable to chroot check bypass"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2022-41343",
+                "GHSA-6x28-7h8c-chx4"
+              ],
+              "fullDescription": {
+                "markdown": "`registerFont` in `FontMetrics.php` in Dompdf before 2.0.1 allows remote file inclusion because a URI validation failure does not halt font registration, as demonstrated by a `@font-face` rule.",
+                "text": "`registerFont` in `FontMetrics.php` in Dompdf before 2.0.1 allows remote file inclusion because a URI validation failure does not halt font registration, as demonstrated by a `@font-face` rule."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2022-41343](https://osv.dev/CVE-2022-41343)**.\n\n## [GHSA-6x28-7h8c-chx4](https://osv.dev/GHSA-6x28-7h8c-chx4)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e `registerFont` in `FontMetrics.php` in Dompdf before 2.0.1 allows remote file inclusion because a URI validation failure does not halt font registration, as demonstrated by a `@font-face` rule.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-6x28-7h8c-chx4 | dompdf/dompdf | 2.0.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-41343\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2022-41343](https://osv.dev/CVE-2022-41343)**.\n\n## [GHSA-6x28-7h8c-chx4](https://osv.dev/GHSA-6x28-7h8c-chx4)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e `registerFont` in `FontMetrics.php` in Dompdf before 2.0.1 allows remote file inclusion because a URI validation failure does not halt font registration, as demonstrated by a `@font-face` rule.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-6x28-7h8c-chx4 | dompdf/dompdf | 2.0.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-41343\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2022-41343",
+              "name": "CVE-2022-41343",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2022-41343: Dompdf allows remote file inclusion because URI validation failure does not halt font registration",
+                "text": "CVE-2022-41343: Dompdf allows remote file inclusion because URI validation failure does not halt font registration"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-3603",
+                "BIT-phpmailer-2021-3603",
+                "GHSA-77mr-wc79-m8j3"
+              ],
+              "fullDescription": {
+                "markdown": "If a function is defined that has the same name as the default built-in email address validation scheme (`php`), it will be called in default configuration as when no validation scheme is provided, the default scheme's callable `php` was being called. If an attacker is able to inject such a function into the application (a much bigger issue), it will be called whenever an email address is validated, such as when calling `validateAddress()`.\n\n### Impact\nLow impact – exploitation requires that an attacker can already inject code into an application, but it provides a trigger pathway.\n\n### Patches\nThis is patched in PHPMailer 6.5.0 by denying the use of simple strings as validator function names, which is a very minor BC break.\n\n### Workarounds\nInject your own email validator function.\n\n### References\nReported by [Vikrant Singh Chauhan](mailto:vi@hackberry.xyz) via [huntr.dev](https://www.huntr.dev/).\n[CVE-2021-3603](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3603)\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [the PHPMailer project](https://github.com/PHPMailer/PHPMailer)\n* [Email us](mailto:phpmailer@synchromedia.co.uk).\n",
+                "text": "If a function is defined that has the same name as the default built-in email address validation scheme (`php`), it will be called in default configuration as when no validation scheme is provided, the default scheme's callable `php` was being called. If an attacker is able to inject such a function into the application (a much bigger issue), it will be called whenever an email address is validated, such as when calling `validateAddress()`.\n\n### Impact\nLow impact – exploitation requires that an attacker can already inject code into an application, but it provides a trigger pathway.\n\n### Patches\nThis is patched in PHPMailer 6.5.0 by denying the use of simple strings as validator function names, which is a very minor BC break.\n\n### Workarounds\nInject your own email validator function.\n\n### References\nReported by [Vikrant Singh Chauhan](mailto:vi@hackberry.xyz) via [huntr.dev](https://www.huntr.dev/).\n[CVE-2021-3603](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3603)\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [the PHPMailer project](https://github.com/PHPMailer/PHPMailer)\n* [Email us](mailto:phpmailer@synchromedia.co.uk).\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-3603](https://osv.dev/CVE-2021-3603)**.\n\n## [GHSA-77mr-wc79-m8j3](https://osv.dev/GHSA-77mr-wc79-m8j3)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e If a function is defined that has the same name as the default built-in email address validation scheme (`php`), it will be called in default configuration as when no validation scheme is provided, the default scheme's callable `php` was being called. If an attacker is able to inject such a function into the application (a much bigger issue), it will be called whenever an email address is validated, such as when calling `validateAddress()`.\n\u003e \n\u003e ### Impact\n\u003e Low impact – exploitation requires that an attacker can already inject code into an application, but it provides a trigger pathway.\n\u003e \n\u003e ### Patches\n\u003e This is patched in PHPMailer 6.5.0 by denying the use of simple strings as validator function names, which is a very minor BC break.\n\u003e \n\u003e ### Workarounds\n\u003e Inject your own email validator function.\n\u003e \n\u003e ### References\n\u003e Reported by [Vikrant Singh Chauhan](mailto:vi@hackberry.xyz) via [huntr.dev](https://www.huntr.dev/).\n\u003e [CVE-2021-3603](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3603)\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [the PHPMailer project](https://github.com/PHPMailer/PHPMailer)\n\u003e * [Email us](mailto:phpmailer@synchromedia.co.uk).\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phpmailer/phpmailer | 9256f12d8fb0cd0500f93b19e18c356906cbed3d |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-77mr-wc79-m8j3 | phpmailer/phpmailer | 6.5.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3603\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-3603](https://osv.dev/CVE-2021-3603)**.\n\n## [GHSA-77mr-wc79-m8j3](https://osv.dev/GHSA-77mr-wc79-m8j3)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e If a function is defined that has the same name as the default built-in email address validation scheme (`php`), it will be called in default configuration as when no validation scheme is provided, the default scheme's callable `php` was being called. If an attacker is able to inject such a function into the application (a much bigger issue), it will be called whenever an email address is validated, such as when calling `validateAddress()`.\n\u003e \n\u003e ### Impact\n\u003e Low impact – exploitation requires that an attacker can already inject code into an application, but it provides a trigger pathway.\n\u003e \n\u003e ### Patches\n\u003e This is patched in PHPMailer 6.5.0 by denying the use of simple strings as validator function names, which is a very minor BC break.\n\u003e \n\u003e ### Workarounds\n\u003e Inject your own email validator function.\n\u003e \n\u003e ### References\n\u003e Reported by [Vikrant Singh Chauhan](mailto:vi@hackberry.xyz) via [huntr.dev](https://www.huntr.dev/).\n\u003e [CVE-2021-3603](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3603)\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [the PHPMailer project](https://github.com/PHPMailer/PHPMailer)\n\u003e * [Email us](mailto:phpmailer@synchromedia.co.uk).\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phpmailer/phpmailer | 9256f12d8fb0cd0500f93b19e18c356906cbed3d |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-77mr-wc79-m8j3 | phpmailer/phpmailer | 6.5.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-3603\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-3603",
+              "name": "CVE-2021-3603",
+              "properties": {
+                "security-severity": "8.1"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-3603: PHPMailer untrusted code may be run from an overridden address validator",
+                "text": "CVE-2021-3603: PHPMailer untrusted code may be run from an overridden address validator"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2021-34551",
+                "BIT-phpmailer-2021-34551",
+                "GHSA-7q44-r25x-wm4q"
+              ],
+              "fullDescription": {
+                "markdown": "PHPMailer 6.4.1 contains a possible remote code execution vulnerability through the `$lang_path` parameter of the `setLanguage()` method. If the `$lang_path` parameter is passed unfiltered from user input, it can be set to [a UNC path](https://docs.microsoft.com/en-us/dotnet/standard/io/file-path-formats#unc-paths), and if an attacker is also able to create a remote mount on the server that the UNC path points to, a script file under their control may be executed. \n\n### Impact\nArbitrary code may be run by a remote attacker under the web server or PHP process running on Window hosts.\n\n### Patches\nMitigated in PHPMailer 6.5.0 by no longer treating translation files as PHP code, but by parsing their text content directly.\nThis approach avoids the possibility of executing unknown code while retaining backward compatibility. This isn't ideal, so the current translation format is deprecated and will be replaced in the next major release.\n\n### Workarounds\nAny of:\n* Ensure that calling code does not pass unfiltered user-supplied data to the `$lang_path` parameter of the `setLanguage()` method.\n* Block or filter the use of unknown UNC paths in this parameter (or altogether).\n* Ensure that unauthorised users do not have the ability to read from unknown remote servers via UNC paths.\n* Run on an OS that does not support UNC paths\n\n### References\n[CVE-2021-34551](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-34551).\n\nReported by [listensec.com](https://listensec.com) via Tidelift.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [PHPMailer](https://github.com/PHPMailer/PHPMailer)\n* [Email the maintainers](mailto:phpmailer@synchromedia.co.uk)\n",
+                "text": "PHPMailer 6.4.1 contains a possible remote code execution vulnerability through the `$lang_path` parameter of the `setLanguage()` method. If the `$lang_path` parameter is passed unfiltered from user input, it can be set to [a UNC path](https://docs.microsoft.com/en-us/dotnet/standard/io/file-path-formats#unc-paths), and if an attacker is also able to create a remote mount on the server that the UNC path points to, a script file under their control may be executed. \n\n### Impact\nArbitrary code may be run by a remote attacker under the web server or PHP process running on Window hosts.\n\n### Patches\nMitigated in PHPMailer 6.5.0 by no longer treating translation files as PHP code, but by parsing their text content directly.\nThis approach avoids the possibility of executing unknown code while retaining backward compatibility. This isn't ideal, so the current translation format is deprecated and will be replaced in the next major release.\n\n### Workarounds\nAny of:\n* Ensure that calling code does not pass unfiltered user-supplied data to the `$lang_path` parameter of the `setLanguage()` method.\n* Block or filter the use of unknown UNC paths in this parameter (or altogether).\n* Ensure that unauthorised users do not have the ability to read from unknown remote servers via UNC paths.\n* Run on an OS that does not support UNC paths\n\n### References\n[CVE-2021-34551](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-34551).\n\nReported by [listensec.com](https://listensec.com) via Tidelift.\n\n### For more information\nIf you have any questions or comments about this advisory:\n* Open an issue in [PHPMailer](https://github.com/PHPMailer/PHPMailer)\n* [Email the maintainers](mailto:phpmailer@synchromedia.co.uk)\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2021-34551](https://osv.dev/CVE-2021-34551)**.\n\n## [GHSA-7q44-r25x-wm4q](https://osv.dev/GHSA-7q44-r25x-wm4q)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e PHPMailer 6.4.1 contains a possible remote code execution vulnerability through the `$lang_path` parameter of the `setLanguage()` method. If the `$lang_path` parameter is passed unfiltered from user input, it can be set to [a UNC path](https://docs.microsoft.com/en-us/dotnet/standard/io/file-path-formats#unc-paths), and if an attacker is also able to create a remote mount on the server that the UNC path points to, a script file under their control may be executed. \n\u003e \n\u003e ### Impact\n\u003e Arbitrary code may be run by a remote attacker under the web server or PHP process running on Window hosts.\n\u003e \n\u003e ### Patches\n\u003e Mitigated in PHPMailer 6.5.0 by no longer treating translation files as PHP code, but by parsing their text content directly.\n\u003e This approach avoids the possibility of executing unknown code while retaining backward compatibility. This isn't ideal, so the current translation format is deprecated and will be replaced in the next major release.\n\u003e \n\u003e ### Workarounds\n\u003e Any of:\n\u003e * Ensure that calling code does not pass unfiltered user-supplied data to the `$lang_path` parameter of the `setLanguage()` method.\n\u003e * Block or filter the use of unknown UNC paths in this parameter (or altogether).\n\u003e * Ensure that unauthorised users do not have the ability to read from unknown remote servers via UNC paths.\n\u003e * Run on an OS that does not support UNC paths\n\u003e \n\u003e ### References\n\u003e [CVE-2021-34551](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-34551).\n\u003e \n\u003e Reported by [listensec.com](https://listensec.com) via Tidelift.\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [PHPMailer](https://github.com/PHPMailer/PHPMailer)\n\u003e * [Email the maintainers](mailto:phpmailer@synchromedia.co.uk)\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phpmailer/phpmailer | 9256f12d8fb0cd0500f93b19e18c356906cbed3d |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-7q44-r25x-wm4q | phpmailer/phpmailer | 6.5.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-34551\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2021-34551](https://osv.dev/CVE-2021-34551)**.\n\n## [GHSA-7q44-r25x-wm4q](https://osv.dev/GHSA-7q44-r25x-wm4q)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e PHPMailer 6.4.1 contains a possible remote code execution vulnerability through the `$lang_path` parameter of the `setLanguage()` method. If the `$lang_path` parameter is passed unfiltered from user input, it can be set to [a UNC path](https://docs.microsoft.com/en-us/dotnet/standard/io/file-path-formats#unc-paths), and if an attacker is also able to create a remote mount on the server that the UNC path points to, a script file under their control may be executed. \n\u003e \n\u003e ### Impact\n\u003e Arbitrary code may be run by a remote attacker under the web server or PHP process running on Window hosts.\n\u003e \n\u003e ### Patches\n\u003e Mitigated in PHPMailer 6.5.0 by no longer treating translation files as PHP code, but by parsing their text content directly.\n\u003e This approach avoids the possibility of executing unknown code while retaining backward compatibility. This isn't ideal, so the current translation format is deprecated and will be replaced in the next major release.\n\u003e \n\u003e ### Workarounds\n\u003e Any of:\n\u003e * Ensure that calling code does not pass unfiltered user-supplied data to the `$lang_path` parameter of the `setLanguage()` method.\n\u003e * Block or filter the use of unknown UNC paths in this parameter (or altogether).\n\u003e * Ensure that unauthorised users do not have the ability to read from unknown remote servers via UNC paths.\n\u003e * Run on an OS that does not support UNC paths\n\u003e \n\u003e ### References\n\u003e [CVE-2021-34551](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-34551).\n\u003e \n\u003e Reported by [listensec.com](https://listensec.com) via Tidelift.\n\u003e \n\u003e ### For more information\n\u003e If you have any questions or comments about this advisory:\n\u003e * Open an issue in [PHPMailer](https://github.com/PHPMailer/PHPMailer)\n\u003e * [Email the maintainers](mailto:phpmailer@synchromedia.co.uk)\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phpmailer/phpmailer | 9256f12d8fb0cd0500f93b19e18c356906cbed3d |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-7q44-r25x-wm4q | phpmailer/phpmailer | 6.5.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2021-34551\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2021-34551",
+              "name": "CVE-2021-34551",
+              "properties": {
+                "security-severity": "8.1"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2021-34551: Remote Code Execution vulnerability in PHPMailer 6.4.1 running on Windows",
+                "text": "CVE-2021-34551: Remote Code Execution vulnerability in PHPMailer 6.4.1 running on Windows"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "GHSA-97m3-52wr-xvv2"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nA lack of sanitization/check in the font path returned by php-svg-lib, in the case of a inline CSS font defined, that will be used by Cpdf to open a font will be passed to a `file_exists` call, which is sufficient to trigger metadata unserializing on a PHAR file, through the phar:// URL handler on PHP \u003c 8.0. On other versions, it might be used as a way to get a SSRF through, for example, ftp, not restricted by authorized protocols configured on dompdf.\n\n### Details\nThe problem lies on the `openFont` function of the `lib/Cpdf.php` library, when the `$font` variable passed by php-svg-lib isn't checked correctly. A path is crafted through $name and $dir, which are two values that can be controlled through CSS : \n\n```\n$name = basename($font);\n$dir = dirname($font);\n[...]\n$metrics_name = \"$name.ufm\";\n[...]\n\nif (!isset($this-\u003efonts[$font]) \u0026\u0026 file_exists(\"$dir/$metrics_name\")) {\n```\n\nPassing a font named `phar:///foo/bar/baz.phar/test` will set the value of $name to `test` and $dir to `phar:///foo/bar/baz.phar`, which once reconstructed will call file_exists on `phar:///foo/bar/baz.phar/test.ufm`. That allows to deserialize the `baz.phar` arbitrary file that contains a `test.ufm` file in the archive.\n\n\n### PoC\n\nConsider the following, minimal PHP code : \n\n```\n\u003c?php\nrequire('vendor/autoload.php');\n\nuse Dompdf\\Dompdf;\n$dompdf = new Dompdf();\n$dompdf-\u003eloadHtml($_GET['payload']);\n$dompdf-\u003esetPaper('A4', 'landscape');\n$options = $dompdf-\u003egetOptions();\n$options-\u003esetAllowedProtocols([]);\n$dompdf-\u003erender();\n$dompdf-\u003estream();\n```\n\nWith payload being this html file : \n\n```\n\u003chtml\u003e\n\u003cimg src=\"data:image/png;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4NCiAgICA8dGV4dCB4PSIyMCIgeT0iMzUiIHN0eWxlPSJjb2xvcjpyZWQ7Zm9udC1mYW1pbHk6ZnRwOi8vYmxha2wuaXM6MjEveC95OyI+TXk8L3RleHQ+DQo8L3N2Zz4=\"\u003e\u003c/img\u003e\n\u003c/html\u003e\n```\n\nwith the base64 image being : \n```\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n    \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:ftp://blakl.is:21/x/y;\"\u003eMy\u003c/text\u003e\n\u003c/svg\u003e\n```\n\nA connection on ftp://blakl.is:21/ will occur, bypassing the allowed protocols.\n\n### Impact\nAn attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can force dompdf to parse a SVG with an inline CSS property using a malicious font-family. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.",
+                "text": "### Summary\nA lack of sanitization/check in the font path returned by php-svg-lib, in the case of a inline CSS font defined, that will be used by Cpdf to open a font will be passed to a `file_exists` call, which is sufficient to trigger metadata unserializing on a PHAR file, through the phar:// URL handler on PHP \u003c 8.0. On other versions, it might be used as a way to get a SSRF through, for example, ftp, not restricted by authorized protocols configured on dompdf.\n\n### Details\nThe problem lies on the `openFont` function of the `lib/Cpdf.php` library, when the `$font` variable passed by php-svg-lib isn't checked correctly. A path is crafted through $name and $dir, which are two values that can be controlled through CSS : \n\n```\n$name = basename($font);\n$dir = dirname($font);\n[...]\n$metrics_name = \"$name.ufm\";\n[...]\n\nif (!isset($this-\u003efonts[$font]) \u0026\u0026 file_exists(\"$dir/$metrics_name\")) {\n```\n\nPassing a font named `phar:///foo/bar/baz.phar/test` will set the value of $name to `test` and $dir to `phar:///foo/bar/baz.phar`, which once reconstructed will call file_exists on `phar:///foo/bar/baz.phar/test.ufm`. That allows to deserialize the `baz.phar` arbitrary file that contains a `test.ufm` file in the archive.\n\n\n### PoC\n\nConsider the following, minimal PHP code : \n\n```\n\u003c?php\nrequire('vendor/autoload.php');\n\nuse Dompdf\\Dompdf;\n$dompdf = new Dompdf();\n$dompdf-\u003eloadHtml($_GET['payload']);\n$dompdf-\u003esetPaper('A4', 'landscape');\n$options = $dompdf-\u003egetOptions();\n$options-\u003esetAllowedProtocols([]);\n$dompdf-\u003erender();\n$dompdf-\u003estream();\n```\n\nWith payload being this html file : \n\n```\n\u003chtml\u003e\n\u003cimg src=\"data:image/png;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4NCiAgICA8dGV4dCB4PSIyMCIgeT0iMzUiIHN0eWxlPSJjb2xvcjpyZWQ7Zm9udC1mYW1pbHk6ZnRwOi8vYmxha2wuaXM6MjEveC95OyI+TXk8L3RleHQ+DQo8L3N2Zz4=\"\u003e\u003c/img\u003e\n\u003c/html\u003e\n```\n\nwith the base64 image being : \n```\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n    \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:ftp://blakl.is:21/x/y;\"\u003eMy\u003c/text\u003e\n\u003c/svg\u003e\n```\n\nA connection on ftp://blakl.is:21/ will occur, bypassing the allowed protocols.\n\n### Impact\nAn attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can force dompdf to parse a SVG with an inline CSS property using a malicious font-family. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [GHSA-97m3-52wr-xvv2](https://osv.dev/GHSA-97m3-52wr-xvv2)**.\n\n## [GHSA-97m3-52wr-xvv2](https://osv.dev/GHSA-97m3-52wr-xvv2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e A lack of sanitization/check in the font path returned by php-svg-lib, in the case of a inline CSS font defined, that will be used by Cpdf to open a font will be passed to a `file_exists` call, which is sufficient to trigger metadata unserializing on a PHAR file, through the phar:// URL handler on PHP \u003c 8.0. On other versions, it might be used as a way to get a SSRF through, for example, ftp, not restricted by authorized protocols configured on dompdf.\n\u003e \n\u003e ### Details\n\u003e The problem lies on the `openFont` function of the `lib/Cpdf.php` library, when the `$font` variable passed by php-svg-lib isn't checked correctly. A path is crafted through $name and $dir, which are two values that can be controlled through CSS : \n\u003e \n\u003e ```\n\u003e $name = basename($font);\n\u003e $dir = dirname($font);\n\u003e [...]\n\u003e $metrics_name = \"$name.ufm\";\n\u003e [...]\n\u003e \n\u003e if (!isset($this-\u003efonts[$font]) \u0026\u0026 file_exists(\"$dir/$metrics_name\")) {\n\u003e ```\n\u003e \n\u003e Passing a font named `phar:///foo/bar/baz.phar/test` will set the value of $name to `test` and $dir to `phar:///foo/bar/baz.phar`, which once reconstructed will call file_exists on `phar:///foo/bar/baz.phar/test.ufm`. That allows to deserialize the `baz.phar` arbitrary file that contains a `test.ufm` file in the archive.\n\u003e \n\u003e \n\u003e ### PoC\n\u003e \n\u003e Consider the following, minimal PHP code : \n\u003e \n\u003e ```\n\u003e \u003c?php\n\u003e require('vendor/autoload.php');\n\u003e \n\u003e use Dompdf\\Dompdf;\n\u003e $dompdf = new Dompdf();\n\u003e $dompdf-\u003eloadHtml($_GET['payload']);\n\u003e $dompdf-\u003esetPaper('A4', 'landscape');\n\u003e $options = $dompdf-\u003egetOptions();\n\u003e $options-\u003esetAllowedProtocols([]);\n\u003e $dompdf-\u003erender();\n\u003e $dompdf-\u003estream();\n\u003e ```\n\u003e \n\u003e With payload being this html file : \n\u003e \n\u003e ```\n\u003e \u003chtml\u003e\n\u003e \u003cimg src=\"data:image/png;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4NCiAgICA8dGV4dCB4PSIyMCIgeT0iMzUiIHN0eWxlPSJjb2xvcjpyZWQ7Zm9udC1mYW1pbHk6ZnRwOi8vYmxha2wuaXM6MjEveC95OyI+TXk8L3RleHQ+DQo8L3N2Zz4=\"\u003e\u003c/img\u003e\n\u003e \u003c/html\u003e\n\u003e ```\n\u003e \n\u003e with the base64 image being : \n\u003e ```\n\u003e \u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003e \u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n\u003e     \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:ftp://blakl.is:21/x/y;\"\u003eMy\u003c/text\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e A connection on ftp://blakl.is:21/ will occur, bypassing the allowed protocols.\n\u003e \n\u003e ### Impact\n\u003e An attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can force dompdf to parse a SVG with an inline CSS property using a malicious font-family. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-97m3-52wr-xvv2 | phenx/php-svg-lib | 0.5.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"GHSA-97m3-52wr-xvv2\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [GHSA-97m3-52wr-xvv2](https://osv.dev/GHSA-97m3-52wr-xvv2)**.\n\n## [GHSA-97m3-52wr-xvv2](https://osv.dev/GHSA-97m3-52wr-xvv2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e A lack of sanitization/check in the font path returned by php-svg-lib, in the case of a inline CSS font defined, that will be used by Cpdf to open a font will be passed to a `file_exists` call, which is sufficient to trigger metadata unserializing on a PHAR file, through the phar:// URL handler on PHP \u003c 8.0. On other versions, it might be used as a way to get a SSRF through, for example, ftp, not restricted by authorized protocols configured on dompdf.\n\u003e \n\u003e ### Details\n\u003e The problem lies on the `openFont` function of the `lib/Cpdf.php` library, when the `$font` variable passed by php-svg-lib isn't checked correctly. A path is crafted through $name and $dir, which are two values that can be controlled through CSS : \n\u003e \n\u003e ```\n\u003e $name = basename($font);\n\u003e $dir = dirname($font);\n\u003e [...]\n\u003e $metrics_name = \"$name.ufm\";\n\u003e [...]\n\u003e \n\u003e if (!isset($this-\u003efonts[$font]) \u0026\u0026 file_exists(\"$dir/$metrics_name\")) {\n\u003e ```\n\u003e \n\u003e Passing a font named `phar:///foo/bar/baz.phar/test` will set the value of $name to `test` and $dir to `phar:///foo/bar/baz.phar`, which once reconstructed will call file_exists on `phar:///foo/bar/baz.phar/test.ufm`. That allows to deserialize the `baz.phar` arbitrary file that contains a `test.ufm` file in the archive.\n\u003e \n\u003e \n\u003e ### PoC\n\u003e \n\u003e Consider the following, minimal PHP code : \n\u003e \n\u003e ```\n\u003e \u003c?php\n\u003e require('vendor/autoload.php');\n\u003e \n\u003e use Dompdf\\Dompdf;\n\u003e $dompdf = new Dompdf();\n\u003e $dompdf-\u003eloadHtml($_GET['payload']);\n\u003e $dompdf-\u003esetPaper('A4', 'landscape');\n\u003e $options = $dompdf-\u003egetOptions();\n\u003e $options-\u003esetAllowedProtocols([]);\n\u003e $dompdf-\u003erender();\n\u003e $dompdf-\u003estream();\n\u003e ```\n\u003e \n\u003e With payload being this html file : \n\u003e \n\u003e ```\n\u003e \u003chtml\u003e\n\u003e \u003cimg src=\"data:image/png;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4NCiAgICA8dGV4dCB4PSIyMCIgeT0iMzUiIHN0eWxlPSJjb2xvcjpyZWQ7Zm9udC1mYW1pbHk6ZnRwOi8vYmxha2wuaXM6MjEveC95OyI+TXk8L3RleHQ+DQo8L3N2Zz4=\"\u003e\u003c/img\u003e\n\u003e \u003c/html\u003e\n\u003e ```\n\u003e \n\u003e with the base64 image being : \n\u003e ```\n\u003e \u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003e \u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n\u003e     \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:ftp://blakl.is:21/x/y;\"\u003eMy\u003c/text\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e A connection on ftp://blakl.is:21/ will occur, bypassing the allowed protocols.\n\u003e \n\u003e ### Impact\n\u003e An attacker might be able to exploit the vulnerability to call arbitrary URL with arbitrary protocols, if they can force dompdf to parse a SVG with an inline CSS property using a malicious font-family. In PHP versions before 8.0.0, it leads to arbitrary unserialize, that will leads at the very least to an arbitrary file deletion, and might leads to remote code execution, depending on classes that are available.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-97m3-52wr-xvv2 | phenx/php-svg-lib | 0.5.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"GHSA-97m3-52wr-xvv2\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "GHSA-97m3-52wr-xvv2",
+              "name": "GHSA-97m3-52wr-xvv2",
+              "properties": {
+                "security-severity": "10"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "GHSA-97m3-52wr-xvv2: Dompdf's usage of vulnerable version of phenx/php-svg-lib leads to restriction bypass and potential RCE",
+                "text": "GHSA-97m3-52wr-xvv2: Dompdf's usage of vulnerable version of phenx/php-svg-lib leads to restriction bypass and potential RCE"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "GHSA-c2pc-g5qf-rfrf"
+              ],
+              "fullDescription": {
+                "markdown": "### Impact\n\nSeveral polynomial time complexity issues in league/commonmark may lead to unbounded resource exhaustion and subsequent denial of service.\n\nMalicious users could trigger that inefficient code with carefully crafted Markdown inputs that are specifically designed to ensure the worst-case performance is reached.  Sending multiple such requests in parallel could tie up all available CPU resources and/or PHP-FPM processes, leading to denial of service for legitimate users.\n\n### Patches\n\nThese vulnerabilities have been patched in version 2.6.0.  All users on older versions are highly encouraged to upgrade as soon as possible.\n\n### Workarounds\n\nIf you cannot upgrade, you may be able to mitigate the issues by:\n\n- Setting very low `memory_limit` and `max_execution_time` PHP configurations to prevent runaway resource usage\n- Implementing rate-limiting, bot protection, or other approaches to reduce the risk of simultaneous bad requests hitting your site\n- Limiting the size of inputs fed into this library (specifically the max length of each line)\n- Limiting the use of this library to trusted users\n\n### References\n\nMost of these issues were discovered in other Markdown parsers. You can read more about them here:\n\n* https://github.com/commonmark/commonmark.js/issues/129\n* https://github.com/commonmark/commonmark.js/issues/157\n* https://github.com/commonmark/commonmark.js/issues/172\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-r572-jvj2-3m8p\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-24f7-9frr-5h2r\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-29g3-96g3-jg6c\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-r8vr-c48j-fcc5\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-w4qg-3vf7-m9x5\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-66g8-4hjf-77xh\n\nFor general information about this type of issue:\n\n* https://en.wikipedia.org/wiki/Time_complexity\n* https://cwe.mitre.org/data/definitions/407.html\n",
+                "text": "### Impact\n\nSeveral polynomial time complexity issues in league/commonmark may lead to unbounded resource exhaustion and subsequent denial of service.\n\nMalicious users could trigger that inefficient code with carefully crafted Markdown inputs that are specifically designed to ensure the worst-case performance is reached.  Sending multiple such requests in parallel could tie up all available CPU resources and/or PHP-FPM processes, leading to denial of service for legitimate users.\n\n### Patches\n\nThese vulnerabilities have been patched in version 2.6.0.  All users on older versions are highly encouraged to upgrade as soon as possible.\n\n### Workarounds\n\nIf you cannot upgrade, you may be able to mitigate the issues by:\n\n- Setting very low `memory_limit` and `max_execution_time` PHP configurations to prevent runaway resource usage\n- Implementing rate-limiting, bot protection, or other approaches to reduce the risk of simultaneous bad requests hitting your site\n- Limiting the size of inputs fed into this library (specifically the max length of each line)\n- Limiting the use of this library to trusted users\n\n### References\n\nMost of these issues were discovered in other Markdown parsers. You can read more about them here:\n\n* https://github.com/commonmark/commonmark.js/issues/129\n* https://github.com/commonmark/commonmark.js/issues/157\n* https://github.com/commonmark/commonmark.js/issues/172\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-r572-jvj2-3m8p\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-24f7-9frr-5h2r\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-29g3-96g3-jg6c\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-r8vr-c48j-fcc5\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-w4qg-3vf7-m9x5\n* https://github.com/github/cmark-gfm/security/advisories/GHSA-66g8-4hjf-77xh\n\nFor general information about this type of issue:\n\n* https://en.wikipedia.org/wiki/Time_complexity\n* https://cwe.mitre.org/data/definitions/407.html\n"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [GHSA-c2pc-g5qf-rfrf](https://osv.dev/GHSA-c2pc-g5qf-rfrf)**.\n\n## [GHSA-c2pc-g5qf-rfrf](https://osv.dev/GHSA-c2pc-g5qf-rfrf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e Several polynomial time complexity issues in league/commonmark may lead to unbounded resource exhaustion and subsequent denial of service.\n\u003e \n\u003e Malicious users could trigger that inefficient code with carefully crafted Markdown inputs that are specifically designed to ensure the worst-case performance is reached.  Sending multiple such requests in parallel could tie up all available CPU resources and/or PHP-FPM processes, leading to denial of service for legitimate users.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e These vulnerabilities have been patched in version 2.6.0.  All users on older versions are highly encouraged to upgrade as soon as possible.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e If you cannot upgrade, you may be able to mitigate the issues by:\n\u003e \n\u003e - Setting very low `memory_limit` and `max_execution_time` PHP configurations to prevent runaway resource usage\n\u003e - Implementing rate-limiting, bot protection, or other approaches to reduce the risk of simultaneous bad requests hitting your site\n\u003e - Limiting the size of inputs fed into this library (specifically the max length of each line)\n\u003e - Limiting the use of this library to trusted users\n\u003e \n\u003e ### References\n\u003e \n\u003e Most of these issues were discovered in other Markdown parsers. You can read more about them here:\n\u003e \n\u003e * https://github.com/commonmark/commonmark.js/issues/129\n\u003e * https://github.com/commonmark/commonmark.js/issues/157\n\u003e * https://github.com/commonmark/commonmark.js/issues/172\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-r572-jvj2-3m8p\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-24f7-9frr-5h2r\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-29g3-96g3-jg6c\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-r8vr-c48j-fcc5\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-w4qg-3vf7-m9x5\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-66g8-4hjf-77xh\n\u003e \n\u003e For general information about this type of issue:\n\u003e \n\u003e * https://en.wikipedia.org/wiki/Time_complexity\n\u003e * https://cwe.mitre.org/data/definitions/407.html\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-c2pc-g5qf-rfrf | league/commonmark | 2.6.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"GHSA-c2pc-g5qf-rfrf\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [GHSA-c2pc-g5qf-rfrf](https://osv.dev/GHSA-c2pc-g5qf-rfrf)**.\n\n## [GHSA-c2pc-g5qf-rfrf](https://osv.dev/GHSA-c2pc-g5qf-rfrf)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Impact\n\u003e \n\u003e Several polynomial time complexity issues in league/commonmark may lead to unbounded resource exhaustion and subsequent denial of service.\n\u003e \n\u003e Malicious users could trigger that inefficient code with carefully crafted Markdown inputs that are specifically designed to ensure the worst-case performance is reached.  Sending multiple such requests in parallel could tie up all available CPU resources and/or PHP-FPM processes, leading to denial of service for legitimate users.\n\u003e \n\u003e ### Patches\n\u003e \n\u003e These vulnerabilities have been patched in version 2.6.0.  All users on older versions are highly encouraged to upgrade as soon as possible.\n\u003e \n\u003e ### Workarounds\n\u003e \n\u003e If you cannot upgrade, you may be able to mitigate the issues by:\n\u003e \n\u003e - Setting very low `memory_limit` and `max_execution_time` PHP configurations to prevent runaway resource usage\n\u003e - Implementing rate-limiting, bot protection, or other approaches to reduce the risk of simultaneous bad requests hitting your site\n\u003e - Limiting the size of inputs fed into this library (specifically the max length of each line)\n\u003e - Limiting the use of this library to trusted users\n\u003e \n\u003e ### References\n\u003e \n\u003e Most of these issues were discovered in other Markdown parsers. You can read more about them here:\n\u003e \n\u003e * https://github.com/commonmark/commonmark.js/issues/129\n\u003e * https://github.com/commonmark/commonmark.js/issues/157\n\u003e * https://github.com/commonmark/commonmark.js/issues/172\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-r572-jvj2-3m8p\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-24f7-9frr-5h2r\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-29g3-96g3-jg6c\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-r8vr-c48j-fcc5\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-w4qg-3vf7-m9x5\n\u003e * https://github.com/github/cmark-gfm/security/advisories/GHSA-66g8-4hjf-77xh\n\u003e \n\u003e For general information about this type of issue:\n\u003e \n\u003e * https://en.wikipedia.org/wiki/Time_complexity\n\u003e * https://cwe.mitre.org/data/definitions/407.html\n\u003e \n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | league/commonmark | ad51c7cafb90e0bbd9f34b71d18d05994547e352 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-c2pc-g5qf-rfrf | league/commonmark | 2.6.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"GHSA-c2pc-g5qf-rfrf\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "GHSA-c2pc-g5qf-rfrf",
+              "name": "GHSA-c2pc-g5qf-rfrf",
+              "properties": {
+                "security-severity": "7.5"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "GHSA-c2pc-g5qf-rfrf: league/commonmark's quadratic complexity bugs may lead to a denial of service",
+                "text": "GHSA-c2pc-g5qf-rfrf: league/commonmark's quadratic complexity bugs may lead to a denial of service"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2024-25117",
+                "GHSA-f3qr-qr4x-j273"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nphp-svg-lib fails to validate that font-family doesn't contain a PHAR url, which might leads to RCE on PHP \u003c 8.0, and doesn't validate if external references are allowed. This might leads to bypass of restrictions or RCE on projects that are using it, if they do not strictly revalidate the fontName that is passed by php-svg-lib.\n\n### Details\nThe Style::fromAttributes(), or the Style::parseCssStyle() should check the content of the `font-family` and prevents it to use a PHAR url, to avoid passing an invalid and dangerous `fontName` value to other libraries. The same check as done in the Style::fromStyleSheets might be reused : \n\n```\n                if (\n                    \\array_key_exists(\"font-family\", $styles)\n                    \u0026\u0026 (\n                        \\strtolower(\\substr($this-\u003ehref, 0, 7)) === \"phar://\"\n                        || ($this-\u003edocument-\u003eallowExternalReferences === false \u0026\u0026 \\strtolower(\\substr($this-\u003ehref, 0, 5)) !== \"data:\")\n                    )\n                ) {\n                    unset($style[\"font-family\"]);\n                }\n```\n\n### PoC \n\nParsing the following SVG : \n\n```\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n    \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:phar:///path/to/whatever.phar/blaklis;\"\u003eMy\u003c/text\u003e\n\u003c/svg\u003e\n```\n\nwill pass the `phar:///path/to/whatever.phar/blaklis` as `$family` in `SurfaceCpdf::setFont`, which is then passed to the canvas `selectFont` as a `$fontName`.\n\n### Impact\nLibraries using this library as a dependency might be vulnerable to some bypass of restrictions, or even RCE, if they do not double check the value of the `fontName` that is passed by php-svg-lib",
+                "text": "### Summary\nphp-svg-lib fails to validate that font-family doesn't contain a PHAR url, which might leads to RCE on PHP \u003c 8.0, and doesn't validate if external references are allowed. This might leads to bypass of restrictions or RCE on projects that are using it, if they do not strictly revalidate the fontName that is passed by php-svg-lib.\n\n### Details\nThe Style::fromAttributes(), or the Style::parseCssStyle() should check the content of the `font-family` and prevents it to use a PHAR url, to avoid passing an invalid and dangerous `fontName` value to other libraries. The same check as done in the Style::fromStyleSheets might be reused : \n\n```\n                if (\n                    \\array_key_exists(\"font-family\", $styles)\n                    \u0026\u0026 (\n                        \\strtolower(\\substr($this-\u003ehref, 0, 7)) === \"phar://\"\n                        || ($this-\u003edocument-\u003eallowExternalReferences === false \u0026\u0026 \\strtolower(\\substr($this-\u003ehref, 0, 5)) !== \"data:\")\n                    )\n                ) {\n                    unset($style[\"font-family\"]);\n                }\n```\n\n### PoC \n\nParsing the following SVG : \n\n```\n\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n    \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:phar:///path/to/whatever.phar/blaklis;\"\u003eMy\u003c/text\u003e\n\u003c/svg\u003e\n```\n\nwill pass the `phar:///path/to/whatever.phar/blaklis` as `$family` in `SurfaceCpdf::setFont`, which is then passed to the canvas `selectFont` as a `$fontName`.\n\n### Impact\nLibraries using this library as a dependency might be vulnerable to some bypass of restrictions, or even RCE, if they do not double check the value of the `fontName` that is passed by php-svg-lib"
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2024-25117](https://osv.dev/CVE-2024-25117)**.\n\n## [GHSA-f3qr-qr4x-j273](https://osv.dev/GHSA-f3qr-qr4x-j273)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e php-svg-lib fails to validate that font-family doesn't contain a PHAR url, which might leads to RCE on PHP \u003c 8.0, and doesn't validate if external references are allowed. This might leads to bypass of restrictions or RCE on projects that are using it, if they do not strictly revalidate the fontName that is passed by php-svg-lib.\n\u003e \n\u003e ### Details\n\u003e The Style::fromAttributes(), or the Style::parseCssStyle() should check the content of the `font-family` and prevents it to use a PHAR url, to avoid passing an invalid and dangerous `fontName` value to other libraries. The same check as done in the Style::fromStyleSheets might be reused : \n\u003e \n\u003e ```\n\u003e                 if (\n\u003e                     \\array_key_exists(\"font-family\", $styles)\n\u003e                     \u0026\u0026 (\n\u003e                         \\strtolower(\\substr($this-\u003ehref, 0, 7)) === \"phar://\"\n\u003e                         || ($this-\u003edocument-\u003eallowExternalReferences === false \u0026\u0026 \\strtolower(\\substr($this-\u003ehref, 0, 5)) !== \"data:\")\n\u003e                     )\n\u003e                 ) {\n\u003e                     unset($style[\"font-family\"]);\n\u003e                 }\n\u003e ```\n\u003e \n\u003e ### PoC \n\u003e \n\u003e Parsing the following SVG : \n\u003e \n\u003e ```\n\u003e \u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003e \u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n\u003e     \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:phar:///path/to/whatever.phar/blaklis;\"\u003eMy\u003c/text\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e will pass the `phar:///path/to/whatever.phar/blaklis` as `$family` in `SurfaceCpdf::setFont`, which is then passed to the canvas `selectFont` as a `$fontName`.\n\u003e \n\u003e ### Impact\n\u003e Libraries using this library as a dependency might be vulnerable to some bypass of restrictions, or even RCE, if they do not double check the value of the `fontName` that is passed by php-svg-lib\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-f3qr-qr4x-j273 | phenx/php-svg-lib | 0.5.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-25117\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2024-25117](https://osv.dev/CVE-2024-25117)**.\n\n## [GHSA-f3qr-qr4x-j273](https://osv.dev/GHSA-f3qr-qr4x-j273)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e php-svg-lib fails to validate that font-family doesn't contain a PHAR url, which might leads to RCE on PHP \u003c 8.0, and doesn't validate if external references are allowed. This might leads to bypass of restrictions or RCE on projects that are using it, if they do not strictly revalidate the fontName that is passed by php-svg-lib.\n\u003e \n\u003e ### Details\n\u003e The Style::fromAttributes(), or the Style::parseCssStyle() should check the content of the `font-family` and prevents it to use a PHAR url, to avoid passing an invalid and dangerous `fontName` value to other libraries. The same check as done in the Style::fromStyleSheets might be reused : \n\u003e \n\u003e ```\n\u003e                 if (\n\u003e                     \\array_key_exists(\"font-family\", $styles)\n\u003e                     \u0026\u0026 (\n\u003e                         \\strtolower(\\substr($this-\u003ehref, 0, 7)) === \"phar://\"\n\u003e                         || ($this-\u003edocument-\u003eallowExternalReferences === false \u0026\u0026 \\strtolower(\\substr($this-\u003ehref, 0, 5)) !== \"data:\")\n\u003e                     )\n\u003e                 ) {\n\u003e                     unset($style[\"font-family\"]);\n\u003e                 }\n\u003e ```\n\u003e \n\u003e ### PoC \n\u003e \n\u003e Parsing the following SVG : \n\u003e \n\u003e ```\n\u003e \u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e\n\u003e \u003csvg xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"200\" height=\"200\"\u003e\n\u003e     \u003ctext x=\"20\" y=\"35\" style=\"color:red;font-family:phar:///path/to/whatever.phar/blaklis;\"\u003eMy\u003c/text\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e will pass the `phar:///path/to/whatever.phar/blaklis` as `$family` in `SurfaceCpdf::setFont`, which is then passed to the canvas `selectFont` as a `$fontName`.\n\u003e \n\u003e ### Impact\n\u003e Libraries using this library as a dependency might be vulnerable to some bypass of restrictions, or even RCE, if they do not double check the value of the `fontName` that is passed by php-svg-lib\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-f3qr-qr4x-j273 | phenx/php-svg-lib | 0.5.2 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2024-25117\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2024-25117",
+              "name": "CVE-2024-25117",
+              "properties": {
+                "security-severity": "6.8"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2024-25117: php-svg-lib lacks path validation on font through SVG inline styles ",
+                "text": "CVE-2024-25117: php-svg-lib lacks path validation on font through SVG inline styles "
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2023-50251",
+                "GHSA-ff5x-7qg5-vwf2"
+              ],
+              "fullDescription": {
+                "markdown": "### Summary\nWhen parsing the attributes passed to a `use` tag inside an svg document, we can cause the system to go to an infinite recursion. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\n### Details\nInside `Svg\\Tag\\UseTag::before`, php-svg-lib parses the attributes passed to an `use` tag inside an svg document. When it finds a `href` or `xlink:href`, it will try to retrieve the object representing this tag:\n\n```\n$link = $attributes[\"href\"] ?? $attributes[\"xlink:href\"];\n$this-\u003ereference = $document-\u003egetDef($link);\n\nif ($this-\u003ereference) {\n    $this-\u003ereference-\u003ebefore($attributes);\n}\n```\n\n`$document-\u003egetDef` is implemented as follow:\n\n```\npublic function getDef($id) {\n    $id = ltrim($id, \"#\");\n\n    return isset($this-\u003edefs[$id]) ? $this-\u003edefs[$id] : null;\n}\n```\n\n_Note:_ the `$id` in the above method is actually the _link_ being used in `use` tag. This part is important, because this behaviour  here actually leads to the vulnerability. It will be mentioned later on in this report.\n\nIf it finds the referenced object, it will try to call the `before` method on the referenced object (this is still inside `Svg\\Tag\\UseTag::before`) :\n\n```\nif ($this-\u003ereference) {\n    $this-\u003ereference-\u003ebefore($attributes);\n}\n```\n\nIn order to cause an infinte loop, we need to be able to control the `$id` used in the `$this-\u003edefs[$id]` code above. This `defs` property (`Svg\\Document::defs`) is being populated when `Svg\\Document::_tagStart` is called. This is the handler being used when the php-svg-lib is parsing the svg structure:\n\n```\n// Svg\\Document line 343\nif ($tag) {\n    if (isset($attributes[\"id\"])) {\n        $this-\u003edefs[$attributes[\"id\"]] = $tag;\n    }\n    else {\n        // ...\n    }\n\n    // ...\n}\n```\n\nSo if the `use` tag contains an `id`, then that `use` tag will be added to the `$defs` array with it's `id` as the key.\n\nNow as noted before, when there is a link inside the `use` tag, the library uses that link as the `id` to actually find the object or `tag` that has been added to the `Svg\\Document::defs`.\n\nSo if the `id` attribute is equal to the link attribute inside the `use` tag, then the referenced object (in this case it is the `Use` tag object) will be called recursively until the memory given to the script is exhausted.\n\n### PoC\n\nThis is an example svg file that can be used to demonstrate the vulnerability.\n\n```\n\u003csvg width=\"200\" height=\"200\"\n  xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\u003e\n  \u003cuse id=\"selfref\" xlink:href=\"#selfref\" /\u003e\n\u003c/svg\u003e\n```\n\n### Impact\n\nWhen the lib parses the above payload, it will crash:\n\n```\nPHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 262144 bytes) in /xxx/dompdf/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php on line 37\n```\n\nAn attacker sending multiple request to a system to render the above payload can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.",
+                "text": "### Summary\nWhen parsing the attributes passed to a `use` tag inside an svg document, we can cause the system to go to an infinite recursion. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\n### Details\nInside `Svg\\Tag\\UseTag::before`, php-svg-lib parses the attributes passed to an `use` tag inside an svg document. When it finds a `href` or `xlink:href`, it will try to retrieve the object representing this tag:\n\n```\n$link = $attributes[\"href\"] ?? $attributes[\"xlink:href\"];\n$this-\u003ereference = $document-\u003egetDef($link);\n\nif ($this-\u003ereference) {\n    $this-\u003ereference-\u003ebefore($attributes);\n}\n```\n\n`$document-\u003egetDef` is implemented as follow:\n\n```\npublic function getDef($id) {\n    $id = ltrim($id, \"#\");\n\n    return isset($this-\u003edefs[$id]) ? $this-\u003edefs[$id] : null;\n}\n```\n\n_Note:_ the `$id` in the above method is actually the _link_ being used in `use` tag. This part is important, because this behaviour  here actually leads to the vulnerability. It will be mentioned later on in this report.\n\nIf it finds the referenced object, it will try to call the `before` method on the referenced object (this is still inside `Svg\\Tag\\UseTag::before`) :\n\n```\nif ($this-\u003ereference) {\n    $this-\u003ereference-\u003ebefore($attributes);\n}\n```\n\nIn order to cause an infinte loop, we need to be able to control the `$id` used in the `$this-\u003edefs[$id]` code above. This `defs` property (`Svg\\Document::defs`) is being populated when `Svg\\Document::_tagStart` is called. This is the handler being used when the php-svg-lib is parsing the svg structure:\n\n```\n// Svg\\Document line 343\nif ($tag) {\n    if (isset($attributes[\"id\"])) {\n        $this-\u003edefs[$attributes[\"id\"]] = $tag;\n    }\n    else {\n        // ...\n    }\n\n    // ...\n}\n```\n\nSo if the `use` tag contains an `id`, then that `use` tag will be added to the `$defs` array with it's `id` as the key.\n\nNow as noted before, when there is a link inside the `use` tag, the library uses that link as the `id` to actually find the object or `tag` that has been added to the `Svg\\Document::defs`.\n\nSo if the `id` attribute is equal to the link attribute inside the `use` tag, then the referenced object (in this case it is the `Use` tag object) will be called recursively until the memory given to the script is exhausted.\n\n### PoC\n\nThis is an example svg file that can be used to demonstrate the vulnerability.\n\n```\n\u003csvg width=\"200\" height=\"200\"\n  xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\u003e\n  \u003cuse id=\"selfref\" xlink:href=\"#selfref\" /\u003e\n\u003c/svg\u003e\n```\n\n### Impact\n\nWhen the lib parses the above payload, it will crash:\n\n```\nPHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 262144 bytes) in /xxx/dompdf/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php on line 37\n```\n\nAn attacker sending multiple request to a system to render the above payload can potentially cause resource exhaustion to the point that the system is unable to handle incoming request."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2023-50251](https://osv.dev/CVE-2023-50251)**.\n\n## [GHSA-ff5x-7qg5-vwf2](https://osv.dev/GHSA-ff5x-7qg5-vwf2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e When parsing the attributes passed to a `use` tag inside an svg document, we can cause the system to go to an infinite recursion. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\u003e \n\u003e ### Details\n\u003e Inside `Svg\\Tag\\UseTag::before`, php-svg-lib parses the attributes passed to an `use` tag inside an svg document. When it finds a `href` or `xlink:href`, it will try to retrieve the object representing this tag:\n\u003e \n\u003e ```\n\u003e $link = $attributes[\"href\"] ?? $attributes[\"xlink:href\"];\n\u003e $this-\u003ereference = $document-\u003egetDef($link);\n\u003e \n\u003e if ($this-\u003ereference) {\n\u003e     $this-\u003ereference-\u003ebefore($attributes);\n\u003e }\n\u003e ```\n\u003e \n\u003e `$document-\u003egetDef` is implemented as follow:\n\u003e \n\u003e ```\n\u003e public function getDef($id) {\n\u003e     $id = ltrim($id, \"#\");\n\u003e \n\u003e     return isset($this-\u003edefs[$id]) ? $this-\u003edefs[$id] : null;\n\u003e }\n\u003e ```\n\u003e \n\u003e _Note:_ the `$id` in the above method is actually the _link_ being used in `use` tag. This part is important, because this behaviour  here actually leads to the vulnerability. It will be mentioned later on in this report.\n\u003e \n\u003e If it finds the referenced object, it will try to call the `before` method on the referenced object (this is still inside `Svg\\Tag\\UseTag::before`) :\n\u003e \n\u003e ```\n\u003e if ($this-\u003ereference) {\n\u003e     $this-\u003ereference-\u003ebefore($attributes);\n\u003e }\n\u003e ```\n\u003e \n\u003e In order to cause an infinte loop, we need to be able to control the `$id` used in the `$this-\u003edefs[$id]` code above. This `defs` property (`Svg\\Document::defs`) is being populated when `Svg\\Document::_tagStart` is called. This is the handler being used when the php-svg-lib is parsing the svg structure:\n\u003e \n\u003e ```\n\u003e // Svg\\Document line 343\n\u003e if ($tag) {\n\u003e     if (isset($attributes[\"id\"])) {\n\u003e         $this-\u003edefs[$attributes[\"id\"]] = $tag;\n\u003e     }\n\u003e     else {\n\u003e         // ...\n\u003e     }\n\u003e \n\u003e     // ...\n\u003e }\n\u003e ```\n\u003e \n\u003e So if the `use` tag contains an `id`, then that `use` tag will be added to the `$defs` array with it's `id` as the key.\n\u003e \n\u003e Now as noted before, when there is a link inside the `use` tag, the library uses that link as the `id` to actually find the object or `tag` that has been added to the `Svg\\Document::defs`.\n\u003e \n\u003e So if the `id` attribute is equal to the link attribute inside the `use` tag, then the referenced object (in this case it is the `Use` tag object) will be called recursively until the memory given to the script is exhausted.\n\u003e \n\u003e ### PoC\n\u003e \n\u003e This is an example svg file that can be used to demonstrate the vulnerability.\n\u003e \n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\"\n\u003e   xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\u003e\n\u003e   \u003cuse id=\"selfref\" xlink:href=\"#selfref\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e \n\u003e When the lib parses the above payload, it will crash:\n\u003e \n\u003e ```\n\u003e PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 262144 bytes) in /xxx/dompdf/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php on line 37\n\u003e ```\n\u003e \n\u003e An attacker sending multiple request to a system to render the above payload can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-ff5x-7qg5-vwf2 | phenx/php-svg-lib | 0.5.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-50251\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2023-50251](https://osv.dev/CVE-2023-50251)**.\n\n## [GHSA-ff5x-7qg5-vwf2](https://osv.dev/GHSA-ff5x-7qg5-vwf2)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e ### Summary\n\u003e When parsing the attributes passed to a `use` tag inside an svg document, we can cause the system to go to an infinite recursion. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself.\n\u003e \n\u003e ### Details\n\u003e Inside `Svg\\Tag\\UseTag::before`, php-svg-lib parses the attributes passed to an `use` tag inside an svg document. When it finds a `href` or `xlink:href`, it will try to retrieve the object representing this tag:\n\u003e \n\u003e ```\n\u003e $link = $attributes[\"href\"] ?? $attributes[\"xlink:href\"];\n\u003e $this-\u003ereference = $document-\u003egetDef($link);\n\u003e \n\u003e if ($this-\u003ereference) {\n\u003e     $this-\u003ereference-\u003ebefore($attributes);\n\u003e }\n\u003e ```\n\u003e \n\u003e `$document-\u003egetDef` is implemented as follow:\n\u003e \n\u003e ```\n\u003e public function getDef($id) {\n\u003e     $id = ltrim($id, \"#\");\n\u003e \n\u003e     return isset($this-\u003edefs[$id]) ? $this-\u003edefs[$id] : null;\n\u003e }\n\u003e ```\n\u003e \n\u003e _Note:_ the `$id` in the above method is actually the _link_ being used in `use` tag. This part is important, because this behaviour  here actually leads to the vulnerability. It will be mentioned later on in this report.\n\u003e \n\u003e If it finds the referenced object, it will try to call the `before` method on the referenced object (this is still inside `Svg\\Tag\\UseTag::before`) :\n\u003e \n\u003e ```\n\u003e if ($this-\u003ereference) {\n\u003e     $this-\u003ereference-\u003ebefore($attributes);\n\u003e }\n\u003e ```\n\u003e \n\u003e In order to cause an infinte loop, we need to be able to control the `$id` used in the `$this-\u003edefs[$id]` code above. This `defs` property (`Svg\\Document::defs`) is being populated when `Svg\\Document::_tagStart` is called. This is the handler being used when the php-svg-lib is parsing the svg structure:\n\u003e \n\u003e ```\n\u003e // Svg\\Document line 343\n\u003e if ($tag) {\n\u003e     if (isset($attributes[\"id\"])) {\n\u003e         $this-\u003edefs[$attributes[\"id\"]] = $tag;\n\u003e     }\n\u003e     else {\n\u003e         // ...\n\u003e     }\n\u003e \n\u003e     // ...\n\u003e }\n\u003e ```\n\u003e \n\u003e So if the `use` tag contains an `id`, then that `use` tag will be added to the `$defs` array with it's `id` as the key.\n\u003e \n\u003e Now as noted before, when there is a link inside the `use` tag, the library uses that link as the `id` to actually find the object or `tag` that has been added to the `Svg\\Document::defs`.\n\u003e \n\u003e So if the `id` attribute is equal to the link attribute inside the `use` tag, then the referenced object (in this case it is the `Use` tag object) will be called recursively until the memory given to the script is exhausted.\n\u003e \n\u003e ### PoC\n\u003e \n\u003e This is an example svg file that can be used to demonstrate the vulnerability.\n\u003e \n\u003e ```\n\u003e \u003csvg width=\"200\" height=\"200\"\n\u003e   xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\u003e\n\u003e   \u003cuse id=\"selfref\" xlink:href=\"#selfref\" /\u003e\n\u003e \u003c/svg\u003e\n\u003e ```\n\u003e \n\u003e ### Impact\n\u003e \n\u003e When the lib parses the above payload, it will crash:\n\u003e \n\u003e ```\n\u003e PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 262144 bytes) in /xxx/dompdf/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php on line 37\n\u003e ```\n\u003e \n\u003e An attacker sending multiple request to a system to render the above payload can potentially cause resource exhaustion to the point that the system is unable to handle incoming request.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | phenx/php-svg-lib | 4498b5df7b08e8469f0f8279651ea5de9626ed02 |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-ff5x-7qg5-vwf2 | phenx/php-svg-lib | 0.5.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2023-50251\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2023-50251",
+              "name": "CVE-2023-50251",
+              "properties": {
+                "security-severity": "5.3"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2023-50251: Denial of service caused by infinite recursion when parsing SVG document",
+                "text": "CVE-2023-50251: Denial of service caused by infinite recursion when parsing SVG document"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2022-0085",
+                "GHSA-pf6p-25r2-fx45"
+              ],
+              "fullDescription": {
+                "markdown": "Server-Side Request Forgery (SSRF) in GitHub repository dompdf/dompdf prior to 2.0.0.",
+                "text": "Server-Side Request Forgery (SSRF) in GitHub repository dompdf/dompdf prior to 2.0.0."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2022-0085](https://osv.dev/CVE-2022-0085)**.\n\n## [GHSA-pf6p-25r2-fx45](https://osv.dev/GHSA-pf6p-25r2-fx45)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Server-Side Request Forgery (SSRF) in GitHub repository dompdf/dompdf prior to 2.0.0.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-pf6p-25r2-fx45 | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-0085\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2022-0085](https://osv.dev/CVE-2022-0085)**.\n\n## [GHSA-pf6p-25r2-fx45](https://osv.dev/GHSA-pf6p-25r2-fx45)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Server-Side Request Forgery (SSRF) in GitHub repository dompdf/dompdf prior to 2.0.0.\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-pf6p-25r2-fx45 | dompdf/dompdf | 2.0.0 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-0085\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2022-0085",
+              "name": "CVE-2022-0085",
+              "properties": {
+                "security-severity": "5.3"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2022-0085: Server-Side Request Forgery in dompdf/dompdf",
+                "text": "CVE-2022-0085: Server-Side Request Forgery in dompdf/dompdf"
+              }
+            },
+            {
+              "deprecatedIds": [
+                "CVE-2022-28368",
+                "GHSA-x752-qjv4-c4hc"
+              ],
+              "fullDescription": {
+                "markdown": "Dompdf is an HTML to PDF converter. Dompdf before 1.2.1 allows remote code execution via a .php file in the src:url field of an @font-face Cascading Style Sheets (CSS) statement (within an HTML input file).",
+                "text": "Dompdf is an HTML to PDF converter. Dompdf before 1.2.1 allows remote code execution via a .php file in the src:url field of an @font-face Cascading Style Sheets (CSS) statement (within an HTML input file)."
+              },
+              "help": {
+                "markdown": "**Your dependency is vulnerable to [CVE-2022-28368](https://osv.dev/CVE-2022-28368)**.\n\n## [GHSA-x752-qjv4-c4hc](https://osv.dev/GHSA-x752-qjv4-c4hc)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Dompdf is an HTML to PDF converter. Dompdf before 1.2.1 allows remote code execution via a .php file in the src:url field of an @font-face Cascading Style Sheets (CSS) statement (within an HTML input file).\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-x752-qjv4-c4hc | dompdf/dompdf | 1.2.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-28368\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n",
+                "text": "**Your dependency is vulnerable to [CVE-2022-28368](https://osv.dev/CVE-2022-28368)**.\n\n## [GHSA-x752-qjv4-c4hc](https://osv.dev/GHSA-x752-qjv4-c4hc)\n\n\u003cdetails\u003e\n\u003csummary\u003eDetails\u003c/summary\u003e\n\n\u003e Dompdf is an HTML to PDF converter. Dompdf before 1.2.1 allows remote code execution via a .php file in the src:url field of an @font-face Cascading Style Sheets (CSS) statement (within an HTML input file).\n\n\u003c/details\u003e\n\n---\n\n### Affected Packages\n\n| Source | Package Name | Package Version |\n| --- | --- | --- |\n| lockfile:/Users/john.doe/projects/php/composer/composer.lock | dompdf/dompdf | 60b704331479a69e9bcdb3496da2315b5c4f94fd |\n\n## Remediation\n\nTo fix these vulnerabilities, update the vulnerabilities past the listed fixed versions below.\n\n### Fixed Versions\n\n| Vulnerability ID | Package Name | Fixed Version |\n| --- | --- | --- |\n| GHSA-x752-qjv4-c4hc | dompdf/dompdf | 1.2.1 |\n\nIf you believe these vulnerabilities do not affect your code and wish to ignore them, add them to the ignore list in an\n`osv-scanner.toml` file located in the same directory as the lockfile containing the vulnerable dependency.\n\nSee the format and more options in our documentation here: https://google.github.io/osv-scanner/configuration/\n\nAdd or append these values to the following config files to ignore this vulnerability:\n\n`/Users/john.doe/projects/php/composer/osv-scanner.toml`\n\n```\n[[IgnoredVulns]]\nid = \"CVE-2022-28368\"\nreason = \"Your reason for ignoring this vulnerability\"\n```\n"
+              },
+              "id": "CVE-2022-28368",
+              "name": "CVE-2022-28368",
+              "properties": {
+                "security-severity": "9.8"
+              },
+              "relationships": [],
+              "shortDescription": {
+                "markdown": "CVE-2022-28368: Remote code injection in dompdf/dompdf",
+                "text": "CVE-2022-28368: Remote code injection in dompdf/dompdf"
+              }
+            }
+          ],
+          "supportedTaxonomies": [],
+          "taxa": [],
+          "version": "2.2.0"
+        },
+        "extensions": []
+      },
+      "translations": [],
+      "versionControlProvenance": [],
+      "webRequests": [],
+      "webResponses": []
+    }
+  ],
+  "properties": {}
+}
