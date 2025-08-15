@@ -152,41 +152,41 @@ export class SarifToSlackClient {
       case SendIf.SeverityHigh:
         return this._sarifModel?.findings.findByProperty('severity', SecuritySeverity.High) != null
       case SendIf.SeverityHighOrHigher:
-        return this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.High) != null
+        return !!this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.High)
       case SendIf.SeverityMedium:
         return this._sarifModel?.findings.findByProperty('severity', SecuritySeverity.Medium) != null
       case SendIf.SeverityMediumOrHigher:
-        return this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Medium) != null
+        return !!this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Medium)
       case SendIf.SeverityLow:
         return this._sarifModel?.findings.findByProperty('severity', SecuritySeverity.Low) != null
       case SendIf.SeverityLowOrHigher:
-        return this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Low) != null
+        return !!this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Low)
       case SendIf.SeverityNone:
         return this._sarifModel?.findings.findByProperty('severity', SecuritySeverity.None) != null
       case SendIf.SeverityNoneOrHigher:
-        return this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.None) != null
+        return !!this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.None)
       case SendIf.SeverityUnknown:
         return this._sarifModel?.findings.findByProperty('severity', SecuritySeverity.Unknown) != null
       case SendIf.SeverityUnknownOrHigher:
-        return this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Unknown) != null
+        return !!this._sarifModel?.findings.hasSeverityOrHigher(SecuritySeverity.Unknown)
       case SendIf.LevelError:
         return this._sarifModel?.findings.findByProperty('level', SecurityLevel.Error) != null
       case SendIf.LevelWarning:
         return this._sarifModel?.findings.findByProperty('level', SecurityLevel.Warning) != null
       case SendIf.LevelWarningOrHigher:
-        return this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Warning) != null
+        return !!this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Warning)
       case SendIf.LevelNote:
         return this._sarifModel?.findings.findByProperty('level', SecurityLevel.Note) != null
       case SendIf.LevelNoteOrHigher:
-        return this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Note) != null
+        return !!this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Note)
       case SendIf.LevelNone:
         return this._sarifModel?.findings.findByProperty('level', SecurityLevel.None) != null
       case SendIf.LevelNoneOrHigher:
-        return this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.None) != null
+        return !!this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.None)
       case SendIf.LevelUnknown:
         return this._sarifModel?.findings.findByProperty('level', SecurityLevel.Unknown) != null
       case SendIf.LevelUnknownOrHigher:
-        return this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Unknown) != null
+        return !!this._sarifModel?.findings.hasLevelOrHigher(SecurityLevel.Unknown)
       case SendIf.Always:
         return true
       case SendIf.Some:

@@ -358,6 +358,9 @@ export type SarifToSlackClientOptions = {
 
 /**
  * Enum of security severity.
+ * @privateRemarks Order should remain unchanged. It is used in multiple places,
+ * such as sorting in Slack message (more important come first) and to identify
+ * provided severity if it is requested severity or higher.
  * @internal
  */
 export enum SecuritySeverity {
@@ -371,6 +374,9 @@ export enum SecuritySeverity {
 
 /**
  * Enum of security level.
+ * @privateRemarks Order should remain unchanged. It is used in multiple places,
+ * such as sorting in Slack message (more important come first) and to identify
+ * provided level if it is requested level or higher.
  * @internal
  */
 export enum SecurityLevel {
