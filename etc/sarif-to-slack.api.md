@@ -29,6 +29,7 @@ export type ColorGroupBySeverity = ColorGroupCommon & {
 
 // @public
 export type ColorOptions = {
+    default?: Color;
     byLevel?: ColorGroupByLevel;
     bySeverity?: ColorGroupBySeverity;
 };
@@ -107,7 +108,7 @@ export type SarifToSlackClientOptions = {
     sarif: SarifOptions;
     username?: string;
     iconUrl?: string;
-    color?: Color | ColorOptions;
+    color?: ColorOptions;
     log?: LogOptions;
     header?: IncludeAwareWithValueOptions;
     footer?: FooterOptions;

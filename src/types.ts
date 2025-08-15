@@ -1,5 +1,5 @@
 import { Run } from 'sarif'
-import { Color, ColorOptions } from './model/Color'
+import { ColorOptions } from './model/Color'
 import FindingsArray from './model/FindingsArray'
 
 /**
@@ -346,7 +346,7 @@ export type SarifToSlackClientOptions = {
   sarif: SarifOptions,
   username?: string,
   iconUrl?: string,
-  color?: Color | ColorOptions,
+  color?: ColorOptions,
   log?: LogOptions,
   header?: IncludeAwareWithValueOptions,
   footer?: FooterOptions,
