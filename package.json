@@ -1,6 +1,6 @@
 {
   "name": "@fabasoad/sarif-to-slack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "TypeScript library to send results of SARIF file to Slack webhook URL.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
