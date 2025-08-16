@@ -1,13 +1,13 @@
-import { Finding } from './Finding'
-import ExtendedArray from '../utils/ExtendedArray'
+import Finding from './Finding'
 import { SecurityLevel, SecuritySeverity } from '../types'
+import ExtendedArray from '../utils/ExtendedArray'
 
 /**
  * This class represents an array of {@link Finding} objects and adds additional
  * useful methods to it.
  * @internal
  */
-export default class FindingsArray extends ExtendedArray<Finding> {
+export default class FindingArray extends ExtendedArray<Finding> {
 
   public hasSeverityOrHigher(severity: SecuritySeverity): boolean {
     return Object

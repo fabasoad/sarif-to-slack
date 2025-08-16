@@ -2,15 +2,15 @@ import { AnyBlock } from '@slack/types'
 import { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
 import { TextObject } from '@slack/types/dist/block-kit/composition-objects'
 import { IncomingWebhook } from '@slack/webhook'
-import { FooterType, SlackMessage } from './types'
-import { version } from './metadata.json'
-import Representation from './representations/Representation'
+import { FooterType } from '../types'
+import Representation from '../representations/Representation'
+import { version } from '../metadata.json'
 
 /**
  * Options for the SlackMessageBuilder.
  * @internal
  */
-export type SlackMessageBuilderOptions = {
+export type SlackMessageOptions = {
   username?: string
   iconUrl?: string
   color?: string
@@ -18,10 +18,35 @@ export type SlackMessageBuilderOptions = {
 }
 
 /**
+ * Interface for a Slack message that can be sent.
+ * @public
+ */
+export interface SlackMessage {
+  /**
+   * Sends the Slack message.
+   * @returns A promise that resolves to the response from the Slack webhook.
+   */
+  send: () => Promise<string>
+  withActor(actor?: string): void
+  withFooter(text?: string, type?: FooterType): void
+  withHeader(header?: string): void
+  withRun(): void
+}
+
+/**
+ * Creates a new instance of {@link SlackMessage} class.
+ * @param url Slack webhook URL
+ * @param opts An instance of {@link SlackMessageOptions} type.
+ */
+export function createSlackMessage(url: string, opts: SlackMessageOptions): SlackMessage {
+  return new SlackMessageImpl(url, opts)
+}
+
+/**
  * Class for building and sending Slack messages based on SARIF logs.
  * @internal
  */
-export class SlackMessageBuilder implements SlackMessage {
+class SlackMessageImpl implements SlackMessage {
   private readonly _webhook: IncomingWebhook
   private readonly _gitHubServerUrl: string
   private readonly _color?: string
@@ -32,7 +57,7 @@ export class SlackMessageBuilder implements SlackMessage {
   private _actor?: string
   private _runId?: string
 
-  constructor(url: string, opts: SlackMessageBuilderOptions) {
+  constructor(url: string, opts: SlackMessageOptions) {
     this._webhook = new IncomingWebhook(url, {
       username: opts.username || 'SARIF results',
       icon_url: opts.iconUrl

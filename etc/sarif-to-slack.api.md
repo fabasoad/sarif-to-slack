@@ -32,6 +32,7 @@ export type ColorOptions = {
     default?: Color;
     byLevel?: ColorGroupByLevel;
     bySeverity?: ColorGroupBySeverity;
+    empty?: Color;
 };
 
 // @public

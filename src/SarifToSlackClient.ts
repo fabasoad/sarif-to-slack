@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs'
 import { Log } from 'sarif'
 import Logger from './Logger'
-import { SlackMessageBuilder } from './SlackMessageBuilder'
 import {
   LogOptions,
   RunData,
@@ -9,9 +8,7 @@ import {
   SarifOptions,
   SarifToSlackClientOptions,
   SecurityLevel,
-  SecuritySeverity,
-  SendIf,
-  SlackMessage
+  SecuritySeverity
 } from './types'
 import System from './System'
 import { extractListOfFiles } from './utils/FileUtils'
@@ -19,7 +16,9 @@ import { createRepresentation } from './representations/RepresentationFactory'
 import { createFinding } from './model/Finding'
 import { findToolComponent, findToolComponentDriver } from './utils/SarifUtils'
 import { identifyColor } from './model/Color'
-import FindingsArray from './model/FindingsArray'
+import FindingArray from './model/FindingArray'
+import { createSlackMessage, SlackMessage } from './model/SlackMessage'
+import { SendIf, sendIfLogMessage } from './model/SendIf'
 
 /**
  * Service to convert SARIF files to Slack messages and send them.
@@ -45,12 +44,9 @@ export class SarifToSlackClient {
 
   public static async create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
     const instance = new SarifToSlackClient(opts.log)
-    Logger.trace('opts', opts)
     instance._sendIf = opts.sendIf ?? instance._sendIf
     instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif)
-    Logger.trace('instance._sarifModel', instance._sarifModel)
     instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts)
-    Logger.trace('instance._message', instance._message)
     return instance;
   }
 
@@ -60,7 +56,7 @@ export class SarifToSlackClient {
       throw new Error(`No SARIF files found at the provided path: ${sarifOpts.path}`)
     }
 
-    const model: SarifModel = { sarifFiles, runs: [], findings: new FindingsArray() }
+    const model: SarifModel = { sarifFiles, runs: [], findings: new FindingArray() }
     const runIdGenerator: Generator<number> = SarifToSlackClient.createRunIdGenerator()
     for (const sarifPath of sarifFiles) {
       const sarifJson: string = await fs.readFile(sarifPath, 'utf8')
@@ -99,7 +95,7 @@ export class SarifToSlackClient {
     sarifModel: SarifModel,
     opts: Omit<SarifToSlackClientOptions, 'sarif' | 'log' | 'sendIf'>
   ): Promise<SlackMessage> {
-    const message: SlackMessage = new SlackMessageBuilder(opts.webhookUrl, {
+    const message: SlackMessage = createSlackMessage(opts.webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
       color: identifyColor(sarifModel.findings, opts.color),
@@ -137,7 +133,7 @@ export class SarifToSlackClient {
       const text: string = await this._message.send()
       Logger.info('Message sent. Status:', text)
     } else {
-      Logger.info('Message was not sent based on the sendIf parameter:', SendIf[this._sendIf])
+      Logger.info(sendIfLogMessage(this._sendIf))
     }
   }
 
