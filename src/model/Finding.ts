@@ -18,7 +18,7 @@ export type FindingOptions = {
  * This interface represents a finding from SARIF file.
  * @internal
  */
-export interface Finding {
+export default interface Finding {
   get sarifPath(): string,
   get runId(): number,
   get toolName(): string,
@@ -33,7 +33,7 @@ export interface Finding {
  * @internal
  */
 export function createFinding(opts: FindingOptions): Finding {
-  return new SarifFinding(opts)
+  return new FindingImpl(opts)
 }
 
 /**
@@ -42,7 +42,7 @@ export function createFinding(opts: FindingOptions): Finding {
  * create a new {@link Finding}.
  * @private
  */
-class SarifFinding implements Finding {
+class FindingImpl implements Finding {
   private readonly _runMetadata: RunData
   private readonly _result: Result
   private readonly _sarifPath: string

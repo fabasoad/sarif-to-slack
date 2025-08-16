@@ -1,4 +1,4 @@
-import { Finding } from '../model/Finding'
+import Finding from '../model/Finding'
 import CompactGroupByRepresentation from './CompactGroupByRepresentation'
 import { SarifModel } from '../types'
 

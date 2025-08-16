@@ -1,7 +1,7 @@
 import { SarifModel } from '../types'
-import { Finding } from '../model/Finding'
+import Finding from '../model/Finding'
 import { findingsComparatorByKey } from '../utils/Comparators'
-import FindingsArray from '../model/FindingsArray'
+import FindingArray from '../model/FindingArray'
 
 /**
  * The most base abstract class for the representation. Every representation class
@@ -17,10 +17,10 @@ export default abstract class Representation {
       .findings
       .map((f: Finding): Finding => f.clone())
       .sort(findingsComparatorByKey(findingSortKey))
-      .reduce((arr: FindingsArray, f: Finding): FindingsArray => {
+      .reduce((arr: FindingArray, f: Finding): FindingArray => {
         arr.push(f)
         return arr
-      }, new FindingsArray())
+      }, new FindingArray())
   }
 
   protected bold(text: string): string {

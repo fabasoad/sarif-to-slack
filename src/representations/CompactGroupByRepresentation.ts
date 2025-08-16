@@ -1,5 +1,5 @@
 import Representation from './Representation'
-import { Finding } from '../model/Finding'
+import Finding from '../model/Finding'
 import { findingsComparatorByKey } from '../utils/Comparators'
 import { SecurityLevel, SecuritySeverity } from '../types';
 

@@ -23,6 +23,8 @@
  *   username: 'SARIF to Slack Bot',
  *   iconUrl: 'https://example.com/icon.png',
  *   color: {
+ *     default: new Color('failure'),
+ *     empty: new Color('success'),
  *     bySeverity: {
  *       critical: new Color('#ff0000'),
  *       high: new Color('#ff4500'),
@@ -30,7 +32,13 @@
  *       low: new Color('#ffff00'),
  *       none: new Color('#808080'),
  *       unknown: new Color('#800080'),
- *       empty: new Color('#d3d3d3'),
+ *     },
+ *     byLevel: {
+ *       error: new Color('#ff0000'),
+ *       warning: new Color('#ffa500'),
+ *       note: new Color('#ffff00'),
+ *       none: new Color('#808080'),
+ *       unknown: new Color('#800080'),
  *     },
  *   },
  *   sarif: {
@@ -75,6 +83,8 @@ export {
   ColorGroupByLevel,
   ColorGroupBySeverity
 } from './model/Color'
+export { SendIf } from './model/SendIf'
+export { SlackMessage } from './model/SlackMessage'
 export { SarifToSlackClient } from './SarifToSlackClient'
 export {
   FooterOptions,
@@ -86,7 +96,5 @@ export {
   RepresentationType,
   SarifFileExtension,
   SarifOptions,
-  SarifToSlackClientOptions,
-  SendIf,
-  SlackMessage,
+  SarifToSlackClientOptions
 } from './types'

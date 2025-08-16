@@ -1,5 +1,5 @@
 import { CommonProcessor } from './CommonProcessor'
-import { Result } from 'sarif';
+import { Result } from 'sarif'
 
 /**
  * This class has extra logic for processing SARIF files produced by CodeQL tool.

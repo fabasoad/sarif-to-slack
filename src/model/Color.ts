@@ -1,6 +1,6 @@
 import { SecurityLevel, SecuritySeverity } from '../types'
-import { Finding } from './Finding'
-import FindingsArray from './FindingsArray'
+import Finding from './Finding'
+import FindingArray from './FindingArray'
 
 /**
  * This class represents a color in hex format.
@@ -20,7 +20,7 @@ export class Color {
    */
   public constructor(color?: string) {
     this._color = this.mapColor(color)
-    this.validateHexColor()
+    this.assertHexColor()
   }
 
   /**
@@ -30,7 +30,7 @@ export class Color {
     return this._color
   }
 
-  private validateHexColor(): void {
+  private assertHexColor(): void {
     if (this._color != null) {
       const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
 
@@ -64,7 +64,6 @@ export class Color {
 type ColorGroupCommon = {
   none?: Color,
   unknown?: Color,
-  empty?: Color,
 }
 
 /**
@@ -113,10 +112,14 @@ export type ColorOptions = {
    * Color scheme for the findings where certain severity is presented.
    */
   bySeverity?: ColorGroupBySeverity,
+  /**
+   * Color when no findings are found.
+   */
+  empty?: Color,
 }
 
 function identifyColorCommon<K extends keyof Finding>(
-  findings: FindingsArray,
+  findings: FindingArray,
   prop: K,
   none: Finding[K],
   unknown: Finding[K],
@@ -131,14 +134,10 @@ function identifyColorCommon<K extends keyof Finding>(
     return color.unknown.value
   }
 
-  if (color.empty != null && findings.length === 0) {
-    return color.empty.value
-  }
-
   return defaultColor?.value
 }
 
-function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySeverity, defaultColor?: Color): string | undefined {
+function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeverity, defaultColor?: Color): string | undefined {
   if (color.critical != null && findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
     return color.critical.value
   }
@@ -158,7 +157,7 @@ function identifyColorBySeverity(findings: FindingsArray, color: ColorGroupBySev
   return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color, defaultColor)
 }
 
-function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel, defaultColor?: Color): string | undefined {
+function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel, defaultColor?: Color): string | undefined {
   if (color.error != null && findings.findByProperty('level', SecurityLevel.Error) != null) {
     return color.error.value
   }
@@ -178,18 +177,22 @@ function identifyColorByLevel(findings: FindingsArray, color: ColorGroupByLevel,
  * Makes an ultimate decision on what color should be Slack message. The decision
  * is based on the provided {@param colorOpts} parameter and {@param findings}
  * list.
- * @param findings An instance of {@link FindingsArray} object.
+ * @param findings An instance of {@link FindingArray} object.
  * @param colorOpts An instance of {@link ColorOptions} type.
  * @internal
  */
-export function identifyColor(findings: FindingsArray, colorOpts?: ColorOptions): string | undefined {
-  if (colorOpts?.bySeverity != null) {
-    return identifyColorBySeverity(findings, colorOpts.bySeverity, colorOpts.default)
-  }
+export function identifyColor(findings: FindingArray, colorOpts?: ColorOptions): string | undefined {
+  let result: string | undefined = colorOpts?.bySeverity
+    ? identifyColorBySeverity(findings, colorOpts.bySeverity, colorOpts.default)
+    : undefined
 
-  if (colorOpts?.byLevel != null) {
-    return identifyColorByLevel(findings, colorOpts.byLevel, colorOpts.default)
-  }
+  result ??= colorOpts?.byLevel
+    ? identifyColorByLevel(findings, colorOpts.byLevel, colorOpts.default)
+    : result
 
-  return colorOpts?.default?.value
+  result ??= findings.length === 0 ? colorOpts?.empty?.value : result
+
+  result ??= colorOpts?.default?.value
+
+  return result
 }

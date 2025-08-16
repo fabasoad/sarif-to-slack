@@ -105,7 +105,6 @@ describe('(integration): SendSarifToSlack', (): void => {
           note: new Color(process.env.SARIF_TO_SLACK_COLOR_NOTE),
           none: new Color(process.env.SARIF_TO_SLACK_COLOR_NONE),
           unknown: new Color(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
-          empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
         },
         bySeverity: {
           critical: new Color(process.env.SARIF_TO_SLACK_COLOR_CRITICAL),
@@ -114,8 +113,8 @@ describe('(integration): SendSarifToSlack', (): void => {
           low: new Color(process.env.SARIF_TO_SLACK_COLOR_LOW),
           none: new Color(process.env.SARIF_TO_SLACK_COLOR_NONE),
           unknown: new Color(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
-          empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
         },
+        empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
       },
       sarif: {
         path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
