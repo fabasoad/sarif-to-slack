@@ -32,10 +32,10 @@ export class Color {
 
   private assertHexColor(): void {
     if (this._color != null) {
-      const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
+      const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/
 
       if (!hexColorRegex.test(this._color)) {
-        throw new Error(`Invalid hex color: "${this._color}"`);
+        throw new Error(`Invalid hex color: "${this._color}"`)
       }
     }
   }
@@ -123,8 +123,7 @@ function identifyColorCommon<K extends keyof Finding>(
   prop: K,
   none: Finding[K],
   unknown: Finding[K],
-  color: ColorGroupCommon,
-  defaultColor?: Color
+  color: ColorGroupCommon
 ): string | undefined {
   if (color.none != null && findings.findByProperty(prop, none) != null) {
     return color.none.value
@@ -134,10 +133,10 @@ function identifyColorCommon<K extends keyof Finding>(
     return color.unknown.value
   }
 
-  return defaultColor?.value
+  return undefined
 }
 
-function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeverity, defaultColor?: Color): string | undefined {
+function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeverity): string | undefined {
   if (color.critical != null && findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
     return color.critical.value
   }
@@ -154,10 +153,10 @@ function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeve
     return color.low.value
   }
 
-  return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color, defaultColor)
+  return identifyColorCommon(findings, 'severity', SecuritySeverity.None, SecuritySeverity.Unknown, color)
 }
 
-function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel, defaultColor?: Color): string | undefined {
+function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel): string | undefined {
   if (color.error != null && findings.findByProperty('level', SecurityLevel.Error) != null) {
     return color.error.value
   }
@@ -170,7 +169,7 @@ function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel, 
     return color.note.value
   }
 
-  return identifyColorCommon(findings, 'level', SecurityLevel.None, SecurityLevel.Unknown, color, defaultColor)
+  return identifyColorCommon(findings, 'level', SecurityLevel.None, SecurityLevel.Unknown, color)
 }
 
 /**
@@ -182,17 +181,27 @@ function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel, 
  * @internal
  */
 export function identifyColor(findings: FindingArray, colorOpts?: ColorOptions): string | undefined {
-  let result: string | undefined = colorOpts?.bySeverity
-    ? identifyColorBySeverity(findings, colorOpts.bySeverity, colorOpts.default)
-    : undefined
+  if (!colorOpts) {
+    return undefined
+  }
 
-  result ??= colorOpts?.byLevel
-    ? identifyColorByLevel(findings, colorOpts.byLevel, colorOpts.default)
-    : result
+  if (colorOpts.bySeverity) {
+    const color: string | undefined = identifyColorBySeverity(findings, colorOpts.bySeverity)
+    if (color !== undefined) {
+      return color
+    }
+  }
 
-  result ??= findings.length === 0 ? colorOpts?.empty?.value : result
+  if (colorOpts.byLevel) {
+    const color: string | undefined = identifyColorByLevel(findings, colorOpts.byLevel)
+    if (color !== undefined) {
+      return color
+    }
+  }
 
-  result ??= colorOpts?.default?.value
+  if (findings.length === 0 && colorOpts.empty?.value !== undefined) {
+    return colorOpts.empty.value
+  }
 
-  return result
+  return colorOpts?.default?.value
 }
