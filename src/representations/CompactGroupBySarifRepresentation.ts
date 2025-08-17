@@ -14,10 +14,10 @@ import { SarifModel } from '../types'
  * grype-results-02.sarif
  * Warning: 1, Note: 20
  * ```
- * @internal
  * It is an abstract class, so the only question that derived classes should
  * "answer" is what property should be used in the compact representation, such
  * as "level" and "severity".
+ * @internal
  */
 export default abstract class CompactGroupBySarifRepresentation extends CompactGroupByRepresentation {
 

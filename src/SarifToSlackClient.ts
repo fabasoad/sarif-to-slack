@@ -47,7 +47,7 @@ export class SarifToSlackClient {
     instance._sendIf = opts.sendIf ?? instance._sendIf
     instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif)
     instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts)
-    return instance;
+    return instance
   }
 
   private static async buildModel(sarifOpts: SarifOptions): Promise<SarifModel> {

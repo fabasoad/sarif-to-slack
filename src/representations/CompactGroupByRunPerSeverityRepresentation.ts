@@ -1,4 +1,4 @@
-import CompactGroupByRunRepresentation from './CompactGroupByRunRepresentation';
+import CompactGroupByRunRepresentation from './CompactGroupByRunRepresentation'
 
 /**
  * Since {@link CompactGroupByRunRepresentation} is an abstract class, the only

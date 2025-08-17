@@ -1,7 +1,7 @@
 import Representation from './Representation'
 import Finding from '../model/Finding'
 import { findingsComparatorByKey } from '../utils/Comparators'
-import { SecurityLevel, SecuritySeverity } from '../types';
+import { SecurityLevel, SecuritySeverity } from '../types'
 
 const NO_VULNS_FOUND_TEXT = 'No vulnerabilities found'
 
