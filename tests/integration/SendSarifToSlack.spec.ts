@@ -1,7 +1,7 @@
 import {
   Color,
   LogLevel,
-  RepresentationType,
+  RepresentationType, SarifFileExtension,
   SarifToSlackClient,
   SendIf
 } from '../../src'
@@ -29,6 +29,15 @@ describe('(integration): SendSarifToSlack', (): void => {
       default:
         throw new Error(`Unknown log level: ${logLevel}`)
     }
+  }
+
+  function processSarifExtension(extension: string): SarifFileExtension {
+    const allowed: string[] = ['sarif', 'json']
+    if (allowed.includes(extension)) {
+      return extension as SarifFileExtension
+    }
+
+    throw new Error(`Unknown extension: ${extension}`)
   }
 
   function processRepresentationType(representation?: string): RepresentationType | undefined {
@@ -99,6 +108,7 @@ describe('(integration): SendSarifToSlack', (): void => {
       iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
       color: {
         default: new Color(process.env.SARIF_TO_SLACK_COLOR),
+        empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
         byLevel: {
           error: new Color(process.env.SARIF_TO_SLACK_COLOR_ERROR),
           warning: new Color(process.env.SARIF_TO_SLACK_COLOR_WARNING),
@@ -114,15 +124,22 @@ describe('(integration): SendSarifToSlack', (): void => {
           none: new Color(process.env.SARIF_TO_SLACK_COLOR_NONE),
           unknown: new Color(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
         },
-        empty: new Color(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
       },
       sarif: {
         path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
-        recursive: true,
-        extension: 'sarif',
+        recursive: process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE
+          ? Boolean(process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE)
+          : false,
+        extension: process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION
+          ? processSarifExtension(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION)
+          : 'sarif',
       },
       log: {
         level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),
+        template: process.env.SARIF_TO_SLACK_LOG_TEMPLATE,
+        colored: process.env.SARIF_TO_SLACK_LOG_COLORED
+          ? Boolean(process.env.SARIF_TO_SLACK_LOG_COLORED)
+          : true,
       },
       header: {
         include: process.env.SARIF_TO_SLACK_HEADER !== 'skip',
