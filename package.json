@@ -20,7 +20,7 @@
     "version:minor": "npm version minor --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
     "version:major": "npm version major --commit-hooks --git-tag-version --message 'chore: bump to version %s'",
     "preversion": "npm test",
-    "version": "npm run build && git add .",
+    "version": "npm run build && git add package.json package-lock.json",
     "postversion": "git push && git push --tags && npm run clean"
   },
   "repository": {
