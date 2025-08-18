@@ -12,9 +12,9 @@ export class Color {
   /**
    * Creates an instance of {@link Color} class. Before creating an instance of
    * {@link Color} class, it (if applicable) maps CI status into the hex color,
-   * and also validates {@param color} to be a valid string that represents a
+   * and also validates color parameter to be a valid string that represents a
    * color in hex format.
-   * @param color Can be either undefined, valid color in hex format or GitHub
+   * @param color - Can be either undefined, valid color in hex format or GitHub
    * CI status (one of: success, failure, cancelled, skipped)
    * @public
    */
@@ -31,7 +31,7 @@ export class Color {
   }
 
   private assertHexColor(): void {
-    if (this._color != null) {
+    if (this._color) {
       const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/
 
       if (!hexColorRegex.test(this._color)) {
@@ -59,7 +59,6 @@ export class Color {
 /**
  * Base type that has common fields for both {@link ColorGroupByLevel} and
  * {@link ColorGroupBySeverity}.
- * @private
  */
 type ColorGroupCommon = {
   none?: Color,

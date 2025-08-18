@@ -85,11 +85,10 @@ export class SarifToSlackClient {
   /**
    * The main function to initialize a list of {@link SlackMessage} objects based
    * on the given SARIF file(s).
-   * @param sarifModel An instance of {@link SarifModel} object.
-   * @param opts An instance of {@link SarifToSlackClientOptions} object.
+   * @param sarifModel - An instance of SarifModel object.
+   * @param opts - An instance of {@link SarifToSlackClientOptions} object.
    * @returns A map where key is the SARIF file and value is an instance of
-   * {@link SlackMessage} object
-   * @private
+   * {@link SlackMessage} object.
    */
   private static async initialize(
     sarifModel: SarifModel,
