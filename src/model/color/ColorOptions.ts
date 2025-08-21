@@ -3,7 +3,7 @@ import { Color } from './Color'
 /**
  * Base type that has common fields for both {@link ColorGroupByLevel} and
  * {@link ColorGroupBySeverity}.
- * @internal
+ * @public
  */
 export type ColorGroupCommon = {
   none?: Color,
@@ -13,8 +13,8 @@ export type ColorGroupCommon = {
 /**
  * Color schema for the findings with the certain level. Color is used by the
  * level importance, i.e. if at least 1 error finding exists then
- * {@link ColorGroupByLevel.error} color is used, then if at least 1 warning
- * finding exists then {@link ColorGroupByLevel.warning} color is used, etc.
+ * {@link ColorGroupByLevel#error} color is used, then if at least 1 warning
+ * finding exists then {@link ColorGroupByLevel#warning} color is used, etc.
  * @public
  */
 export type ColorGroupByLevel = ColorGroupCommon & {
