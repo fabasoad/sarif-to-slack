@@ -45,19 +45,22 @@ export default abstract class CompactGroupByRepresentation extends Representatio
   }
 
   private composeCompactReport<K extends keyof Pick<Finding, 'level' | 'severity'>>(findings: Finding[], key: K): string {
-    return Object
-      .entries(Object.groupBy(findings, (f: Finding): PropertyKey => f[key] as PropertyKey))
-      .map(([prop, findings2]: [string, Finding[] | undefined]): string | undefined => {
-        if (findings2 == null) {
-          return undefined
+    const result: string[] = []
+    findings
+      .reduce((grouped: Map<Finding[K], Array<Finding>>, f: Finding): Map<Finding[K], Array<Finding>> => {
+        if (!grouped.get(f[key])) {
+          grouped.set(f[key], new Array<Finding>())
         }
-        return `${this.bold(this.extractEnumValue(key, prop))}: ${findings2.length}`
+        grouped.get(f[key])?.push(f)
+        return grouped
+      }, new Map<Finding[K], Array<Finding>>())
+      .forEach((v: Array<Finding>, k: Finding[K]): void => {
+        result.push(`${this.bold(this.extractEnumValue(key, k))}: ${v.length}`)
       })
-      .filter((v: string | undefined): v is string => v != null)
-      .join(', ')
+    return result.join(', ')
   }
 
-  private extractEnumValue<K extends keyof Pick<Finding, 'level' | 'severity'>>(key: K, prop: string): string {
+  private extractEnumValue<K extends keyof Pick<Finding, 'level' | 'severity'>>(key: K, prop: Finding[K]): string {
     switch (key) {
       case 'level': return SecurityLevel[Number(prop)]
       case 'severity': return SecuritySeverity[Number(prop)]
