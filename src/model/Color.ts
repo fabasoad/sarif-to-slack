@@ -1,6 +1,7 @@
 import { SecurityLevel, SecuritySeverity } from '../types'
 import Finding from './Finding'
 import FindingArray from './FindingArray'
+import Logger from '../Logger'
 
 /**
  * This class represents a color in hex format.
@@ -40,19 +41,14 @@ export class Color {
     }
   }
 
-  private mapColor(from?: string): string | undefined {
-    switch (from) {
-      case 'success':
-        return '#008000'
-      case 'failure':
-        return '#ff0000'
-      case 'cancelled':
-        return '#0047ab'
-      case 'skipped':
-        return '#808080'
-      default:
-        return from
-    }
+  private mapColor(from: string = 'unknown'): string | undefined {
+    const map = new Map<string, string>([
+      ['success', '#008000'],
+      ['failure', '#ff0000'],
+      ['cancelled', '#0047ab'],
+      ['skipped', '#808080'],
+    ])
+    return map.get(from)
   }
 }
 
@@ -81,8 +77,8 @@ export type ColorGroupByLevel = ColorGroupCommon & {
 /**
  * Color schema for the findings with the certain severity. Color is used by the
  * severity importance, i.e. if at least 1 critical finding exists then
- * {@link ColorGroupBySeverity.critical} color is used, then if at least 1 high
- * finding exists then {@link ColorGroupBySeverity.high} color is used, etc.
+ * {@link ColorGroupBySeverity#critical} color is used, then if at least 1 high
+ * finding exists then {@link ColorGroupBySeverity#high} color is used, etc.
  * @public
  */
 export type ColorGroupBySeverity = ColorGroupCommon & {
@@ -93,8 +89,8 @@ export type ColorGroupBySeverity = ColorGroupCommon & {
 }
 
 /**
- * Represents configuration of the color scheme. If both {@link ColorOptions.byLevel}
- * and {@link ColorOptions.bySeverity} are defined, then {@link ColorOptions.bySeverity}
+ * Represents configuration of the color scheme. If both {@link ColorOptions#byLevel}
+ * and {@link ColorOptions#bySeverity} are defined, then {@link ColorOptions#bySeverity}
  * takes precedence.
  * @public
  */
@@ -181,25 +177,51 @@ function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel):
  */
 export function identifyColor(findings: FindingArray, colorOpts?: ColorOptions): string | undefined {
   if (!colorOpts) {
+    Logger.debug('Message has no color as color options are not defined.')
     return undefined
   }
+  Logger.trace(`Identifying color for ${findings.length} findings and the following color options:`, JSON.stringify({ ...colorOpts }, null, 2))
 
   if (colorOpts.bySeverity) {
     const color: string | undefined = identifyColorBySeverity(findings, colorOpts.bySeverity)
-    if (color !== undefined) {
+    if (color) {
+      Logger.debug(`Message has ${color} color based on the "bySeverity" group.`)
       return color
+    } else {
+      Logger.trace('None of the properties in "bySeverity" group is defined. Continue color identification...')
     }
+  } else {
+    Logger.trace('"bySeverity" group is not defined. Continue color identification...')
   }
 
   if (colorOpts.byLevel) {
     const color: string | undefined = identifyColorByLevel(findings, colorOpts.byLevel)
-    if (color !== undefined) {
+    if (color) {
+      Logger.debug(`Message has ${color} color based on the "byLevel" group.`)
       return color
+    } else {
+      Logger.trace('None of the properties in "byLevel" group is defined. Continue color identification...')
     }
+  } else {
+    Logger.trace('"byLevel" group is not defined. Continue color identification...')
   }
 
-  if (findings.length === 0 && colorOpts.empty?.value !== undefined) {
-    return colorOpts.empty.value
+  if (findings.length === 0) {
+    Logger.trace('There are no findings in provided SARIF file(s). Checking if color is defined in "empty" property...')
+    if (colorOpts.empty?.value) {
+      Logger.debug(`Message has ${colorOpts.empty.value} color as there are no findings in SARIF.`)
+      return colorOpts.empty.value
+    } else {
+      Logger.trace('"empty" color is not defined. Continue color identification...')
+    }
+  } else {
+    Logger.trace(`There are ${findings.length} findings in provided SARIF file(s). "empty" color is not taken into account. Continue color identification...`)
+  }
+
+  if (colorOpts.default?.value) {
+    Logger.debug(`Message has ${colorOpts.default.value} default color.`)
+  } else {
+    Logger.debug('Message has no color as none of the defined color options applicable.')
   }
 
   return colorOpts?.default?.value
