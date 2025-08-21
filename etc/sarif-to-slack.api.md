@@ -6,12 +6,10 @@
 
 // @public
 export class Color {
-    constructor(color?: string);
-    get value(): string | undefined;
+    readonly color: string;
+    static from(color: string | undefined): Color | undefined;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ColorGroupCommon" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type ColorGroupByLevel = ColorGroupCommon & {
     error?: Color;
@@ -25,6 +23,12 @@ export type ColorGroupBySeverity = ColorGroupCommon & {
     high?: Color;
     medium?: Color;
     low?: Color;
+};
+
+// @public
+export type ColorGroupCommon = {
+    none?: Color;
+    unknown?: Color;
 };
 
 // @public

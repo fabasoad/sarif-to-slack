@@ -77,12 +77,13 @@
  *
  * @packageDocumentation
  */
+export { Color } from './model/color/Color'
 export {
-  Color,
   ColorOptions,
+  ColorGroupCommon,
   ColorGroupByLevel,
   ColorGroupBySeverity
-} from './model/Color'
+} from './model/color/ColorOptions'
 export { SendIf } from './model/SendIf'
 export { SlackMessage } from './model/SlackMessage'
 export { SarifToSlackClient } from './SarifToSlackClient'
