@@ -1,5 +1,5 @@
 import { Run } from 'sarif'
-import { ColorOptions } from './model/Color'
+import { ColorOptions } from './model/color/ColorOptions'
 import FindingArray from './model/FindingArray'
 import { SendIf } from './model/SendIf'
 
