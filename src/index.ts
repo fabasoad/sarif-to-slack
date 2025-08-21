@@ -80,6 +80,7 @@
 export { Color } from './model/color/Color'
 export {
   ColorOptions,
+  ColorGroupCommon,
   ColorGroupByLevel,
   ColorGroupBySeverity
 } from './model/color/ColorOptions'
