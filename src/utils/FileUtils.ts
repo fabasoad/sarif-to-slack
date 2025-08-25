@@ -7,24 +7,28 @@ import * as path from 'path'
  * Traverse directory recursively and returns list of files with the requested
  * extension.
  * @param dir A root directory. Starting point.
+ * @param recursive Whether to list files recursively or not.
  * @param extension An instance of {@link SarifFileExtension} type.
  * @param fileList Collected list of files.
  * @private
  */
-function listFilesRecursively(
+function listFiles(
   dir: string,
+  recursive: boolean,
   extension: SarifFileExtension,
   fileList: string[] = []
 ): string[] {
-  const entries: string[] = fs.readdirSync(dir)
-  entries.forEach((entry: string): void => {
-    const fullPath: string = path.join(dir, entry)
-    if (fs.statSync(fullPath).isDirectory()) {
-      listFilesRecursively(fullPath, extension, fileList)
-    } else if (path.extname(fullPath).toLowerCase() === `.${extension}`) {
-      fileList.push(fullPath)
-    }
-  })
+  if (fs.statSync(dir).isDirectory()) {
+    const entries: string[] = fs.readdirSync(dir)
+    entries.forEach((entry: string): void => {
+      const fullPath: string = path.join(dir, entry)
+      if (recursive && fs.statSync(fullPath).isDirectory()) {
+        listFiles(fullPath, recursive, extension, fileList)
+      } else if (path.extname(fullPath).toLowerCase() === `.${extension}`) {
+        fileList.push(fullPath)
+      }
+    })
+  }
   return fileList
 }
 
@@ -43,9 +47,7 @@ export function extractListOfFiles(opts: SarifOptions): string[] {
 
   if (stats.isDirectory()) {
     Logger.info(`Provided path is a directory: ${opts.path}`)
-    const files: string[] = opts.recursive
-      && listFilesRecursively(opts.path, opts.extension ?? 'sarif')
-      || fs.readdirSync(opts.path)
+    const files: string[] = listFiles(opts.path, !!opts.recursive, opts.extension ?? 'sarif')
     Logger.info(`Found ${files.length} files in ${opts.path} directory with ${opts.extension} extension`)
     Logger.debug(`Found files: ${files.join(', ')}`)
     return files

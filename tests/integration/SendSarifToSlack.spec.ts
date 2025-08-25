@@ -128,7 +128,7 @@ describe('(integration): SendSarifToSlack', (): void => {
       sarif: {
         path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
         recursive: process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE
-          ? Boolean(process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE)
+          ? process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE.toLowerCase() === 'true'
           : false,
         extension: process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION
           ? processSarifExtension(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION)
