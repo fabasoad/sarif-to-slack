@@ -174,6 +174,8 @@ export enum RepresentationType {
    * ```
    */
   CompactTotalPerSeverity = 7,
+  TableGroupByToolNamePerLevel = 8,
+  TableGroupByToolNamePerSeverity = 9,
 }
 
 /**
@@ -241,6 +243,16 @@ export enum SecuritySeverity {
   Critical = 5,
 }
 
+export const SecuritySeverityAmount: number =
+  Object.values(SecuritySeverity)
+    .filter((v: string | SecuritySeverity): v is string => typeof v === 'string')
+    .length
+
+export const SecuritySeverityValues: string[] =
+  Object.values(SecuritySeverity)
+    .filter((v: string | SecuritySeverity): boolean => typeof v === 'string')
+    .map((v: string | SecuritySeverity): string => v as string)
+
 /**
  * Enum of security level.
  * @privateRemarks Order should remain unchanged. It is used in multiple places,
@@ -255,6 +267,16 @@ export enum SecurityLevel {
   Warning = 3,
   Error = 4,
 }
+
+export const SecurityLevelAmount: number =
+  Object.values(SecurityLevel)
+    .filter((v: string | SecurityLevel): v is string => typeof v === 'string')
+    .length
+
+export const SecurityLevelValues: string[] =
+  Object.values(SecurityLevel)
+    .filter((v: string | SecurityLevel): boolean => typeof v === 'string')
+    .map((v: string | SecurityLevel): string => v as string)
 
 /**
  * The data about run, such as {@link Run} itself, tool name of the run and ID

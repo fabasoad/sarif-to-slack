@@ -31,5 +31,9 @@ export default abstract class Representation {
     return `_${text}_`
   }
 
+  protected codeBlock(text: string): string {
+    return '```\n' + text + '\n```'
+  }
+
   abstract compose(): string
 }

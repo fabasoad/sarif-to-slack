@@ -60,7 +60,7 @@ repos:
           - --hook-args=--log-level debug
         stages: ["pre-push"]
   - repo: https://github.com/google/osv-scanner
-    rev: v2.2.1
+    rev: v2.2.2
     hooks:
       - id: osv-scanner
         args:
@@ -103,3 +103,4 @@ repos:
       - id: no-commit-to-branch
         stages: ["pre-commit"]
       - id: trailing-whitespace
+        exclude: ^(tests/representations/table/Table.spec.ts)$
