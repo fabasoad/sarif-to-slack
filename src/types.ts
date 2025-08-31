@@ -174,6 +174,36 @@ export enum RepresentationType {
    * ```
    */
   CompactTotalPerSeverity = 7,
+  /**
+   * Table information about findings with the level representation.
+   * @example
+   * ```text
+   * |        | Unknown | None | Note | Warning | Error | Total |
+   * | ------ | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | CodeQL | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | grype  | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | Trivy  | 0       | 0    | 1    | 0       | 1     | 2     |
+   * | WizCLI | 0       | 0    | 5    | 5       | 0     | 10    |
+   * | ------ | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total  | 0       | 0    | 15   | 26      | 11    | 52    |
+   * ```
+   */
+  TableGroupByToolNamePerLevel = 8,
+  /**
+   * Table information about findings with the severity representation.
+   * @example
+   * ```text
+   * |        | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ------ | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | CodeQL | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | grype  | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | Trivy  | 0       | 0    | 1   | 0      | 1    | 0        | 2     |
+   * | WizCLI | 0       | 0    | 5   | 5      | 0    | 0        | 10    |
+   * | ------ | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total  | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
+   * ```
+   */
+  TableGroupByToolNamePerSeverity = 9,
 }
 
 /**
@@ -241,6 +271,16 @@ export enum SecuritySeverity {
   Critical = 5,
 }
 
+export const SecuritySeverityAmount: number =
+  Object.values(SecuritySeverity)
+    .filter((v: string | SecuritySeverity): v is string => typeof v === 'string')
+    .length
+
+export const SecuritySeverityValues: string[] =
+  Object.values(SecuritySeverity)
+    .filter((v: string | SecuritySeverity): boolean => typeof v === 'string')
+    .map((v: string | SecuritySeverity): string => v as string)
+
 /**
  * Enum of security level.
  * @privateRemarks Order should remain unchanged. It is used in multiple places,
@@ -255,6 +295,16 @@ export enum SecurityLevel {
   Warning = 3,
   Error = 4,
 }
+
+export const SecurityLevelAmount: number =
+  Object.values(SecurityLevel)
+    .filter((v: string | SecurityLevel): v is string => typeof v === 'string')
+    .length
+
+export const SecurityLevelValues: string[] =
+  Object.values(SecurityLevel)
+    .filter((v: string | SecurityLevel): boolean => typeof v === 'string')
+    .map((v: string | SecurityLevel): string => v as string)
 
 /**
  * The data about run, such as {@link Run} itself, tool name of the run and ID

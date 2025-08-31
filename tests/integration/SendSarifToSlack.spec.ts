@@ -62,6 +62,10 @@ describe('(integration): SendSarifToSlack', (): void => {
         return RepresentationType.CompactTotalPerLevel
       case 'compact-total-per-severity':
         return RepresentationType.CompactTotalPerSeverity
+      case 'table-group-by-tool-name-per-level':
+        return RepresentationType.TableGroupByToolNamePerLevel
+      case 'table-group-by-tool-name-per-severity':
+        return RepresentationType.TableGroupByToolNamePerSeverity
       default:
         return undefined
     }

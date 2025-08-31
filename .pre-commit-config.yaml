@@ -103,3 +103,4 @@ repos:
       - id: no-commit-to-branch
         stages: ["pre-commit"]
       - id: trailing-whitespace
+        exclude: ^(tests/representations/table/Table.spec.ts)$
