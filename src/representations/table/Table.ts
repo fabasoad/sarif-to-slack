@@ -69,7 +69,7 @@ export default class Table {
       rowsStr.push(`|${column1}|${rowTotal.join('|')}|${columnLast}|`)
 
       // Insert first row with titles and second row with separator
-      let rowTop: string[] = [
+      const rowTop: string[] = [
         ' '.repeat(this.rows[0].headerWidth),
         this.columns
           .map((c: Column): string => `${c.header}${c.header.length < c.width ? ' '.repeat(c.width - c.header.length) : ''}`)

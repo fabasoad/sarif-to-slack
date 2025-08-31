@@ -174,7 +174,35 @@ export enum RepresentationType {
    * ```
    */
   CompactTotalPerSeverity = 7,
+  /**
+   * Table information about findings with the level representation.
+   * @example
+   * ```text
+   * |        | Unknown | None | Note | Warning | Error | Total |
+   * | ------ | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | CodeQL | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | grype  | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | Trivy  | 0       | 0    | 1    | 0       | 1     | 2     |
+   * | WizCLI | 0       | 0    | 5    | 5       | 0     | 10    |
+   * | ------ | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total  | 0       | 0    | 15   | 26      | 11    | 52    |
+   * ```
+   */
   TableGroupByToolNamePerLevel = 8,
+  /**
+   * Table information about findings with the severity representation.
+   * @example
+   * ```text
+   * |        | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ------ | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | CodeQL | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | grype  | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | Trivy  | 0       | 0    | 1   | 0      | 1    | 0        | 2     |
+   * | WizCLI | 0       | 0    | 5   | 5      | 0    | 0        | 10    |
+   * | ------ | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total  | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
+   * ```
+   */
   TableGroupByToolNamePerSeverity = 9,
 }
 

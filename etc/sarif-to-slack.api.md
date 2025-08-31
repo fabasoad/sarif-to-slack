@@ -87,7 +87,9 @@ export enum RepresentationType {
     CompactGroupByToolNamePerLevel = 2,
     CompactGroupByToolNamePerSeverity = 3,
     CompactTotalPerLevel = 6,
-    CompactTotalPerSeverity = 7
+    CompactTotalPerSeverity = 7,
+    TableGroupByToolNamePerLevel = 8,
+    TableGroupByToolNamePerSeverity = 9
 }
 
 // @public
