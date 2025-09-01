@@ -62,10 +62,18 @@ describe('(integration): SendSarifToSlack', (): void => {
         return RepresentationType.CompactTotalPerLevel
       case 'compact-total-per-severity':
         return RepresentationType.CompactTotalPerSeverity
+      case 'table-group-by-run-per-level':
+        return RepresentationType.TableGroupByRunPerLevel
+      case 'table-group-by-run-per-severity':
+        return RepresentationType.TableGroupByRunPerSeverity
       case 'table-group-by-tool-name-per-level':
         return RepresentationType.TableGroupByToolNamePerLevel
       case 'table-group-by-tool-name-per-severity':
         return RepresentationType.TableGroupByToolNamePerSeverity
+      case 'table-group-by-sarif-per-level':
+        return RepresentationType.TableGroupBySarifPerLevel
+      case 'table-group-by-sarif-per-severity':
+        return RepresentationType.TableGroupBySarifPerSeverity
       default:
         return undefined
     }
@@ -105,7 +113,7 @@ describe('(integration): SendSarifToSlack', (): void => {
     }
   }
 
-  test('Should send Sarif to Slack', async () => {
+  test('should send Sarif to Slack', async () => {
     const client: SarifToSlackClient = await SarifToSlackClient.create({
       webhookUrl: process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
       username: process.env.SARIF_TO_SLACK_USERNAME,

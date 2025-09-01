@@ -91,4 +91,34 @@ describe('(unit): Table', (): void => {
  | ------ | ------ | ------ | 
  | Total  | 100000 | 100000 | `)
   })
+
+  test('should prepare string correctly when row and column headers are short', (): void => {
+    const table = new Table({
+      rows: ['a', 'b', 'c'],
+      columns: ['x']
+    })
+    table.set(0, 0, 35000)
+    table.set(1, 0, 64999)
+    table.set(2, 0, 1)
+    expect(table.toString()).toEqual(` |       | x      | Total  | 
+ | ----- | ------ | ------ | 
+ | a     | 35000  | 35000  | 
+ | b     | 64999  | 64999  | 
+ | c     | 1      | 1      | 
+ | ----- | ------ | ------ | 
+ | Total | 100000 | 100000 | `)
+  })
+
+  test('should prepare string correctly when row and column headers are numbers', (): void => {
+    const table = new Table({
+      rows: ['1'],
+      columns: ['1']
+    })
+    table.set(0, 0, 1)
+    expect(table.toString()).toEqual(` |       | 1 | Total | 
+ | ----- | - | ----- | 
+ | 1     | 1 | 1     | 
+ | ----- | - | ----- | 
+ | Total | 1 | 1     | `)
+  })
 })

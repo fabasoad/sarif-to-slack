@@ -20,6 +20,14 @@ import TableGroupByToolNamePerLevelRepresentation
   from './TableGroupByToolNamePerLevelRepresentation'
 import TableGroupByToolNamePerSeverityRepresentation
   from './TableGroupByToolNamePerSeverityRepresentation'
+import TableGroupByRunPerLevelRepresentation
+  from './TableGroupByRunPerLevelRepresentation'
+import TableGroupByRunPerSeverityRepresentation
+  from './TableGroupByRunPerSeverityRepresentation'
+import TableGroupBySarifPerLevelRepresentation
+  from './TableGroupBySarifPerLevelRepresentation'
+import TableGroupBySarifPerSeverityRepresentation
+  from './TableGroupBySarifPerSeverityRepresentation'
 
 /**
  * Factory class that creates a {@link Representation} class based on the provided
@@ -47,10 +55,18 @@ export function createRepresentation(
       return new CompactTotalPerLevelRepresentation(model)
     case RepresentationType.CompactTotalPerSeverity:
       return new CompactTotalPerSeverityRepresentation(model)
+    case RepresentationType.TableGroupByRunPerLevel:
+      return new TableGroupByRunPerLevelRepresentation(model)
+    case RepresentationType.TableGroupByRunPerSeverity:
+      return new TableGroupByRunPerSeverityRepresentation(model)
     case RepresentationType.TableGroupByToolNamePerLevel:
       return new TableGroupByToolNamePerLevelRepresentation(model)
     case RepresentationType.TableGroupByToolNamePerSeverity:
       return new TableGroupByToolNamePerSeverityRepresentation(model)
+    case RepresentationType.TableGroupBySarifPerLevel:
+      return new TableGroupBySarifPerLevelRepresentation(model)
+    case RepresentationType.TableGroupBySarifPerSeverity:
+      return new TableGroupBySarifPerSeverityRepresentation(model)
     default:
       throw new Error(`Unknown representation type: ${type}`)
   }

@@ -174,6 +174,8 @@ export enum RepresentationType {
    * ```
    */
   CompactTotalPerSeverity = 7,
+  TableGroupByRunPerLevel = 8,
+  TableGroupByRunPerSeverity = 9,
   /**
    * Table information about findings with the level representation.
    * @example
@@ -188,7 +190,7 @@ export enum RepresentationType {
    * | Total  | 0       | 0    | 15   | 26      | 11    | 52    |
    * ```
    */
-  TableGroupByToolNamePerLevel = 8,
+  TableGroupByToolNamePerLevel = 10,
   /**
    * Table information about findings with the severity representation.
    * @example
@@ -203,7 +205,9 @@ export enum RepresentationType {
    * | Total  | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
    * ```
    */
-  TableGroupByToolNamePerSeverity = 9,
+  TableGroupByToolNamePerSeverity = 11,
+  TableGroupBySarifPerLevel = 12,
+  TableGroupBySarifPerSeverity = 13,
 }
 
 /**
