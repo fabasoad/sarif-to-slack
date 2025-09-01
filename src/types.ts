@@ -174,10 +174,38 @@ export enum RepresentationType {
    * ```
    */
   CompactTotalPerSeverity = 7,
+  /**
+   * Table information about findings grouped by Run with the level representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Note | Warning | Error | Total |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | 1     | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | 2     | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | 3     | 0       | 0    | 1    | 0       | 1     | 2     |
+   * | 4     | 0       | 0    | 5    | 5       | 0     | 10    |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total | 0       | 0    | 15   | 26      | 11    | 52    |
+   * ```
+   */
   TableGroupByRunPerLevel = 8,
+  /**
+   * Table information about findings grouped by Run with the severity representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | 1     | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | 2     | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | 3     | 0       | 0    | 1   | 0      | 1    | 0        | 2     |
+   * | 4     | 0       | 0    | 5   | 5      | 0    | 0        | 10    |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
+   * ```
+   */
   TableGroupByRunPerSeverity = 9,
   /**
-   * Table information about findings with the level representation.
+   * Table information about findings grouped by tool name with the level representation.
    * @example
    * ```text
    * |        | Unknown | None | Note | Warning | Error | Total |
@@ -192,7 +220,7 @@ export enum RepresentationType {
    */
   TableGroupByToolNamePerLevel = 10,
   /**
-   * Table information about findings with the severity representation.
+   * Table information about findings grouped by tool name with the severity representation.
    * @example
    * ```text
    * |        | Unknown | None | Low | Medium | High | Critical | Total |
@@ -206,7 +234,31 @@ export enum RepresentationType {
    * ```
    */
   TableGroupByToolNamePerSeverity = 11,
+  /**
+   * Table information about findings grouped by SARIF file with the level representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Note | Warning | Error | Total |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | 1     | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | 2     | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total | 0       | 0    | 9    | 21      | 10    | 40    |
+   * ```
+   */
   TableGroupBySarifPerLevel = 12,
+  /**
+   * Table information about findings grouped by SARIF file with the severity representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | 1     | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | 2     | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total | 0       | 0    | 9   | 21     | 10   | 0        | 40    |
+   * ```
+   */
   TableGroupBySarifPerSeverity = 13,
 }
 
