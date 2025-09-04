@@ -45,9 +45,19 @@ export default abstract class TableGroupRepresentation<
     )
   }
 
+  private get title(): string {
+    switch (this._keyBy) {
+      case 'toolName': return 'Tool'
+      case 'runId': return 'Run #'
+      case 'sarifPath': return 'File #'
+      default: return ''
+    }
+  }
+
   public override compose(): string {
     const groupedBy: Map<string, Finding[]> = this.groupFindingsBy(this._model.findings)
     const table = new Table({
+      main: this.title,
       rows: Array.from(groupedBy.keys()),
       columns: this._values,
     })
@@ -59,7 +69,7 @@ export default abstract class TableGroupRepresentation<
       }
       i++
     }
-    const result = this.codeBlock(table.toString())
+    const result: string = this.codeBlock(table.toString())
     Logger.trace(result)
     return result
   }

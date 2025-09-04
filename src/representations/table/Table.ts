@@ -5,22 +5,29 @@ import Cell from './Cell'
 const HEADER_TOTAL: string = 'Total'
 
 export type TableHeaders = {
+  main: string,
   rows: string[],
   columns: string[],
 }
 
 export default class Table {
+  private readonly header: string
   private readonly columns: Column[]
   private readonly rows: Row[]
 
   public constructor(
     headers: TableHeaders,
   ) {
+    this.header = headers.main
     this.columns = Array.from(
       { length: headers.columns.length },
       (_: unknown, index: number): Column => new Column(headers.columns[index], headers.rows.length)
     )
-    const headerWidth: number = Math.max(...headers.rows.map((v: string): number => v.length), HEADER_TOTAL.length)
+    const headerWidth: number = Math.max(
+      this.header.length,
+      ...headers.rows.map((v: string): number => v.length),
+      HEADER_TOTAL.length,
+    )
     this.rows = Array.from(
       { length: headers.rows.length },
       (_: unknown, index: number): Row => new Row(headers.rows[index], headerWidth, headers.columns.length)
@@ -70,11 +77,11 @@ export default class Table {
 
       // Insert first row with titles and second row with separator
       const rowTop: string[] = [
-        ' '.repeat(this.rows[0].headerWidth),
+        this.header + (this.header.length < this.rows[0].headerWidth ? ' '.repeat(this.rows[0].headerWidth - this.header.length) : ''),
         this.columns
           .map((c: Column): string => `${c.header}${c.header.length < c.width ? ' '.repeat(c.width - c.header.length) : ''}`)
           .join('|'),
-        HEADER_TOTAL + (HEADER_TOTAL.length < this.rows[0].getTotalWidth() ? ' '.repeat(this.rows[0].getTotalWidth() - HEADER_TOTAL.length) : '')
+        HEADER_TOTAL + (HEADER_TOTAL.length < this.rows[0].totalWidth ? ' '.repeat(this.rows[0].totalWidth - HEADER_TOTAL.length) : '')
       ]
       rowsStr.unshift(`|${rowTop.join('|')}|`)
     }

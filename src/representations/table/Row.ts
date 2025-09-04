@@ -30,7 +30,7 @@ export default class Row {
     }
   }
 
-  public getTotalWidth(): number {
+  public get totalWidth(): number {
     return this._totalWidth
   }
 
