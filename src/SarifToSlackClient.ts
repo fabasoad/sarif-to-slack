@@ -2,7 +2,6 @@ import { promises as fs } from 'node:fs'
 import type { Log } from 'sarif'
 import Logger from './Logger'
 import {
-  type LogOptions,
   type RunData,
   type SarifModel,
   type SarifOptions,
@@ -10,7 +9,7 @@ import {
   SecurityLevel,
   SecuritySeverity
 } from './types'
-import System from './System'
+import { logMetadata } from './system'
 import { extractListOfFiles } from './utils/FileUtils'
 import { createRepresentation } from './representations/RepresentationFactory'
 import { createFinding } from './model/Finding'
@@ -25,29 +24,38 @@ import { SendIf, sendIfLogMessage } from './model/SendIf'
  * @public
  */
 export class SarifToSlackClient {
-  private _message?: SlackMessage
-  private _sarifModel?: SarifModel
+  private readonly _logger = new Logger('SarifToSlackClient');
+  private _message?: SlackMessage;
+  private _sarifModel?: SarifModel;
 
-  private _sendIf: SendIf = SendIf.Always
+  private _sendIf: SendIf = SendIf.Always;
 
-  private constructor(log?: LogOptions) {
-    Logger.initialize(log)
-    System.initialize()
+  private constructor() {
+    logMetadata();
   }
 
   private static *createRunIdGenerator(): Generator<number> {
-    let runId: number = 1
+    let runId: number = 1;
     while (true) {
-      yield runId++
+      yield runId++;
     }
   }
 
+  /**
+   * Creates an instance of {@link SarifToSlackClient} class. It already has all
+   * properties and fields initialized.
+   * @param opts - An instance of {@link SarifToSlackClientOptions} type.
+   *
+   * @see SarifToSlackClientOptions
+   *
+   * @public
+   */
   public static async create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
-    const instance = new SarifToSlackClient(opts.log)
-    instance._sendIf = opts.sendIf ?? instance._sendIf
-    instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif)
-    instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts)
-    return instance
+    const instance = new SarifToSlackClient();
+    instance._sendIf = opts.sendIf ?? instance._sendIf;
+    instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif);
+    instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts);
+    return instance;
   }
 
   private static async buildModel(sarifOpts: SarifOptions): Promise<SarifModel> {
@@ -89,6 +97,7 @@ export class SarifToSlackClient {
    * @param opts - An instance of {@link SarifToSlackClientOptions} object.
    * @returns A map where key is the SARIF file and value is an instance of
    * {@link SlackMessage} object.
+   * @internal
    */
   private static async initialize(
     sarifModel: SarifModel,
@@ -130,9 +139,9 @@ export class SarifToSlackClient {
         throw new Error('Slack message was not prepared.')
       }
       const text: string = await this._message.send()
-      Logger.info('Message sent. Status:', text)
+      this._logger.info('Message sent. Status:', text)
     } else {
-      Logger.info(sendIfLogMessage(this._sendIf))
+      this._logger.info(sendIfLogMessage(this._sendIf))
     }
   }
 

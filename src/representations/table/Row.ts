@@ -2,8 +2,9 @@ import Cell from './Cell'
 import Logger from '../../Logger'
 
 export default class Row {
-  private readonly _cells: Cell[]
-  private _totalWidth: number
+  private readonly _logger = new Logger('Row');
+  private readonly _cells: Cell[];
+  private _totalWidth: number;
 
   public constructor(
     private readonly _header: string,
@@ -26,7 +27,7 @@ export default class Row {
     if (index >= 0 && index < this._cells.length) {
       this._cells[index] = value
     } else {
-      Logger.warn(`Setting cell failed. Reason: index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`)
+      this._logger.warn(`Setting cell failed. Reason: index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`)
     }
   }
 
@@ -40,10 +41,10 @@ export default class Row {
 
   public toString(): string {
     const result: string[] = []
-    result.push(this._header + `${this.headerWidth > this._header.length ? ' '.repeat(this.headerWidth - this._header.length) : ''}`)
+    result.push(`${this._header}${this.headerWidth > this._header.length ? ' '.repeat(this.headerWidth - this._header.length) : ''}`)
     this._cells.map((c: Cell): string => c.toString()).forEach((v: string): number => result.push(v))
     const totalStr: string = this.total.toString();
-    result.push(totalStr + `${this._totalWidth > totalStr.length ? ' '.repeat(this._totalWidth - totalStr.length) : ''}`)
+    result.push(`${totalStr}${this._totalWidth > totalStr.length ? ' '.repeat(this._totalWidth - totalStr.length) : ''}`)
     return `|${result.join('|')}|`
   }
 }

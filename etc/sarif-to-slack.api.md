@@ -61,24 +61,6 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
 };
 
 // @public
-export enum LogLevel {
-    Debug = 2,
-    Error = 5,
-    Fatal = 6,
-    Info = 3,
-    Silly = 0,
-    Trace = 1,
-    Warning = 4
-}
-
-// @public
-export type LogOptions = {
-    level?: LogLevel;
-    template?: string;
-    colored?: boolean;
-};
-
-// @public
 export enum RepresentationType {
     CompactGroupByRunPerLevel = 0,
     CompactGroupByRunPerSeverity = 1,
@@ -108,7 +90,6 @@ export type SarifOptions = {
 
 // @public
 export class SarifToSlackClient {
-    // (undocumented)
     static create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient>;
     send(): Promise<void>;
 }
@@ -120,7 +101,6 @@ export type SarifToSlackClientOptions = {
     username?: string;
     iconUrl?: string;
     color?: ColorOptions;
-    log?: LogOptions;
     header?: IncludeAwareWithValueOptions;
     footer?: FooterOptions;
     actor?: IncludeAwareWithValueOptions;
@@ -155,19 +135,6 @@ export enum SendIf {
     SeverityUnknown = 9,
     SeverityUnknownOrHigher = 10,
     Some = 21
-}
-
-// @public
-export interface SlackMessage {
-    send: () => Promise<string>;
-    // (undocumented)
-    withActor(actor?: string): void;
-    // (undocumented)
-    withFooter(text?: string, type?: FooterType): void;
-    // (undocumented)
-    withHeader(header?: string): void;
-    // (undocumented)
-    withRun(): void;
 }
 
 ```

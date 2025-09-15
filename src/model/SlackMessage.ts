@@ -19,7 +19,7 @@ export type SlackMessageOptions = {
 
 /**
  * Interface for a Slack message that can be sent.
- * @public
+ * @internal
  */
 export interface SlackMessage {
   /**

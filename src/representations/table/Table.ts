@@ -56,24 +56,24 @@ export default class Table {
   }
 
   public toString(): string {
-    const rowsStr: string[] = []
+    const rowsStr: string[] = [];
     if (this.rows.length > 0 && this.columns.length > 0) {
-      this.rows.forEach((row: Row): number => rowsStr.push(row.toString()))
+      this.rows.forEach((row: Row): number => rowsStr.push(row.toString()));
 
-      const rowSeparator: string = rowsStr[0].replace(/[^|]/g, '-')
-      rowsStr.unshift(rowSeparator)
-      rowsStr.push(rowSeparator)
+      const rowSeparator: string = rowsStr[0].replace(/[^|]/g, '-');
+      rowsStr.unshift(rowSeparator);
+      rowsStr.push(rowSeparator);
 
-      const rowTotal: string[] = []
-      let sumTotal: number = 0
+      const rowTotal: string[] = [];
+      let sumTotal: number = 0;
       for (const column of this.columns) {
-        const total: number = column.total
-        rowTotal.push(total.toString() + `${total.toString().length < column.width ? ' '.repeat(column.width - total.toString().length) : ''}`)
-        sumTotal += total
+        const total: number = column.total;
+        rowTotal.push(`${total}${total.toString().length < column.width ? ' '.repeat(column.width - total.toString().length) : ''}`);
+        sumTotal += total;
       }
-      const column1: string = HEADER_TOTAL + `${this.rows[0].headerWidth > HEADER_TOTAL.length ? ' '.repeat(this.rows[0].headerWidth - HEADER_TOTAL.length) : ''}`
-      const columnLast: string = sumTotal + `${sumTotal.toString().length < HEADER_TOTAL.length ? ' '.repeat(HEADER_TOTAL.length - sumTotal.toString().length) : ''}`
-      rowsStr.push(`|${column1}|${rowTotal.join('|')}|${columnLast}|`)
+      const column1: string = `${HEADER_TOTAL}${this.rows[0].headerWidth > HEADER_TOTAL.length ? ' '.repeat(this.rows[0].headerWidth - HEADER_TOTAL.length) : ''}`;
+      const columnLast: string = `${sumTotal}${sumTotal.toString().length < HEADER_TOTAL.length ? ' '.repeat(HEADER_TOTAL.length - sumTotal.toString().length) : ''}`;
+      rowsStr.push(`|${column1}|${rowTotal.join('|')}|${columnLast}|`);
 
       // Insert first row with titles and second row with separator
       const rowTop: string[] = [
@@ -81,13 +81,13 @@ export default class Table {
         this.columns
           .map((c: Column): string => `${c.header}${c.header.length < c.width ? ' '.repeat(c.width - c.header.length) : ''}`)
           .join('|'),
-        HEADER_TOTAL + (HEADER_TOTAL.length < this.rows[0].totalWidth ? ' '.repeat(this.rows[0].totalWidth - HEADER_TOTAL.length) : '')
-      ]
-      rowsStr.unshift(`|${rowTop.join('|')}|`)
+        HEADER_TOTAL + (HEADER_TOTAL.length < this.rows[0].totalWidth ? ' '.repeat(this.rows[0].totalWidth - HEADER_TOTAL.length) : ''),
+      ];
+      rowsStr.unshift(`|${rowTop.join('|')}|`);
     }
 
     return rowsStr
       .join('\n')
-      .replace(/[|]/g, ' | ')
+      .replace(/[|]/g, ' | ');
   }
 }

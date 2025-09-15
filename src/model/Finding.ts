@@ -43,17 +43,18 @@ export function createFinding(opts: FindingOptions): Finding {
  * @private
  */
 class FindingImpl implements Finding {
-  private readonly _runMetadata: RunData
-  private readonly _result: Result
-  private readonly _sarifPath: string
-  private readonly _rule?: ReportingDescriptor
-  private readonly _processor: CommonProcessor
+  private readonly _logger = new Logger('FindingImpl');
+  private readonly _runMetadata: RunData;
+  private readonly _result: Result;
+  private readonly _sarifPath: string;
+  private readonly _rule?: ReportingDescriptor;
+  private readonly _processor: CommonProcessor;
 
-  private _cvssScoreCacheProcessed: boolean = false
-  private _cvssScoreCache: number | undefined = undefined
+  private _cvssScoreCacheProcessed: boolean = false;
+  private _cvssScoreCache: number | undefined = undefined;
 
-  private _levelCacheProcessed: boolean = false
-  private _levelCache: Result.level | undefined = undefined
+  private _levelCacheProcessed: boolean = false;
+  private _levelCache: Result.level | undefined = undefined;
 
   constructor(opts: FindingOptions) {
     this._processor = createProcessor(opts.runMetadata.run, opts.result)
@@ -98,7 +99,7 @@ class FindingImpl implements Finding {
     }
 
     if (this._levelCache === undefined) {
-      Logger.debug(`Unknown level of ${this._rule?.id} rule`)
+      this._logger.debug(`Unknown level of ${this._rule?.id} rule`)
       return SecurityLevel.Unknown
     }
 
@@ -112,7 +113,7 @@ class FindingImpl implements Finding {
 
   public get severity(): SecuritySeverity {
     if (this.cvssScore == null || this.cvssScore < 0 || this.cvssScore > 10) {
-      Logger.debug(`Unsupported CVSS score ${this.cvssScore} in ${this._rule?.id} rule`)
+      this._logger.debug(`Unsupported CVSS score ${this.cvssScore} in ${this._rule?.id} rule`)
       return SecuritySeverity.Unknown
     }
 

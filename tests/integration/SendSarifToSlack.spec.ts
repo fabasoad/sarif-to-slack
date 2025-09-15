@@ -1,36 +1,11 @@
 import {
   Color,
-  LogLevel,
   RepresentationType, SarifFileExtension,
   SarifToSlackClient,
   SendIf
-} from '../../src'
+} from '../../src';
 
 describe('(integration): SendSarifToSlack', (): void => {
-  function processLogLevel(logLevel?: string): LogLevel | undefined {
-    if (!logLevel) {
-      return undefined
-    }
-    switch (logLevel.toLowerCase()) {
-      case 'silly':
-        return LogLevel.Silly
-      case 'trace':
-        return LogLevel.Trace
-      case 'debug':
-        return LogLevel.Debug
-      case 'info':
-        return LogLevel.Info
-      case 'warning':
-        return LogLevel.Warning
-      case 'error':
-        return LogLevel.Error
-      case 'fatal':
-        return LogLevel.Fatal
-      default:
-        throw new Error(`Unknown log level: ${logLevel}`)
-    }
-  }
-
   function processSarifExtension(extension: string): SarifFileExtension {
     const allowed: string[] = ['sarif', 'json']
     if (allowed.includes(extension)) {
@@ -145,13 +120,6 @@ describe('(integration): SendSarifToSlack', (): void => {
         extension: process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION
           ? processSarifExtension(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION)
           : 'sarif',
-      },
-      log: {
-        level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),
-        template: process.env.SARIF_TO_SLACK_LOG_TEMPLATE,
-        colored: process.env.SARIF_TO_SLACK_LOG_COLORED
-          ? Boolean(process.env.SARIF_TO_SLACK_LOG_COLORED)
-          : true,
       },
       header: {
         include: process.env.SARIF_TO_SLACK_HEADER !== 'skip',

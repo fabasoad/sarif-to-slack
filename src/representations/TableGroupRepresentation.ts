@@ -8,6 +8,8 @@ export default abstract class TableGroupRepresentation<
   KBy extends keyof Pick<Finding, 'toolName' | 'runId' | 'sarifPath'>,
   KPer extends keyof Pick<Finding, 'level' | 'severity'>
 > extends Representation {
+  private readonly _logger = new Logger('TableGroupRepresentation');
+
   protected constructor(
     private readonly _keyBy: KBy,
     private readonly _keyPer: KPer,
@@ -70,7 +72,7 @@ export default abstract class TableGroupRepresentation<
       i++
     }
     const result: string = this.codeBlock(table.toString())
-    Logger.trace(result)
+    this._logger.trace(result)
     return result
   }
 }
