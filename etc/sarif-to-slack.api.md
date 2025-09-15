@@ -90,13 +90,12 @@ export type SarifOptions = {
 
 // @public
 export class SarifToSlackClient {
-    static create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient>;
+    static create(webhookUrl: string, opts: SarifToSlackClientOptions): Promise<SarifToSlackClient>;
     send(): Promise<void>;
 }
 
 // @public
 export type SarifToSlackClientOptions = {
-    webhookUrl: string;
     sarif: SarifOptions;
     username?: string;
     iconUrl?: string;
