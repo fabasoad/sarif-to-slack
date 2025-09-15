@@ -5,7 +5,7 @@ import Cell from './Cell'
 const HEADER_TOTAL: string = 'Total'
 
 export type TableHeaders = {
-  main: string,
+  main?: string,
   rows: string[],
   columns: string[],
 }
@@ -18,7 +18,7 @@ export default class Table {
   public constructor(
     headers: TableHeaders,
   ) {
-    this.header = headers.main
+    this.header = headers.main ?? ''
     this.columns = Array.from(
       { length: headers.columns.length },
       (_: unknown, index: number): Column => new Column(headers.columns[index], headers.rows.length)
