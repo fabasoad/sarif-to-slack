@@ -2,10 +2,8 @@ import { type ILogObj, Logger as TSLogger } from 'tslog'
 import { z, type ZodSafeParseResult } from 'zod';
 import { isDebug } from './system';
 
-/**
- * In ascending order: silly, trace, debug, info, warning, error, fatal.
- */
-type LogLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+const LogLevelItems = ['silly', 'trace', 'debug', 'info', 'warning', 'error', 'fatal'] as const;
+type LogLevel = (typeof LogLevelItems)[number];
 
 /**
  * Logger class for managing logging operations.
@@ -13,28 +11,33 @@ type LogLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
  */
 export default class Logger {
   private static APP_NAME: string = '@fabasoad/sarif-to-slack';
-  private static DEFAULT_LOG_LEVEL: LogLevel = 3;
+  private static DEFAULT_LOG_LEVEL: LogLevel = 'info';
   private static DEFAULT_LOG_TEMPLATE: string = '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ';
   private static DEFAULT_LOG_COLORED: boolean = true;
 
   private readonly _instance: TSLogger<ILogObj>;
 
-  private getLogLevel(): LogLevel {
+  private isLogLevel(a: string): a is LogLevel {
+    return (LogLevelItems as ReadonlyArray<string>).includes(a);
+  }
+
+  private getMinLevel(): number {
+    let result: LogLevel = Logger.DEFAULT_LOG_LEVEL;
+
     if (isDebug()) {
-      return 0;
+      result = 'silly';
     }
 
-    const result: ZodSafeParseResult<LogLevel> = z.string()
-      .transform(Number)
-      .refine((v: number): boolean => !Number.isNaN(v))
-      .refine((v: number): boolean => v >= 0 && v < 7)
-      .transform((v: number): LogLevel => v as LogLevel)
+    const parseResult: ZodSafeParseResult<LogLevel> = z
+      .string()
+      .refine((v: string): boolean => this.isLogLevel(v))
+      .transform((v: string): LogLevel => v as LogLevel)
       .safeParse(process.env.SARIF_TO_SLACK_LOG_LEVEL);
-    if (result.success) {
-      return result.data;
+    if (parseResult.success) {
+      result = parseResult.data;
     }
 
-    return Logger.DEFAULT_LOG_LEVEL;
+    return LogLevelItems.findIndex((v: LogLevel): boolean => v === result);
   }
 
   private getLogTemplate(): string {
@@ -52,7 +55,7 @@ export default class Logger {
   public constructor(memberName?: string) {
     this._instance = new TSLogger({
       name: `${Logger.APP_NAME}${memberName === undefined ? '' : `::${memberName}`}`,
-      minLevel: this.getLogLevel(),
+      minLevel: this.getMinLevel(),
       type: 'pretty',
       prettyLogTimeZone: 'UTC',
       prettyLogTemplate: this.getLogTemplate(),

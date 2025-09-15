@@ -1,7 +1,7 @@
-import type { SarifModel } from '../types'
-import type Finding from '../model/Finding'
-import { findingsComparatorByKey } from '../utils/Comparators'
-import FindingArray from '../model/FindingArray'
+import type { SarifModel } from '../types';
+import type Finding from '../model/Finding';
+import FindingArray from '../model/FindingArray';
+import { findingsComparatorByKey } from '../utils/Comparators';
 
 /**
  * The most base abstract class for the representation. Every representation class

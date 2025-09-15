@@ -243,7 +243,6 @@ export type SarifOptions = {
  * @public
  */
 export type SarifToSlackClientOptions = {
-  webhookUrl: string,
   sarif: SarifOptions,
   username?: string,
   iconUrl?: string,

@@ -44,17 +44,19 @@ export class SarifToSlackClient {
   /**
    * Creates an instance of {@link SarifToSlackClient} class. It already has all
    * properties and fields initialized.
+   * @param webhookUrl - Slack webhook URL.
    * @param opts - An instance of {@link SarifToSlackClientOptions} type.
    *
    * @see SarifToSlackClientOptions
    *
    * @public
    */
-  public static async create(opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
+  public static async create(webhookUrl: string, opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
     const instance = new SarifToSlackClient();
+    instance._logger.trace(opts);
     instance._sendIf = opts.sendIf ?? instance._sendIf;
     instance._sarifModel = await SarifToSlackClient.buildModel(opts.sarif);
-    instance._message = await SarifToSlackClient.initialize(instance._sarifModel, opts);
+    instance._message = await SarifToSlackClient.initialize(webhookUrl, opts, instance._sarifModel);
     return instance;
   }
 
@@ -93,17 +95,19 @@ export class SarifToSlackClient {
   /**
    * The main function to initialize a list of {@link SlackMessage} objects based
    * on the given SARIF file(s).
-   * @param sarifModel - An instance of SarifModel object.
+   * @param webhookUrl - Slack webhook URL.
    * @param opts - An instance of {@link SarifToSlackClientOptions} object.
+   * @param sarifModel - An instance of SarifModel object.
    * @returns A map where key is the SARIF file and value is an instance of
    * {@link SlackMessage} object.
    * @internal
    */
   private static async initialize(
+    webhookUrl: string,
+    opts: SarifToSlackClientOptions,
     sarifModel: SarifModel,
-    opts: Omit<SarifToSlackClientOptions, 'sarif' | 'log' | 'sendIf'>
   ): Promise<SlackMessage> {
-    const message: SlackMessage = createSlackMessage(opts.webhookUrl, {
+    const message: SlackMessage = createSlackMessage(webhookUrl, {
       username: opts.username,
       iconUrl: opts.iconUrl,
       color: identifyColor(sarifModel.findings, opts.color),
