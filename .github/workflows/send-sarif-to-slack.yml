@@ -58,6 +58,7 @@ on: # yamllint disable-line rule:truthy
           - "Runs: 2, Tools: 2, Results: 0"
           - "Runs: 3, Tools: 2, Results > 0"
           - "Runs: 3, Tools: 2, Results: 0"
+          - "Files: 4, Runs: 5, Tools: 5, Results > 0"
           - "All"
       representation:
         description: "Representation:"
@@ -264,6 +265,8 @@ jobs:
             value="runs-3-tools-2.sarif"
           elif [ "${INPUT_SARIF}" = "Runs: 3, Tools: 2, Results: 0" ]; then
             value="runs-3-tools-2-results-0.sarif"
+          elif [ "${INPUT_SARIF}" = "Files: 4, Runs: 5, Tools: 5, Results > 0" ]; then
+            value="multiple"
           else
             # All
             value=""
