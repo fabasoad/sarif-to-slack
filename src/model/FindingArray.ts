@@ -1,4 +1,4 @@
-import Finding from './Finding'
+import type Finding from './Finding'
 import { SecurityLevel, SecuritySeverity } from '../types'
 import ExtendedArray from '../utils/ExtendedArray'
 

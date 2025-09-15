@@ -1,5 +1,5 @@
-import { ILogObj, Logger as TSLogger } from 'tslog'
-import { LogLevel, LogOptions } from './types'
+import { type ILogObj, Logger as TSLogger } from 'tslog'
+import { LogLevel, type LogOptions } from './types'
 
 /**
  * Logger class for managing logging operations.

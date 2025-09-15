@@ -1,14 +1,14 @@
-import Finding from '../Finding'
-import FindingArray from '../FindingArray'
+import type Finding from '../Finding'
+import type FindingArray from '../FindingArray'
 import { SecurityLevel, SecuritySeverity } from '../../types'
 import Logger from '../../Logger'
-import {
+import type {
   ColorGroupByLevel,
   ColorGroupBySeverity,
   ColorGroupCommon,
   ColorOptions
 } from './ColorOptions'
-import { Color } from './Color';
+import type { Color } from './Color';
 
 function logColorTaken(color: Color | undefined, prop: string): void {
   Logger.debug(`Message has ${color?.color} color taken from '${prop}' property.`)

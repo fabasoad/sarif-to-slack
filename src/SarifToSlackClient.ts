@@ -1,12 +1,12 @@
-import { promises as fs } from 'fs'
-import { Log } from 'sarif'
+import { promises as fs } from 'node:fs'
+import type { Log } from 'sarif'
 import Logger from './Logger'
 import {
-  LogOptions,
-  RunData,
-  SarifModel,
-  SarifOptions,
-  SarifToSlackClientOptions,
+  type LogOptions,
+  type RunData,
+  type SarifModel,
+  type SarifOptions,
+  type SarifToSlackClientOptions,
   SecurityLevel,
   SecuritySeverity
 } from './types'
@@ -17,7 +17,7 @@ import { createFinding } from './model/Finding'
 import { findToolComponent, findToolComponentDriver } from './utils/SarifUtils'
 import { identifyColor } from './model/color/ColorIdentification'
 import FindingArray from './model/FindingArray'
-import { createSlackMessage, SlackMessage } from './model/SlackMessage'
+import { createSlackMessage, type SlackMessage } from './model/SlackMessage'
 import { SendIf, sendIfLogMessage } from './model/SendIf'
 
 /**
@@ -64,7 +64,7 @@ export class SarifToSlackClient {
 
       for (const run of sarifLog.runs) {
         const runId: IteratorResult<number> = runIdGenerator.next()
-        let runMetadata: RunData | undefined = undefined
+        let runMetadata: RunData | undefined
         for (const result of run.results ?? []) {
           runMetadata = {
             id: runId.value,

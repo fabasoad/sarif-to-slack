@@ -1,5 +1,5 @@
-import { SarifModel } from '../types'
-import Finding from '../model/Finding'
+import type { SarifModel } from '../types'
+import type Finding from '../model/Finding'
 import TableGroupRepresentation from './TableGroupRepresentation';
 
 export default abstract class TableGroupByToolNameRepresentation<

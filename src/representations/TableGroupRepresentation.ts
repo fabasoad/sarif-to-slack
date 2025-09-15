@@ -1,5 +1,5 @@
-import { SarifModel } from '../types'
-import Finding from '../model/Finding'
+import type { SarifModel } from '../types'
+import type Finding from '../model/Finding'
 import Representation from './Representation'
 import Table from './table/Table'
 import Logger from '../Logger'
@@ -23,7 +23,7 @@ export default abstract class TableGroupRepresentation<
         grouped[f[this._keyPer]].push(f)
         return grouped
       },
-      Array.from({ length: this._values.length }, (): Finding[] => new Array<Finding>())
+      Array.from({ length: this._values.length }, (): Finding[] => [] as Finding[])
     )
   }
 

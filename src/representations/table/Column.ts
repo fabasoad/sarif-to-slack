@@ -1,4 +1,4 @@
-import Cell from './Cell'
+import type Cell from './Cell'
 import Logger from '../../Logger'
 
 export default class Column {

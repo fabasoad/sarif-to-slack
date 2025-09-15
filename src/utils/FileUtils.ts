@@ -1,6 +1,6 @@
 import fs from 'fs'
 import Logger from '../Logger'
-import { SarifFileExtension, SarifOptions } from '../types'
+import type { SarifFileExtension, SarifOptions } from '../types'
 import * as path from 'path'
 
 /**

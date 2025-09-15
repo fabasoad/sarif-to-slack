@@ -1,5 +1,5 @@
-import Representation from './Representation'
-import { RepresentationType, SarifModel } from '../types'
+import type Representation from './Representation'
+import { RepresentationType, type SarifModel } from '../types'
 import CompactGroupByRunPerLevelRepresentation
   from './CompactGroupByRunPerLevelRepresentation'
 import CompactGroupByRunPerSeverityRepresentation

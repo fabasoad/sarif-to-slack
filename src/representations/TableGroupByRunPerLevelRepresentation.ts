@@ -1,4 +1,4 @@
-import { SarifModel, SecurityLevelValues } from '../types'
+import { type SarifModel, SecurityLevelValues } from '../types'
 import TableGroupByRunRepresentation from './TableGroupByRunRepresentation'
 
 export default class TableGroupByRunPerLevelRepresentation extends TableGroupByRunRepresentation<'level'> {

@@ -24,7 +24,8 @@
         "noCatchAssign": "error",
         "noEmptyBlockStatements": "warn",
         "noPrototypeBuiltins": "error",
-        "noVar": "error"
+        "noVar": "error",
+        "useIterableCallbackReturn": "off"
       }
     },
     "includes": ["src/**", "tests/**"]

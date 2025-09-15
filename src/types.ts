@@ -1,7 +1,7 @@
-import { Run } from 'sarif'
-import { ColorOptions } from './model/color/ColorOptions'
-import FindingArray from './model/FindingArray'
-import { SendIf } from './model/SendIf'
+import type { Run } from 'sarif'
+import type { ColorOptions } from './model/color/ColorOptions'
+import type FindingArray from './model/FindingArray'
+import type { SendIf } from './model/SendIf'
 
 /**
  * Enum representing log levels for the service.
