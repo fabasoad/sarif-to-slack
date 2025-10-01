@@ -60,12 +60,12 @@ jobs:
           echo "ref-name=v${version}" >> "$GITHUB_OUTPUT"
 
       - name: Publish to npm registry
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@v4
         with:
           token: "${{ secrets.NPM_TOKEN }}"
 
       - name: Publish to GitHub Packages
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@v4
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           registry: "https://npm.pkg.github.com"

@@ -1,5 +1,5 @@
 import CompactGroupByRepresentation from './CompactGroupByRepresentation'
-import Finding from '../model/Finding'
+import type Finding from '../model/Finding'
 
 /**
  * Since {@link CompactGroupByRepresentation} already prepares compact representation

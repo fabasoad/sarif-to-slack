@@ -1,4 +1,4 @@
-import Finding from '../model/Finding'
+import type Finding from '../model/Finding'
 
 /**
  * This function returns a comparator function based on the property of the
