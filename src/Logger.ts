@@ -17,8 +17,8 @@ export default class Logger {
 
   private readonly _instance: TSLogger<ILogObj>;
 
-  private isLogLevel(a: string): a is LogLevel {
-    return (LogLevelItems as ReadonlyArray<string>).includes(a);
+  private isLogLevel(v: string): v is LogLevel {
+    return (LogLevelItems as ReadonlyArray<string>).includes(v);
   }
 
   private getMinLevel(): number {
@@ -26,15 +26,15 @@ export default class Logger {
 
     if (isDebug()) {
       result = 'silly';
-    }
-
-    const parseResult: ZodSafeParseResult<LogLevel> = z
-      .string()
-      .refine((v: string): boolean => this.isLogLevel(v))
-      .transform((v: string): LogLevel => v as LogLevel)
-      .safeParse(process.env.SARIF_TO_SLACK_LOG_LEVEL);
-    if (parseResult.success) {
-      result = parseResult.data;
+    } else {
+      const parseResult: ZodSafeParseResult<LogLevel> = z
+        .string()
+        .refine((v: string): boolean => this.isLogLevel(v))
+        .transform((v: string): LogLevel => v as LogLevel)
+        .safeParse(process.env.SARIF_TO_SLACK_LOG_LEVEL);
+      if (parseResult.success) {
+        result = parseResult.data;
+      }
     }
 
     return LogLevelItems.findIndex((v: LogLevel): boolean => v === result);

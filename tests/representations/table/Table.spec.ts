@@ -1,9 +1,9 @@
-import Table from '../../../src/representations/table/Table'
-import { randomAlphabetic } from '../../../src/utils/StringUtils'
+import Table from '../../../src/representations/table/Table';
+import { randomAlphabetic } from '../../../src/utils/StringUtils';
 
 describe('(unit): Table', (): void => {
   describe('toString()', (): void => {
-    const TOTAL_HEADER = 'Total'
+    const TOTAL_HEADER = 'Total';
 
     test.each([
       [4, TOTAL_HEADER.length, 6],
@@ -13,26 +13,26 @@ describe('(unit): Table', (): void => {
       [7, TOTAL_HEADER.length, 6],
       [6, TOTAL_HEADER.length, 4],
     ])('should pass when header=%s, total=%s and row=%s', (h: number, t: number, r: number): void => {
-      const expectedSize: number = Math.max(h, t, r)
+      const expectedSize: number = Math.max(h, t, r);
 
       const fill = (v: string, s: number, c: string = ' '): string => {
         return v + (
           v.length < s ? c.repeat(s - v.length) : ''
-        )
+        );
       }
 
-      const main: string = randomAlphabetic(h)
-      const row: string = randomAlphabetic(r)
-      const column: string = randomAlphabetic(1)
+      const main: string = randomAlphabetic(h);
+      const row: string = randomAlphabetic(r);
+      const column: string = randomAlphabetic(1);
 
-      const table = new Table({ main, columns: [column], rows: [row] })
-      table.set(0, 0, 1)
+      const table = new Table({ main, columns: [column], rows: [row] });
+      table.set(0, 0, 1);
       expect(table.toString()).toEqual(` | ${fill(main, expectedSize)} | ${column} | Total | 
  | ${fill('-', expectedSize, '-')} | - | ----- | 
  | ${fill(row, expectedSize)} | 1 | 1     | 
  | ${fill('-', expectedSize, '-')} | - | ----- | 
- | ${fill(TOTAL_HEADER, expectedSize)} | 1 | 1     | `)
-    })
+ | ${fill(TOTAL_HEADER, expectedSize)} | 1 | 1     | `);
+    });
 
     test.each(
       [[0, 1], [1, 0], [0, 0]]
@@ -40,14 +40,14 @@ describe('(unit): Table', (): void => {
       const table = new Table({
         columns: Array.from({ length: c }, (): string => randomAlphabetic(1)),
         rows: Array.from({ length: r }, (): string => randomAlphabetic(1)),
-      })
+      });
       for (let i: number = 0; i < r; i++) {
         for (let j: number = 0; j < c; j++) {
-          table.set(i, j, 1)
+          table.set(i, j, 1);
         }
       }
-      expect(table.toString()).toEqual('')
-    })
+      expect(table.toString()).toEqual('');
+    });
   })
 
  //  test('should prepare string correctly when "Total" is longer', (): void => {
