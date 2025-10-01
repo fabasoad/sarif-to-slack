@@ -270,7 +270,7 @@ jobs:
           fi
           echo "value=${value}" >> "$GITHUB_OUTPUT"
       - name: Setup node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: ".tool-versions"
       - name: Install dependencies
