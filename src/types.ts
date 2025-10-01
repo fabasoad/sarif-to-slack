@@ -1,48 +1,7 @@
-import { Run } from 'sarif'
-import { ColorOptions } from './model/color/ColorOptions'
-import FindingArray from './model/FindingArray'
-import { SendIf } from './model/SendIf'
-
-/**
- * Enum representing log levels for the service.
- * @public
- */
-export enum LogLevel {
-  /**
-   * Represents the most verbose logging level, typically used for detailed
-   * debugging information.
-   */
-  Silly = 0,
-  /**
-   * Represents a logging level for tracing the flow of the application.
-   */
-  Trace = 1,
-  /**
-   * Represents a logging level for debugging information that is less verbose
-   * than silly.
-   */
-  Debug = 2,
-  /**
-   * Represents a logging level for general informational messages that highlight
-   * the progress of the application.
-   */
-  Info = 3,
-  /**
-   * Represents a logging level for potentially harmful situations that require
-   * attention.
-   */
-  Warning = 4,
-  /**
-   * Represents a logging level for error conditions that do not require immediate
-   * action but should be noted.
-   */
-  Error = 5,
-  /**
-   * Represents a logging level for critical errors that require immediate attention
-   * and may cause the application to terminate.
-   */
-  Fatal = 6
-}
+import type { Run } from 'sarif'
+import type { ColorOptions } from './model/color/ColorOptions'
+import type FindingArray from './model/FindingArray'
+import type { SendIf } from './model/SendIf'
 
 /**
  * Type representing properties that indicate whether to include certain information
@@ -175,7 +134,37 @@ export enum RepresentationType {
    */
   CompactTotalPerSeverity = 7,
   /**
-   * Table information about findings with the level representation.
+   * Table information about findings grouped by Run with the level representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Note | Warning | Error | Total |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | 1     | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | 2     | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | 3     | 0       | 0    | 1    | 0       | 1     | 2     |
+   * | 4     | 0       | 0    | 5    | 5       | 0     | 10    |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total | 0       | 0    | 15   | 26      | 11    | 52    |
+   * ```
+   */
+  TableGroupByRunPerLevel = 8,
+  /**
+   * Table information about findings grouped by Run with the severity representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | 1     | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | 2     | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | 3     | 0       | 0    | 1   | 0      | 1    | 0        | 2     |
+   * | 4     | 0       | 0    | 5   | 5      | 0    | 0        | 10    |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
+   * ```
+   */
+  TableGroupByRunPerSeverity = 9,
+  /**
+   * Table information about findings grouped by tool name with the level representation.
    * @example
    * ```text
    * |        | Unknown | None | Note | Warning | Error | Total |
@@ -188,9 +177,9 @@ export enum RepresentationType {
    * | Total  | 0       | 0    | 15   | 26      | 11    | 52    |
    * ```
    */
-  TableGroupByToolNamePerLevel = 8,
+  TableGroupByToolNamePerLevel = 10,
   /**
-   * Table information about findings with the severity representation.
+   * Table information about findings grouped by tool name with the severity representation.
    * @example
    * ```text
    * |        | Unknown | None | Low | Medium | High | Critical | Total |
@@ -203,20 +192,33 @@ export enum RepresentationType {
    * | Total  | 0       | 0    | 15  | 26     | 11   | 0        | 52    |
    * ```
    */
-  TableGroupByToolNamePerSeverity = 9,
-}
-
-/**
- * Options for logging.
- * @public
- */
-export type LogOptions = {
-  level?: LogLevel,
+  TableGroupByToolNamePerSeverity = 11,
   /**
-   * More details here: https://github.com/fullstack-build/tslog?tab=readme-ov-file#pretty-templates-and-styles-color-settings
+   * Table information about findings grouped by SARIF file with the level representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Note | Warning | Error | Total |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | 1     | 0       | 0    | 0    | 1       | 0     | 1     |
+   * | 2     | 0       | 0    | 9    | 20      | 10    | 39    |
+   * | ----- | ------- | ---- | ---- | ------- | ----- | ----- |
+   * | Total | 0       | 0    | 9    | 21      | 10    | 40    |
+   * ```
    */
-  template?: string,
-  colored?: boolean,
+  TableGroupBySarifPerLevel = 12,
+  /**
+   * Table information about findings grouped by SARIF file with the severity representation.
+   * @example
+   * ```text
+   * |       | Unknown | None | Low | Medium | High | Critical | Total |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | 1     | 0       | 0    | 0   | 1      | 0    | 0        | 1     |
+   * | 2     | 0       | 0    | 9   | 20     | 10   | 0        | 39    |
+   * | ----- | ------- | ---- | --- | ------ | ---- | -------- | ----- |
+   * | Total | 0       | 0    | 9   | 21     | 10   | 0        | 40    |
+   * ```
+   */
+  TableGroupBySarifPerSeverity = 13,
 }
 
 /**
@@ -241,12 +243,10 @@ export type SarifOptions = {
  * @public
  */
 export type SarifToSlackClientOptions = {
-  webhookUrl: string,
   sarif: SarifOptions,
   username?: string,
   iconUrl?: string,
   color?: ColorOptions,
-  log?: LogOptions,
   header?: IncludeAwareWithValueOptions,
   footer?: FooterOptions,
   actor?: IncludeAwareWithValueOptions,
@@ -271,15 +271,10 @@ export enum SecuritySeverity {
   Critical = 5,
 }
 
-export const SecuritySeverityAmount: number =
-  Object.values(SecuritySeverity)
-    .filter((v: string | SecuritySeverity): v is string => typeof v === 'string')
-    .length
-
 export const SecuritySeverityValues: string[] =
-  Object.values(SecuritySeverity)
-    .filter((v: string | SecuritySeverity): boolean => typeof v === 'string')
-    .map((v: string | SecuritySeverity): string => v as string)
+  Object.values(SecuritySeverity).filter(
+    (v: string | SecuritySeverity): v is string => typeof v === 'string'
+  )
 
 /**
  * Enum of security level.
@@ -296,15 +291,10 @@ export enum SecurityLevel {
   Error = 4,
 }
 
-export const SecurityLevelAmount: number =
-  Object.values(SecurityLevel)
-    .filter((v: string | SecurityLevel): v is string => typeof v === 'string')
-    .length
-
 export const SecurityLevelValues: string[] =
-  Object.values(SecurityLevel)
-    .filter((v: string | SecurityLevel): boolean => typeof v === 'string')
-    .map((v: string | SecurityLevel): string => v as string)
+  Object.values(SecurityLevel).filter(
+    (v: string | SecurityLevel): v is string => typeof v === 'string'
+  )
 
 /**
  * The data about run, such as {@link Run} itself, tool name of the run and ID

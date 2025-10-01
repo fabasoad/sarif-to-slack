@@ -1,9 +1,9 @@
-import { AnyBlock } from '@slack/types'
-import { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
-import { TextObject } from '@slack/types/dist/block-kit/composition-objects'
+import type { AnyBlock } from '@slack/types'
+import type { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks'
+import type { TextObject } from '@slack/types/dist/block-kit/composition-objects'
 import { IncomingWebhook } from '@slack/webhook'
 import { FooterType } from '../types'
-import Representation from '../representations/Representation'
+import type Representation from '../representations/Representation'
 import { version } from '../metadata.json'
 
 /**
@@ -19,7 +19,7 @@ export type SlackMessageOptions = {
 
 /**
  * Interface for a Slack message that can be sent.
- * @public
+ * @internal
  */
 export interface SlackMessage {
   /**

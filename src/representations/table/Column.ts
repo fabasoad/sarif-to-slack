@@ -1,8 +1,9 @@
-import Cell from './Cell'
+import type Cell from './Cell'
 import Logger from '../../Logger'
 
 export default class Column {
-  private readonly _cells: Cell[]
+  private readonly _logger: Logger = new Logger('Column');
+  private readonly _cells: Cell[];
 
   public constructor(
     public readonly header: string,
@@ -32,7 +33,7 @@ export default class Column {
       const width: number = this.width
       this._cells.forEach((c: Cell): void => c.setWidth(width))
     } else {
-      Logger.warn(`Cell index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`)
+      this._logger.warn(`Cell index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`)
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Color } from './Color'
+import type { Color } from './Color'
 
 /**
  * Base type that has common fields for both {@link ColorGroupByLevel} and
