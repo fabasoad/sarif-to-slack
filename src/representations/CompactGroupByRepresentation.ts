@@ -1,5 +1,5 @@
 import Representation from './Representation'
-import Finding from '../model/Finding'
+import type Finding from '../model/Finding'
 import { findingsComparatorByKey } from '../utils/Comparators'
 import { SecurityLevel, SecuritySeverity } from '../types'
 
@@ -49,7 +49,7 @@ export default abstract class CompactGroupByRepresentation extends Representatio
     findings
       .reduce((grouped: Map<Finding[K], Array<Finding>>, f: Finding): Map<Finding[K], Array<Finding>> => {
         if (!grouped.get(f[key])) {
-          grouped.set(f[key], new Array<Finding>())
+          grouped.set(f[key], [] as Finding[])
         }
         grouped.get(f[key])?.push(f)
         return grouped

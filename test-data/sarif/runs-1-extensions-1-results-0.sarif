@@ -6,11 +6,11 @@
       "tool": {
         "driver": {
           "language": "en-US",
-          "name": "Snyk Open Source"
+          "name": "sectools sca"
         },
         "extensions": [
           {
-            "name": "Snyk Open Source Extension",
+            "name": "Snyk Open Source",
             "properties": {
               "artifactsScanned": 6
             },
