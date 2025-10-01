@@ -1,7 +1,7 @@
 import path from 'node:path'
-import Finding from '../model/Finding'
+import type Finding from '../model/Finding'
 import CompactGroupByRepresentation from './CompactGroupByRepresentation'
-import { SarifModel } from '../types'
+import type { SarifModel } from '../types'
 
 /**
  * Since {@link CompactGroupByRepresentation} already prepares compact representation

@@ -12,7 +12,6 @@
  * import {
  *   Color,
  *   FooterType,
- *   LogLevel,
  *   RepresentationType,
  *   SarifToSlackClient,
  *   SendIf
@@ -45,11 +44,6 @@
  *     path: 'path/to/your/sarif-files',
  *     recursive: true,
  *     extension: 'sarif',
- *   },
- *   log: {
- *     level: LogLevel.Info,
- *     template: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
- *     colored: false,
  *   },
  *   header: {
  *     include: true,
@@ -85,15 +79,12 @@ export {
   ColorGroupBySeverity
 } from './model/color/ColorOptions'
 export { SendIf } from './model/SendIf'
-export { SlackMessage } from './model/SlackMessage'
 export { SarifToSlackClient } from './SarifToSlackClient'
 export {
   FooterOptions,
   FooterType,
   IncludeAwareOptions,
   IncludeAwareWithValueOptions,
-  LogLevel,
-  LogOptions,
   RepresentationType,
   SarifFileExtension,
   SarifOptions,

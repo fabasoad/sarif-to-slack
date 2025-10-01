@@ -1,4 +1,4 @@
-import { SarifModel, SecurityLevelValues } from '../types'
+import { type SarifModel, SecurityLevelValues } from '../types'
 import TableGroupByToolNameRepresentation
   from './TableGroupByToolNameRepresentation'
 

@@ -1,7 +1,7 @@
-import { SarifModel } from '../types'
-import Finding from '../model/Finding'
-import { findingsComparatorByKey } from '../utils/Comparators'
-import FindingArray from '../model/FindingArray'
+import type { SarifModel } from '../types';
+import type Finding from '../model/Finding';
+import FindingArray from '../model/FindingArray';
+import { findingsComparatorByKey } from '../utils/Comparators';
 
 /**
  * The most base abstract class for the representation. Every representation class
@@ -32,6 +32,7 @@ export default abstract class Representation {
   }
 
   protected codeBlock(text: string): string {
+    // biome-ignore lint/style/useTemplate: Template literals are unreadable here
     return '```\n' + text + '\n```'
   }
 

@@ -1,36 +1,12 @@
+import { z, ZodSafeParseResult } from 'zod';
 import {
   Color,
-  LogLevel,
   RepresentationType, SarifFileExtension,
   SarifToSlackClient,
   SendIf
-} from '../../src'
+} from '../../src';
 
 describe('(integration): SendSarifToSlack', (): void => {
-  function processLogLevel(logLevel?: string): LogLevel | undefined {
-    if (!logLevel) {
-      return undefined
-    }
-    switch (logLevel.toLowerCase()) {
-      case 'silly':
-        return LogLevel.Silly
-      case 'trace':
-        return LogLevel.Trace
-      case 'debug':
-        return LogLevel.Debug
-      case 'info':
-        return LogLevel.Info
-      case 'warning':
-        return LogLevel.Warning
-      case 'error':
-        return LogLevel.Error
-      case 'fatal':
-        return LogLevel.Fatal
-      default:
-        throw new Error(`Unknown log level: ${logLevel}`)
-    }
-  }
-
   function processSarifExtension(extension: string): SarifFileExtension {
     const allowed: string[] = ['sarif', 'json']
     if (allowed.includes(extension)) {
@@ -62,10 +38,18 @@ describe('(integration): SendSarifToSlack', (): void => {
         return RepresentationType.CompactTotalPerLevel
       case 'compact-total-per-severity':
         return RepresentationType.CompactTotalPerSeverity
+      case 'table-group-by-run-per-level':
+        return RepresentationType.TableGroupByRunPerLevel
+      case 'table-group-by-run-per-severity':
+        return RepresentationType.TableGroupByRunPerSeverity
       case 'table-group-by-tool-name-per-level':
         return RepresentationType.TableGroupByToolNamePerLevel
       case 'table-group-by-tool-name-per-severity':
         return RepresentationType.TableGroupByToolNamePerSeverity
+      case 'table-group-by-sarif-per-level':
+        return RepresentationType.TableGroupBySarifPerLevel
+      case 'table-group-by-sarif-per-severity':
+        return RepresentationType.TableGroupBySarifPerSeverity
       default:
         return undefined
     }
@@ -105,64 +89,66 @@ describe('(integration): SendSarifToSlack', (): void => {
     }
   }
 
-  test('Should send Sarif to Slack', async () => {
-    const client: SarifToSlackClient = await SarifToSlackClient.create({
-      webhookUrl: process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
-      username: process.env.SARIF_TO_SLACK_USERNAME,
-      iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
-      color: {
-        default: Color.from(process.env.SARIF_TO_SLACK_COLOR),
-        empty: Color.from(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
-        byLevel: {
-          error: Color.from(process.env.SARIF_TO_SLACK_COLOR_ERROR),
-          warning: Color.from(process.env.SARIF_TO_SLACK_COLOR_WARNING),
-          note: Color.from(process.env.SARIF_TO_SLACK_COLOR_NOTE),
-          none: Color.from(process.env.SARIF_TO_SLACK_COLOR_NONE),
-          unknown: Color.from(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+  test('should send Sarif to Slack', async () => {
+    const recursiveParseResult: ZodSafeParseResult<boolean> = z
+      .stringbool()
+      .safeParse(process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE);
+    const sarifExtensionParseResult: ZodSafeParseResult<SarifFileExtension> = z
+      .string()
+      .transform(processSarifExtension)
+      .safeParse(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION);
+    const includeRunParseResult: ZodSafeParseResult<boolean> = z
+      .stringbool()
+      .safeParse(process.env.SARIF_TO_SLACK_INCLUDE_RUN);
+
+    const client: SarifToSlackClient = await SarifToSlackClient.create(
+      process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
+      {
+        username: process.env.SARIF_TO_SLACK_USERNAME,
+        iconUrl: process.env.SARIF_TO_SLACK_ICON_URL,
+        color: {
+          default: Color.from(process.env.SARIF_TO_SLACK_COLOR),
+          empty: Color.from(process.env.SARIF_TO_SLACK_COLOR_EMPTY),
+          byLevel: {
+            error: Color.from(process.env.SARIF_TO_SLACK_COLOR_ERROR),
+            warning: Color.from(process.env.SARIF_TO_SLACK_COLOR_WARNING),
+            note: Color.from(process.env.SARIF_TO_SLACK_COLOR_NOTE),
+            none: Color.from(process.env.SARIF_TO_SLACK_COLOR_NONE),
+            unknown: Color.from(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+          },
+          bySeverity: {
+            critical: Color.from(process.env.SARIF_TO_SLACK_COLOR_CRITICAL),
+            high: Color.from(process.env.SARIF_TO_SLACK_COLOR_HIGH),
+            medium: Color.from(process.env.SARIF_TO_SLACK_COLOR_MEDIUM),
+            low: Color.from(process.env.SARIF_TO_SLACK_COLOR_LOW),
+            none: Color.from(process.env.SARIF_TO_SLACK_COLOR_NONE),
+            unknown: Color.from(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+          },
         },
-        bySeverity: {
-          critical: Color.from(process.env.SARIF_TO_SLACK_COLOR_CRITICAL),
-          high: Color.from(process.env.SARIF_TO_SLACK_COLOR_HIGH),
-          medium: Color.from(process.env.SARIF_TO_SLACK_COLOR_MEDIUM),
-          low: Color.from(process.env.SARIF_TO_SLACK_COLOR_LOW),
-          none: Color.from(process.env.SARIF_TO_SLACK_COLOR_NONE),
-          unknown: Color.from(process.env.SARIF_TO_SLACK_COLOR_UNKNOWN),
+        sarif: {
+          path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
+          recursive: recursiveParseResult.success ? recursiveParseResult.data : false,
+          extension: sarifExtensionParseResult.success ? sarifExtensionParseResult.data : 'sarif',
         },
-      },
-      sarif: {
-        path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
-        recursive: process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE
-          ? process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE.toLowerCase() === 'true'
-          : false,
-        extension: process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION
-          ? processSarifExtension(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION)
-          : 'sarif',
-      },
-      log: {
-        level: processLogLevel(process.env.SARIF_TO_SLACK_LOG_LEVEL),
-        template: process.env.SARIF_TO_SLACK_LOG_TEMPLATE,
-        colored: process.env.SARIF_TO_SLACK_LOG_COLORED
-          ? Boolean(process.env.SARIF_TO_SLACK_LOG_COLORED)
-          : true,
-      },
-      header: {
-        include: process.env.SARIF_TO_SLACK_HEADER !== 'skip',
-        value: process.env.SARIF_TO_SLACK_HEADER,
-      },
-      footer: {
-        include: process.env.SARIF_TO_SLACK_FOOTER !== 'skip',
-        value: process.env.SARIF_TO_SLACK_FOOTER,
-      },
-      actor: {
-        include: process.env.SARIF_TO_SLACK_ACTOR !== 'skip',
-        value: process.env.SARIF_TO_SLACK_ACTOR,
-      },
-      run: {
-        include: Boolean(process.env.SARIF_TO_SLACK_INCLUDE_RUN),
-      },
-      representation: processRepresentationType(process.env.SARIF_TO_SLACK_REPRESENTATION),
-      sendIf: processSendIf(process.env.SARIF_TO_SLACK_SEND_IF),
-    })
-    await client.send()
+        header: {
+          include: process.env.SARIF_TO_SLACK_HEADER !== 'skip',
+          value: process.env.SARIF_TO_SLACK_HEADER,
+        },
+        footer: {
+          include: process.env.SARIF_TO_SLACK_FOOTER !== 'skip',
+          value: process.env.SARIF_TO_SLACK_FOOTER,
+        },
+        actor: {
+          include: process.env.SARIF_TO_SLACK_ACTOR !== 'skip',
+          value: process.env.SARIF_TO_SLACK_ACTOR,
+        },
+        run: {
+          include: includeRunParseResult.success ? includeRunParseResult.data : false,
+        },
+        representation: processRepresentationType(process.env.SARIF_TO_SLACK_REPRESENTATION),
+        sendIf: processSendIf(process.env.SARIF_TO_SLACK_SEND_IF),
+      }
+    );
+    await client.send();
   })
 })
