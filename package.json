@@ -45,7 +45,7 @@
     "@slack/webhook": "7.0.6",
     "@types/sarif": "2.1.7",
     "tslog": "4.10.2",
-    "zod": "4.1.11"
+    "zod": "4.1.12"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
