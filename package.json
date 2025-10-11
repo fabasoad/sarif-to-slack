@@ -48,7 +48,7 @@
     "zod": "4.1.12"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.4",
+    "@biomejs/biome": "2.2.5",
     "@microsoft/api-documenter": "7.26.36",
     "@microsoft/api-extractor": "7.52.15",
     "@types/jest": "30.0.0",
