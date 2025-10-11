@@ -26,10 +26,17 @@ jobs:
       ref: ${{ steps.metadata.outputs.ref }}
       ref-name: ${{ steps.metadata.outputs.ref-name }}
     steps:
+      - name: Get GitHub token
+        uses: actions/create-github-app-token@v2
+        id: github-app
+        with:
+          app-id: ${{ vars.GH_APP_CONTENTS_CRUD_APP_ID }}
+          private-key: ${{ secrets.GH_APP_CONTENTS_CRUD_PRIVATE_KEY }}
+
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v5
         with:
-          token: "${{ secrets.GH_TOKEN }}"
+          token: "${{ steps.github-app.outputs.token }}"
 
       - name: Setup Node
         uses: actions/setup-node@v5
@@ -45,8 +52,10 @@ jobs:
         env:
           BUMP_STRATEGY: "${{ github.event.inputs.bump-strategy }}"
         run: |
-          git config user.email "fabasoad@gmail.com"
-          git config user.name "fabasoad"
+          app_slug="${{ steps.github-app.outputs.app-slug }}"
+          user_id="$(gh api "/users/${app_slug}[bot]" --jq .id)"
+          git config user.email "${user_id}+${app_slug}[bot]@users.noreply.github.com"
+          git config user.name "${app_slug}[bot]"
           npm run version:${BUMP_STRATEGY}
 
       - name: Install jq
