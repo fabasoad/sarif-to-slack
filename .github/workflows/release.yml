@@ -39,7 +39,7 @@ jobs:
           token: "${{ steps.github-app.outputs.token }}"
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: ".tool-versions"
           cache: "npm"
@@ -54,12 +54,11 @@ jobs:
       - name: Bump version
         env:
           BUMP_STRATEGY: "${{ github.event.inputs.bump-strategy }}"
-          GH_TOKEN: "${{ steps.github-app.outputs.token }}"
         run: |
-          app_slug="${{ steps.github-app.outputs.app-slug }}"
-          user_id="$(gh api "/users/${app_slug}[bot]" --jq .id)"
-          git config user.email "${user_id}+${app_slug}[bot]@users.noreply.github.com"
-          git config user.name "${app_slug}[bot]"
+          user_name="${{ steps.github-app.outputs.app-slug }}[bot]"
+          user_id="$(gh api "/users/${user_name}" --jq .id)"
+          git config user.email "${user_id}+${user_name}@users.noreply.github.com"
+          git config user.name "${user_name}"
           npm run version:${BUMP_STRATEGY}
 
       - name: Get metadata
