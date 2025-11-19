@@ -47,3 +47,7 @@ pre-commit/update:
 
 .PHONY: update
 update: npm/update pre-commit/update
+
+.PHONY: outdated
+outdated:
+	@npm outdated
