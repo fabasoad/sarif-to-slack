@@ -19,14 +19,18 @@ on: # yamllint disable-line rule:truthy
           - js-lint
           - pre-commit
 
+permissions:
+  contents: read
+
 jobs:
   js-lint:
     name: JS Lint
-    if: ${{ (github.event.inputs.linter || 'all') == 'all' || github.event.inputs.linter == 'js-lint' }}
+    if: contains(fromJSON('["all", "js-lint"]'), github.event.inputs.linter || 'all')
     uses: fabasoad/reusable-workflows/.github/workflows/wf-js-lint.yml@main
+
   pre-commit:
     name: Pre-commit
-    if: ${{ (github.event.inputs.linter || 'all') == 'all' || github.event.inputs.linter == 'pre-commit' }}
+    if: contains(fromJSON('["all", "pre-commit"]'), github.event.inputs.linter || 'all')
     uses: fabasoad/reusable-workflows/.github/workflows/wf-pre-commit.yml@main
     with:
       skip-hooks: "audit, build, lint, test"
