@@ -22,6 +22,7 @@ jobs:
     permissions:
       contents: write
       packages: write
+      id-token: write
     outputs:
       ref: ${{ steps.metadata.outputs.ref }}
       ref-name: ${{ steps.metadata.outputs.ref-name }}
@@ -34,7 +35,7 @@ jobs:
           private-key: ${{ secrets.GH_APP_CONTENTS_CRUD_PRIVATE_KEY }}
 
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: "${{ steps.github-app.outputs.token }}"
 
@@ -72,6 +73,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v4
         with:
           token: "${{ secrets.NPM_TOKEN }}"
+          registry: "https://registry.npmjs.org"
 
       - name: Publish to GitHub Packages
         uses: JS-DevTools/npm-publish@v4
@@ -82,6 +84,8 @@ jobs:
     name: GitHub
     needs: [publish]
     uses: fabasoad/reusable-workflows/.github/workflows/wf-github-release.yml@main
+    permissions:
+      contents: write
     with:
       bump-tags: false
       ref: ${{ needs.publish.outputs.ref }}
