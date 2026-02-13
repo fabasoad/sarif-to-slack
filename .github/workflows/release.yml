@@ -55,6 +55,7 @@ jobs:
       - name: Bump version
         env:
           BUMP_STRATEGY: "${{ github.event.inputs.bump-strategy }}"
+          GH_TOKEN: "${{ steps.github-app.outputs.token }}"
         run: |
           user_name="${{ steps.github-app.outputs.app-slug }}[bot]"
           user_id="$(gh api "/users/${user_name}" --jq .id)"
