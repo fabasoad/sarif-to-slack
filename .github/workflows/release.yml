@@ -28,7 +28,7 @@ jobs:
       ref-name: ${{ steps.metadata.outputs.ref-name }}
     steps:
       - name: Get GitHub token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: github-app
         with:
           app-id: ${{ vars.GH_APP_CONTENTS_CRUD_APP_ID }}

@@ -43,7 +43,7 @@ npm/update:
 
 .PHONY: pre-commit/update
 pre-commit/update:
-	@pre-commit autoupdate
+	@command -v prek >/dev/null 2>&1 && prek auto-update || pre-commit autoupdate
 
 .PHONY: update
 update: npm/update pre-commit/update
