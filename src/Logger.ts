@@ -1,4 +1,4 @@
-import { z, ZodSafeParseResult } from 'zod';
+import { z, type ZodSafeParseResult } from 'zod';
 import * as stackTraceParser from 'stacktrace-parser';
 import { type ILogObj, type ISettingsParam, Logger as TSLogger } from 'tslog';
 import { isDebug } from './system';
