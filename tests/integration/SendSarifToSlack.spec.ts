@@ -84,18 +84,20 @@ describe('(integration): SendSarifToSlack', (): void => {
   }
 
   test('should send Sarif to Slack', async () => {
-    const recursiveParseResult: ZodSafeParseResult<boolean> =
-      z.coerce.boolean().safeParse(process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE);
+    const parseBoolean = <T>(envVar: string | undefined, defaultVal: T): boolean | T => {
+      const parseResult: ZodSafeParseResult<boolean> = z
+        .string()
+        .transform((val: string): string => val.toLowerCase())
+        .refine((val: string): val is "true" | "false" => val === "true" || val === "false")
+        .transform((val: "true" | "false"): val is "true" => val === "true")
+        .safeParse(envVar);
+      return parseResult.success ? parseResult.data : defaultVal;
+    }
+
     const logLevelParseResult: ZodSafeParseResult<LogLevel> =
       z.enum(LogLevelItems).safeParse(process.env.SARIF_TO_SLACK_LOG_LEVEL);
-    const includeRunParseResult: ZodSafeParseResult<boolean> =
-      z.coerce.boolean().safeParse(process.env.SARIF_TO_SLACK_INCLUDE_RUN);
-    const logFunctionNameParseResult: ZodSafeParseResult<boolean> =
-      z.coerce.boolean().safeParse(process.env.SARIF_TO_SLACK_LOG_FUNCTION_NAME);
     const logFunctionNameOnPositionParseResult: ZodSafeParseResult<number> =
       z.coerce.number().safeParse(process.env.SARIF_TO_SLACK_LOG_FUNCTION_NAME_ON_POSITION);
-    const stylePrettyLogsParseResult: ZodSafeParseResult<boolean> =
-      z.coerce.boolean().safeParse(process.env.SARIF_TO_SLACK_STYLE_PRETTY_LOGS);
 
     const client: SarifToSlackClient = await SarifToSlackClient.create(
       process.env.SARIF_TO_SLACK_WEBHOOK_URL as string,
@@ -123,7 +125,7 @@ describe('(integration): SendSarifToSlack', (): void => {
         },
         sarif: {
           path: process.env.SARIF_TO_SLACK_SARIF_PATH as string,
-          recursive: recursiveParseResult.success ? recursiveParseResult.data : false,
+          recursive: parseBoolean(process.env.SARIF_TO_SLACK_SARIF_PATH_RECURSIVE, false),
           extension: z.enum(SarifFileExtensionItems).parse(process.env.SARIF_TO_SLACK_SARIF_FILE_EXTENSION),
         },
         header: {
@@ -139,16 +141,16 @@ describe('(integration): SendSarifToSlack', (): void => {
           value: process.env.SARIF_TO_SLACK_ACTOR,
         },
         run: {
-          include: includeRunParseResult.success ? includeRunParseResult.data : false,
+          include: parseBoolean(process.env.SARIF_TO_SLACK_INCLUDE_RUN, false),
         },
         representation: processRepresentationType(process.env.SARIF_TO_SLACK_REPRESENTATION),
         sendIf: processSendIf(process.env.SARIF_TO_SLACK_SEND_IF),
         loggerOptions: {
-          logFunctionName: logFunctionNameParseResult.success ? logFunctionNameParseResult.data : undefined,
+          logFunctionName: parseBoolean(process.env.SARIF_TO_SLACK_LOG_FUNCTION_NAME, undefined),
           logFunctionNameOnPosition: logFunctionNameOnPositionParseResult.success ? logFunctionNameOnPositionParseResult.data : undefined,
           minLevel: logLevelParseResult.success ? logLevelParseResult.data : undefined,
           name: 'integration-test',
-          stylePrettyLogs: stylePrettyLogsParseResult.success ? stylePrettyLogsParseResult.data : undefined,
+          stylePrettyLogs: parseBoolean(process.env.SARIF_TO_SLACK_STYLE_PRETTY_LOGS, undefined),
           prettyLogTemplate: process.env.SARIF_TO_SLACK_LOG_TEMPLATE,
         },
       },

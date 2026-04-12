@@ -152,22 +152,22 @@ on: # yamllint disable-line rule:truthy
           - "error"
           - "fatal"
       log-template:
-        description: Log template
+        description: "Log template:"
         required: false
         default: "[{{logLevelName}}] [{{name}}] {{dateIsoStr}} "
         type: string
       style-pretty-logs:
-        description: Whether logs should be colored or not.
+        description: "Colored logs"
         required: false
         default: true
         type: boolean
       log-function-name:
-        description: Whether to log function name or not.
+        description: "Log function name"
         required: false
         default: false
         type: boolean
       log-function-name-on-position:
-        description: From what position in stacktrace function name should be taken.
+        description: "Log function name from this position in stacktrace:"
         required: false
         default: 2
         type: number

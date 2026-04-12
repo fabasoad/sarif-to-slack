@@ -1,3 +1,4 @@
+import { z, ZodSafeParseResult } from 'zod';
 import * as stackTraceParser from 'stacktrace-parser';
 import { type ILogObj, type ISettingsParam, Logger as TSLogger } from 'tslog';
 import { isDebug } from './system';
@@ -14,13 +15,16 @@ export default class Logger {
 
   private readonly _instance: TSLogger<ILogObj>;
 
-  private getMinLevel(minLevel?: LogLevel): number {
+  private getMinLevel(minLevel: LogLevel | undefined): number {
     let result: LogLevel = Logger.DEFAULT_LOG_LEVEL;
 
     if (isDebug()) {
       result = 'silly';
     } else if (minLevel !== undefined) {
-      result = minLevel;
+      const parseResult: ZodSafeParseResult<LogLevel> = z.enum(LogLevelItems).safeParse(minLevel);
+      if (parseResult.success) {
+        result = parseResult.data;
+      }
     }
 
     return LogLevelItems.findIndex((v: LogLevel): boolean => v === result);
@@ -61,7 +65,7 @@ export default class Logger {
       opts.name, opts.logFunctionName, opts.logFunctionNameOnPosition,
     );
     const settings: ISettingsParam<ILogObj> = {
-      minLevel: this.getMinLevel(),
+      minLevel: this.getMinLevel(opts.minLevel),
       name: logName,
       type: 'pretty',
       prettyLogTemplate: opts.prettyLogTemplate || (
