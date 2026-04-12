@@ -1,7 +1,7 @@
-import type { Run } from 'sarif'
-import type { ColorOptions } from './model/color/ColorOptions'
-import type FindingArray from './model/FindingArray'
-import type { SendIf } from './model/SendIf'
+import type { Run } from 'sarif';
+import type { ColorOptions } from './model/color/ColorOptions';
+import type FindingArray from './model/FindingArray';
+import type { SendIf } from './model/SendIf';
 
 /**
  * Type representing properties that indicate whether to include certain information
@@ -9,7 +9,7 @@ import type { SendIf } from './model/SendIf'
  * @public
  */
 export type IncludeAwareOptions = {
-  include: boolean
+  include: boolean,
 }
 
 /**
@@ -18,7 +18,7 @@ export type IncludeAwareOptions = {
  * @public
  */
 export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
-  value?: string
+  value?: string,
 }
 
 /**
@@ -34,7 +34,7 @@ export enum FooterType {
    * Represents a footer with Markdown formatting. Text can include formatting
    * such as bold, italics, and links.
    */
-  Markdown = 'mrkdwn'
+  Markdown = 'mrkdwn',
 }
 
 /**
@@ -43,7 +43,7 @@ export enum FooterType {
  * @public
  */
 export type FooterOptions = IncludeAwareWithValueOptions & {
-  type?: FooterType
+  type?: FooterType,
 }
 
 /**
@@ -222,10 +222,15 @@ export enum RepresentationType {
 }
 
 /**
+ * Valid SARIF file extensions.
+ * @public
+ */
+export const SarifFileExtensionItems = ['sarif', 'json'] as const;
+/**
  * SARIF file extension.
  * @public
  */
-export type SarifFileExtension = 'sarif' | 'json'
+export type SarifFileExtension = typeof SarifFileExtensionItems[number];
 
 /**
  * Represents options for the provided SARIF file(s), such as path, should files
@@ -236,6 +241,30 @@ export type SarifOptions = {
   path: string,
   recursive?: boolean,
   extension?: SarifFileExtension,
+}
+
+/**
+ * Valid log levels for the Logger.
+ * @public
+ */
+export const LogLevelItems = ['silly', 'trace', 'debug', 'info', 'warning', 'error', 'fatal'] as const;
+/**
+ * Log levels for the Logger.
+ * @public
+ */
+export type LogLevel = typeof LogLevelItems[number];
+
+/**
+ * It is used to stored logging options in global state
+ * @public
+ */
+export type LoggerOptions = {
+  logFunctionName?: boolean,
+  logFunctionNameOnPosition?: number,
+  minLevel?: LogLevel,
+  name?: string,
+  stylePrettyLogs?: boolean,
+  prettyLogTemplate?: string,
 }
 
 /**
@@ -253,6 +282,7 @@ export type SarifToSlackClientOptions = {
   run?: IncludeAwareOptions,
   representation?: RepresentationType,
   sendIf?: SendIf,
+  loggerOptions?: LoggerOptions,
 }
 
 /**
@@ -273,8 +303,8 @@ export enum SecuritySeverity {
 
 export const SecuritySeverityValues: string[] =
   Object.values(SecuritySeverity).filter(
-    (v: string | SecuritySeverity): v is string => typeof v === 'string'
-  )
+    (v: string | SecuritySeverity): v is string => typeof v === 'string',
+  );
 
 /**
  * Enum of security level.
@@ -293,8 +323,8 @@ export enum SecurityLevel {
 
 export const SecurityLevelValues: string[] =
   Object.values(SecurityLevel).filter(
-    (v: string | SecurityLevel): v is string => typeof v === 'string'
-  )
+    (v: string | SecurityLevel): v is string => typeof v === 'string',
+  );
 
 /**
  * The data about run, such as {@link Run} itself, tool name of the run and ID

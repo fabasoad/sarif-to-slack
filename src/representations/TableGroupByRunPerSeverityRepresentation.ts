@@ -1,9 +1,9 @@
-import { type SarifModel, SecuritySeverityValues } from '../types'
-import TableGroupByRunRepresentation from './TableGroupByRunRepresentation'
+import { type SarifModel, SecuritySeverityValues } from '../types';
+import TableGroupByRunRepresentation from './TableGroupByRunRepresentation';
 
 export default class TableGroupByRunPerSeverityRepresentation extends TableGroupByRunRepresentation<'severity'> {
 
   public constructor(model: SarifModel) {
-    super('severity', SecuritySeverityValues, model)
+    super('severity', SecuritySeverityValues, model);
   }
 }

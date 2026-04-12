@@ -74,19 +74,6 @@ on: # yamllint disable-line rule:truthy
           - "compact-group-by-sarif-per-severity"
           - "compact-total-per-level"
           - "compact-total-per-severity"
-      log-level:
-        description: "Log level:"
-        required: false
-        default: "info"
-        type: choice
-        options:
-          - "silly"
-          - "trace"
-          - "debug"
-          - "info"
-          - "warning"
-          - "error"
-          - "fatal"
       send-if:
         description: "Send if:"
         required: false
@@ -151,6 +138,39 @@ on: # yamllint disable-line rule:truthy
         required: false
         default: true
         type: boolean
+      log-level:
+        description: "Log level:"
+        required: false
+        default: "info"
+        type: choice
+        options:
+          - "silly"
+          - "trace"
+          - "debug"
+          - "info"
+          - "warning"
+          - "error"
+          - "fatal"
+      log-template:
+        description: Log template
+        required: false
+        default: "[{{logLevelName}}] [{{name}}] {{dateIsoStr}} "
+        type: string
+      style-pretty-logs:
+        description: Whether logs should be colored or not.
+        required: false
+        default: true
+        type: boolean
+      log-function-name:
+        description: Whether to log function name or not.
+        required: false
+        default: false
+        type: boolean
+      log-function-name-on-position:
+        description: From what position in stacktrace function name should be taken.
+        required: false
+        default: 2
+        type: number
 
 defaults:
   run:
@@ -289,8 +309,10 @@ jobs:
           SARIF_TO_SLACK_SARIF_PATH_RECURSIVE: "false"
           SARIF_TO_SLACK_SARIF_FILE_EXTENSION: "sarif"
           SARIF_TO_SLACK_LOG_LEVEL: "${{ github.event.inputs.log-level }}"
-          SARIF_TO_SLACK_LOG_TEMPLATE: "[{{logLevelName}}] [{{name}}] {{dateIsoStr}} "
-          SARIF_TO_SLACK_LOG_COLORED: "true"
+          SARIF_TO_SLACK_LOG_TEMPLATE: "${{ github.event.inputs.log-template }}"
+          SARIF_TO_SLACK_STYLE_PRETTY_LOGS: "${{ github.event.inputs.style-pretty-logs }}"
+          SARIF_TO_SLACK_LOG_FUNCTION_NAME: "${{ github.event.inputs.log-function-name }}"
+          SARIF_TO_SLACK_LOG_FUNCTION_NAME_ON_POSITION: "${{ github.event.inputs.log-function-name-on-position }}"
           SARIF_TO_SLACK_HEADER: "${{ github.event.inputs.header }}"
           SARIF_TO_SLACK_FOOTER: "${{ github.event.inputs.footer }}"
           SARIF_TO_SLACK_ACTOR: "${{ github.event.inputs.actor }}"

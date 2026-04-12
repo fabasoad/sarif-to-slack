@@ -1,4 +1,4 @@
-import { CommonProcessor } from './CommonProcessor'
+import { CommonProcessor } from './CommonProcessor';
 
 /**
  * This class has extra logic for processing SARIF files produced by Snyk Open
@@ -12,8 +12,9 @@ export class SnykProcessor extends CommonProcessor {
    * property where CVSS score is also defined. This method tries to get level
    * from this "cvssv3_baseScore" property and if it fails to do so, then it tries
    * to get CVSS score in a common way.
+   * @internal
    */
   public override tryFindCvssScore(): number | undefined {
-    return this.tryFindRuleProperty<number>('cvssv3_baseScore') ?? super.tryFindCvssScore()
+    return this.tryFindRuleProperty<number>('cvssv3_baseScore') ?? super.tryFindCvssScore();
   }
 }

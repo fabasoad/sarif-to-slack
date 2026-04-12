@@ -1,5 +1,5 @@
-import type { SarifModel } from '../types'
-import type Finding from '../model/Finding'
+import type { SarifModel } from '../types';
+import type Finding from '../model/Finding';
 import TableGroupRepresentation from './TableGroupRepresentation';
 
 export default abstract class TableGroupByToolNameRepresentation<
@@ -8,8 +8,8 @@ export default abstract class TableGroupByToolNameRepresentation<
   protected constructor(
     keyPer: KPer,
     values: string[],
-    model: SarifModel
+    model: SarifModel,
   ) {
-    super('toolName', keyPer, values, model)
+    super('toolName', keyPer, values, model);
   }
 }

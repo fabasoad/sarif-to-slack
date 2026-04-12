@@ -7,11 +7,11 @@ export class Color {
    * A valid string that represents a color in hex format.
    * @public
    */
-  public readonly color: string
+  public readonly color: string;
 
   private constructor(color: string) {
-    this.color = this.mapColor(color)
-    this.assertHexColor()
+    this.color = this.mapColor(color);
+    this.assertHexColor();
   }
 
   /**
@@ -25,15 +25,15 @@ export class Color {
    * @public
    */
   public static from(color: string | undefined): Color | undefined {
-    return color ? new Color(color) : undefined
+    return color ? new Color(color) : undefined;
   }
 
   private assertHexColor(): void {
     if (this.color) {
-      const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/
+      const hexColorRegex = /^#(?:[0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
 
       if (!hexColorRegex.test(this.color)) {
-        throw new Error(`Invalid hex color: "${this.color}"`)
+        throw new Error(`Invalid hex color: "${this.color}"`);
       }
     }
   }
@@ -45,6 +45,6 @@ export class Color {
       ['cancelled', '#0047ab'],
       ['skipped', '#808080'],
     ])
-    return map.get(from) ?? from
+    return map.get(from) ?? from;
   }
 }

@@ -22,12 +22,6 @@ TypeScript library to send results of SARIF file to Slack webhook URL.
 
 ## How to use
 
-```shell
-export SARIF_TO_SLACK_LOG_LEVEL="debug"
-export SARIF_TO_SLACK_LOG_TEMPLATE="[{{logLevelName}}] [{{name}}] {{dateIsoStr}} "
-export SARIF_TO_SLACK_LOG_COLORED="true"
-```
-
 ```typescript
 import {
   Color,
@@ -84,7 +78,14 @@ const client: SarifToSlackClient = await SarifToSlackClient.create(
     },
     representation: RepresentationType.CompactGroupByToolNamePerSeverity,
     sendIf: SendIf.MediumOrHigher,
-  }
+    loggerOptions: {
+      logFunctionName: false,
+      minLevel: 'debug',
+      name: 'my-app',
+      stylePrettyLogs: true,
+      prettyLogTemplate: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
+    },
+  },
 );
 await client.send();
 ```

@@ -61,6 +61,12 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
 };
 
 // @public
+export type LogLevel = (typeof LogLevelItems)[number];
+
+// @public
+export const LogLevelItems: readonly ["silly", "trace", "debug", "info", "warning", "error", "fatal"];
+
+// @public
 export enum RepresentationType {
     CompactGroupByRunPerLevel = 0,
     CompactGroupByRunPerSeverity = 1,
@@ -106,6 +112,7 @@ export type SarifToSlackClientOptions = {
     run?: IncludeAwareOptions;
     representation?: RepresentationType;
     sendIf?: SendIf;
+    loggerOptions?: LoggerOptions;
 };
 
 // @public
@@ -135,5 +142,9 @@ export enum SendIf {
     SeverityUnknownOrHigher = 10,
     Some = 21
 }
+
+// Warnings were encountered during analysis:
+//
+// src/types.ts:280:3 - (ae-forgotten-export) The symbol "LoggerOptions" needs to be exported by the entry point index.d.ts
 
 ```

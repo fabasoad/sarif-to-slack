@@ -1,4 +1,4 @@
-import type { Result, Run, ToolComponent } from 'sarif'
+import type { Result, Run, ToolComponent } from 'sarif';
 
 /**
  * Returns {@link ToolComponent} instance for the given {@link Run}. It does not
@@ -7,7 +7,7 @@ import type { Result, Run, ToolComponent } from 'sarif'
  * @internal
  */
 export function findToolComponentDriver(run: Run): ToolComponent {
-  return run.tool.driver
+  return run.tool.driver;
 }
 
 /**
@@ -17,11 +17,11 @@ export function findToolComponentDriver(run: Run): ToolComponent {
  * @internal
  */
 export function tryFindToolComponentExtension(run: Run, result: Result): ToolComponent | undefined {
-  let tool: ToolComponent | undefined
+  let tool: ToolComponent | undefined;
   if (result.rule?.toolComponent?.index != null) {
-    tool = run.tool.extensions?.[result.rule.toolComponent.index]
+    tool = run.tool.extensions?.[result.rule.toolComponent.index];
   }
-  return tool
+  return tool;
 }
 
 /**
@@ -31,5 +31,5 @@ export function tryFindToolComponentExtension(run: Run, result: Result): ToolCom
  * @internal
  */
 export function findToolComponent(run: Run, result: Result): ToolComponent {
-  return tryFindToolComponentExtension(run, result) ?? findToolComponentDriver(run)
+  return tryFindToolComponentExtension(run, result) ?? findToolComponentDriver(run);
 }

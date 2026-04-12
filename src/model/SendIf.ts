@@ -122,54 +122,54 @@ export enum SendIf {
 export function sendIfLogMessage(sendIf: SendIf): string {
   switch (sendIf) {
     case SendIf.SeverityCritical:
-      return 'No message sent: no findings with "Critical" severity.'
+      return 'No message sent: no findings with "Critical" severity.';
     case SendIf.SeverityHigh:
-      return 'No message sent: no findings with "High" severity.'
+      return 'No message sent: no findings with "High" severity.';
     case SendIf.SeverityHighOrHigher:
-      return 'No message sent: no findings with "High" or higher severity.'
+      return 'No message sent: no findings with "High" or higher severity.';
     case SendIf.SeverityMedium:
-      return 'No message sent: no findings with "Medium" severity.'
+      return 'No message sent: no findings with "Medium" severity.';
     case SendIf.SeverityMediumOrHigher:
-      return 'No message sent: no findings with "Medium" or higher severity.'
+      return 'No message sent: no findings with "Medium" or higher severity.';
     case SendIf.SeverityLow:
-      return 'No message sent: no findings with "Low" severity.'
+      return 'No message sent: no findings with "Low" severity.';
     case SendIf.SeverityLowOrHigher:
-      return 'No message sent: no findings with "Low" or higher severity.'
+      return 'No message sent: no findings with "Low" or higher severity.';
     case SendIf.SeverityNone:
-      return 'No message sent: no findings with "None" severity.'
+      return 'No message sent: no findings with "None" severity.';
     case SendIf.SeverityNoneOrHigher:
-      return 'No message sent: no findings with "None" or higher severity.'
+      return 'No message sent: no findings with "None" or higher severity.';
     case SendIf.SeverityUnknown:
-      return 'No message sent: no findings with "Unknown" severity.'
+      return 'No message sent: no findings with "Unknown" severity.';
     case SendIf.SeverityUnknownOrHigher:
-      return 'No message sent: no findings with "Unknown" or higher severity.'
+      return 'No message sent: no findings with "Unknown" or higher severity.';
     case SendIf.LevelError:
-      return 'No message sent: no findings with "Error" level.'
+      return 'No message sent: no findings with "Error" level.';
     case SendIf.LevelWarning:
-      return 'No message sent: no findings with "Warning" level.'
+      return 'No message sent: no findings with "Warning" level.';
     case SendIf.LevelWarningOrHigher:
-      return 'No message sent: no findings with "Warning" or higher level.'
+      return 'No message sent: no findings with "Warning" or higher level.';
     case SendIf.LevelNote:
-      return 'No message sent: no findings with "Note" level.'
+      return 'No message sent: no findings with "Note" level.';
     case SendIf.LevelNoteOrHigher:
-      return 'No message sent: no findings with "Note" or higher level.'
+      return 'No message sent: no findings with "Note" or higher level.';
     case SendIf.LevelNone:
-      return 'No message sent: no findings with "None" level.'
+      return 'No message sent: no findings with "None" level.';
     case SendIf.LevelNoneOrHigher:
-      return 'No message sent: no findings with "None" or higher level.'
+      return 'No message sent: no findings with "None" or higher level.';
     case SendIf.LevelUnknown:
-      return 'No message sent: no findings with "Unknown" level.'
+      return 'No message sent: no findings with "Unknown" level.';
     case SendIf.LevelUnknownOrHigher:
-      return 'No message sent: no findings with "Unknown" or higher level.'
+      return 'No message sent: no findings with "Unknown" or higher level.';
     case SendIf.Always:
-      return 'Message always sent.'
+      return 'Message always sent.';
     case SendIf.Some:
-      return 'No message sent: findings are not found.'
+      return 'No message sent: findings are not found.';
     case SendIf.Empty:
-      return 'No message sent: some findings are found.'
+      return 'No message sent: some findings are found.';
     case SendIf.Never:
-      return 'No message sent: sending is disabled.'
+      return 'No message sent: sending is disabled.';
     default:
-      return 'Unknown SendIf value.'
+      return 'Unknown SendIf value.';
   }
 }

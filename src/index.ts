@@ -63,6 +63,13 @@
  *   },
  *   representation: RepresentationType.CompactGroupByToolNamePerSeverity,
  *   sendIf: SendIf.MediumOrHigher,
+ *   loggerOptions: {
+ *     logFunctionName: false,
+ *     minLevel: 'debug',
+ *     name: 'my-app',
+ *     stylePrettyLogs: true,
+ *     prettyLogTemplate: '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ',
+ *   },
  * });
  * await client.send();
  * ```
@@ -71,22 +78,26 @@
  *
  * @packageDocumentation
  */
-export { Color } from './model/color/Color'
-export {
+export { Color } from './model/color/Color';
+export type {
   ColorOptions,
   ColorGroupCommon,
   ColorGroupByLevel,
   ColorGroupBySeverity
-} from './model/color/ColorOptions'
-export { SendIf } from './model/SendIf'
-export { SarifToSlackClient } from './SarifToSlackClient'
+} from './model/color/ColorOptions';
+export { SendIf } from './model/SendIf';
+export { SarifToSlackClient } from './SarifToSlackClient';
 export {
-  FooterOptions,
+  type FooterOptions,
+  type IncludeAwareOptions,
+  type IncludeAwareWithValueOptions,
+  type LogLevel,
+  type LoggerOptions,
+  type SarifFileExtension,
+  type SarifOptions,
+  type SarifToSlackClientOptions,
   FooterType,
-  IncludeAwareOptions,
-  IncludeAwareWithValueOptions,
+  LogLevelItems,
   RepresentationType,
-  SarifFileExtension,
-  SarifOptions,
-  SarifToSlackClientOptions
-} from './types'
+  SarifFileExtensionItems,
+} from './types';
