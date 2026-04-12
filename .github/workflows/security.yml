@@ -18,7 +18,7 @@ on: # yamllint disable-line rule:truthy
 jobs:
   sast:
     name: SAST
-    uses: fabasoad/reusable-workflows/.github/workflows/wf-security-sast.yml@dependabot/github_actions/im-open/process-jest-test-results-3
+    uses: fabasoad/reusable-workflows/.github/workflows/wf-security-sast.yml@main
     permissions:
       contents: read
       security-events: write
