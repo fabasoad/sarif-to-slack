@@ -18,10 +18,11 @@ on: # yamllint disable-line rule:truthy
 jobs:
   sast:
     name: SAST
-    uses: fabasoad/reusable-workflows/.github/workflows/wf-security-sast.yml@main
+    uses: fabasoad/reusable-workflows/.github/workflows/wf-security-sast.yml@dependabot/github_actions/im-open/process-jest-test-results-3
     permissions:
       contents: read
       security-events: write
     with:
       code-scanning: ${{ contains(fromJSON('["all", "code-scanning"]'), github.event.inputs.security-type || 'all') }}
+      code-scanning-languages: "actions,typescript"
       sca: ${{ contains(fromJSON('["all", "sca"]'), github.event.inputs.security-type || 'all') }}
