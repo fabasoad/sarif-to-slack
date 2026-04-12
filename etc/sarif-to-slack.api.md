@@ -61,6 +61,22 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
 };
 
 // @public
+export type LoggerOptions = {
+    logFunctionName?: boolean;
+    logFunctionNameOnPosition?: number;
+    minLevel?: LogLevel;
+    name?: string;
+    stylePrettyLogs?: boolean;
+    prettyLogTemplate?: string;
+};
+
+// @public
+export type LogLevel = typeof LogLevelItems[number];
+
+// @public
+export const LogLevelItems: readonly ["silly", "trace", "debug", "info", "warning", "error", "fatal"];
+
+// @public
 export enum RepresentationType {
     CompactGroupByRunPerLevel = 0,
     CompactGroupByRunPerSeverity = 1,
@@ -79,7 +95,10 @@ export enum RepresentationType {
 }
 
 // @public
-export type SarifFileExtension = 'sarif' | 'json';
+export type SarifFileExtension = typeof SarifFileExtensionItems[number];
+
+// @public
+export const SarifFileExtensionItems: readonly ["sarif", "json"];
 
 // @public
 export type SarifOptions = {
@@ -106,6 +125,7 @@ export type SarifToSlackClientOptions = {
     run?: IncludeAwareOptions;
     representation?: RepresentationType;
     sendIf?: SendIf;
+    loggerOptions?: LoggerOptions;
 };
 
 // @public

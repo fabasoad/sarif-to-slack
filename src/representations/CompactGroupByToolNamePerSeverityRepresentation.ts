@@ -1,5 +1,5 @@
 import CompactGroupByToolNameRepresentation
-  from './CompactGroupByToolNameRepresentation'
+  from './CompactGroupByToolNameRepresentation';
 
 /**
  * Since {@link CompactGroupByToolNameRepresentation} is an abstract class, the
@@ -10,6 +10,6 @@ import CompactGroupByToolNameRepresentation
 export default class CompactGroupByToolNamePerSeverityRepresentation extends CompactGroupByToolNameRepresentation {
 
   public override compose(): string {
-    return this.composeByProperty('severity')
+    return this.composeByProperty('severity');
   }
 }

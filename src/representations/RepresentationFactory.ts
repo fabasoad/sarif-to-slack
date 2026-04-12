@@ -1,33 +1,33 @@
-import type Representation from './Representation'
-import { RepresentationType, type SarifModel } from '../types'
+import type Representation from './Representation';
+import { RepresentationType, type SarifModel } from '../types';
 import CompactGroupByRunPerLevelRepresentation
-  from './CompactGroupByRunPerLevelRepresentation'
+  from './CompactGroupByRunPerLevelRepresentation';
 import CompactGroupByRunPerSeverityRepresentation
-  from './CompactGroupByRunPerSeverityRepresentation'
+  from './CompactGroupByRunPerSeverityRepresentation';
 import CompactGroupByToolNamePerLevelRepresentation
-  from './CompactGroupByToolNamePerLevelRepresentation'
+  from './CompactGroupByToolNamePerLevelRepresentation';
 import CompactGroupByToolNamePerSeverityRepresentation
-  from './CompactGroupByToolNamePerSeverityRepresentation'
+  from './CompactGroupByToolNamePerSeverityRepresentation';
 import CompactGroupBySarifPerLevelRepresentation
-  from './CompactGroupBySarifPerLevelRepresentation'
+  from './CompactGroupBySarifPerLevelRepresentation';
 import CompactGroupBySarifPerSeverityRepresentation
-  from './CompactGroupBySarifPerSeverityRepresentation'
+  from './CompactGroupBySarifPerSeverityRepresentation';
 import CompactTotalPerSeverityRepresentation
-  from './CompactTotalPerSeverityRepresentation'
+  from './CompactTotalPerSeverityRepresentation';
 import CompactTotalPerLevelRepresentation
-  from './CompactTotalPerLevelRepresentation'
+  from './CompactTotalPerLevelRepresentation';
 import TableGroupByToolNamePerLevelRepresentation
-  from './TableGroupByToolNamePerLevelRepresentation'
+  from './TableGroupByToolNamePerLevelRepresentation';
 import TableGroupByToolNamePerSeverityRepresentation
-  from './TableGroupByToolNamePerSeverityRepresentation'
+  from './TableGroupByToolNamePerSeverityRepresentation';
 import TableGroupByRunPerLevelRepresentation
-  from './TableGroupByRunPerLevelRepresentation'
+  from './TableGroupByRunPerLevelRepresentation';
 import TableGroupByRunPerSeverityRepresentation
-  from './TableGroupByRunPerSeverityRepresentation'
+  from './TableGroupByRunPerSeverityRepresentation';
 import TableGroupBySarifPerLevelRepresentation
-  from './TableGroupBySarifPerLevelRepresentation'
+  from './TableGroupBySarifPerLevelRepresentation';
 import TableGroupBySarifPerSeverityRepresentation
-  from './TableGroupBySarifPerSeverityRepresentation'
+  from './TableGroupBySarifPerSeverityRepresentation';
 
 /**
  * Factory class that creates a {@link Representation} class based on the provided
@@ -36,38 +36,38 @@ import TableGroupBySarifPerSeverityRepresentation
  */
 export function createRepresentation(
   model: SarifModel,
-  type: RepresentationType = RepresentationType.CompactGroupByToolNamePerSeverity
+  type: RepresentationType = RepresentationType.CompactGroupByToolNamePerSeverity,
 ): Representation {
   switch (type) {
     case RepresentationType.CompactGroupByRunPerLevel:
-      return new CompactGroupByRunPerLevelRepresentation(model)
+      return new CompactGroupByRunPerLevelRepresentation(model);
     case RepresentationType.CompactGroupByRunPerSeverity:
-      return new CompactGroupByRunPerSeverityRepresentation(model)
+      return new CompactGroupByRunPerSeverityRepresentation(model);
     case RepresentationType.CompactGroupByToolNamePerLevel:
-      return new CompactGroupByToolNamePerLevelRepresentation(model)
+      return new CompactGroupByToolNamePerLevelRepresentation(model);
     case RepresentationType.CompactGroupByToolNamePerSeverity:
-      return new CompactGroupByToolNamePerSeverityRepresentation(model)
+      return new CompactGroupByToolNamePerSeverityRepresentation(model);
     case RepresentationType.CompactGroupBySarifPerLevel:
-      return new CompactGroupBySarifPerLevelRepresentation(model)
+      return new CompactGroupBySarifPerLevelRepresentation(model);
     case RepresentationType.CompactGroupBySarifPerSeverity:
-      return new CompactGroupBySarifPerSeverityRepresentation(model)
+      return new CompactGroupBySarifPerSeverityRepresentation(model);
     case RepresentationType.CompactTotalPerLevel:
-      return new CompactTotalPerLevelRepresentation(model)
+      return new CompactTotalPerLevelRepresentation(model);
     case RepresentationType.CompactTotalPerSeverity:
-      return new CompactTotalPerSeverityRepresentation(model)
+      return new CompactTotalPerSeverityRepresentation(model);
     case RepresentationType.TableGroupByRunPerLevel:
-      return new TableGroupByRunPerLevelRepresentation(model)
+      return new TableGroupByRunPerLevelRepresentation(model);
     case RepresentationType.TableGroupByRunPerSeverity:
-      return new TableGroupByRunPerSeverityRepresentation(model)
+      return new TableGroupByRunPerSeverityRepresentation(model);
     case RepresentationType.TableGroupByToolNamePerLevel:
-      return new TableGroupByToolNamePerLevelRepresentation(model)
+      return new TableGroupByToolNamePerLevelRepresentation(model);
     case RepresentationType.TableGroupByToolNamePerSeverity:
-      return new TableGroupByToolNamePerSeverityRepresentation(model)
+      return new TableGroupByToolNamePerSeverityRepresentation(model);
     case RepresentationType.TableGroupBySarifPerLevel:
-      return new TableGroupBySarifPerLevelRepresentation(model)
+      return new TableGroupBySarifPerLevelRepresentation(model);
     case RepresentationType.TableGroupBySarifPerSeverity:
-      return new TableGroupBySarifPerSeverityRepresentation(model)
+      return new TableGroupBySarifPerSeverityRepresentation(model);
     default:
-      throw new Error(`Unknown representation type: ${type}`)
+      throw new Error(`Unknown representation type: ${type}`);
   }
 }

@@ -1,5 +1,5 @@
 import CompactGroupBySarifRepresentation
-  from './CompactGroupBySarifRepresentation'
+  from './CompactGroupBySarifRepresentation';
 
 /**
  * Since {@link CompactGroupBySarifRepresentation} is an abstract class, the only
@@ -10,6 +10,6 @@ import CompactGroupBySarifRepresentation
 export default class CompactGroupBySarifPerSeverityRepresentation extends CompactGroupBySarifRepresentation {
 
   public override compose(): string {
-    return this.composeByProperty('severity')
+    return this.composeByProperty('severity');
   }
 }

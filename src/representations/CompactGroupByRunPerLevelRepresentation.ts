@@ -1,4 +1,4 @@
-import CompactGroupByRunRepresentation from './CompactGroupByRunRepresentation'
+import CompactGroupByRunRepresentation from './CompactGroupByRunRepresentation';
 
 /**
  * Since {@link CompactGroupByRunRepresentation} is an abstract class, the only
@@ -9,6 +9,6 @@ import CompactGroupByRunRepresentation from './CompactGroupByRunRepresentation'
 export default class CompactGroupByRunPerLevelRepresentation extends CompactGroupByRunRepresentation {
 
   public override compose(): string {
-    return this.composeByProperty('level')
+    return this.composeByProperty('level');
   }
 }

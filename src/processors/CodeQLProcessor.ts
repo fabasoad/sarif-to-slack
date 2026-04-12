@@ -1,5 +1,5 @@
-import { CommonProcessor } from './CommonProcessor'
-import type { Result } from 'sarif'
+import { CommonProcessor } from './CommonProcessor';
+import type { Result } from 'sarif';
 
 /**
  * This class has extra logic for processing SARIF files produced by CodeQL tool.
@@ -14,6 +14,6 @@ export class CodeQLProcessor extends CommonProcessor {
    * "problem.severity" property.
    */
   public override tryFindLevel(): Result.level | undefined {
-    return super.tryFindLevel() ?? this.tryFindRuleProperty('problem.severity')
+    return super.tryFindLevel() ?? this.tryFindRuleProperty('problem.severity');
   }
 }

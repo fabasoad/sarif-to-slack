@@ -8,10 +8,10 @@ import { version, sha, buildAt } from './metadata.json';
  * @internal
  */
 export function logMetadata(): void {
-  const logger = new Logger(logMetadata.name);
-  logger.info(`version: ${version}`);
-  logger.info(`sha: ${sha}`);
-  logger.info(`built at: ${buildAt}`);
+  const logger = new Logger();
+  logger.debug(`version: ${version}`);
+  logger.debug(`sha: ${sha}`);
+  logger.debug(`built at: ${buildAt}`);
 }
 
 /**
@@ -21,7 +21,7 @@ export function logMetadata(): void {
  */
 export function isDebug(): boolean {
   const parseResult: ZodSafeParseResult<boolean> = z.stringbool().safeParse(
-    process.env.ACTIONS_STEP_DEBUG
+    process.env.ACTIONS_STEP_DEBUG,
   );
   return parseResult.success && parseResult.data;
 }

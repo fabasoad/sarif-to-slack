@@ -1,9 +1,9 @@
-import Representation from './Representation'
-import type Finding from '../model/Finding'
-import { findingsComparatorByKey } from '../utils/Comparators'
-import { SecurityLevel, SecuritySeverity } from '../types'
+import Representation from './Representation';
+import type Finding from '../model/Finding';
+import { findingsComparatorByKey } from '../utils/Comparators';
+import { SecurityLevel, SecuritySeverity } from '../types';
 
-const NO_VULNS_FOUND_TEXT = 'No vulnerabilities found'
+const NO_VULNS_FOUND_TEXT = 'No vulnerabilities found';
 
 /**
  * Base class of all compact representation types. By "compact" means that it
@@ -27,44 +27,44 @@ export default abstract class CompactGroupByRepresentation extends Representatio
   protected abstract groupFindings(): Map<string, Finding[]>
 
   protected composeByProperty<K extends keyof Pick<Finding, 'level' | 'severity'>>(key: K): string {
-    const grouped: Map<string, Finding[]> = this.groupFindings()
+    const grouped: Map<string, Finding[]> = this.groupFindings();
     if (grouped.size === 0) {
-      return NO_VULNS_FOUND_TEXT
+      return NO_VULNS_FOUND_TEXT;
     }
 
     return Array.from(grouped)
       .map(([title, findings]: [string, Finding[]]): string => {
-        findings.sort(findingsComparatorByKey(key))
+        findings.sort(findingsComparatorByKey(key));
         const summary: string =
           findings.length === 0
           ? NO_VULNS_FOUND_TEXT
-          : this.composeCompactReport(findings, key)
-        return `${title}\n${summary}`
+          : this.composeCompactReport(findings, key);
+        return `${title}\n${summary}`;
       })
-      .join('\n\n')
+      .join('\n\n');
   }
 
   private composeCompactReport<K extends keyof Pick<Finding, 'level' | 'severity'>>(findings: Finding[], key: K): string {
-    const result: string[] = []
+    const result: string[] = [];
     findings
       .reduce((grouped: Map<Finding[K], Array<Finding>>, f: Finding): Map<Finding[K], Array<Finding>> => {
         if (!grouped.get(f[key])) {
-          grouped.set(f[key], [] as Finding[])
+          grouped.set(f[key], [] as Finding[]);
         }
-        grouped.get(f[key])?.push(f)
-        return grouped
+        grouped.get(f[key])?.push(f);
+        return grouped;
       }, new Map<Finding[K], Array<Finding>>())
       .forEach((v: Array<Finding>, k: Finding[K]): void => {
-        result.push(`${this.bold(this.extractEnumValue(key, k))}: ${v.length}`)
+        result.push(`${this.bold(this.extractEnumValue(key, k))}: ${v.length}`);
       })
-    return result.join(', ')
+    return result.join(', ');
   }
 
   private extractEnumValue<K extends keyof Pick<Finding, 'level' | 'severity'>>(key: K, prop: Finding[K]): string {
     switch (key) {
-      case 'level': return SecurityLevel[Number(prop)]
-      case 'severity': return SecuritySeverity[Number(prop)]
-      default: throw new Error('Unknown property:', key)
+      case 'level': return SecurityLevel[Number(prop)];
+      case 'severity': return SecuritySeverity[Number(prop)];
+      default: throw new Error('Unknown property:', key);
     }
   }
 }

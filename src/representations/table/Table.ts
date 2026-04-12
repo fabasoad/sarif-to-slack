@@ -1,8 +1,8 @@
-import Column from './Column'
-import Row from './Row'
-import Cell from './Cell'
+import Column from './Column';
+import Row from './Row';
+import Cell from './Cell';
 
-const HEADER_TOTAL: string = 'Total'
+const HEADER_TOTAL: string = 'Total';
 
 export type TableHeaders = {
   main?: string,
@@ -11,47 +11,47 @@ export type TableHeaders = {
 }
 
 export default class Table {
-  private readonly header: string
-  private readonly columns: Column[]
-  private readonly rows: Row[]
+  private readonly header: string;
+  private readonly columns: Column[];
+  private readonly rows: Row[];
 
   public constructor(
     headers: TableHeaders,
   ) {
-    this.header = headers.main ?? ''
+    this.header = headers.main ?? '';
     this.columns = Array.from(
       { length: headers.columns.length },
-      (_: unknown, index: number): Column => new Column(headers.columns[index], headers.rows.length)
-    )
+      (_: unknown, index: number): Column => new Column(headers.columns[index], headers.rows.length),
+    );
     const headerWidth: number = Math.max(
       this.header.length,
       ...headers.rows.map((v: string): number => v.length),
       HEADER_TOTAL.length,
-    )
+    );
     this.rows = Array.from(
       { length: headers.rows.length },
-      (_: unknown, index: number): Row => new Row(headers.rows[index], headerWidth, headers.columns.length)
-    )
+      (_: unknown, index: number): Row => new Row(headers.rows[index], headerWidth, headers.columns.length),
+    );
   }
 
   public set(rowIndex: number, columnIndex: number, v: number): void {
     if (rowIndex >= 0 && rowIndex < this.rows.length && columnIndex >= 0 && columnIndex < this.columns.length) {
-      const cell = new Cell(v)
-      cell.setWidth(this.columns[columnIndex].header.length)
-      this.columns[columnIndex].setCell(rowIndex, cell)
-      this.rows[rowIndex].setCell(columnIndex, cell)
+      const cell = new Cell(v);
+      cell.setWidth(this.columns[columnIndex].header.length);
+      this.columns[columnIndex].setCell(rowIndex, cell);
+      this.rows[rowIndex].setCell(columnIndex, cell);
       // Update width of the last cell ("Total") of every row, so that it is shown
       // correctly in string representation
       const rowTotalWidth: number = Math.max(
         // Based on the sum of all total values
         this.rows.reduce((sum: number, r: Row): number => {
-          sum += r.total
-          return sum
+          sum += r.total;
+          return sum;
         }, 0).toString().length,
         // Based on the width of "Total" header
         HEADER_TOTAL.length,
-      )
-      this.rows.forEach((r: Row): void => r.setTotalWidth(rowTotalWidth))
+      );
+      this.rows.forEach((r: Row): void => r.setTotalWidth(rowTotalWidth));
     }
   }
 

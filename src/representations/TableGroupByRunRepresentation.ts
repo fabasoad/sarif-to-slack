@@ -1,6 +1,6 @@
-import type { SarifModel } from '../types'
-import type Finding from '../model/Finding'
-import TableGroupRepresentation from './TableGroupRepresentation'
+import type { SarifModel } from '../types';
+import type Finding from '../model/Finding';
+import TableGroupRepresentation from './TableGroupRepresentation';
 
 export default abstract class TableGroupByRunRepresentation<
   KPer extends keyof Pick<Finding, 'level' | 'severity'>
@@ -8,8 +8,8 @@ export default abstract class TableGroupByRunRepresentation<
   protected constructor(
     keyPer: KPer,
     values: string[],
-    model: SarifModel
+    model: SarifModel,
   ) {
-    super('runId', keyPer, values, model)
+    super('runId', keyPer, values, model);
   }
 }

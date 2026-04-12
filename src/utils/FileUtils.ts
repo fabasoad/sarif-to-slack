@@ -16,7 +16,7 @@ function listFiles(
   dir: string,
   recursive: boolean,
   extension: SarifFileExtension,
-  fileList: string[] = []
+  fileList: string[] = [],
 ): string[] {
   if (fs.statSync(dir).isDirectory()) {
     const entries: string[] = fs.readdirSync(dir);
@@ -27,7 +27,7 @@ function listFiles(
       } else if (path.extname(fullPath).toLowerCase() === `.${extension}`) {
         fileList.push(fullPath);
       }
-    })
+    });
   }
   return fileList;
 }
@@ -39,11 +39,11 @@ function listFiles(
  * @internal
  */
 export function extractListOfFiles(opts: SarifOptions): string[] {
-  const logger = new Logger(extractListOfFiles.name);
   if (!fs.existsSync(opts.path)) {
     throw new Error(`Provided path does not exist: ${opts.path}`);
   }
 
+  const logger = new Logger();
   const stats: fs.Stats = fs.statSync(opts.path);
 
   if (stats.isDirectory()) {

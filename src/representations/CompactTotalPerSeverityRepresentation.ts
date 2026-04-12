@@ -1,4 +1,4 @@
-import CompactTotalRepresentation from './CompactTotalRepresentation'
+import CompactTotalRepresentation from './CompactTotalRepresentation';
 
 /**
  * Since {@link CompactTotalRepresentation} is an abstract class, the only
@@ -9,6 +9,6 @@ import CompactTotalRepresentation from './CompactTotalRepresentation'
 export default class CompactTotalPerSeverityRepresentation extends CompactTotalRepresentation {
 
   public override compose(): string {
-    return this.composeByProperty('severity')
+    return this.composeByProperty('severity');
   }
 }

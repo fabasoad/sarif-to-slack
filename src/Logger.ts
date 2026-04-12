@@ -1,37 +1,27 @@
-import { type ILogObj, Logger as TSLogger } from 'tslog'
 import { z, type ZodSafeParseResult } from 'zod';
+import * as stackTraceParser from 'stacktrace-parser';
+import { type ILogObj, type ISettingsParam, Logger as TSLogger } from 'tslog';
 import { isDebug } from './system';
-
-const LogLevelItems = ['silly', 'trace', 'debug', 'info', 'warning', 'error', 'fatal'] as const;
-type LogLevel = (typeof LogLevelItems)[number];
+import { type LoggerOptions, type LogLevel, LogLevelItems } from './types';
+import { globalState } from './globalState';
 
 /**
  * Logger class for managing logging operations.
  * @internal
  */
 export default class Logger {
-  private static APP_NAME: string = '@fabasoad/sarif-to-slack';
   private static DEFAULT_LOG_LEVEL: LogLevel = 'info';
-  private static DEFAULT_LOG_TEMPLATE: string = '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} ';
-  private static DEFAULT_LOG_COLORED: boolean = true;
+  private static DEFAULT_FUNC_NAME_POSITION: number = 2;
 
   private readonly _instance: TSLogger<ILogObj>;
 
-  private isLogLevel(v: string): v is LogLevel {
-    return (LogLevelItems as ReadonlyArray<string>).includes(v);
-  }
-
-  private getMinLevel(): number {
+  private getMinLevel(minLevel: LogLevel | undefined): number {
     let result: LogLevel = Logger.DEFAULT_LOG_LEVEL;
 
     if (isDebug()) {
       result = 'silly';
-    } else {
-      const parseResult: ZodSafeParseResult<LogLevel> = z
-        .string()
-        .refine((v: string): boolean => this.isLogLevel(v))
-        .transform((v: string): LogLevel => v as LogLevel)
-        .safeParse(process.env.SARIF_TO_SLACK_LOG_LEVEL);
+    } else if (minLevel !== undefined) {
+      const parseResult: ZodSafeParseResult<LogLevel> = z.enum(LogLevelItems).safeParse(minLevel);
       if (parseResult.success) {
         result = parseResult.data;
       }
@@ -40,27 +30,53 @@ export default class Logger {
     return LogLevelItems.findIndex((v: LogLevel): boolean => v === result);
   }
 
-  private getLogTemplate(): string {
-    const result: ZodSafeParseResult<string> =
-      z.string().safeParse(process.env.SARIF_TO_SLACK_LOG_TEMPLATE);
-    return result.success ? result.data : Logger.DEFAULT_LOG_TEMPLATE;
+  private composeLogHeader(
+    name: string | undefined,
+    logFunctionName: boolean | undefined,
+    logFunctionNameOnPosition: number | undefined,
+  ): string | undefined {
+    let result: string | undefined = name;
+
+    if (logFunctionName === true) {
+      const pos: number = logFunctionNameOnPosition ?? Logger.DEFAULT_FUNC_NAME_POSITION;
+      if (result === undefined) {
+        result = '';
+      } else {
+        result += '::';
+      }
+      const stackFrames: stackTraceParser.StackFrame[] = stackTraceParser.parse(
+        new Error().stack ?? '',
+      );
+      if (stackFrames.length > pos) {
+        result += stackFrames[pos].methodName;
+      }
+    }
+
+    return result;
   }
 
-  private getLogColored(): boolean {
-    const result: ZodSafeParseResult<boolean> =
-      z.stringbool().safeParse(process.env.SARIF_TO_SLACK_LOG_COLORED);
-    return result.success ? result.data : Logger.DEFAULT_LOG_COLORED;
-  }
+  public constructor(overrides: Partial<LoggerOptions> = {}) {
+    const opts: LoggerOptions = {
+      ...structuredClone(globalState.loggerOpts ?? {}),
+      ...overrides,
+    };
 
-  public constructor(memberName?: string) {
-    this._instance = new TSLogger({
-      name: `${Logger.APP_NAME}${memberName === undefined ? '' : `::${memberName}`}`,
-      minLevel: this.getMinLevel(),
+    const logName: string | undefined = this.composeLogHeader(
+      opts.name, opts.logFunctionName, opts.logFunctionNameOnPosition,
+    );
+    const settings: ISettingsParam<ILogObj> = {
+      minLevel: this.getMinLevel(opts.minLevel),
+      name: logName,
       type: 'pretty',
+      prettyLogTemplate: opts.prettyLogTemplate || (
+        logName === undefined
+        ? '[{{logLevelName}}] {{dateIsoStr}} '
+        : '[{{logLevelName}}] [{{name}}] {{dateIsoStr}} '
+      ),
       prettyLogTimeZone: 'UTC',
-      prettyLogTemplate: this.getLogTemplate(),
-      stylePrettyLogs: this.getLogColored(),
-    })
+      stylePrettyLogs: opts.stylePrettyLogs ?? true,
+    };
+    this._instance = new TSLogger(settings);
   }
 
   public info(...args: unknown[]): void {
