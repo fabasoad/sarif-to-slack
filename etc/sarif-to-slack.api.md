@@ -61,7 +61,17 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
 };
 
 // @public
-export type LogLevel = (typeof LogLevelItems)[number];
+export type LoggerOptions = {
+    logFunctionName?: boolean;
+    logFunctionNameOnPosition?: number;
+    minLevel?: LogLevel;
+    name?: string;
+    stylePrettyLogs?: boolean;
+    prettyLogTemplate?: string;
+};
+
+// @public
+export type LogLevel = typeof LogLevelItems[number];
 
 // @public
 export const LogLevelItems: readonly ["silly", "trace", "debug", "info", "warning", "error", "fatal"];
@@ -85,7 +95,10 @@ export enum RepresentationType {
 }
 
 // @public
-export type SarifFileExtension = 'sarif' | 'json';
+export type SarifFileExtension = typeof SarifFileExtensionItems[number];
+
+// @public
+export const SarifFileExtensionItems: readonly ["sarif", "json"];
 
 // @public
 export type SarifOptions = {
@@ -142,9 +155,5 @@ export enum SendIf {
     SeverityUnknownOrHigher = 10,
     Some = 21
 }
-
-// Warnings were encountered during analysis:
-//
-// src/types.ts:280:3 - (ae-forgotten-export) The symbol "LoggerOptions" needs to be exported by the entry point index.d.ts
 
 ```
