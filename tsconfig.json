@@ -14,7 +14,7 @@
     "lib": ["es2024"],
     "module": "es2022",
     "moduleResolution": "bundler",
-    "rootDir": "src",
+    "rootDir": ".",
     "newLine": "lf",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -29,8 +29,8 @@
     "stripInternal": true,
     "target": "es2024",
     "typeRoots": ["node_modules/@types", "@types"],
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "dist"]
 }

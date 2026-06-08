@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 main() {
-  tsc
+  tsc --project tsconfig.build.json
   api-extractor run --local --verbose
   tsup src/index.ts --format cjs --target es2024 --out-dir dist-cjs --clean
   mv dist-cjs/index.js dist/index.cjs

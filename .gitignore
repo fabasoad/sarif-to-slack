@@ -9,4 +9,5 @@ lib
 temp/
 dist/
 jest-report.json
+vitest-report.json
 metadata.json
