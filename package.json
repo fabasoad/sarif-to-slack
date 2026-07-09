@@ -49,11 +49,11 @@
     "zod": "~4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "~2.5.2",
+    "@biomejs/biome": "~2.5.3",
     "@microsoft/api-documenter": "~7.30.7",
     "@microsoft/api-extractor": "~7.58.9",
-    "@vitest/coverage-v8": "~4.1.9",
-    "vitest": "~4.1.9",
+    "@vitest/coverage-v8": "~4.1.10",
+    "vitest": "~4.1.10",
     "tsup": "~8.5.1",
     "typescript": "~6.0.3"
   }
