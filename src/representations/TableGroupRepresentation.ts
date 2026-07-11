@@ -1,8 +1,8 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import type { SarifModel } from '../types';
 import type Finding from '../model/Finding';
 import Representation from './Representation';
 import Table from './table/Table';
-import Logger from '../Logger';
 
 export default abstract class TableGroupRepresentation<
   KBy extends keyof Pick<Finding, 'toolName' | 'runId' | 'sarifPath'>,
@@ -56,7 +56,7 @@ export default abstract class TableGroupRepresentation<
   }
 
   public override compose(): string {
-    const logger = new Logger();
+    const logger: Logger = getLogger();
     const groupedBy: Map<string, Finding[]> = this.groupFindingsBy(this._model.findings);
     const table = new Table({
       main: this.title,

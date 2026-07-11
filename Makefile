@@ -2,52 +2,52 @@
 
 .PHONY: audit
 audit:
-	@npm audit --audit-level moderate --package-lock-only --include dev
+	@pnpm audit
 
 .PHONY: build
 build:
-	@npm run build
+	@pnpm run build
 
 .PHONY: clean
 clean:
-	@npm run clean
+	@pnpm run clean
 
 .PHONY: install
 install:
-	@npm install
+	@pnpm install
 
 .PHONY: reinstall
 reinstall:
 	@make clean
-	@npm run clean:unsafe
+	@pnpm run clean:unsafe
 	@make install
 
 .PHONY: lint
 lint:
-	@npm run lint
+	@pnpm run lint
 
 .PHONY: test/integration
 test/integration:
-	@npm run test:integration
+	@pnpm run test:integration
 
 .PHONY: test/unit
 test/unit:
-	@npm run test
+	@pnpm run test
 
 .PHONY: test
 test: test/unit
 
-.PHONY: npm/update
-npm/update:
-	@npm update
+.PHONY: pnpm/update
+pnpm/update:
+	@pnpm update
 
 .PHONY: pre-commit/update
 pre-commit/update:
 	@command -v prek >/dev/null 2>&1 && prek auto-update || pre-commit autoupdate
 
 .PHONY: update
-update: npm/update pre-commit/update
+update: pnpm/update pre-commit/update
 
 .PHONY: outdated
 outdated:
-	@npm outdated
+	@pnpm outdated

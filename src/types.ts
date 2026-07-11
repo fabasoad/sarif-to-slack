@@ -247,7 +247,7 @@ export type SarifOptions = {
  * Valid log levels for the Logger.
  * @public
  */
-export const LogLevelItems = ['silly', 'trace', 'debug', 'info', 'warning', 'error', 'fatal'] as const;
+export const LogLevelItems = ['trace', 'debug', 'info', 'warning', 'error', 'fatal'] as const;
 /**
  * Log levels for the Logger.
  * @public
@@ -259,12 +259,8 @@ export type LogLevel = typeof LogLevelItems[number];
  * @public
  */
 export type LoggerOptions = {
-  logFunctionName?: boolean,
-  logFunctionNameOnPosition?: number,
-  minLevel?: LogLevel,
+  lowestLevel?: LogLevel,
   name?: string,
-  stylePrettyLogs?: boolean,
-  prettyLogTemplate?: string,
 }
 
 /**

@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
+import { getLogger, type Logger } from "@logtape/logtape";
 import type { Log } from 'sarif';
-import Logger from './Logger';
 import {
   type RunData,
   type SarifModel,
@@ -18,7 +18,7 @@ import { identifyColor } from './model/color/ColorIdentification';
 import FindingArray from './model/FindingArray';
 import { createSlackMessage, type SlackMessage } from './model/SlackMessage';
 import { SendIf, sendIfLogMessage } from './model/SendIf';
-import { globalState } from './globalState';
+import { setupLogger } from "./setupLogger";
 
 /**
  * Service to convert SARIF files to Slack messages and send them.
@@ -52,9 +52,9 @@ export class SarifToSlackClient {
    * @public
    */
   public static async create(webhookUrl: string, opts: SarifToSlackClientOptions): Promise<SarifToSlackClient> {
-    globalState.loggerOpts = opts.loggerOptions;
+    setupLogger(opts.loggerOptions);
 
-    const logger = new Logger();
+    const logger: Logger = getLogger();
     logger.trace(opts);
 
     const instance = new SarifToSlackClient();
@@ -142,13 +142,13 @@ export class SarifToSlackClient {
     if (this._sarifModel == null) {
       throw new Error('Could not parse SARIF file(s).');
     }
-    const logger = new Logger();
+    const logger: Logger = getLogger();
     if (this.shouldSendMessage) {
       if (this._message == null) {
         throw new Error('Slack message was not prepared.');
       }
       const text: string = await this._message.send();
-      logger.info('Message sent. Status:', text);
+      logger.info(`Message sent. Status: ${text}`);
     } else {
       logger.info(sendIfLogMessage(this._sendIf));
     }

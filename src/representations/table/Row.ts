@@ -1,5 +1,5 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import Cell from './Cell';
-import Logger from '../../Logger';
 
 export default class Row {
   private readonly _cells: Cell[];
@@ -26,7 +26,7 @@ export default class Row {
     if (index >= 0 && index < this._cells.length) {
       this._cells[index] = value;
     } else {
-      const logger = new Logger();
+      const logger: Logger = getLogger();
       logger.warn(`Setting cell failed. Reason: index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`);
     }
   }

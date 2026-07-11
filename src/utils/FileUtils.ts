@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import * as path from 'node:path';
-import Logger from '../Logger';
+import { getLogger, type Logger } from "@logtape/logtape";
 import type { SarifFileExtension, SarifOptions } from '../types';
 
 /**
@@ -43,7 +43,7 @@ export function extractListOfFiles(opts: SarifOptions): string[] {
     throw new Error(`Provided path does not exist: ${opts.path}`);
   }
 
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   const stats: fs.Stats = fs.statSync(opts.path);
 
   if (stats.isDirectory()) {
