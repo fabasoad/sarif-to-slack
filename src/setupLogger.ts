@@ -4,7 +4,7 @@ import {
   getConsoleSink,
   getAnsiColorFormatter,
 } from "@logtape/logtape";
-import { LoggerOptions } from "./types";
+import type { LoggerOptions } from "./types";
 
 /**
  * Accepted value for the `category` option of `AnsiColorFormatterOptions`.
