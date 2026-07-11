@@ -1,5 +1,5 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import { z, type ZodSafeParseResult } from 'zod';
-import Logger from './Logger';
 import { version, sha, buildAt } from './metadata.json';
 
 /**
@@ -8,7 +8,7 @@ import { version, sha, buildAt } from './metadata.json';
  * @internal
  */
 export function logMetadata(): void {
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   logger.debug(`version: ${version}`);
   logger.debug(`sha: ${sha}`);
   logger.debug(`built at: ${buildAt}`);

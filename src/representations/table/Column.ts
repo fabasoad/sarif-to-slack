@@ -1,5 +1,5 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import type Cell from './Cell';
-import Logger from '../../Logger';
 
 export default class Column {
   private readonly _cells: Cell[];
@@ -32,7 +32,7 @@ export default class Column {
       const width: number = this.width;
       this._cells.forEach((c: Cell): void => c.setWidth(width));
     } else {
-      const logger = new Logger();;
+      const logger: Logger = getLogger();
       logger.warn(`Cell index out of range. Requested index: ${index}. Cells count: ${this._cells.length}.`);
     }
   }

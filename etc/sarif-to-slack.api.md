@@ -62,19 +62,15 @@ export type IncludeAwareWithValueOptions = IncludeAwareOptions & {
 
 // @public
 export type LoggerOptions = {
-    logFunctionName?: boolean;
-    logFunctionNameOnPosition?: number;
-    minLevel?: LogLevel;
+    lowestLevel?: LogLevel;
     name?: string;
-    stylePrettyLogs?: boolean;
-    prettyLogTemplate?: string;
 };
 
 // @public
 export type LogLevel = typeof LogLevelItems[number];
 
 // @public
-export const LogLevelItems: readonly ["silly", "trace", "debug", "info", "warning", "error", "fatal"];
+export const LogLevelItems: readonly ['trace', 'debug', 'info', 'warning', 'error', 'fatal'];
 
 // @public
 export enum RepresentationType {
@@ -98,7 +94,7 @@ export enum RepresentationType {
 export type SarifFileExtension = typeof SarifFileExtensionItems[number];
 
 // @public
-export const SarifFileExtensionItems: readonly ["sarif", "json"];
+export const SarifFileExtensionItems: readonly ['sarif', 'json'];
 
 // @public
 export type SarifOptions = {

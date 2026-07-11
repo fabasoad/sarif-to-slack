@@ -185,7 +185,9 @@ jobs:
       contents: read
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: "false"
       - name: Determine SARIF file
         id: sarif-file
         env:
@@ -294,12 +296,18 @@ jobs:
             value=""
           fi
           echo "value=${value}" >> "$GITHUB_OUTPUT"
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+        with:
+          run_install: false
       - name: Setup node
         uses: actions/setup-node@v6
         with:
           node-version-file: ".tool-versions"
+          cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Send message
         env:
           SARIF_TO_SLACK_WEBHOOK_URL: "${{ secrets.TMP_EUGENE_SLACK_WEBHOOK }}"

@@ -1,7 +1,7 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import type Finding from '../Finding';
 import type FindingArray from '../FindingArray';
 import { SecurityLevel, SecuritySeverity } from '../../types';
-import Logger from '../../Logger';
 import type {
   ColorGroupByLevel,
   ColorGroupBySeverity,
@@ -43,7 +43,7 @@ function identifyColorCommon<K extends keyof Pick<Finding, 'level' | 'severity'>
   unknown: Finding[K],
   color: ColorGroupCommon,
 ): string | undefined {
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   if (color.none) {
     if (findings.findByProperty(prop, none) != null) {
       logColorTaken(logger, color.none, `${prop === 'severity' ? 'bySeverity' : 'byLevel'}.none`);
@@ -70,7 +70,7 @@ function identifyColorCommon<K extends keyof Pick<Finding, 'level' | 'severity'>
 }
 
 function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeverity): string | undefined {
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   if (color.critical) {
     if (findings.findByProperty('severity', SecuritySeverity.Critical) != null) {
       logColorTaken(logger, color.critical, 'bySeverity.critical');
@@ -119,7 +119,7 @@ function identifyColorBySeverity(findings: FindingArray, color: ColorGroupBySeve
 }
 
 function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel): string | undefined {
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   if (color.error) {
     if (findings.findByProperty('level', SecurityLevel.Error) != null) {
       logColorTaken(logger, color.error, 'byLevel.error');
@@ -165,12 +165,12 @@ function identifyColorByLevel(findings: FindingArray, color: ColorGroupByLevel):
  * @internal
  */
 export function identifyColor(findings: FindingArray, colorOpts?: ColorOptions): string | undefined {
-  const logger = new Logger();
+  const logger: Logger = getLogger();
   if (!colorOpts) {
     logger.debug('Message has no color as color options are not defined.');
     return undefined;
   }
-  logger.trace(`Identifying color for ${findings.length} findings and the following color options:`, JSON.stringify(colorOpts, null, 2));
+  logger.trace(`Identifying color for ${findings.length} findings and the following color options: {data}`, { data: JSON.stringify(colorOpts, null, 2) });
 
   if (colorOpts.bySeverity) {
     const color: string | undefined = identifyColorBySeverity(findings, colorOpts.bySeverity);

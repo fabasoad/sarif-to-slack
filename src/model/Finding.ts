@@ -1,6 +1,6 @@
+import { getLogger, type Logger } from "@logtape/logtape";
 import type { ReportingDescriptor, Result } from 'sarif';
 import { type RunData, SecurityLevel, SecuritySeverity } from '../types';
-import Logger from '../Logger';
 import type { CommonProcessor } from '../processors/CommonProcessor';
 import { createProcessor } from '../processors/ProcessorFactory';
 
@@ -98,7 +98,7 @@ class FindingImpl implements Finding {
     }
 
     if (this._levelCache === undefined) {
-      const logger = new Logger();;
+      const logger: Logger = getLogger();
       logger.debug(`Unknown level of ${this._rule?.id} rule`);
       return SecurityLevel.Unknown;
     }
@@ -113,7 +113,7 @@ class FindingImpl implements Finding {
 
   public get severity(): SecuritySeverity {
     if (this.cvssScore == null || this.cvssScore < 0 || this.cvssScore > 10) {
-      const logger = new Logger();
+      const logger: Logger = getLogger();
       logger.debug(`Unsupported CVSS score ${this.cvssScore} in ${this._rule?.id} rule`);
       return SecuritySeverity.Unknown;
     }

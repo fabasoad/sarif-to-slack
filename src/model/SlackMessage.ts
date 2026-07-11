@@ -1,6 +1,9 @@
-import type { AnyBlock } from '@slack/types';
-import type { ContextBlock, HeaderBlock } from '@slack/types/dist/block-kit/blocks';
-import type { TextObject } from '@slack/types/dist/block-kit/composition-objects';
+import type {
+  AnyBlock,
+  ContextBlock,
+  HeaderBlock,
+  TextObject
+} from '@slack/types';
 import { IncomingWebhook } from '@slack/webhook';
 import { FooterType } from '../types';
 import type Representation from '../representations/Representation';
