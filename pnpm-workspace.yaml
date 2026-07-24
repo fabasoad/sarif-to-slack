@@ -10,3 +10,4 @@ minimumReleaseAgeExclude:
 overrides:
   esbuild@>=0.27.3 <0.28.1: ^0.28.1
   js-yaml@>=4.0.0 <5.2.1: ^5.2.1
+  fast-uri@<4.1.1: ^4.1.1
