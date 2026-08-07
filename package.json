@@ -42,7 +42,7 @@
   },
   "homepage": "https://github.com/fabasoad/sarif-to-slack#readme",
   "dependencies": {
-    "@logtape/logtape": "~2.2.4",
+    "@logtape/logtape": "~2.3.0",
     "@slack/types": "~3.0.0",
     "@slack/webhook": "~8.0.0",
     "@types/sarif": "~2.1.7",
