@@ -52,12 +52,12 @@
   "devDependencies": {
     "@biomejs/biome": "~2.5.9",
     "@microsoft/api-documenter": "~7.30.12",
-    "@microsoft/api-extractor": "~7.58.13",
-    "@types/node": "~26.1.2",
+    "@microsoft/api-extractor": "~7.59.0",
+    "@types/node": "~26.2.0",
     "@vitest/coverage-v8": "~4.1.11",
     "tsup": "~8.5.1",
     "typescript": "~7.0.2",
     "vitest": "~4.1.11"
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.23.0"
 }
