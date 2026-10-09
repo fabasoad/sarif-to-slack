@@ -42,7 +42,7 @@
   },
   "homepage": "https://github.com/fabasoad/sarif-to-slack#readme",
   "dependencies": {
-    "@logtape/logtape": "~2.3.10",
+    "@logtape/logtape": "~2.3.11",
     "@slack/types": "~3.1.0",
     "@slack/webhook": "~8.0.2",
     "@types/sarif": "~2.1.7",
@@ -51,8 +51,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "~2.5.15",
-    "@microsoft/api-documenter": "~7.30.17",
-    "@microsoft/api-extractor": "~7.59.3",
+    "@microsoft/api-documenter": "~7.30.18",
+    "@microsoft/api-extractor": "~7.59.4",
     "@types/node": "~26.4.1",
     "@vitest/coverage-v8": "~5.0.3",
     "tsup": "~8.5.1",
